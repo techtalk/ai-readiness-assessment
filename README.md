@@ -9,17 +9,20 @@ Drop into any repository, invoke once, get:
 
 - A timestamped assessment at `assessments/YYYY-MM-DD-assessment.md`.
 - A position on the six-level framework from *The Sovereign Engineer*
-  (Russ Miles, Habitat-Thinking) — L0 *Aware of the landscape* through
-  L5 *Sovereign engineering*.
+  (Russ Miles, Habitat-Thinking) —
+  [leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer) —
+  L0 *Aware of the landscape* through L5 *Sovereign engineering*.
 - A gap-anchored reading path into the book.
 - One specific TechTalk engagement recommendation matched to the
   weakest of the three disciplines: Context Engineering, Architectural
   Constraints, or Guardrail Design.
 
-The assessment is fully self-contained. It does **not** depend on the
-`ai-literacy-superpowers` plugin, on any external skill, agent, or
-service. The framework, scoring heuristic, and evidence checklist all
-live inside this repo.
+The assessment is fully self-contained. It does **not** depend on any
+external plugin, skill, agent, or service. The framework, scoring
+heuristic, and evidence checklist all live inside this repo. The
+instrument itself is **inspired by** the
+[ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
+plugin — see *Inspired by* below.
 
 ## Use
 
@@ -104,7 +107,15 @@ ceiling** — strong specs with weak verification is L2, not L4.
 ## The book
 
 *The Sovereign Engineer* — Russ Miles — Habitat-Thinking.
-[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer)
+
+The six-level framework, the three disciplines, and the
+weakest-discipline-as-ceiling heuristic that this assessment scores
+against are all set out in the book. The assessment surfaces the
+specific chapter that closes your weakest discipline gap — gap-anchored,
+not a generic plug.
+
+Buy or read on Leanpub:
+**[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer)**
 
 ## TechTalk
 
@@ -119,14 +130,27 @@ The command produces a single, specific recommendation rather than a
 menu — a menu reads like marketing, a specific recommendation reads
 like advice.
 
-## Credits
+## Inspired by
 
-Built on the framework and methodology established in the
+This plugin is **inspired by** the
 [ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
-plugin and the
-[ai-literacy-for-software-engineers](https://github.com/russmiles/ai-literacy-for-software-engineers)
-reference repository. This plugin extracts the assessment instrument
-from that work into a standalone, dependency-free package.
+plugin — the canonical home of the AI Literacy framework, with its
+full agent team, harness engineering, governance audit, compound
+learning loop, and orchestrator pipeline. The supporting reference
+repository is
+[ai-literacy-for-software-engineers](https://github.com/russmiles/ai-literacy-for-software-engineers).
+
+What you get here is narrower by design: just the assessment
+instrument, extracted into a standalone, dependency-free package that
+runs in any repo and any tool consuming the Copilot/Claude Code plugin
+layout. If the assessment reveals you want the full habitat — the
+agent pipeline, the constraint enforcement, the compound learning —
+that is what `ai-literacy-superpowers` provides.
+
+The conceptual ground for both — the six levels, the three
+disciplines, the habitat-thinking lens — is set out in
+*The Sovereign Engineer*:
+[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer).
 
 ## Licence
 

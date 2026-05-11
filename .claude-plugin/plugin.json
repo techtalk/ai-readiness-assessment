@@ -1,0 +1,21 @@
+{
+  "name": "ai-readiness-assessment",
+  "version": "0.1.0",
+  "description": "Self-contained AI literacy assessment for any repo — scan for evidence, ask clarifying questions, produce a timestamped assessment with a gap-anchored reading path through The Sovereign Engineer and a single TechTalk engagement recommendation.",
+  "author": {
+    "name": "Russ Miles",
+    "url": "https://techtalk.ai"
+  },
+  "homepage": "https://leanpub.com/thesovereignengineer",
+  "keywords": [
+    "ai-literacy",
+    "ai-readiness",
+    "assessment",
+    "habitat-thinking",
+    "sovereign-engineer",
+    "techtalk",
+    "context-engineering",
+    "harness-engineering",
+    "guardrail-design"
+  ]
+}

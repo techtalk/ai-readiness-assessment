@@ -24,19 +24,51 @@ The loop is:
    ask whether the surrounding prose can be tightened without
    regression.
 
-## Running a test (manual, today)
+## Running tests
 
-There is no automated runner yet. The manual procedure:
+The suite is two halves, run differently.
 
-1. Open a fresh Claude Code session with the plugin installed.
+### A-tier (structural) — automated
+
+```
+python3 tests/run.py                          # all 6 fixtures
+python3 tests/run.py --fixture level-3-habitat   # one fixture
+```
+
+The runner reads each fixture's most recent
+`assessments/*-assessment.md` and checks the structural assertions
+encoded in `tests/run.py` (level line, discovery-section ordering,
+required absences enumerated, discipline-score bounds, reading-path
+content, single CTA, Leanpub link present, CTA gap-language). It
+writes a fresh report to `tests/auto-results.md` and exits non-zero
+if any assertion fails — suitable for a CI gate.
+
+To produce a new assessment for a fixture (so the runner has
+something fresh to check):
+
+1. Open a Claude Code session with the plugin installed.
 2. `cd tests/fixtures/<fixture>`
-3. Run `/ai-readiness-assess`
-4. Save the produced `assessments/YYYY-MM-DD-assessment.md` next to
-   the fixture as `actual-<YYYY-MM-DD>.md`.
-5. Walk through `expected.md` and mark each assertion PASS or FAIL.
-6. For each FAIL, decide whether the fix lives in the skill prose
-   (most common) or in the assertion (sometimes the expectation was
-   wrong).
+3. Run `/ai-readiness-assess`. The skill writes
+   `assessments/YYYY-MM-DD-assessment.md`.
+4. Back in the repo root, run `python3 tests/run.py`.
+
+### B-tier (behavioural) and C-tier (semantic) — manual or LLM-judged
+
+The runner does **not** cover B-tier (scan-first sequencing,
+questions one-at-a-time, the 3–5 question count) or C-tier
+(rationale fits the evidence, recommendations are gap-anchored, CTA
+reads as advice). To verify those:
+
+1. Run the skill interactively against the fixture (as above).
+2. Open the produced assessment alongside `expected.md`.
+3. Walk through the B and C assertions and mark each PASS / FAIL.
+4. Record findings in a new
+   `tests/fixtures/<fixture>/test-report-YYYY-MM-DD.md`.
+
+For each FAIL, decide whether the fix lives in the skill prose
+(usually) or in the assertion (sometimes the expectation was wrong).
+When the skill prose changes, run the automated A-tier sweep first
+to catch regressions.
 
 ## What's here
 
@@ -51,15 +83,11 @@ Future fixtures should cover L1 (thin AI-instruction file only), L2
 
 ## Promotion path for these tests
 
-Today: manual, advisory. Each test is a checklist a reviewer walks
-through after a meaningful change to the skill or command.
+| Tier | Today | Next | Eventually |
+|---|---|---|---|
+| **A** — structural | **deterministic** (`tests/run.py`) | wire into CI as a required check | — |
+| **B** — behavioural | manual, interactive Claude session | agent-judged transcript review | deterministic where falsifiable (e.g. count `?` characters in skill output) |
+| **C** — semantic | manual review | agent judge that returns PASS/FAIL with reasons | hybrid: deterministic regex + agent for genuinely fuzzy properties |
 
-Next: agent-verified. A judge agent reads `actual-*.md` against
-`expected.md` and returns PASS / FAIL with reasons. This sits behind
-`/harness-constrain` once Architectural Constraints are configured in
-`HARNESS.md`.
-
-Eventually: deterministic where falsifiable (regex on the "Assessed
-level" line, structural parse of the CTA block, link presence) plus
-agent for the genuinely fuzzy properties (does the rationale fit the
-evidence; is the recommended chapter the one that closes the gap).
+The A-tier promotion happened in commit history — see
+`tests/run.py`. B and C are still ahead.

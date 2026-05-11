@@ -24,6 +24,29 @@ instrument itself is **inspired by** the
 [ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
 plugin — see *Inspired by* below.
 
+## Install
+
+This repo also acts as the **`techtalkai`** Claude Code marketplace.
+From inside a Claude Code session:
+
+```
+/plugin marketplace add techtalk/ai-readiness-assessment
+/plugin install ai-readiness-assessment@techtalkai
+```
+
+To update later:
+
+```
+/plugin marketplace update techtalkai
+```
+
+To remove:
+
+```
+/plugin uninstall ai-readiness-assessment@techtalkai
+/plugin marketplace remove techtalkai
+```
+
 ## Use
 
 In GitHub Copilot CLI or any Copilot-compatible surface, with this
@@ -65,7 +88,8 @@ A shareable HTML version is offered on request.
 ```
 ai-readiness-assessment/
 ├── .claude-plugin/
-│   └── plugin.json
+│   ├── plugin.json                  # plugin manifest
+│   └── marketplace.json             # techtalkai marketplace manifest
 ├── commands/
 │   └── ai-readiness-assess.md       # /ai-readiness-assess
 ├── skills/

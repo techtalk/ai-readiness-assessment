@@ -1,6 +1,6 @@
 # ai-readiness-assessment
 
-A self-contained AI literacy / AI readiness assessment, packaged as a
+A self-contained AI readiness assessment, packaged as a
 plugin for GitHub Copilot (and any other tool that consumes the same
 `.claude-plugin/plugin.json` + `commands/` + `skills/` layout — Claude
 Code, Cursor via wrapper, Windsurf via wrapper).
@@ -151,7 +151,3 @@ The conceptual ground for both — the six levels, the three
 disciplines, the habitat-thinking lens — is set out in
 *The Sovereign Engineer*:
 [leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer).
-
-## Licence
-
-MIT.

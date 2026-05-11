@@ -1,4 +1,4 @@
-# ai-readiness-assessment
+# TechTalk AI Readiness Assessment
 
 A self-contained AI readiness assessment, packaged as a
 plugin for GitHub Copilot (and any other tool that consumes the same
@@ -13,7 +13,7 @@ Drop into any repository, invoke once, get:
   [leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer) —
   L0 *Aware of the landscape* through L5 *Sovereign engineering*.
 - A gap-anchored reading path into the book.
-- One specific TechTalk engagement recommendation matched to the
+- Recommendations on next steps matched to the
   weakest of the three disciplines: Context Engineering, Architectural
   Constraints, or Guardrail Design.
 

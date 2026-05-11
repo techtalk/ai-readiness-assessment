@@ -1,0 +1,28 @@
+{
+  "name": "techtalkai",
+  "owner": {
+    "name": "Russ Miles / TechTalk",
+    "url": "https://techtalk.ai"
+  },
+  "description": "TechTalk AI marketplace — self-contained tooling for AI readiness, literacy, and habitat thinking, anchored in The Sovereign Engineer.",
+  "plugins": [
+    {
+      "name": "ai-readiness-assessment",
+      "source": "./",
+      "description": "Self-contained AI literacy assessment for any repo — scan for evidence, ask clarifying questions, produce a timestamped assessment with a gap-anchored reading path through The Sovereign Engineer and a single TechTalk engagement recommendation.",
+      "version": "0.1.0",
+      "homepage": "https://leanpub.com/thesovereignengineer",
+      "keywords": [
+        "ai-literacy",
+        "ai-readiness",
+        "assessment",
+        "habitat-thinking",
+        "sovereign-engineer",
+        "techtalk",
+        "context-engineering",
+        "harness-engineering",
+        "guardrail-design"
+      ]
+    }
+  ]
+}

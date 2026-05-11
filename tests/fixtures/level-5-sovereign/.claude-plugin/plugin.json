@@ -1,0 +1,15 @@
+{
+  "name": "wordcount-habitat",
+  "version": "1.0.0",
+  "description": "The wordcount team's habitat packaged as a plugin: CLAUDE.md skeleton, HARNESS.md constraint set, the spec-implement orchestrator command, the wordcount-style skill, and the standard CI workflow. Adopt with /wordcount-habitat-init.",
+  "author": {
+    "name": "wordcount team"
+  },
+  "keywords": [
+    "habitat",
+    "harness-engineering",
+    "spec-first",
+    "context-engineering",
+    "wordcount"
+  ]
+}

@@ -1,0 +1,15 @@
+# Cursor rules — wordcount
+
+Coding style:
+
+- Use Python 3.10+ features (match statements, `X | Y` union types).
+- Prefer `pathlib.Path` over `os.path`.
+- No bare `except:` — always name the exception type.
+- All public functions have type hints.
+- Run `ruff check .` before pushing; fix the warnings, don't silence them.
+
+Do not:
+
+- Add dependencies without discussing first.
+- Catch `Exception` to "make tests pass."
+- Use `print` for diagnostics in library code (use `logging`).

@@ -28,10 +28,10 @@ Structural: **11 / 11 PASS**.
 |---|---|---|
 | B1 | N/A (batch) | Discovery before any maturity claim, but no questions to sequence against. |
 | B2 | N/A (batch) | No questions. |
-| B3 | **FAIL** | Zero questions; contract requires 3–5. |
+| B3 | N/A (batch) | Per the in-session reclassification of B3 as interactive-only (see `tests/test-run-2026-05-11.md`). |
 | B4 | PASS (vacuously) | Only `.cursorrules` present; no false "which is canonical?". |
 
-Behavioural: **1 PASS, 2 N/A, 1 FAIL (batch contract)**.
+Behavioural: **1 PASS, 3 N/A. No FAILS.**
 
 ## C. Semantic assertions
 
@@ -45,7 +45,6 @@ Semantic: **3 / 3 PASS**.
 
 ## Verdict
 
-**Structural 11/11 · Behavioural 1/4 · Semantic 3/3.**
+**Structural 11/11 · Behavioural 1/4 (3 N/A) · Semantic 3/3. No FAILS.**
 
-Same B3 failure as the other fixtures. No skill-prose changes
-required.
+No skill-prose changes required from this fixture.

@@ -100,10 +100,11 @@ B1. **Scan first.** Discovery before clarifying questions.
 
 B2. **Questions one at a time** (if asked).
 
-B3. **3–5 clarifying questions** total (if asked). Plausible questions
-for this fixture include: "Is `.cursorrules` actually read by the
-team, or is it stale?", "Does the PR review process explicitly check
-for AI-generated drift?".
+B3. **(Interactive runs only)** 3–5 clarifying questions in total.
+**N/A in batch test runs.** Plausible questions for this fixture
+include: "Is `.cursorrules` actually read by the team, or is it
+stale?", "Does the PR review process explicitly check for
+AI-generated drift?".
 
 B4. **No silent canonical picks.** Only `.cursorrules` is present.
 

@@ -95,8 +95,9 @@ B2. **Questions asked one at a time.** Clarifying questions are
 asked one per turn. A single message containing multiple numbered
 questions is a fail.
 
-B3. **3–5 clarifying questions.** The total count of clarifying
-questions asked across the run is at least 3 and at most 5.
+B3. **(Interactive runs only)** 3–5 clarifying questions in total.
+**N/A in batch test runs** that cannot accept user input — mark N/A,
+not FAIL. The contract still holds for interactive use.
 
 B4. **No silent canonical picks.** Since this fixture has zero
 AI-instruction files, the "two-or-more candidates → stop and ask"

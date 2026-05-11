@@ -219,11 +219,20 @@ discipline. The pattern:
 
 Engagement map (template — customise to TechTalk's actual offering):
 
-| Weakest discipline | Suggested engagement type |
+| Weakest gap | Suggested engagement type |
 |---|---|
 | Context Engineering | Habitat-document bootcamp — two-day workshop building CLAUDE.md/AGENTS.md/HARNESS.md for the team's actual codebase. |
 | Architectural Constraints | Harness-engineering consulting — design and install a machine-checkable constraint set with CI enforcement. |
 | Guardrail Design | Orchestrator and verification engagement — install adversarial review, plan-approval gates, and the verification loops that catch drift. |
+| Specifications layer (L3→L4 jump) | Specification-first engagement — install a `specs/` layer, spec-conformance constraints in HARNESS.md, and an adversarial-review touchpoint at plan approval. |
+| Sovereign / platform layer (L4→L5 jump) | Platform-engineering engagement — package the team's habitat as a published artefact (plugin, template, marketplace entry), install a governance audit cadence, decision archaeology (CHOICES.md or story records), fitness functions, and cost/model-routing discipline. |
+
+At L3 the three disciplines are typically at-strength; the bottleneck
+is the cross-cutting specifications layer rather than a single
+discipline. Use the L3→L4 row when the discovery report shows a
+balanced L3 habitat with no `specs/` directory. Use the L4→L5 row
+when the team has specs but no cross-team or platform-level artefacts
+yet.
 
 The CTA must be **one** specific recommendation, not a menu. A menu
 reads like marketing; a specific recommendation reads like advice.

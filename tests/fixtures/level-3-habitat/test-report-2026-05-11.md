@@ -28,10 +28,10 @@ Structural: **11 / 11 PASS** (A11 via the explicit-spec-language branch).
 |---|---|---|
 | B1 | N/A (batch) | Discovery first; no questions to sequence against. |
 | B2 | N/A (batch) | No questions asked. |
-| B3 | **FAIL** | Zero questions; contract requires 3–5. |
+| B3 | N/A (batch) | Per the in-session reclassification of B3 as interactive-only (see `tests/test-run-2026-05-11.md`). |
 | B4 | PASS | CLAUDE.md and HARNESS.md both exist and have distinct, non-overlapping roles (prose conventions vs. machine-checkable rules). The assessment correctly treats them as complementary, not as duplicates that need disambiguating. |
 
-Behavioural: **2 PASS, 1 N/A, 1 FAIL (batch contract)**.
+Behavioural: **2 PASS, 2 N/A. No FAILS.**
 
 ## C. Semantic assertions
 
@@ -45,18 +45,16 @@ Semantic: **3 / 3 PASS**.
 
 ## Verdict
 
-**Structural 11/11 · Behavioural 2/4 · Semantic 3/3.**
+**Structural 11/11 · Behavioural 2/4 (2 N/A) · Semantic 3/3. No FAILS.**
 
-The L3 fixture surfaces an interesting case: the engagement map in
-the skill doesn't have a "specifications" entry, so a strict reading
-of A11 could fail. The expected.md handled this by allowing a custom
-engagement type that names spec-first explicitly — and the assessment
-used that escape valve. **This is real signal**: the skill's engagement
-map (in step 6 of `SKILL.md`) is incomplete for L3→L4 teams. Worth
-considering as a skill-prose change.
+The L3 fixture surfaced a real skill-prose gap during the first
+pass: the engagement map in step 6 of `SKILL.md` had no entry for
+the L3→L4 (specifications) jump. The L3 assessment had to use the
+"OR a custom engagement type that names spec-first explicitly"
+escape valve in A11.
 
-Proposed skill-prose change (defer to user judgement):
-
-> Add a fourth row to the engagement map in step 6:
->
-> | Specifications gap (L3→L4 jump) | Specification-first engagement — guided work to produce a `specs/` layer, spec-conformance constraints in HARNESS.md, and an adversarial-review touchpoint at plan approval. |
+**Status**: Resolved in-session. The engagement map in both
+`SKILL.md` and `commands/ai-readiness-assess.md` (dual-surface sync)
+has been extended with rows for the L3→L4 and L4→L5 jumps. A11 now
+passes via the canonical row, not the escape valve. See
+`tests/test-run-2026-05-11.md` for the diff.

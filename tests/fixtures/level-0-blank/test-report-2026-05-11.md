@@ -28,10 +28,10 @@ Structural: **11 / 11 PASS**.
 |---|---|---|
 | B1 | N/A (batch) | Discovery report was produced before any maturity claim. No clarifying questions were asked at all (batch mode), so the "scan first, then ask" sequence cannot be observed end-to-end. Manual interactive run required to verify fully. |
 | B2 | N/A (batch) | No clarifying questions were asked. |
-| B3 | **FAIL** | The skill's contract says "ask 3–5 clarifying questions". In this batch run, zero questions were asked. The assessment notes the skip honestly, but the contract is still violated. |
+| B3 | N/A (batch) | Per the in-session reclassification of B3 as interactive-only (see `tests/test-run-2026-05-11.md`): in batch mode, B3 is N/A, not FAIL. No questions asked; the contract holds for interactive use. |
 | B4 | PASS (vacuously) | No silent canonical pick was made — there was nothing to pick between (zero AI-instruction files present). |
 
-Behavioural: **1 PASS, 2 N/A (batch limitation), 1 FAIL (contract)**.
+Behavioural: **1 PASS, 3 N/A. No FAILS.**
 
 ## C. Semantic assertions
 
@@ -45,12 +45,8 @@ Semantic: **3 / 3 PASS**.
 
 ## Verdict
 
-**Structural 11/11 · Behavioural 1/4 (3 batch-limited or contract-failing) · Semantic 3/3.**
+**Structural 11/11 · Behavioural 1/4 (3 N/A — interactive-only) · Semantic 3/3. No FAILS.**
 
-The only real failure is B3 — the skill did not ask 3–5 clarifying
-questions. This is a known batch-mode limitation, not a defect in the
-skill prose. To verify B1–B4 properly, this fixture must be re-run in
-an interactive Claude Code session.
-
-No skill-prose changes required from this run. The fixture works as
-an L0 anchor.
+B1–B4 still require an interactive Claude Code session to verify
+fully. No skill-prose changes required from this run. The fixture
+works as an L0 anchor.

@@ -103,10 +103,11 @@ B1. **Scan first.** Discovery before clarifying questions.
 
 B2. **Questions one at a time** (if asked).
 
-B3. **3–5 clarifying questions** total (if asked). Plausible questions
-include: "Are specs written before code in practice, or just
-sometimes?", "Has the reflection log produced any patterns that you
-chose *not* to encode?".
+B3. **(Interactive runs only)** 3–5 clarifying questions in total.
+**N/A in batch test runs.** Plausible questions include: "Are specs
+written before code in practice, or just sometimes?", "Has the
+reflection log produced any patterns that you chose *not* to
+encode?".
 
 B4. **No silent canonical picks.** Both `CLAUDE.md` and `HARNESS.md`
 exist with non-overlapping roles; no false "which is canonical?"

@@ -98,7 +98,8 @@ clarifying question is asked.
 B2. **Questions asked one at a time** if the run includes clarifying
 questions.
 
-B3. **3–5 clarifying questions** in total (if any are asked).
+B3. **(Interactive runs only)** 3–5 clarifying questions in total.
+**N/A in batch test runs.**
 
 B4. **No silent canonical picks.** Only `.cursorrules` is present, so
 no "which file is canonical?" question should be asked.

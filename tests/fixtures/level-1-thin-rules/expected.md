@@ -90,6 +90,31 @@ Any other engagement description fails.
 
 ---
 
+### Operational Axes & Habitat Build Gap (Part D)
+
+Part D places four operational axes (L1–L5) and computes the Habitat
+Build Gap (cognitive level − operational-axes mean). Expected placement
+for this fixture:
+
+- Composition: L1
+- Testing: L1
+- Observability: L1
+- Governance: L1
+- Operational axes mean: L1.0
+- **Habitat Build Gap: 0.00 (Coherent)**
+
+Team and habitat sit together at the L1 floor — coherent, if early.
+
+A12. **Operational Axes section present.** The assessment contains a
+`## Operational Axes (Part D)` section naming all four axes
+(Composition, Testing, Observability, Governance).
+
+A13. **Habitat Build Gap present.** The assessment contains a
+`## Habitat Build Gap` section, a scannable `**Habitat Build Gap**:`
+header line, and the interpretation regime **Coherent**.
+
+---
+
 ## B. Behavioural assertions
 
 B1. **Scan first.** Discovery report is produced before any

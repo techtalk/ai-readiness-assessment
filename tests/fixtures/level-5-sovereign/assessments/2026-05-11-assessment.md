@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 5 — Sovereign engineering
+**Habitat Build Gap**: +1.25 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -94,6 +95,32 @@ across the wider organisation?".
 | Context Engineering | 5 | Rich CLAUDE.md + ONBOARDING.md + custom skill + custom commands + specs + MODEL_ROUTING + CHOICES (decision archaeology) + habitat **published as a plugin** for cross-team consumption. |
 | Architectural Constraints | 5 | HARNESS.md with 9 constraints (5 deterministic, 4 agent), 7 GC rules (including 3 fitness functions and the governance-audit-cadence check), Status section recording a real audit on 2026-04-15. |
 | Guardrail Design | 5 | CI with three jobs (spec-first-ordering, lint-and-test, fitness-functions), pre-commit hook, adversarial review at plan approval, governance audit at quarterly cadence — catches drift the PR-time gates miss. |
+
+## Operational Axes (Part D)
+
+| Axis | Level (L1–L5) | Evidence |
+|---|---|---|
+| Composition | L4 | Published habitat plugin + `/spec-implement` orchestrator with approval gates and adversarial review; humans still drive orchestration, so short of self-orchestrating constellations. |
+| Testing | L3 | CI lint-and-test with coverage and tests-before-merge; no multi-perspective risk, prod-like, or agent-authored test plans. |
+| Observability | L3 | Fitness functions in CI, a quarterly governance audit on file, and GC rules run at cadence — instrumented at known cadences, but not closed-loop or cross-team aggregated. |
+| Governance | L5 | A running governance-audit cadence that found and corrected drift, policy-as-code constraints, and decision archaeology (CHOICES.md) carrying per-change compliance evidence — consistent with the L5 Architectural Constraints score. |
+
+**Operational axes mean**: L3.75
+
+## Habitat Build Gap
+
+```text
+Cognitive level (Parts A–C):     L5
+Operational axes mean (Part D):  L3.75
+  Composition:   L4
+  Testing:       L3
+  Observability: L3
+  Governance:    L5
+Habitat Build Gap:               +1.25
+Interpretation:                  Ambition outpaces enablement
+```
+
+Even at sovereign cognition (L5) the operational mean (3.75) lags, driven by Testing and Observability. The axis most worth lifting is Testing — add multi-perspective risk and agent-authored test plans so verification matches the team's process sovereignty.
 
 ## Strengths
 

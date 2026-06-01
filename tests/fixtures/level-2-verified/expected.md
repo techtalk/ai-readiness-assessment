@@ -94,6 +94,31 @@ habitat-document bootcamp focused on building `CLAUDE.md` /
 
 ---
 
+### Operational Axes & Habitat Build Gap (Part D)
+
+Part D places four operational axes (L1–L5) and computes the Habitat
+Build Gap (cognitive level − operational-axes mean). Expected placement
+for this fixture:
+
+- Composition: L1
+- Testing: L2
+- Observability: L1
+- Governance: L2
+- Operational axes mean: L1.5
+- **Habitat Build Gap: +0.50 (Ambition outpaces enablement)**
+
+Verification thinking (L2) runs ahead of the operational mean (1.5); Composition and Observability are the floor axes.
+
+A12. **Operational Axes section present.** The assessment contains a
+`## Operational Axes (Part D)` section naming all four axes
+(Composition, Testing, Observability, Governance).
+
+A13. **Habitat Build Gap present.** The assessment contains a
+`## Habitat Build Gap` section, a scannable `**Habitat Build Gap**:`
+header line, and the interpretation regime **Ambition outpaces enablement**.
+
+---
+
 ## B. Behavioural assertions
 
 B1. **Scan first.** Discovery before clarifying questions.

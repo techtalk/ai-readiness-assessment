@@ -75,11 +75,18 @@ sections:
    anchored in the weakest discipline.
 5. **Discipline Maturity** — Context Engineering, Architectural
    Constraints, Guardrail Design, each scored 0–5.
-6. **Strengths, Gaps, Recommendations** — top three each, anchored in
+6. **Operational Axes (Part D)** — four axes of what the habitat
+   *actually delivers* — Composition, Testing, Observability,
+   Governance — each placed L1–L5 from repository evidence.
+7. **Habitat Build Gap** — `cognitive level − operational-axes mean`,
+   read through three regimes (Coherent / Ambition outpaces enablement
+   / Inherited habitat). The signal is coherence, not the size of the
+   level.
+8. **Strengths, Gaps, Recommendations** — top three each, anchored in
    evidence.
-7. **Reading Path** — the specific chapter of *The Sovereign Engineer*
+9. **Reading Path** — the specific chapter of *The Sovereign Engineer*
    that closes your weakest discipline gap.
-8. **Next Steps** — one TechTalk engagement matched to that same gap.
+10. **Next Steps** — one TechTalk engagement matched to that same gap.
 
 A shareable HTML version is offered on request.
 
@@ -127,6 +134,18 @@ ceiling** — strong specs with weak verification is L2, not L4.
 2. **Architectural Constraints** — making structural rules
    machine-checkable.
 3. **Guardrail Design** — feedback loops that catch drift.
+
+### Operational axes and the Habitat Build Gap (Part D)
+
+Alongside the cognitive level, the assessment places four **operational
+axes** — Composition, Testing, Observability, Governance — each L1–L5,
+measuring what the team's habitat actually delivers. The **Habitat
+Build Gap** (`cognitive level − operational-axes mean`) reconciles the
+two views: a positive gap points at habitat investment ("build the
+habitat your thinking implies"), a negative gap at literacy uplift. The
+axes, markers, the gap formula, and the three interpretation regimes
+are embedded in the command and skill files in full, so the instrument
+stays self-contained.
 
 ## The book
 

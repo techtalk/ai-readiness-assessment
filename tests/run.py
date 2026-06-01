@@ -214,6 +214,38 @@ def a10_cta_mentions(any_of: list[str]):
     return ("A10", check)
 
 
+def a12_operational_axes():
+    """Operational Axes (Part D) section present and names all four axes."""
+
+    def check(text: str, fixture: Path) -> Result:
+        body = section(text, "## Operational Axes (Part D)")
+        if body is None:
+            return failing("A12", "no Operational Axes (Part D) section")
+        axes = ["Composition", "Testing", "Observability", "Governance"]
+        missing = [a for a in axes if a not in body]
+        if missing:
+            return failing("A12", f"axes missing from Operational Axes table: {missing}")
+        return passing("A12", "Operational Axes section names all four axes")
+
+    return ("A12", check)
+
+
+def a13_build_gap(regime: str):
+    """Habitat Build Gap present — the scannable header line, the section,
+    and the expected interpretation regime for this fixture."""
+
+    def check(text: str, fixture: Path) -> Result:
+        if "## Habitat Build Gap" not in text:
+            return failing("A13", "no Habitat Build Gap section")
+        if "**Habitat Build Gap**:" not in text:
+            return failing("A13", "no scannable **Habitat Build Gap** header line")
+        if regime not in text:
+            return failing("A13", f"expected regime not found: {regime!r}")
+        return passing("A13", f"Habitat Build Gap present with regime {regime!r}")
+
+    return ("A13", check)
+
+
 # ---------------------------------------------------------------------------
 # Per-fixture assertion sets
 # ---------------------------------------------------------------------------
@@ -237,6 +269,8 @@ def level_0_assertions() -> list:
             "Guardrail Design": (0, 1),
         }),
         a7_reading_path(["Act I"]),
+        a12_operational_axes(),
+        a13_build_gap("Inherited habitat"),
         a9_single_cta(),
         a10_cta_mentions(["Context Engineering", "habitat-document", "CLAUDE.md"]),
     ]
@@ -259,6 +293,8 @@ def level_1_assertions() -> list:
             "Guardrail Design": (0, 1),
         }),
         a7_reading_path(["Level 1", "Level 2"]),
+        a12_operational_axes(),
+        a13_build_gap("Coherent"),
         a9_single_cta(),
         a10_cta_mentions([
             "Architectural Constraints", "Guardrail Design",
@@ -286,6 +322,8 @@ def level_2_assertions() -> list:
             "Guardrail Design": (2, 4),
         }),
         a7_reading_path(["Level 3"]),
+        a12_operational_axes(),
+        a13_build_gap("Ambition outpaces enablement"),
         a9_single_cta(),
         a10_cta_mentions(["Context Engineering", "habitat-document", "CLAUDE.md"]),
     ]
@@ -308,6 +346,8 @@ def level_3_assertions() -> list:
             "Guardrail Design": (3, 4),
         }),
         a7_reading_path(["Level 4"]),
+        a12_operational_axes(),
+        a13_build_gap("Ambition outpaces enablement"),
         a9_single_cta(),
         a10_cta_mentions([
             "specification", "spec-first", "specs/", "spec layer",
@@ -337,6 +377,8 @@ def level_4_assertions() -> list:
             "Guardrail Design": (3, 4),
         }),
         a7_reading_path(["Level 5"]),
+        a12_operational_axes(),
+        a13_build_gap("Ambition outpaces enablement"),
         a9_single_cta(),
         a10_cta_mentions([
             "platform-engineering", "published plugin", "governance audit",
@@ -362,6 +404,8 @@ def level_5_assertions() -> list:
             "Guardrail Design": (4, 5),
         }),
         a7_reading_path(["Enchiridion"]),
+        a12_operational_axes(),
+        a13_build_gap("Ambition outpaces enablement"),
         a9_single_cta(),
         a10_cta_mentions([
             "sustaining", "portfolio", "cross-team", "maintenance playbook",

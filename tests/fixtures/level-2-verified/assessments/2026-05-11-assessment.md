@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 2 — Verification discipline
+**Habitat Build Gap**: +0.50 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -82,6 +83,32 @@ and Guardrails at 3 each).
 | Context Engineering | 1 | `.cursorrules` only; no CLAUDE.md / AGENTS.md / skills / onboarding for AI workflow. |
 | Architectural Constraints | 3 | Ruff + coverage threshold enforced in CI; pre-commit hook; deliberate rule selection. No formal constraint document yet. |
 | Guardrail Design | 3 | CI gate, pre-commit, test suite, coverage tripwire — feedback loops are in place. No adversarial review or plan-approval gate. |
+
+## Operational Axes (Part D)
+
+| Axis | Level (L1–L5) | Evidence |
+|---|---|---|
+| Composition | L1 | Single-agent via `.cursorrules`; no reusable command/skill library or critic agent. |
+| Testing | L2 | Unit tests with CI and an 80% coverage tripwire; disciplined review. No mutation testing. |
+| Observability | L1 | CI build logs only; no agent-activity metrics, dashboards, or acceptance tracking. |
+| Governance | L2 | Style + coverage enforced in CI, but no written constitution (CLAUDE.md/HARNESS.md) — conventional, partly-enforced norms. |
+
+**Operational axes mean**: L1.5
+
+## Habitat Build Gap
+
+```text
+Cognitive level (Parts A–C):     L2
+Operational axes mean (Part D):  L1.5
+  Composition:   L1
+  Testing:       L2
+  Observability: L1
+  Governance:    L2
+Habitat Build Gap:               +0.50
+Interpretation:                  Ambition outpaces enablement
+```
+
+Verification thinking (L2) runs ahead of the operational habitat (mean 1.5). The axis most worth lifting is Composition — encode a CLAUDE.md and a reusable review command so the verification habit persists beyond CI config.
 
 ## Strengths
 

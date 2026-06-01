@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 3 — Habitat design
+**Habitat Build Gap**: +0.75 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -89,6 +90,32 @@ sits at the intersection of context (encoded intent) and constraint
 | Context Engineering | 3 | CLAUDE.md (rich), ONBOARDING.md (AI workflow), custom skill, ADRs. No specs/ — intent is implicit. |
 | Architectural Constraints | 3 | HARNESS.md with 4 deterministic constraints (ruff format, ruff lint, coverage floor, ruff E722) and 1 unverified (no os.path). One reflection-driven promotion path visible. No spec-conformance gate. |
 | Guardrail Design | 3 | CI (ruff + pytest + coverage), pre-commit (ruff + ruff-format), test suite, coverage tripwire. No adversarial-review gate, no plan-approval gate. |
+
+## Operational Axes (Part D)
+
+| Axis | Level (L1–L5) | Evidence |
+|---|---|---|
+| Composition | L2 | One custom skill (reusable command) and documented conventions; still a single primary agent with no read-only critic or orchestrator. |
+| Testing | L2 | CI runs pytest with a coverage floor; unit tests + disciplined review. No functional/business-outcome or agent-authored tests yet. |
+| Observability | L2 | REFLECTION_LOG captures patterns and CI logs are searchable, but there are no instrumented dashboards or per-PR acceptance tracking. |
+| Governance | L3 | HARNESS.md is an enforced written constitution (4 deterministic + 1 unverified constraint) with a visible promotion path — consistent with the L3 Architectural Constraints score. |
+
+**Operational axes mean**: L2.25
+
+## Habitat Build Gap
+
+```text
+Cognitive level (Parts A–C):     L3
+Operational axes mean (Part D):  L2.25
+  Composition:   L2
+  Testing:       L2
+  Observability: L2
+  Governance:    L3
+Habitat Build Gap:               +0.75
+Interpretation:                  Ambition outpaces enablement
+```
+
+L3 habitat thinking outruns the operational mean (2.25). The axis most worth lifting is Composition — add a read-only critic agent or a small orchestrator so the habitat delivers the multi-agent review its constraints already imply.
 
 ## Strengths
 

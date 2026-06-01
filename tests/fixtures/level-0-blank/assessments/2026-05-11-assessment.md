@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 0 — Aware of the landscape
+**Habitat Build Gap**: -1.00 (Inherited habitat — floor baseline)
 
 > **Test-run note**: This assessment was produced by the
 > `ai-readiness-assessment` skill running in **batch mode** against a
@@ -91,6 +92,32 @@ fresh every session.
 | Context Engineering | 0 | No AI-instruction file, no skills, no onboarding for AI workflow. |
 | Architectural Constraints | 0 | No constraint document, no lint config, no enforced rules. |
 | Guardrail Design | 0 | No CI, no tests, no hooks, no review checklist. |
+
+## Operational Axes (Part D)
+
+| Axis | Level (L1–L5) | Evidence |
+|---|---|---|
+| Composition | L1 | No custom agents, skills, or saved prompts; ad-hoc single-agent use. |
+| Testing | L1 | No test suite; output verified by manual inspection only. |
+| Observability | L1 | No metrics, logs, or dashboards for agent activity. |
+| Governance | L1 | No written policies; AI use implicit and trust-based. |
+
+**Operational axes mean**: L1.0
+
+## Habitat Build Gap
+
+```text
+Cognitive level (Parts A–C):     L0
+Operational axes mean (Part D):  L1.0
+  Composition:   L1
+  Testing:       L1
+  Observability: L1
+  Governance:    L1
+Habitat Build Gap:               -1.00
+Interpretation:                  Inherited habitat (floor baseline)
+```
+
+The axes sit at their L1 floor because the repo holds essentially no AI-collaboration evidence; the -1.00 is the bottom-of-scale baseline, not a genuinely mature inherited habitat. Every axis moves up together once the first instruction file, test, and CI gate land.
 
 ## Strengths
 

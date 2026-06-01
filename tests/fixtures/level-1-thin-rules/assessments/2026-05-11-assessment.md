@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 1 — Communicating through prompts
+**Habitat Build Gap**: 0.00 (Coherent)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -81,6 +82,32 @@ above the floor.
 | Context Engineering | 1 | `.cursorrules` is present and load-bearing; ~20 lines, prose only; no `CLAUDE.md` / `AGENTS.md` / skills. |
 | Architectural Constraints | 0 | `[tool.ruff]` config exists but is local-only — no CI enforcement, no constraint document. |
 | Guardrail Design | 0 | No tests, no CI, no pre-commit, no PR review checklist. |
+
+## Operational Axes (Part D)
+
+| Axis | Level (L1–L5) | Evidence |
+|---|---|---|
+| Composition | L1 | `.cursorrules` only; single-agent and ad-hoc; no reusable prompt/command library or critic. |
+| Testing | L1 | No tests; ruff is configured but output is checked by inspection. |
+| Observability | L1 | No agent metrics, logs, or dashboards. |
+| Governance | L1 | Thin style rules in `.cursorrules`; no enforced policy or agreed AI-use norms. |
+
+**Operational axes mean**: L1.0
+
+## Habitat Build Gap
+
+```text
+Cognitive level (Parts A–C):     L1
+Operational axes mean (Part D):  L1.0
+  Composition:   L1
+  Testing:       L1
+  Observability: L1
+  Governance:    L1
+Habitat Build Gap:               0.00
+Interpretation:                  Coherent
+```
+
+Team and habitat sit together at the L1 floor — coherent, if early. The next move lifts cognition and operations together: a CI gate (Governance) and a first test (Testing).
 
 ## Strengths
 

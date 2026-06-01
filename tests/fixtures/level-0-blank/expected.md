@@ -84,6 +84,31 @@ codebase.
 
 ---
 
+### Operational Axes & Habitat Build Gap (Part D)
+
+Part D places four operational axes (L1–L5) and computes the Habitat
+Build Gap (cognitive level − operational-axes mean). Expected placement
+for this fixture:
+
+- Composition: L1
+- Testing: L1
+- Observability: L1
+- Governance: L1
+- Operational axes mean: L1.0
+- **Habitat Build Gap: -1.00 (Inherited habitat (floor baseline))**
+
+All four axes sit at their L1 floor because the repo holds no AI-collaboration evidence; the -1.00 is the bottom-of-scale baseline, not a genuine inherited habitat.
+
+A12. **Operational Axes section present.** The assessment contains a
+`## Operational Axes (Part D)` section naming all four axes
+(Composition, Testing, Observability, Governance).
+
+A13. **Habitat Build Gap present.** The assessment contains a
+`## Habitat Build Gap` section, a scannable `**Habitat Build Gap**:`
+header line, and the interpretation regime **Inherited habitat**.
+
+---
+
 ## B. Behavioural assertions (procedural — observed during the run)
 
 B1. **Scan first, ask second.** The skill produces the discovery

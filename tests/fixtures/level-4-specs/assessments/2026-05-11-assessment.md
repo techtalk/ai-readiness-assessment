@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 4 — Specification-led
+**Habitat Build Gap**: +0.75 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -92,6 +93,32 @@ discipline.
 | Context Engineering | 4 | Rich CLAUDE.md, ONBOARDING.md, custom skill, custom orchestrator command, two specs with frontmatter and structured "what/why/acceptance". Specs make intent first-class. No cross-team adoption mechanism yet. |
 | Architectural Constraints | 4 | HARNESS.md with 7 constraints (5 deterministic, 2 agent), including spec-first ordering enforced in CI and a spec-conformance agent check. No fitness functions. |
 | Guardrail Design | 4 | CI gate, pre-commit, test suite, coverage tripwire, **plus** adversarial review at plan approval — the L4 guardrail that catches drift before code. No fitness-function gates. |
+
+## Operational Axes (Part D)
+
+| Axis | Level (L1–L5) | Evidence |
+|---|---|---|
+| Composition | L4 | `/spec-implement` orchestrator drives a harness-composed workflow with a human-approval pause and adversarial review at plan approval — multi-agent workflow is first-class. |
+| Testing | L3 | CI tests + coverage with tests-before-merge and functional coverage of critical paths. No system-level regression or agent-authored test suites. |
+| Observability | L2 | REFLECTION_LOG records workflow catches and CI logs are searchable; no instrumented dashboards, acceptance metrics, or calibration data. |
+| Governance | L4 | Spec-first ordering enforced deterministically in CI plus a spec-conformance agent check — policy-as-code with blocking rules; consistent with the L4 Architectural Constraints score. |
+
+**Operational axes mean**: L3.25
+
+## Habitat Build Gap
+
+```text
+Cognitive level (Parts A–C):     L4
+Operational axes mean (Part D):  L3.25
+  Composition:   L4
+  Testing:       L3
+  Observability: L2
+  Governance:    L4
+Habitat Build Gap:               +0.75
+Interpretation:                  Ambition outpaces enablement
+```
+
+Spec-led cognition (L4) runs ahead of the operational mean (3.25). The axis most worth lifting is Observability — instrument agent activity and per-PR acceptance so the spec workflow's effects are measured, not just reflected on.
 
 ## Strengths
 

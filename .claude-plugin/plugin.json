@@ -1,7 +1,7 @@
 {
   "name": "ai-readiness-assessment",
-  "version": "0.1.0",
-  "description": "Self-contained AI literacy assessment for any repo — scan for evidence, ask clarifying questions, produce a timestamped assessment with a gap-anchored reading path through The Sovereign Engineer and a single TechTalk engagement recommendation.",
+  "version": "0.2.0",
+  "description": "Self-contained AI literacy assessment for any repo — scan for evidence, ask clarifying questions, place the team on the six-level cognitive ladder and the four operational axes (Composition, Testing, Observability, Governance), compute the Habitat Build Gap, and produce a timestamped assessment with a gap-anchored reading path through The Sovereign Engineer and a single TechTalk engagement recommendation.",
   "author": {
     "name": "Russ Miles",
     "url": "https://techtalk.ai"

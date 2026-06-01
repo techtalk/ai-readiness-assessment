@@ -97,6 +97,31 @@ without spec language fails.
 
 ---
 
+### Operational Axes & Habitat Build Gap (Part D)
+
+Part D places four operational axes (L1–L5) and computes the Habitat
+Build Gap (cognitive level − operational-axes mean). Expected placement
+for this fixture:
+
+- Composition: L2
+- Testing: L2
+- Observability: L2
+- Governance: L3
+- Operational axes mean: L2.25
+- **Habitat Build Gap: +0.75 (Ambition outpaces enablement)**
+
+L3 habitat thinking outruns the operational mean (2.25); Composition is the axis most worth lifting. Governance (L3) is consistent with the Architectural Constraints discipline score.
+
+A12. **Operational Axes section present.** The assessment contains a
+`## Operational Axes (Part D)` section naming all four axes
+(Composition, Testing, Observability, Governance).
+
+A13. **Habitat Build Gap present.** The assessment contains a
+`## Habitat Build Gap` section, a scannable `**Habitat Build Gap**:`
+header line, and the interpretation regime **Ambition outpaces enablement**.
+
+---
+
 ## B. Behavioural assertions
 
 B1. **Scan first.** Discovery before clarifying questions.

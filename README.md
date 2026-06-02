@@ -8,43 +8,110 @@ Code, Cursor via wrapper, Windsurf via wrapper).
 Drop into any repository, invoke once, get:
 
 - A timestamped assessment at `assessments/YYYY-MM-DD-assessment.md`.
-- A position on the six-level framework from *The Sovereign Engineer*
-  (Russ Miles, Habitat-Thinking) —
+- A full placement on the **Agentic Experience 5-Level Habitat Maturity
+  Model** — all fourteen dimensions, L1–L5, reported with the model's
+  own verbs — and a headline **Habitat Maturity Level**.
+- A position on the six-level cognitive ladder from *The Sovereign
+  Engineer* (Russ Miles, Habitat-Thinking) —
   [leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer) —
-  L0 *Aware of the landscape* through L5 *Sovereign engineering*.
+  L0 *Aware of the landscape* through L5 *Sovereign engineering* — and
+  the **Habitat Build Gap** between the two reads.
 - A gap-anchored reading path into the book.
 - Recommendations on next steps matched to the
   weakest of the three disciplines: Context Engineering, Architectural
   Constraints, or Guardrail Design.
 
 The assessment is fully self-contained. It does **not** depend on any
-external plugin, skill, agent, or service. The framework, scoring
-heuristic, and evidence checklist all live inside this repo. The
+external plugin, skill, agent, or service. The model, the framework,
+scoring heuristic, and evidence checklist all live inside this repo. The
 instrument itself is **inspired by** the
 [ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
 plugin — see *Inspired by* below.
 
 ## Install
 
-This repo also acts as the **`techtalkai`** Claude Code marketplace.
-From inside a Claude Code session:
+This repo is the **`techtalkai`** plugin marketplace. The plugin format
+(`.claude-plugin/plugin.json` + `commands/` + `skills/`) is consumed by
+both GitHub Copilot CLI and Claude Code, so the install flow is the same
+two steps in either tool — register the marketplace, then install the
+plugin.
+
+### GitHub Copilot CLI
+
+First install the Copilot CLI (if you haven't already) and sign in:
+
+```
+npm install -g @github/copilot
+copilot
+```
+
+Then register this marketplace and install the plugin. From inside a
+`copilot` session:
 
 ```
 /plugin marketplace add techtalk/ai-readiness-assessment
 /plugin install ai-readiness-assessment@techtalkai
 ```
 
+Or non-interactively, from your shell:
+
+```
+copilot plugin marketplace add techtalk/ai-readiness-assessment
+copilot plugin install ai-readiness-assessment@techtalkai
+```
+
+Confirm it's installed and see its skills:
+
+```
+copilot plugin list
+/skills list
+```
+
+To update or remove later:
+
+```
+copilot plugin update ai-readiness-assessment
+copilot plugin uninstall ai-readiness-assessment
+copilot plugin marketplace remove techtalkai
+```
+
+### Claude Code
+
+The same marketplace works from inside a Claude Code session:
+
+```
+/plugin marketplace add techtalk/ai-readiness-assessment
+/plugin install ai-readiness-assessment@techtalkai
+```
+
+Or non-interactively, from your shell:
+
+```
+claude plugin marketplace add techtalk/ai-readiness-assessment
+claude plugin install ai-readiness-assessment@techtalkai
+```
+
+Confirm it's installed:
+
+```
+claude plugin list
+```
+
 To update later:
 
 ```
-/plugin marketplace update techtalkai
+/plugin marketplace update techtalkai          # in a session
+claude plugin marketplace update techtalkai     # from the shell
 ```
 
 To remove:
 
 ```
-/plugin uninstall ai-readiness-assessment@techtalkai
+/plugin uninstall ai-readiness-assessment@techtalkai   # in a session
 /plugin marketplace remove techtalkai
+
+claude plugin uninstall ai-readiness-assessment@techtalkai   # from the shell
+claude plugin marketplace remove techtalkai
 ```
 
 ## Use
@@ -71,22 +138,28 @@ sections:
    absent, with paths.
 3. **Clarifying Responses** — 3–5 follow-up questions filling gaps the
    filesystem cannot answer, asked one at a time.
-4. **Level Assessment** — your level (L0–L5) with a one-line rationale
-   anchored in the weakest discipline.
-5. **Discipline Maturity** — Context Engineering, Architectural
+4. **Habitat Maturity Profile** — your placement on **all fourteen
+   dimensions** of the *Agentic Experience 5-Level Habitat Maturity
+   Model* (L1–L5 each, reported with the model's own verbs), and a
+   headline **Habitat Maturity Level** with the weakest dimensions named
+   as the ceiling. This is the spine of the assessment.
+5. **Level Assessment** — the cognitive read: your level (L0–L5) on the
+   *Sovereign Engineer* ladder with a one-line rationale anchored in the
+   weakest discipline.
+6. **Discipline Maturity** — Context Engineering, Architectural
    Constraints, Guardrail Design, each scored 0–5.
-6. **Operational Axes (Part D)** — four axes of what the habitat
-   *actually delivers* — Composition, Testing, Observability,
-   Governance — each placed L1–L5 from repository evidence.
-7. **Habitat Build Gap** — `cognitive level − operational-axes mean`,
+7. **Operational Axes (Part D)** — the four discipline-aligned headline
+   dimensions — Composition, Testing, Observability, Governance — lifted
+   from the profile; these feed the Habitat Build Gap.
+8. **Habitat Build Gap** — `cognitive level − operational-axes mean`,
    read through three regimes (Coherent / Ambition outpaces enablement
    / Inherited habitat). The signal is coherence, not the size of the
    level.
-8. **Strengths, Gaps, Recommendations** — top three each, anchored in
+9. **Strengths, Gaps, Recommendations** — top three each, anchored in
    evidence.
-9. **Reading Path** — the specific chapter of *The Sovereign Engineer*
-   that closes your weakest discipline gap.
-10. **Next Steps** — one TechTalk engagement matched to that same gap.
+10. **Reading Path** — the specific chapter of *The Sovereign Engineer*
+    that closes your weakest discipline gap.
+11. **Next Steps** — one TechTalk engagement matched to that same gap.
 
 A shareable HTML version is offered on request.
 
@@ -108,15 +181,47 @@ ai-readiness-assessment/
 The command and the skill carry identical framework content, so
 either entry point produces the same assessment.
 
-## The framework
+## The model
 
-The assessment is built on the six-level AI collaboration literacy
-framework from *The Sovereign Engineer*. The full level table, the
-three disciplines, and the scoring heuristic are embedded in the
-command and skill files — see `commands/ai-readiness-assess.md` for
-the canonical version.
+The spine of the assessment is the **Agentic Experience 5-Level Habitat
+Maturity Model** (TechTalk.AI / Agentic Engineering) — **fourteen
+dimensions, each placed L1–L5**, measuring what a team's habitat
+*actually delivers*. The full model is embedded in the command and skill
+files — see `commands/ai-readiness-assess.md` for the canonical version.
 
-A quick orientation:
+Each dimension matures through the model's own **verbs** — the verb
+*is* the finding:
+
+| Dimension | L1 | L2 | L3 | L4 | L5 |
+|---|---|---|---|---|---|
+| **Agent behaviour** | *Dictating* | *Commanding* | *Regulating* | *Orchestrating* | *Supervising* |
+| **Agent input** | short ad-hoc prompts | larger prompts | plans | iteratively refined specs | specs + observable metrics |
+| **Workflow** | safe runtime, generic | prompts/commands saved | harness engineered | workflow defined | workflow automated |
+| **Operating model** | *Chat* | *Prompt-engineering* | *drive / verify* | *in the loop* | *certify* |
+| **Teams provide** | — | basic constitution | comprehensive constitution | full constitution | custom runtime |
+| **Output role** (*I am…*) | *Running* | *Inspecting* | *Standardising* | *Specifying* | *Certifying* |
+| **Output artefact** | executable / artifact | code | process & consistency rules | clear criteria | evidence |
+| **Humans review** | output only | code | implementation in detail | specs | comprehensive evidence |
+| **Work patterns** | partial task | small task | e2e development | semi-autonomous | mostly-autonomous |
+| **Agent composition** | single | single + saved patterns | primary + read-only critics | bounded ensemble | self-orchestrating constellations |
+| **Agents…** | *Assist* | *Complete* | *Develop* (stories) | *Implement* (epics) | *Implement* autonomously |
+| **Testing** | *Manual* | *Asserting* | *Verifying* | *Validating* | *Assuring* |
+| **Observability** | *Eyeballs* | *Captured* | *Instrumented* | *Aggregated* | *Closed loop* |
+| **Governance** | trust-based, ambient | conventional | *Constitutional* | *Policy-as-code* | *Continuous certification* |
+
+The assessment places every one of the fourteen dimensions and reports a
+headline **Habitat Maturity Level** (the rounded mean), naming the
+weakest dimensions as the ceiling — a habitat is only as mature as the
+dimensions its work actually flows through. Eight dimensions are placed
+**evidence-first** from a repository scan; the six behavioural ones
+(Agent behaviour, Operating model, Output role, Humans review, Work
+patterns, Agents…) are placed from a handful of clarifying questions.
+
+## The cognitive read (*The Sovereign Engineer*)
+
+Folded in alongside the model is the six-level AI collaboration literacy
+ladder from *The Sovereign Engineer* — the **cognitive** view, what a
+team can think and do:
 
 | Level | Name |
 |-------|------|
@@ -135,15 +240,33 @@ ceiling** — strong specs with weak verification is L2, not L4.
    machine-checkable.
 3. **Guardrail Design** — feedback loops that catch drift.
 
-### Operational axes and the Habitat Build Gap (Part D)
+(The cognitive ladder runs L0–L5; the model's dimensions run L1–L5. L0
+is "aware but nothing encoded" — on the model that is the L1 floor.)
 
-Alongside the cognitive level, the assessment places four **operational
-axes** — Composition, Testing, Observability, Governance — each L1–L5,
-measuring what the team's habitat actually delivers. The **Habitat
-Build Gap** (`cognitive level − operational-axes mean`) reconciles the
-two views: a positive gap points at habitat investment ("build the
-habitat your thinking implies"), a negative gap at literacy uplift. The
-axes, markers, the gap formula, and the three interpretation regimes
+### The Habitat Build Gap
+
+The gap reconciles the two reads. Its operational term is the mean of
+the **four discipline-aligned headline dimensions** — Composition,
+Testing, Observability, Governance — the most repo-observable of the
+fourteen, kept as a stable, evidence-anchored diagnostic:
+
+```text
+Habitat Build Gap = cognitive level − operational-axes mean
+```
+
+Both terms are on the same 0–5 scale, so the gap can be positive or
+negative. It is read through three regimes — the signal is *coherence*,
+not the size of the level:
+
+| Gap | Regime | Reading |
+|-----|--------|---------|
+| `abs(gap) < 0.5` | **Coherent** | Team and habitat are at the same level; collaboration is well-supported by the environment. |
+| `gap ≥ +0.5` | **Ambition outpaces enablement** | The team thinks at a higher level than the habitat supports. Build the habitat the team's thinking already implies. |
+| `gap ≤ −0.5` | **Inherited habitat** | The habitat is more mature than current practice. Literacy uplift before further harness extension. |
+
+A coherent L2/L2 team is healthier than an incoherent L4-cognitive /
+L1-operational one. The fourteen dimensions and their verbs, the
+cognitive ladder, the evidence map, the gap formula, and these regimes
 are embedded in the command and skill files in full, so the instrument
 stays self-contained.
 

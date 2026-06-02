@@ -158,3 +158,18 @@ concrete first step (e.g. "package the habitat documents — CLAUDE.md
 template, HARNESS.md skeleton, the wordcount-style skill — as a
 plugin manifest under `.claude-plugin/` so a sibling team can install
 the habitat in one step"), not a generic offering.
+
+
+---
+
+### A14. Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+The assessment must contain a `## Habitat Maturity Profile` section that
+places **all fourteen** model dimensions L1–L5 with the model's verb
+(Agent behaviour, Agent input, Workflow, Operating model, Teams provide,
+Output role, Output artefact, Humans review, Work patterns, Agent
+composition, Agents…, Testing, Observability, Governance) and reports a
+headline **Habitat Maturity Level**. The four discipline-aligned headline
+axes in `## Operational Axes (Part D)` must agree with the same four rows
+in the profile. The Habitat Build Gap continues to use the four headline
+axes as its operational term.

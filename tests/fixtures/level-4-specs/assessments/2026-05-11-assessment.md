@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 4 — Specification-led
+**Habitat Maturity Level**: Level 4 (model)
 **Habitat Build Gap**: +0.75 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
@@ -64,6 +65,31 @@ Skipped (batch test run). Plausible questions:
    ADRs but are still implicit in PR descriptions?"
 
 Not asked in this run.
+
+## Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+All fourteen dimensions, each placed L1–L5 with the model's verb. (Batch
+test run — behavioural dimensions are inferred from the repo-observable
+ones and marked accordingly.)
+
+| Dimension | Level | Stage (verb) | Evidence / basis |
+|---|---|---|---|
+| Agent behaviour | L4 | Orchestrating | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Agent input | L4 | iteratively refined specs | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Workflow | L4 | workflow defined | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Operating model | L4 | in the loop | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Teams provide | L4 | full product constitution | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Output role | L4 | Specifying | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Output artefact | L4 | clear criteria | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Humans review | L4 | specs | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Work patterns | L3 | e2e development | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Agent composition | L4 | bounded ensemble (harness-composed) | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Agents… | L3 | Develop small changes (stories) | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Testing | L3 | Verifying (functional / business) | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Observability | L2 | Captured | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+| Governance | L4 | Policy-as-code | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
+
+**Habitat Maturity Level**: Level 4 (model) — mean L3.6; held back by L2 Observability, the lagging axis. (fourteen-dimension mean L3.6). The Habitat Build Gap below uses the four discipline-aligned headline axes (Composition, Testing, Observability, Governance) as its operational term.
 
 ## Level Assessment
 

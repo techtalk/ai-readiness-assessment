@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 2 — Verification discipline
+**Habitat Maturity Level**: Level 2 (model)
 **Habitat Build Gap**: +0.50 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
@@ -59,6 +60,31 @@ Skipped (batch test run). The questions the skill would have asked:
    that aspirational?"
 
 Not asked in this run.
+
+## Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+All fourteen dimensions, each placed L1–L5 with the model's verb. (Batch
+test run — behavioural dimensions are inferred from the repo-observable
+ones and marked accordingly.)
+
+| Dimension | Level | Stage (verb) | Evidence / basis |
+|---|---|---|---|
+| Agent behaviour | L2 | Commanding | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Agent input | L2 | larger prompts, commands | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Workflow | L2 | prompts/commands saved | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Operating model | L2 | Prompt-engineering | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Teams provide | L2 | basic team constitution | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Output role | L2 | Inspecting | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Output artefact | L2 | code | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Humans review | L2 | code | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Work patterns | L2 | small task completion | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Agent composition | L1 | single | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Agents… | L2 | Complete basic tasks | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Testing | L2 | Asserting (unit tests) | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Observability | L1 | Eyeballs | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Governance | L2 | conventional | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+
+**Habitat Maturity Level**: Level 2 (model) — mean L1.9; verification stack present, held back by L1 Composition and L1 Observability. (fourteen-dimension mean L1.9). The Habitat Build Gap below uses the four discipline-aligned headline axes (Composition, Testing, Observability, Governance) as its operational term.
 
 ## Level Assessment
 

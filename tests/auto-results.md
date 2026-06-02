@@ -15,6 +15,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A7 | PASS | reading path contains ['Act I'] |
 | A12 | PASS | Operational Axes section names all four axes |
 | A13 | PASS | Habitat Build Gap present with regime 'Inherited habitat' |
+| A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
 
@@ -31,6 +32,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A7 | PASS | reading path contains ['Level 1', 'Level 2'] |
 | A12 | PASS | Operational Axes section names all four axes |
 | A13 | PASS | Habitat Build Gap present with regime 'Coherent' |
+| A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Architectural Constraints', 'harness-engineering', 'CI enforcement'] |
 
@@ -47,6 +49,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A7 | PASS | reading path contains ['Level 3'] |
 | A12 | PASS | Operational Axes section names all four axes |
 | A13 | PASS | Habitat Build Gap present with regime 'Ambition outpaces enablement' |
+| A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
 
@@ -63,6 +66,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A7 | PASS | reading path contains ['Level 4'] |
 | A12 | PASS | Operational Axes section names all four axes |
 | A13 | PASS | Habitat Build Gap present with regime 'Ambition outpaces enablement' |
+| A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['specification', 'specs/'] |
 
@@ -79,6 +83,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A7 | PASS | reading path contains ['Level 5'] |
 | A12 | PASS | Operational Axes section names all four axes |
 | A13 | PASS | Habitat Build Gap present with regime 'Ambition outpaces enablement' |
+| A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['platform-engineering', 'published plugin', 'governance audit', 'fitness functions', 'cross-team'] |
 
@@ -95,11 +100,12 @@ Runner: `tests/run.py` (structural assertions only).
 | A7 | PASS | reading path contains ['Enchiridion'] |
 | A12 | PASS | Operational Axes section names all four axes |
 | A13 | PASS | Habitat Build Gap present with regime 'Ambition outpaces enablement' |
+| A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['portfolio', 'cross-team', 'top of'] |
 
 ---
 
-**Total: 66 PASS, 0 FAIL.**
+**Total: 72 PASS, 0 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

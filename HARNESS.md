@@ -153,7 +153,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-03 (Context > Stack updated via /reflect)
+Last audit: 2026-06-03 (Status reconciled via /harness-sync)
 Constraints enforced: 2/3
 Garbage collection active: 1/1
-Drift detected: yes (convention files' Stack predates the CI/CD entry — re-run /harness-sync)
+Drift detected: no

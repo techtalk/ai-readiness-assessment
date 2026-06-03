@@ -69,6 +69,7 @@ extra:
 
 nav:
   - Home: index.md
+  - Example assessment: examples.md
   - Tutorials:
       - tutorials/index.md
       - Your first assessment: tutorials/your-first-assessment.md

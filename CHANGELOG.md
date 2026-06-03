@@ -14,6 +14,12 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Added
+
+- An example self-assessment — the plugin run against its own repo —
+  committed under `assessments/` (markdown + HTML) and linked from the
+  README and the docs site (`/examples/`).
+
 ## [0.4.1] - 2026-06-03
 
 ### Changed

@@ -83,10 +83,9 @@
   is captured as a spec under `specs/` — at minimum a one-paragraph intent
   — written or updated with the change and referenced in the PR. Docs,
   chore, surface-sync, dependency, and pure-fix PRs are exempt. Each spec
-  carries a "Risks / what could go wrong" section (a lightweight
-  adversarial review). This is a convention, not yet an enforced
-  constraint. A reviewer can verify by checking a substantive PR links a
-  `specs/NNNN-*.md` entry.
+  carries a "Risks / what could go wrong" section and an adjudicated
+  Adversarial review disposition. **Enforced** — see the *Spec-first*
+  constraint below.
 
 ---
 
@@ -121,6 +120,18 @@
 - **Tool**: agent review at PR — a reviewer (or review agent) diffs the
   embedded model and process sections of the two files and confirms they
   agree
+- **Scope**: pr
+
+### Spec-first
+
+- **Rule**: A PR that changes the instrument (`commands/**` or
+  `skills/**`) or the model / scoring must reference a spec under
+  `specs/` (a changed `specs/NNNN-*.md`), unless it carries an exempt
+  label (`chore`, `fix`, or `docs`). Each substantive spec carries an
+  adjudicated **Adversarial review** disposition before merge.
+- **Enforcement**: deterministic (ordering) + agent (review adjudication)
+- **Tool**: `.github/workflows/spec-first-gate.yml`; reviewer adjudication
+  of the spec's Risks at PR
 - **Scope**: pr
 
 ---
@@ -174,7 +185,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-03 (added Onboarding document staleness GC rule)
-Constraints enforced: 2/3
+Last audit: 2026-06-03 (Spec-first promoted to an enforced constraint)
+Constraints enforced: 3/4
 Garbage collection active: 2/2
-Drift detected: no
+Drift detected: yes (convention files predate the Spec-first constraint — re-run /harness-sync)

@@ -48,6 +48,14 @@ absence of specs.
 - **Over-spec'ing trivial changes.** The exemptions (docs / chore / fix)
   and the "substantive, behaviour-changing" scope guard against this.
 
+## Adversarial review
+
+- **Reviewer**: PR reviewer (human, at merge of #29)
+- **Disposition**: accepted
+- **Notes**: The "convention is ignored because unenforced" risk was
+  accepted at the time and addressed shortly after in spec 0002, which
+  promotes spec-first to an enforced constraint.
+
 ## Acceptance
 
 - `specs/` exists with `README.md`, `TEMPLATE.md`, and this spec.

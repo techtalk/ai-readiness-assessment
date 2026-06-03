@@ -26,6 +26,12 @@ and fails the release if the entry is missing. Record day-to-day changes under
   matching GC rule: a PR that changes the HARNESS body or AGENTS.md must
   refresh ONBOARDING.md, so the onboarding guide can't silently trail its
   sources.
+- **Spec-first is now enforced**: promoted from convention to a HARNESS
+  constraint, backed by a **Spec-first gate**
+  (`.github/workflows/spec-first-gate.yml`) — instrument changes must
+  carry a spec. The spec format gained an adjudicated **Adversarial
+  review** disposition, and specs 0002–0003 were added (completing the
+  L3→L4 specifications discipline).
 
 ## [0.4.1] - 2026-06-03
 

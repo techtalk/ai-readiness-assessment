@@ -10,7 +10,7 @@
 
      Inspired by Birgitta Boeckeler's "Harness Engineering":
      https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html -->
-<!-- template-version: 0.37.0 -->
+<!-- template-version: 0.40.0 -->
 
 ## Context
 
@@ -75,13 +75,36 @@
 
 ## Constraints
 
-<!-- Not yet configured. Run /harness-init and select this feature to set up. -->
+### Consistent formatting
+
+- **Rule**: All source files must pass the project's configured formatter
+  without changes
+- **Enforcement**: unverified
+- **Tool**: none yet
+- **Scope**: commit
+
+### Tests must pass
+
+- **Rule**: The project's test suite must pass with zero failures before
+  any code is merged
+- **Enforcement**: deterministic
+- **Tool**: python3 tests/run.py
+- **Scope**: pr
 
 ---
 
 ## Garbage Collection
 
-<!-- Not yet configured. Run /harness-init and select this feature to set up. -->
+### Template currency
+
+- **What it checks**: Whether the HARNESS.md template-version marker
+  matches the installed plugin version, indicating new template content
+  is available that hasn't been reviewed
+- **Frequency**: weekly
+- **Enforcement**: deterministic
+- **Tool**: compare template-version comment in HARNESS.md against
+  plugin.json version
+- **Auto-fix**: false
 
 ---
 

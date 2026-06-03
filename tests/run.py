@@ -246,6 +246,41 @@ def a13_build_gap(regime: str):
     return ("A13", check)
 
 
+# The full Agentic Experience 5-Level Habitat Maturity Model profile.
+# A12 already covers the four headline axes; A14 confirms the other ten
+# model dimensions are present too, so the assessment evaluates against
+# the whole model rather than just the headline four.
+_PROFILE_DIMENSIONS = [
+    "Agent behaviour", "Agent input", "Workflow", "Operating model",
+    "Teams provide", "Output role", "Output artefact", "Humans review",
+    "Work patterns", "Agents",  # "Agents…" — matched on the prefix to dodge the ellipsis char
+]
+
+
+def a14_maturity_profile():
+    """Habitat Maturity Profile section present and naming the full model —
+    the ten non-headline dimensions plus a Habitat Maturity Level read."""
+
+    def check(text: str, fixture: Path) -> Result:
+        # Locate by heading prefix — the heading carries a parenthetical
+        # ("## Habitat Maturity Profile (Agentic Experience ...)"), so an
+        # exact-heading match won't do.
+        m = re.search(r"^## Habitat Maturity Profile.*?$", text, re.MULTILINE)
+        if m is None:
+            return failing("A14", "no Habitat Maturity Profile section")
+        rest = text[m.end():]
+        nxt = re.search(r"^##\s", rest, re.MULTILINE)
+        body = rest[: nxt.start()] if nxt else rest
+        missing = [d for d in _PROFILE_DIMENSIONS if d not in body]
+        if missing:
+            return failing("A14", f"profile missing dimensions: {missing}")
+        if "Habitat Maturity Level" not in body:
+            return failing("A14", "profile has no Habitat Maturity Level read")
+        return passing("A14", "full 14-dimension model profile present")
+
+    return ("A14", check)
+
+
 # ---------------------------------------------------------------------------
 # Per-fixture assertion sets
 # ---------------------------------------------------------------------------
@@ -271,6 +306,7 @@ def level_0_assertions() -> list:
         a7_reading_path(["Act I"]),
         a12_operational_axes(),
         a13_build_gap("Inherited habitat"),
+        a14_maturity_profile(),
         a9_single_cta(),
         a10_cta_mentions(["Context Engineering", "habitat-document", "CLAUDE.md"]),
     ]
@@ -295,6 +331,7 @@ def level_1_assertions() -> list:
         a7_reading_path(["Level 1", "Level 2"]),
         a12_operational_axes(),
         a13_build_gap("Coherent"),
+        a14_maturity_profile(),
         a9_single_cta(),
         a10_cta_mentions([
             "Architectural Constraints", "Guardrail Design",
@@ -323,7 +360,9 @@ def level_2_assertions() -> list:
         }),
         a7_reading_path(["Level 3"]),
         a12_operational_axes(),
-        a13_build_gap("Ambition outpaces enablement"),
+        # 14-dim mean (1.86) sits close to L2 cognition → Coherent
+        a13_build_gap("Coherent"),
+        a14_maturity_profile(),
         a9_single_cta(),
         a10_cta_mentions(["Context Engineering", "habitat-document", "CLAUDE.md"]),
     ]
@@ -348,6 +387,7 @@ def level_3_assertions() -> list:
         a7_reading_path(["Level 4"]),
         a12_operational_axes(),
         a13_build_gap("Ambition outpaces enablement"),
+        a14_maturity_profile(),
         a9_single_cta(),
         a10_cta_mentions([
             "specification", "spec-first", "specs/", "spec layer",
@@ -378,7 +418,9 @@ def level_4_assertions() -> list:
         }),
         a7_reading_path(["Level 5"]),
         a12_operational_axes(),
-        a13_build_gap("Ambition outpaces enablement"),
+        # 14-dim mean (3.64) sits close to L4 cognition → Coherent
+        a13_build_gap("Coherent"),
+        a14_maturity_profile(),
         a9_single_cta(),
         a10_cta_mentions([
             "platform-engineering", "published plugin", "governance audit",
@@ -406,6 +448,7 @@ def level_5_assertions() -> list:
         a7_reading_path(["Enchiridion"]),
         a12_operational_axes(),
         a13_build_gap("Ambition outpaces enablement"),
+        a14_maturity_profile(),
         a9_single_cta(),
         a10_cta_mentions([
             "sustaining", "portfolio", "cross-team", "maintenance playbook",

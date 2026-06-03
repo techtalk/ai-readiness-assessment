@@ -2,7 +2,8 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 3 — Habitat design
-**Habitat Build Gap**: +0.75 (Ambition outpaces enablement)
+**Habitat Maturity Level**: Level 3 (model)
+**Habitat Build Gap**: +0.50 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -62,6 +63,31 @@ Skipped (batch test run). The questions the skill would have asked:
 
 Not asked in this run.
 
+## Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+All fourteen dimensions, each placed L1–L5 with the model's verb. (Batch
+test run — behavioural dimensions are inferred from the repo-observable
+ones and marked accordingly.)
+
+| Dimension | Level | Stage (verb) | Evidence / basis |
+|---|---|---|---|
+| Agent behaviour | L3 | Regulating | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Agent input | L2 | larger prompts, commands | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Workflow | L3 | harness engineered | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Operating model | L3 | drive / verify | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Teams provide | L3 | comprehensive product constitution | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Output role | L3 | Standardising | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Output artefact | L3 | process & consistency rules | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Humans review | L2 | code | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Work patterns | L2 | small task completion | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Agent composition | L2 | single + saved patterns | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Agents… | L2 | Complete basic tasks | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Testing | L2 | Asserting (unit tests) | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Observability | L2 | Captured | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+| Governance | L3 | Constitutional | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
+
+**Habitat Maturity Level**: Level 3 (model) — mean L2.5 (on the L2/L3 boundary); held back by L2 Composition, Testing, and Observability. This fourteen-dimension mean (L2.50) is the Habitat Build Gap's operational term.
+
 ## Level Assessment
 
 **Level 3 — Habitat design.**
@@ -100,22 +126,18 @@ sits at the intersection of context (encoded intent) and constraint
 | Observability | L2 | REFLECTION_LOG captures patterns and CI logs are searchable, but there are no instrumented dashboards or per-PR acceptance tracking. |
 | Governance | L3 | HARNESS.md is an enforced written constitution (4 deterministic + 1 unverified constraint) with a visible promotion path — consistent with the L3 Architectural Constraints score. |
 
-**Operational axes mean**: L2.25
+**Headline axes mean**: L2.25 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
 
 ## Habitat Build Gap
 
 ```text
-Cognitive level (Parts A–C):     L3
-Operational axes mean (Part D):  L2.25
-  Composition:   L2
-  Testing:       L2
-  Observability: L2
-  Governance:    L3
-Habitat Build Gap:               +0.75
+Habitat Maturity Level (model):  L3  (14-dim mean L2.50)
+Cognitive read (Parts A–C):      L3
+Habitat Build Gap:               +0.50   (cognitive − 14-dim mean)
 Interpretation:                  Ambition outpaces enablement
 ```
 
-L3 habitat thinking outruns the operational mean (2.25). The axis most worth lifting is Composition — add a read-only critic agent or a small orchestrator so the habitat delivers the multi-agent review its constraints already imply.
+Across all fourteen dimensions the operational mean (2.50) trails L3 cognition. The dimensions most worth lifting are Composition, Testing, and Observability — add a read-only critic agent or a small orchestrator so the habitat delivers the multi-agent review its constraints already imply.
 
 ## Strengths
 

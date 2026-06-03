@@ -1,0 +1,36 @@
+# Runs the A-tier (structural) agentic-behaviour assertions on every PR.
+#
+# The suite (tests/run.py) is the deterministic half of the TDAB
+# (Test-Driven Agentic Behaviours) approach: it reads each fixture's
+# committed sample assessment and checks that the assessment the skill
+# produces carries the required structure — the level line, discovery
+# ordering, discipline-score bounds, the four headline Operational Axes,
+# the Habitat Build Gap regime, and the full fourteen-dimension Habitat
+# Maturity Profile. It needs no dependencies beyond the Python stdlib.
+#
+# The B-tier (behavioural) and C-tier (semantic) assertions in each
+# fixture's expected.md need an interactive Claude session or an LLM
+# judge and are NOT run here — see tests/README.md.
+name: Agentic behaviours (TDAB)
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  tdab-structural:
+    name: A-tier structural assertions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the PR branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run the TDAB structural suite
+        run: python3 tests/run.py

@@ -28,10 +28,14 @@
   `skills/`). The plugin is consumed directly by Claude Code, Copilot,
   Cursor, and Windsurf — there is no compilation, bundling, or packaging
   step.
-- **Test framework**: None currently. Behavioural verification (TDAB —
-  Test-Driven Agentic Behaviours) is a planned next layer: write tests
-  that describe how the skill makes Claude behave when invoked, then run
-  the skill against the tests and refine.
+- **Test framework**: TDAB (Test-Driven Agentic Behaviours). The A-tier
+  (structural) assertions are automated in `tests/run.py` — a stdlib-only
+  runner that checks each fixture's committed sample assessment for the
+  required structure — and are CI-enforced on every PR by
+  `.github/workflows/agentic-behaviours.yml`. The B-tier (behavioural)
+  and C-tier (semantic) assertions in each fixture's `expected.md` need
+  an interactive Claude session or an LLM judge and are run manually —
+  see `tests/README.md`.
 - **Container strategy**: N/A. No runtime, no container.
 
 ### Conventions

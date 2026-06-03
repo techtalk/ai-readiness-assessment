@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 1 — Communicating through prompts
+**Habitat Maturity Level**: Level 1 (model)
 **Habitat Build Gap**: 0.00 (Coherent)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
@@ -60,6 +61,31 @@ Skipped (batch test run). The questions the skill would have asked:
 These are recorded for honesty; they were **not** asked during this
 run.
 
+## Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+All fourteen dimensions, each placed L1–L5 with the model's verb. (Batch
+test run — behavioural dimensions are inferred from the repo-observable
+ones and marked accordingly.)
+
+| Dimension | Level | Stage (verb) | Evidence / basis |
+|---|---|---|---|
+| Agent behaviour | L2 | Commanding | inferred from the thin instruction file; no verification or habitat layer. |
+| Agent input | L2 | larger prompts, commands | inferred from the thin instruction file; no verification or habitat layer. |
+| Workflow | L1 | safe runtime, generic | inferred from the thin instruction file; no verification or habitat layer. |
+| Operating model | L2 | Prompt-engineering | inferred from the thin instruction file; no verification or habitat layer. |
+| Teams provide | L2 | basic team constitution | inferred from the thin instruction file; no verification or habitat layer. |
+| Output role | L1 | Running | inferred from the thin instruction file; no verification or habitat layer. |
+| Output artefact | L2 | code | inferred from the thin instruction file; no verification or habitat layer. |
+| Humans review | L1 | output only | inferred from the thin instruction file; no verification or habitat layer. |
+| Work patterns | L1 | partial task completion | inferred from the thin instruction file; no verification or habitat layer. |
+| Agent composition | L1 | single | inferred from the thin instruction file; no verification or habitat layer. |
+| Agents… | L1 | Assist individuals | inferred from the thin instruction file; no verification or habitat layer. |
+| Testing | L1 | Manual inspection | inferred from the thin instruction file; no verification or habitat layer. |
+| Observability | L1 | Eyeballs | inferred from the thin instruction file; no verification or habitat layer. |
+| Governance | L1 | trust-based, ambient | inferred from the thin instruction file; no verification or habitat layer. |
+
+**Habitat Maturity Level**: Level 1 (model) — mean L1.4; a thin `.cursorrules` constitution lifts a few dimensions just off the floor. (fourteen-dimension mean L1.4). The Habitat Build Gap below uses the four discipline-aligned headline axes (Composition, Testing, Observability, Governance) as its operational term.
+
 ## Level Assessment
 
 **Level 1 — Communicating through prompts.**
@@ -97,17 +123,13 @@ above the floor.
 ## Habitat Build Gap
 
 ```text
-Cognitive level (Parts A–C):     L1
-Operational axes mean (Part D):  L1.0
-  Composition:   L1
-  Testing:       L1
-  Observability: L1
-  Governance:    L1
-Habitat Build Gap:               0.00
+Habitat Maturity Level (model):  L1  (14-dim mean L1.36)
+Cognitive read (Parts A–C):      L1
+Habitat Build Gap:               -0.36   (cognitive − 14-dim mean)
 Interpretation:                  Coherent
 ```
 
-Team and habitat sit together at the L1 floor — coherent, if early. The next move lifts cognition and operations together: a CI gate (Governance) and a first test (Testing).
+Across all fourteen dimensions the operational mean (1.36) sits just below L1 cognition — coherent, if early (the small negative gap is the bottom-of-scale baseline). The next move lifts cognition and operations together: a CI gate (Governance) and a first test (Testing).
 
 ## Strengths
 

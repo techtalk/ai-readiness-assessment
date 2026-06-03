@@ -2,6 +2,7 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 0 — Aware of the landscape
+**Habitat Maturity Level**: Level 1 (model floor)
 **Habitat Build Gap**: -1.00 (Inherited habitat — floor baseline)
 
 > **Test-run note**: This assessment was produced by the
@@ -71,6 +72,31 @@ asked here:
 These are recorded for honesty; they were **not** asked during this
 run.
 
+## Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+All fourteen dimensions, each placed L1–L5 with the model's verb. (Batch
+test run — behavioural dimensions are inferred from the repo-observable
+ones and marked accordingly.)
+
+| Dimension | Level | Stage (verb) | Evidence / basis |
+|---|---|---|---|
+| Agent behaviour | L1 | Dictating | L1 floor — no AI-collaboration evidence in the repo. |
+| Agent input | L1 | short ad-hoc prompts | L1 floor — no AI-collaboration evidence in the repo. |
+| Workflow | L1 | safe runtime, generic | L1 floor — no AI-collaboration evidence in the repo. |
+| Operating model | L1 | Chat | L1 floor — no AI-collaboration evidence in the repo. |
+| Teams provide | L1 | — | L1 floor — no AI-collaboration evidence in the repo. |
+| Output role | L1 | Running | L1 floor — no AI-collaboration evidence in the repo. |
+| Output artefact | L1 | executable / artifact | L1 floor — no AI-collaboration evidence in the repo. |
+| Humans review | L1 | output only | L1 floor — no AI-collaboration evidence in the repo. |
+| Work patterns | L1 | partial task completion | L1 floor — no AI-collaboration evidence in the repo. |
+| Agent composition | L1 | single | L1 floor — no AI-collaboration evidence in the repo. |
+| Agents… | L1 | Assist individuals | L1 floor — no AI-collaboration evidence in the repo. |
+| Testing | L1 | Manual inspection | L1 floor — no AI-collaboration evidence in the repo. |
+| Observability | L1 | Eyeballs | L1 floor — no AI-collaboration evidence in the repo. |
+| Governance | L1 | trust-based, ambient | L1 floor — no AI-collaboration evidence in the repo. |
+
+**Habitat Maturity Level**: Level 1 (model floor) — mean L1.0; nothing is encoded, so every dimension sits at the L1 floor. This fourteen-dimension mean (L1.00) is the Habitat Build Gap's operational term.
+
 ## Level Assessment
 
 **Level 0 — Aware of the landscape.**
@@ -102,22 +128,18 @@ fresh every session.
 | Observability | L1 | No metrics, logs, or dashboards for agent activity. |
 | Governance | L1 | No written policies; AI use implicit and trust-based. |
 
-**Operational axes mean**: L1.0
+**Headline axes mean**: L1.0 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
 
 ## Habitat Build Gap
 
 ```text
-Cognitive level (Parts A–C):     L0
-Operational axes mean (Part D):  L1.0
-  Composition:   L1
-  Testing:       L1
-  Observability: L1
-  Governance:    L1
-Habitat Build Gap:               -1.00
+Habitat Maturity Level (model):  L1  (14-dim mean L1.00)
+Cognitive read (Parts A–C):      L0
+Habitat Build Gap:               -1.00   (cognitive − 14-dim mean)
 Interpretation:                  Inherited habitat (floor baseline)
 ```
 
-The axes sit at their L1 floor because the repo holds essentially no AI-collaboration evidence; the -1.00 is the bottom-of-scale baseline, not a genuinely mature inherited habitat. Every axis moves up together once the first instruction file, test, and CI gate land.
+Every one of the fourteen dimensions sits at the L1 floor because the repo holds essentially no AI-collaboration evidence; the −1.00 is the bottom-of-scale baseline (cognitive L0 against the L1 floor), not a genuinely mature inherited habitat. The whole profile lifts together once the first instruction file, test, and CI gate land.
 
 ## Strengths
 

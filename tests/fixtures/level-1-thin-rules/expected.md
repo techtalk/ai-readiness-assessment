@@ -92,18 +92,20 @@ Any other engagement description fails.
 
 ### Operational Axes & Habitat Build Gap (Part D)
 
-Part D places four operational axes (L1–L5) and computes the Habitat
-Build Gap (cognitive level − operational-axes mean). Expected placement
-for this fixture:
+Part D places all fourteen model dimensions (L1–L5). The four headline
+axes below are the discipline-aligned view; the Habitat Build Gap is
+cognitive level − the mean of all fourteen dimensions. Expected
+placement for this fixture:
 
 - Composition: L1
 - Testing: L1
 - Observability: L1
 - Governance: L1
-- Operational axes mean: L1.0
-- **Habitat Build Gap: 0.00 (Coherent)**
+- Headline axes mean (focused view): L1.0
+- Fourteen-dimension mean: L1.36
+- **Habitat Build Gap: -0.36 (Coherent)**
 
-Team and habitat sit together at the L1 floor — coherent, if early.
+Across all fourteen dimensions the operational mean (1.36) sits just below L1 cognition — coherent, if early; the small negative gap is the bottom-of-scale baseline.
 
 A12. **Operational Axes section present.** The assessment contains a
 `## Operational Axes (Part D)` section naming all four axes
@@ -145,3 +147,18 @@ specific gaps named in the Gaps section above them.
 C3. **CTA reads like advice.** The recommendation paragraph names a
 concrete first step (e.g. "set up a CI workflow that runs ruff and
 pytest on every PR"), not a generic offering.
+
+
+---
+
+### A14. Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+The assessment must contain a `## Habitat Maturity Profile` section that
+places **all fourteen** model dimensions L1–L5 with the model's verb
+(Agent behaviour, Agent input, Workflow, Operating model, Teams provide,
+Output role, Output artefact, Humans review, Work patterns, Agent
+composition, Agents…, Testing, Observability, Governance) and reports a
+headline **Habitat Maturity Level**. The four discipline-aligned headline
+axes in `## Operational Axes (Part D)` must agree with the same four rows
+in the profile. The Habitat Build Gap is measured against the mean of all fourteen
+dimensions, not just these four.

@@ -2,7 +2,8 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 2 — Verification discipline
-**Habitat Build Gap**: +0.50 (Ambition outpaces enablement)
+**Habitat Maturity Level**: Level 2 (model)
+**Habitat Build Gap**: +0.14 (Coherent)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -60,6 +61,31 @@ Skipped (batch test run). The questions the skill would have asked:
 
 Not asked in this run.
 
+## Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+All fourteen dimensions, each placed L1–L5 with the model's verb. (Batch
+test run — behavioural dimensions are inferred from the repo-observable
+ones and marked accordingly.)
+
+| Dimension | Level | Stage (verb) | Evidence / basis |
+|---|---|---|---|
+| Agent behaviour | L2 | Commanding | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Agent input | L2 | larger prompts, commands | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Workflow | L2 | prompts/commands saved | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Operating model | L2 | Prompt-engineering | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Teams provide | L2 | basic team constitution | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Output role | L2 | Inspecting | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Output artefact | L2 | code | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Humans review | L2 | code | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Work patterns | L2 | small task completion | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Agent composition | L1 | single | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Agents… | L2 | Complete basic tasks | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Testing | L2 | Asserting (unit tests) | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Observability | L1 | Eyeballs | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+| Governance | L2 | conventional | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
+
+**Habitat Maturity Level**: Level 2 (model) — mean L1.9; verification stack present, held back by L1 Composition and L1 Observability. This fourteen-dimension mean (L1.86) is the Habitat Build Gap's operational term.
+
 ## Level Assessment
 
 **Level 2 — Verification discipline.**
@@ -93,22 +119,18 @@ and Guardrails at 3 each).
 | Observability | L1 | CI build logs only; no agent-activity metrics, dashboards, or acceptance tracking. |
 | Governance | L2 | Style + coverage enforced in CI, but no written constitution (CLAUDE.md/HARNESS.md) — conventional, partly-enforced norms. |
 
-**Operational axes mean**: L1.5
+**Headline axes mean**: L1.5 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
 
 ## Habitat Build Gap
 
 ```text
-Cognitive level (Parts A–C):     L2
-Operational axes mean (Part D):  L1.5
-  Composition:   L1
-  Testing:       L2
-  Observability: L1
-  Governance:    L2
-Habitat Build Gap:               +0.50
-Interpretation:                  Ambition outpaces enablement
+Habitat Maturity Level (model):  L2  (14-dim mean L1.86)
+Cognitive read (Parts A–C):      L2
+Habitat Build Gap:               +0.14   (cognitive − 14-dim mean)
+Interpretation:                  Coherent
 ```
 
-Verification thinking (L2) runs ahead of the operational habitat (mean 1.5). The axis most worth lifting is Composition — encode a CLAUDE.md and a reusable review command so the verification habit persists beyond CI config.
+Across all fourteen dimensions the operational mean (1.86) sits close to L2 cognition — broadly coherent. The verification habit is matched by an L2 process profile; the two dimensions still at the L1 floor, Composition and Observability, are where the next lift compounds — encode a CLAUDE.md and a reusable review command, and start capturing agent activity.
 
 ## Strengths
 

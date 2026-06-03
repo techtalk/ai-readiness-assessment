@@ -2,7 +2,8 @@
 
 **Date**: 2026-05-11
 **Assessed level**: Level 5 — Sovereign engineering
-**Habitat Build Gap**: +1.25 (Ambition outpaces enablement)
+**Habitat Maturity Level**: Level 4 (model)
+**Habitat Build Gap**: +0.86 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -67,6 +68,31 @@ Skipped (batch test run). Plausible questions for this fixture:
 
 Not asked in this run.
 
+## Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+All fourteen dimensions, each placed L1–L5 with the model's verb. (Batch
+test run — behavioural dimensions are inferred from the repo-observable
+ones and marked accordingly.)
+
+| Dimension | Level | Stage (verb) | Evidence / basis |
+|---|---|---|---|
+| Agent behaviour | L4 | Orchestrating | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Agent input | L4 | iteratively refined specs | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Workflow | L5 | workflow automated | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Operating model | L4 | in the loop | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Teams provide | L5 | custom product runtime | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Output role | L4 | Specifying | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Output artefact | L5 | evidence | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Humans review | L4 | specs | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Work patterns | L4 | semi-autonomous | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Agent composition | L4 | bounded ensemble (harness-composed) | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Agents… | L4 | Implement larger changes (epics) | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Testing | L3 | Verifying (functional / business) | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Observability | L3 | Instrumented | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+| Governance | L5 | Continuous certification | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
+
+**Habitat Maturity Level**: Level 4 (model) — mean L4.1; the cognitive read (L5) outruns it — held back by L3 Testing and Observability. This fourteen-dimension mean (L4.14) is the Habitat Build Gap's operational term.
+
 ## Level Assessment
 
 **Level 5 — Sovereign engineering.**
@@ -105,22 +131,18 @@ across the wider organisation?".
 | Observability | L3 | Fitness functions in CI, a quarterly governance audit on file, and GC rules run at cadence — instrumented at known cadences, but not closed-loop or cross-team aggregated. |
 | Governance | L5 | A running governance-audit cadence that found and corrected drift, policy-as-code constraints, and decision archaeology (CHOICES.md) carrying per-change compliance evidence — consistent with the L5 Architectural Constraints score. |
 
-**Operational axes mean**: L3.75
+**Headline axes mean**: L3.75 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
 
 ## Habitat Build Gap
 
 ```text
-Cognitive level (Parts A–C):     L5
-Operational axes mean (Part D):  L3.75
-  Composition:   L4
-  Testing:       L3
-  Observability: L3
-  Governance:    L5
-Habitat Build Gap:               +1.25
+Habitat Maturity Level (model):  L4  (14-dim mean L4.14)
+Cognitive read (Parts A–C):      L5
+Habitat Build Gap:               +0.86   (cognitive − 14-dim mean)
 Interpretation:                  Ambition outpaces enablement
 ```
 
-Even at sovereign cognition (L5) the operational mean (3.75) lags, driven by Testing and Observability. The axis most worth lifting is Testing — add multi-perspective risk and agent-authored test plans so verification matches the team's process sovereignty.
+Even at sovereign cognition (L5) the fourteen-dimension operational mean (4.14) lags, driven by Testing and Observability (both L3). The dimension most worth lifting is Testing — add multi-perspective risk and agent-authored test plans so verification matches the team's process sovereignty.
 
 ## Strengths
 

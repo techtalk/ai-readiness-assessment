@@ -99,18 +99,20 @@ without spec language fails.
 
 ### Operational Axes & Habitat Build Gap (Part D)
 
-Part D places four operational axes (L1–L5) and computes the Habitat
-Build Gap (cognitive level − operational-axes mean). Expected placement
-for this fixture:
+Part D places all fourteen model dimensions (L1–L5). The four headline
+axes below are the discipline-aligned view; the Habitat Build Gap is
+cognitive level − the mean of all fourteen dimensions. Expected
+placement for this fixture:
 
 - Composition: L2
 - Testing: L2
 - Observability: L2
 - Governance: L3
-- Operational axes mean: L2.25
-- **Habitat Build Gap: +0.75 (Ambition outpaces enablement)**
+- Headline axes mean (focused view): L2.25
+- Fourteen-dimension mean: L2.50
+- **Habitat Build Gap: +0.50 (Ambition outpaces enablement)**
 
-L3 habitat thinking outruns the operational mean (2.25); Composition is the axis most worth lifting. Governance (L3) is consistent with the Architectural Constraints discipline score.
+Across all fourteen dimensions the operational mean (2.50) trails L3 cognition; Composition, Testing, and Observability are most worth lifting. Governance (L3) is consistent with the Architectural Constraints discipline score.
 
 A12. **Operational Axes section present.** The assessment contains a
 `## Operational Axes (Part D)` section naming all four axes
@@ -155,3 +157,18 @@ C3. **CTA reads like advice.** The recommendation paragraph names a
 concrete first step (e.g. "start writing a one-paragraph spec at the
 top of each PR description and move the most common ones into a
 `specs/` directory after a month"), not a generic offering.
+
+
+---
+
+### A14. Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
+
+The assessment must contain a `## Habitat Maturity Profile` section that
+places **all fourteen** model dimensions L1–L5 with the model's verb
+(Agent behaviour, Agent input, Workflow, Operating model, Teams provide,
+Output role, Output artefact, Humans review, Work patterns, Agent
+composition, Agents…, Testing, Observability, Governance) and reports a
+headline **Habitat Maturity Level**. The four discipline-aligned headline
+axes in `## Operational Axes (Part D)` must agree with the same four rows
+in the profile. The Habitat Build Gap is measured against the mean of all fourteen
+dimensions, not just these four.

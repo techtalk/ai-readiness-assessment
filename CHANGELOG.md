@@ -14,11 +14,13 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-06-03
+
 ### Changed
 
 - Reworded the TechTalk call to action in the assessment ("TechTalk
   offers …" → "TechTalk can support …"), kept in sync across the command
-  and skill.
+  and skill, and the matching engagements line in the README.
 
 ## [0.4.0] - 2026-06-02
 
@@ -92,7 +94,8 @@ and fails the release if the entry is missing. Record day-to-day changes under
 - `techtalkai` marketplace manifest.
 - Harness and TDAB scaffolding.
 
-[Unreleased]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.1.0...v0.2.0

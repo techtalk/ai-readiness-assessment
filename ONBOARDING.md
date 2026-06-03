@@ -177,13 +177,16 @@ Three loops protect the codebase:
 
 - **Advisory loop** — hooks that warn during editing without blocking.
   *(None configured for this minimal repo.)*
-- **Strict loop** — CI gates that block merges. Two required checks on
-  `main`: `A-tier structural assertions` (the TDAB suite) and
-  `Changelog gate`. Two more workflows run automatically: a
-  changelog-driven **release** workflow that cuts a GitHub Release on
-  every version bump, and the **Pages** workflow that rebuilds the docs.
+- **Strict loop** — CI gates that block merges. Required checks on
+  `main`: `A-tier structural assertions` (the TDAB suite), `Changelog
+  gate`, and the **Onboarding gate** (fails a PR that changes the HARNESS
+  body or AGENTS.md without refreshing this file). Two more workflows run
+  automatically: a changelog-driven **release** workflow that cuts a
+  GitHub Release on every version bump, and the **Pages** workflow that
+  rebuilds the docs.
 - **Investigative loop** — scheduled GC rules that catch slow drift.
-  Currently: **Template currency** (weekly).
+  Currently: **Template currency** (weekly) and **Onboarding document
+  staleness** (monthly).
 
 Observability cadences (snapshots, audits, cost capture) are **not
 configured** for this repo — it's a small, prose-only plugin, so the

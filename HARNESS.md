@@ -185,7 +185,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-03 (Spec-first promoted to an enforced constraint)
+Last audit: 2026-06-03 (Status reconciled via /harness-sync)
 Constraints enforced: 3/4
 Garbage collection active: 2/2
-Drift detected: yes (convention files predate the Spec-first constraint — re-run /harness-sync)
+Drift detected: no

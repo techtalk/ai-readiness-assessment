@@ -32,3 +32,12 @@ directly — run `/convention-sync` to regenerate.
   updating the other is forbidden.
 - Enforcement: agent
 - Scope: pr
+
+## Spec-first
+
+- Rule: A PR that changes the instrument (commands/ or skills/) or the
+  model/scoring must reference a spec under `specs/` (a changed
+  `specs/NNNN-*.md`), unless labelled chore/fix/docs. Each substantive
+  spec carries an adjudicated Adversarial review.
+- Enforcement: deterministic (ordering) + agent (review adjudication)
+- Scope: pr

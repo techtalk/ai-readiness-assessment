@@ -11,7 +11,7 @@ step — so the headline answer is legible at a glance. Coherence (the
 Habitat Build Gap) and the cognitive read follow as secondary fields.
 
 ```text
-**Current Habitat Maturity**: Level N (Verb)
+**AI Readiness — Habitat Maturity**: Level N (Verb)
 **Next Step / Gap**: +X to Level N+1 (NextVerb)
 
 **Habitat Build Gap**: <signed gap> (<regime>)   (coherence; secondary)
@@ -45,6 +45,18 @@ absences matter as much as the presences.
 The 3–5 questions asked (one at a time) and the answers given — the
 behavioural detail the filesystem can't supply.
 
+## AI Readiness Score — five readiness dimensions
+
+**Output 1.** A public-facing breakdown across five readiness dimensions —
+**Context · Conventions · Architectural guidance · Guardrails · Agent
+readiness** — each placed L1–L5, mapped from the same evidence as the rest
+of the report. It is a *view*, not a separate scoring model: the headline
+level remains the fourteen-dimension Habitat Maturity. (Mapping: Context ←
+Context Engineering / Teams provide; Conventions ← HARNESS Conventions /
+convention files; Architectural guidance ← Architectural Constraints /
+specs; Guardrails ← Guardrail Design / Testing / Observability; Agent
+readiness ← Composition / Workflow / Agents.)
+
 ## Habitat Maturity Profile
 
 All fourteen [model dimensions](habitat-maturity-model.md) placed L1–L5,
@@ -76,10 +88,17 @@ Observability, Governance — lifted from the profile as a focused view.
 The signed gap and its regime. See
 [The Habitat Build Gap](habitat-build-gap.md).
 
-## Strengths · Gaps · Recommendations
+## Strengths · Gaps
 
-Top three each, anchored in evidence. Recommendations are ordered by
-impact and each tied to a specific gap.
+Top three each, anchored in evidence.
+
+## Prioritised Improvement Plan
+
+**Output 2.** A ranked list of what to build first to reach the next
+level, ordered by **what the team needs to develop** and **what the
+organisation needs to provide** (the latter maps to the model's *Teams
+provide* dimension). Each item ties to a readiness dimension or
+discipline gap.
 
 ## Reading Path
 

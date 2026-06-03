@@ -407,7 +407,7 @@ Fill every section with specific evidence — paths, counts, dates.
 The report **leads with two lines** — the current level and the next
 step — so the answer is legible at a glance. Compute them as:
 
-- **Current Habitat Maturity**: `Level N (<Verb>)` — N is the rounded
+- **AI Readiness — Habitat Maturity**: `Level N (<Verb>)` — N is the rounded
   fourteen-dimension Habitat Maturity mean; `<Verb>` is the model's
   Agent-behaviour archetype for that level: **L1 Dictating · L2
   Commanding · L3 Regulating · L4 Orchestrating · L5 Supervising**.
@@ -422,7 +422,7 @@ with.
 ```markdown
 # AI Readiness Assessment — <project name>
 
-**Current Habitat Maturity**: Level N (<Verb>)
+**AI Readiness — Habitat Maturity**: Level N (<Verb>)
 **Next Step / Gap**: +X to Level N+1 (<NextVerb>)
 
 **Habitat Build Gap**: <signed gap> (<regime>)   <!-- coherence (cognitive − operational); secondary -->
@@ -437,6 +437,19 @@ with.
 
 ## Clarifying Responses
 <the 3–5 questions and the answers given>
+
+## AI Readiness Score — five readiness dimensions
+Output 1: a public-facing breakdown across the five readiness dimensions,
+each L1–L5, mapped from the evidence (a view over the same data — the
+headline level is the fourteen-dimension Habitat Maturity).
+
+| Readiness dimension | Level | Drawn from | Evidence |
+|---|---|---|---|
+| Context | L? | Context Engineering; Teams provide; instruction/context files | ... |
+| Conventions | L? | HARNESS Conventions; the synced convention files | ... |
+| Architectural guidance | L? | Architectural Constraints; specs; constraints | ... |
+| Guardrails | L? | Guardrail Design; Testing; Observability; CI gates | ... |
+| Agent readiness | L? | Agent composition; Workflow; Agents… | ... |
 
 ## Habitat Maturity Profile (Agentic Experience 5-Level Habitat Maturity Model)
 All fourteen dimensions, each L1–L5, reported with the model's verb.
@@ -503,8 +516,14 @@ lifting>
 ## Gaps
 <top 3, anchored in evidence>
 
-## Recommendations
-<top 3, ordered by impact, each tied to a discipline gap>
+## Prioritised Improvement Plan
+Output 2: a ranked list of what to build first to reach the next level,
+ordered by **what the team needs to develop** and **what the organisation
+needs to provide** (the latter maps to the model's *Teams provide*
+dimension). Each item ties to a readiness dimension or discipline gap.
+
+<ranked items — for each: the move, whether it's team-develops or
+org-provides, and the level/dimension it lifts>
 
 ## Reading Path
 <see step 5>

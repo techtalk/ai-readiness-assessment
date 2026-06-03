@@ -1,6 +1,6 @@
 # AI Readiness Assessment — ai-readiness-assessment (re-assessment)
 
-**Current Habitat Maturity**: Level 3 (Regulating)
+**AI Readiness — Habitat Maturity**: Level 3 (Regulating)
 **Next Step / Gap**: +1.1 to Level 4 (Orchestrating)
 
 **Habitat Build Gap**: +1.1 (Ambition outpaces enablement)   <!-- coherence (cognitive − operational); secondary -->
@@ -26,6 +26,19 @@ L3→L4 ceiling. Since then:
   a spec).
 - An **Adversarial review** disposition added to the spec format — a
   lightweight plan-approval review.
+
+## AI Readiness Score — five readiness dimensions
+
+A view over the same evidence (the headline level is the 14-dimension
+Habitat Maturity):
+
+| Readiness dimension | Level | Δ vs baseline | Evidence |
+|---|---|---|---|
+| Context | L4 | — | HARNESS Context, AGENTS, ONBOARDING, synced conventions, docs |
+| Conventions | L4 | — | HARNESS conventions, synced convention files |
+| Architectural guidance | L4 | **L3 → L4** | `specs/` + spec-first enforced (constraint + gate) |
+| Guardrails | L3 | — | TDAB + four required CI gates; Testing / Observability still L2 |
+| Agent readiness | L2 | — | Single agent; no read-only critics or orchestration |
 
 ## Habitat Document Discovery (delta)
 
@@ -129,19 +142,21 @@ deliberate discipline jump, and it names the next work precisely.
    real product changes.
 3. **No orchestration acting on specs** — the L4→L5 edge.
 
-## Recommendations
+## Prioritised Improvement Plan
 
-The gap regime has flipped, so the advice flips too — **build the habitat
-your thinking now implies**, don't add more discipline:
+The gap regime flipped to ambition-outpaces-enablement, so the plan is to
+**build the habitat your thinking now implies** — lift the lagging
+operational dimensions toward Level 4 (Orchestrating). *Team develops* =
+practice the team builds; *Org provides* = enablement the organisation
+supplies.
 
-1. **Lift Testing off L2** — add behavioural/semantic verification of the
-   assessment (golden-output or an LLM-judge harness for the B/C tiers),
-   moving Testing from *Asserting* to *Verifying*.
-2. **Lift Observability off L2** — capture basic agent-activity / cost
-   signals so the collaboration is measured, not just reviewed.
-3. **Lift Agent composition off L2** — introduce a read-only critic on
-   PRs, turning the single-agent dev flow toward a primary-plus-critic
-   topology.
+1. **Lift Testing off L2** *(team develops → Guardrails)* — behavioural /
+   semantic verification (golden-output or an LLM-judge harness for the
+   B/C tiers): *Asserting → Verifying*.
+2. **Lift Observability off L2** *(org provides → Guardrails)* — capture
+   agent-activity / cost signals so the collaboration is measured.
+3. **Lift Agent composition off L2** *(org provides → Agent readiness)* —
+   a read-only critic on PRs, toward a primary-plus-critic topology.
 
 ## Reading Path
 

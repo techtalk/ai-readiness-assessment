@@ -1,6 +1,6 @@
 {
   "name": "ai-readiness-assessment",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Self-contained AI readiness assessment for any repo — scan for evidence, ask clarifying questions, place the team across all fourteen dimensions of the Agentic Experience 5-Level Habitat Maturity Model (the spine) and the six-level Sovereign Engineer cognitive ladder, compute the Habitat Build Gap, and produce a timestamped assessment with a gap-anchored reading path through The Sovereign Engineer and a single TechTalk engagement recommendation.",
   "author": {
     "name": "Russ Miles",

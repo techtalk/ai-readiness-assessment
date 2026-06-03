@@ -9,7 +9,9 @@
 [![Copilot CLI](https://img.shields.io/badge/Copilot%20CLI-plugin-6e40c9)](#install)
 ![Commands](https://img.shields.io/badge/commands-1-blue)
 ![Skills](https://img.shields.io/badge/skills-1-blue)
-![Harness](https://img.shields.io/badge/harness-2%2F3%20enforced-2ea44f)
+![Harness](https://img.shields.io/badge/harness-3%2F4%20enforced-2ea44f)
+[![AI Literacy](https://img.shields.io/badge/AI_Literacy-Level_4-2E8B57)](assessments/2026-06-03-assessment-2.md)
+[![Agent Harness Enabled](https://img.shields.io/badge/Agent_Harness-Enabled-000000)](HARNESS.md)
 
 A self-contained AI readiness assessment, packaged as a
 plugin for GitHub Copilot (and any other tool that consumes the same

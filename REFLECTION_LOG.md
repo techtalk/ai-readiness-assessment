@@ -15,6 +15,7 @@ and add a `Promoted` line in the same commit.
 - **Improvement**: Enforce dual-surface sync in CI so the command and skill cannot silently drift — it was declared as a HARNESS convention but previously unverified.
 - **Signal**: workflow
 - **Constraint**: Dual-surface sync — command ≡ skill (agent)
+- **Promoted**: 2026-06-02 → AGENTS.md WORKFLOWS ("Changing the instrument") + GOTCHAS ("tests assert against committed sample assessments, not live output")
 - **Session metadata**:
   - Duration: unknown
   - Model tiers used: unknown

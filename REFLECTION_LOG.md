@@ -21,3 +21,20 @@ and add a `Promoted` line in the same commit.
   - Model tiers used: unknown
   - Pipeline stages completed: manual (no orchestrator pipeline)
   - Agent delegation: manual
+
+---
+
+- **Date**: 2026-06-03
+- **Agent**: Claude Code (Opus 4.8)
+- **Task**: Checked whether `HARNESS.md` Context was in step with the repo's actual CI/CD, and updated it.
+- **Surprise**: `HARNESS.md` Context > Stack still declared **"Build system: None"** and did not mention CI/CD at all — even though the repo has since grown four GitHub Actions workflows (the TDAB suite, the changelog gate, automated releases, and a MkDocs docs build/deploy), two required status checks, and branch protection on `main`. The harness's own priming had quietly fallen out of step with what CI actually does.
+- **Proposal**: none — acted directly (see Promoted).
+- **Improvement**: When CI/CD or build tooling changes, update `HARNESS.md` Context > Stack in the same change so the harness's priming never trails the pipeline. A periodic GC check ("Context names the workflows that exist in `.github/workflows/`") could catch this automatically if it recurs.
+- **Signal**: context
+- **Constraint**: none
+- **Promoted**: 2026-06-03 → HARNESS.md Context > Stack: added a CI/CD entry (GitHub Actions pipeline) and clarified the build-system note
+- **Session metadata**:
+  - Duration: unknown
+  - Model tiers used: unknown
+  - Pipeline stages completed: manual (no orchestrator pipeline)
+  - Agent delegation: manual

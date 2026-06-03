@@ -9,7 +9,7 @@
 [![Copilot CLI](https://img.shields.io/badge/Copilot%20CLI-plugin-6e40c9)](#install)
 ![Commands](https://img.shields.io/badge/commands-1-blue)
 ![Skills](https://img.shields.io/badge/skills-1-blue)
-![Harness](https://img.shields.io/badge/harness-1%2F2%20enforced-2ea44f)
+![Harness](https://img.shields.io/badge/harness-2%2F3%20enforced-2ea44f)
 
 A self-contained AI readiness assessment, packaged as a
 plugin for GitHub Copilot (and any other tool that consumes the same

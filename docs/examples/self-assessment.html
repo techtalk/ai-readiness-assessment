@@ -73,7 +73,7 @@
   <div class="sub">Project: <strong>ai-readiness-assessment</strong> &middot; 2026-06-03</div>
 
   <div style="margin:.9rem 0;padding:.85rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:#f7faf9;font-family:-apple-system,Helvetica,Arial,sans-serif">
-    <div style="font-size:1.25rem;font-weight:700">Current Habitat Maturity: <span style="color:var(--l3)">Level 3 (Regulating)</span></div>
+    <div style="font-size:1.25rem;font-weight:700">AI Readiness — Habitat Maturity: <span style="color:var(--l3)">Level 3 (Regulating)</span></div>
     <div style="font-size:1.25rem;font-weight:700;margin-top:.2rem">Next Step / Gap: <span style="color:var(--l4)">+1.2 to Level 4 (Orchestrating)</span></div>
   </div>
 
@@ -106,6 +106,16 @@
       <div class="dots" data-n="3"></div><div class="verb">3 / 5</div></div>
     <div class="card"><div class="cardlabel">Guardrail Design</div>
       <div class="dots" data-n="3"></div><div class="verb">3 / 5</div></div>
+  </div>
+
+  <h2>AI Readiness Score — five readiness dimensions</h2>
+  <p class="verb">A view over the same evidence; the headline level is the 14-dimension Habitat Maturity.</p>
+  <div class="axes">
+    <div class="axis"><div class="cardlabel">Context</div><div class="verb">L4</div></div>
+    <div class="axis"><div class="cardlabel">Conventions</div><div class="verb">L4</div></div>
+    <div class="axis"><div class="cardlabel">Architectural guidance</div><div class="verb">L3</div></div>
+    <div class="axis"><div class="cardlabel">Guardrails</div><div class="verb">L3</div></div>
+    <div class="axis"><div class="cardlabel">Agent readiness</div><div class="verb">L2</div></div>
   </div>
 
   <h2>Operational Axes (Part D)</h2>
@@ -145,7 +155,8 @@ Interpretation:                  Coherent</pre>
     </div>
   </div>
 
-  <h2>Recommendations</h2>
+  <h2>Prioritised Improvement Plan</h2>
+  <p class="verb"><em>Team develops</em> = practice the team builds; <em>Org provides</em> = enablement the organisation supplies.</p>
   <ol>
     <li><strong>Introduce a lightweight specs layer</strong> — a one-paragraph spec atop substantive PRs,
       graduating into a <code>specs/</code> directory, with an adversarial "what could go wrong" review before

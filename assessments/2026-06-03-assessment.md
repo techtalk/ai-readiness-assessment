@@ -1,6 +1,6 @@
 # AI Readiness Assessment — ai-readiness-assessment
 
-**Current Habitat Maturity**: Level 3 (Regulating)
+**AI Readiness — Habitat Maturity**: Level 3 (Regulating)
 **Next Step / Gap**: +1.2 to Level 4 (Orchestrating)
 
 **Habitat Build Gap**: +0.2 (Coherent)   <!-- coherence (cognitive − operational); secondary -->
@@ -57,6 +57,19 @@ absent. That combination is the L3 fingerprint.
 - No observability of agent activity or cost; no `observability/`
   snapshots, no `MODEL_ROUTING.md`.
 - No decision-archaeology records beyond `AGENTS.md` ARCH_DECISIONS.
+
+## AI Readiness Score — five readiness dimensions
+
+A view over the same evidence (the headline level is the 14-dimension
+Habitat Maturity):
+
+| Readiness dimension | Level | Evidence |
+|---|---|---|
+| Context | L4 | HARNESS Context, AGENTS, ONBOARDING, synced convention files, docs |
+| Conventions | L4 | Six HARNESS conventions, synced to Cursor / Copilot / Windsurf |
+| Architectural guidance | L3 | HARNESS constraints + CI gates; no specs layer yet |
+| Guardrails | L3 | TDAB + CI gates, but Testing and Observability still L2 |
+| Agent readiness | L2 | Single agent; no read-only critics or orchestration |
 
 ## Clarifying Responses
 
@@ -178,20 +191,22 @@ read.
    agent, no read-only critics/orchestrator on PRs, and no observability
    of agent activity or cost.
 
-## Recommendations
+## Prioritised Improvement Plan
 
-1. **Introduce a lightweight specifications layer.** Start a
-   one-paragraph spec at the top of substantive PRs; graduate the common
-   ones into a `specs/` directory, and add an adversarial "what could go
-   wrong" review touchpoint before implementation. This closes the
-   largest gap — the L3→L4 ceiling — at near-zero cost.
-2. **Deepen verification beyond structural assertions.** Add behavioural
-   checks for the assessment itself (golden-output diffs or an LLM-judge
-   harness for the B/C tiers) so Testing moves from *Asserting* to
-   *Verifying*.
-3. **Add a read-only critic step and basic observability.** A review-agent
-   touchpoint on PRs (lifting Composition) and simple agent-activity / cost
-   capture (lifting Observability) move two of the four L2 dimensions up.
+Ranked by what most moves you toward Level 4 (Orchestrating). *Team
+develops* = practice the team builds; *Org provides* = enablement the
+organisation supplies.
+
+1. **Introduce a lightweight specifications layer** *(team develops →
+   Architectural guidance)*. A one-paragraph spec atop substantive PRs,
+   graduating into a `specs/` directory, with an adversarial "what could
+   go wrong" review. Closes the L3→L4 ceiling at near-zero cost.
+2. **Deepen verification beyond structural assertions** *(team develops →
+   Guardrails)*. Behavioural checks (golden-output / LLM-judge for the
+   B/C tiers) move Testing from *Asserting* to *Verifying*.
+3. **Add a read-only critic and basic observability** *(org provides →
+   Agent readiness)*. A review-agent touchpoint on PRs plus simple
+   agent-activity / cost capture lift two L2 dimensions.
 
 ## Reading Path
 

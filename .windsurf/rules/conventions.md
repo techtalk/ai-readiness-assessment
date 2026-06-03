@@ -8,16 +8,22 @@ directly — run `/convention-sync` to regenerate.
 - **Primary languages**: Markdown (content), JSON (plugin manifest). No
   programming language is compiled or executed; the plugin's entire
   product is the prose inside the command and skill files.
-- **Build system**: None. This is a Claude Code / Copilot plugin
-  distribution layout (`.claude-plugin/plugin.json` + `commands/` +
-  `skills/`), consumed directly by Claude Code, Copilot, Cursor, and
-  Windsurf — no compilation, bundling, or packaging step.
+- **Build system**: None for the plugin artifact — a plugin distribution
+  layout (`.claude-plugin/plugin.json` + `commands/` + `skills/`)
+  consumed directly by Claude Code, Copilot, Cursor, and Windsurf, with
+  no compilation, bundling, or packaging. The one build step is the docs
+  site (`mkdocs build --strict`, see CI/CD).
 - **Test framework**: TDAB (Test-Driven Agentic Behaviours). The A-tier
   (structural) assertions are automated in `tests/run.py` (stdlib only)
   and CI-enforced on every PR by
   `.github/workflows/agentic-behaviours.yml`. B-tier (behavioural) and
   C-tier (semantic) assertions in each fixture's `expected.md` are run
   manually — see `tests/README.md`.
+- **CI/CD**: GitHub Actions. On every PR to a branch-protected `main`,
+  two required checks run — the TDAB suite (`agentic-behaviours.yml`) and
+  the changelog gate (`changelog-gate.yml`). On a version bump,
+  `release.yml` publishes a GitHub Release from `CHANGELOG.md`; on docs
+  changes, `pages.yml` builds and deploys the MkDocs site.
 - **Container strategy**: N/A. No runtime, no container.
 
 ## Conventions

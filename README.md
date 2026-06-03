@@ -328,7 +328,7 @@ specific chapter that closes your weakest discipline gap — gap-anchored,
 not a generic plug.
 
 Buy or read on Leanpub:
-**[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer)**
+**[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)**
 
 ## TechTalk
 

@@ -14,6 +14,14 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Changed
+
+- The Sovereign Engineer call-to-action link now points to the
+  AI-readiness campaign URL
+  (`https://leanpub.com/thesovereignengineer/c/ai-readiness`) — in the
+  assessment's reading-path CTA (command + skill) and the "buy the book"
+  CTAs in the README, the docs, and the docs site's book link.
+
 ### Added
 
 - Apache License 2.0 (`LICENSE`), declared as `Apache-2.0` in

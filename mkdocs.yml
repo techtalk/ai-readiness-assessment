@@ -64,7 +64,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/techtalk/ai-readiness-assessment
     - icon: material/book-open-variant
-      link: https://leanpub.com/thesovereignengineer
+      link: https://leanpub.com/thesovereignengineer/c/ai-readiness
       name: The Sovereign Engineer
 
 nav:

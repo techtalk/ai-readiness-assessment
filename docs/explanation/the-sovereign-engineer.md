@@ -5,7 +5,7 @@ disciplines, and the weakest-discipline-as-ceiling heuristic — is set out
 in *The Sovereign Engineer* by Russ Miles (Habitat-Thinking).
 
 > Buy or read on Leanpub:
-> **[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer)**
+> **[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)**
 
 ## What the book contributes
 

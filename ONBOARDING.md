@@ -27,12 +27,17 @@ test suite and a documentation site.
 - **JSON (manifests)** — `.claude-plugin/plugin.json` (the plugin) and
   `.claude-plugin/marketplace.json` (the `techtalkai` marketplace). They
   must agree on the version.
-- **No build system** — this is a plugin distribution layout consumed
-  directly by Claude Code, Copilot, Cursor, and Windsurf. Nothing is
-  compiled, bundled, or packaged.
+- **Build system** — none for the plugin artifact: a distribution layout
+  consumed directly by Claude Code, Copilot, Cursor, and Windsurf, with
+  nothing compiled, bundled, or packaged. The one build step in the repo
+  is the docs site (`mkdocs build --strict`).
 - **Testing: TDAB** (Test-Driven Agentic Behaviours). The A-tier
   (structural) assertions live in `tests/run.py` — stdlib-only Python,
   no dependencies — and run in CI on every PR.
+- **CI/CD: GitHub Actions** — on every PR to a branch-protected `main`,
+  two required checks run (the TDAB suite and the changelog gate); a
+  version bump publishes a GitHub Release from `CHANGELOG.md`, and docs
+  changes build and deploy the site.
 - **Docs: MkDocs Material** — the site under `docs/` (build deps in
   `requirements.txt`) is deployed to GitHub Pages by
   `.github/workflows/pages.yml`.

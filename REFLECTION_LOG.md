@@ -38,3 +38,19 @@ and add a `Promoted` line in the same commit.
   - Model tiers used: unknown
   - Pipeline stages completed: manual (no orchestrator pipeline)
   - Agent delegation: manual
+
+---
+
+- **Date**: 2026-06-03
+- **Agent**: Claude Code (Opus 4.8)
+- **Task**: Acted on the repo's own self-assessment — installed an enforced spec-first discipline (a `specs/` layer, the Spec-first constraint + a required CI gate, an adversarial-review disposition, specs 0001–0003) — then re-assessed and published the L3→L4 progression as an example.
+- **Surprise**: Lifting **one** discipline (spec-first) to L4 made the repo *less* coherent, not more. The cognitive read crossed L3→L4, but the Habitat Build Gap flipped from **+0.2 (Coherent)** to **+1.1 (Ambition outpaces enablement)** because the operational habitat (Testing, Observability, Agent composition — still L2) did not move with it. A targeted "level up" created a new, healthy-to-address imbalance — the instrument's own thesis (coherence > level) demonstrated on itself. Separately: the new required gates had to be **scoped to not fire on each other** — the spec-first gate ignores non-instrument PRs, and the onboarding gate compares the HARNESS *body* (not the Status block) so `/harness-sync` PRs pass.
+- **Proposal**: Add to AGENTS.md ARCH_DECISIONS that a single-dimension level jump can flip the Habitat Build Gap to "ambition outpaces enablement" — lift the operational habitat *alongside* the discipline, or expect (and name) a temporary positive gap. Also note the multi-gate scoping pattern (gates must exclude Status-only / non-instrument PRs so they don't block sync).
+- **Improvement**: When deliberately chasing a level jump, check the projected gap regime first — a discipline-only jump trades coherence for level unless the lagging operational dimensions are lifted too.
+- **Signal**: workflow
+- **Constraint**: none
+- **Session metadata**:
+  - Duration: unknown
+  - Model tiers used: unknown
+  - Pipeline stages completed: manual (no orchestrator pipeline)
+  - Agent delegation: manual

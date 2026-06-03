@@ -19,6 +19,10 @@ and fails the release if the entry is missing. Record day-to-day changes under
 - Apache License 2.0 (`LICENSE`), declared as `Apache-2.0` in
   `plugin.json` and `marketplace.json`, with a License badge in the
   README.
+- A documentation site (MkDocs Material, Diátaxis-structured) under
+  `docs/`, deployed to GitHub Pages via `.github/workflows/pages.yml`,
+  covering tutorials, how-to guides, reference, and explanation for the
+  whole plugin — especially the assessment.
 
 ## [0.3.0] - 2026-06-02
 

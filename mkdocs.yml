@@ -1,0 +1,96 @@
+site_name: TechTalk AI Readiness Assessment
+site_description: >-
+  A self-contained Claude Code & GitHub Copilot plugin that assesses a
+  team's AI readiness against the Agentic Experience 5-Level Habitat
+  Maturity Model and the Sovereign Engineer framework.
+site_url: https://techtalk.github.io/ai-readiness-assessment/
+repo_url: https://github.com/techtalk/ai-readiness-assessment
+repo_name: techtalk/ai-readiness-assessment
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/techtalk/ai-readiness-assessment
+    - icon: material/book-open-variant
+      link: https://leanpub.com/thesovereignengineer
+      name: The Sovereign Engineer
+
+nav:
+  - Home: index.md
+  - Tutorials:
+      - tutorials/index.md
+      - Your first assessment: tutorials/your-first-assessment.md
+  - How-to guides:
+      - how-to/index.md
+      - Install in GitHub Copilot CLI: how-to/install-github-copilot.md
+      - Install in Claude Code: how-to/install-claude-code.md
+      - Run an assessment: how-to/run-an-assessment.md
+      - Read the Habitat Build Gap: how-to/read-the-habitat-build-gap.md
+      - Run the precise survey: how-to/run-the-precise-survey.md
+      - Render the HTML report: how-to/render-the-html-report.md
+      - Update or remove the plugin: how-to/update-or-remove.md
+  - Reference:
+      - reference/index.md
+      - Habitat Maturity Model (14 dimensions): reference/habitat-maturity-model.md
+      - Cognitive ladder & disciplines: reference/cognitive-ladder.md
+      - The Habitat Build Gap: reference/habitat-build-gap.md
+      - Assessment output structure: reference/assessment-output.md
+      - Command & skill: reference/command-and-skill.md
+  - Explanation:
+      - explanation/index.md
+      - Two reads, one habitat: explanation/two-reads.md
+      - Coherence, not level: explanation/coherence-not-level.md
+      - Why it is self-contained: explanation/self-contained.md
+      - The Sovereign Engineer: explanation/the-sovereign-engineer.md

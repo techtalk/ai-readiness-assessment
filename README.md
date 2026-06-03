@@ -3,6 +3,7 @@
 [![Tests](https://github.com/techtalk/ai-readiness-assessment/actions/workflows/agentic-behaviours.yml/badge.svg)](https://github.com/techtalk/ai-readiness-assessment/actions/workflows/agentic-behaviours.yml)
 [![Release](https://img.shields.io/github/v/release/techtalk/ai-readiness-assessment?label=release&color=2ea44f)](https://github.com/techtalk/ai-readiness-assessment/releases)
 [![License](https://img.shields.io/github/license/techtalk/ai-readiness-assessment?color=blue)](LICENSE)
+[![Docs](https://img.shields.io/badge/docs-mkdocs--material-526cfe)](https://techtalk.github.io/ai-readiness-assessment/)
 [![Marketplace](https://img.shields.io/badge/marketplace-techtalkai-1f6feb)](#install)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-d97757)](#install)
 [![Copilot CLI](https://img.shields.io/badge/Copilot%20CLI-plugin-6e40c9)](#install)
@@ -37,6 +38,11 @@ scoring heuristic, and evidence checklist all live inside this repo. The
 instrument itself is **inspired by** the
 [ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
 plugin — see *Inspired by* below.
+
+**Full documentation:**
+**[techtalk.github.io/ai-readiness-assessment](https://techtalk.github.io/ai-readiness-assessment/)**
+— a Diátaxis-structured site with tutorials, how-to guides, reference,
+and explanation.
 
 ## Prerequisites
 

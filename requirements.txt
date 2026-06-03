@@ -1,0 +1,3 @@
+# Documentation site dependencies (GitHub Pages build — see
+# .github/workflows/pages.yml). Not needed to run an assessment.
+mkdocs-material>=9.5,<10

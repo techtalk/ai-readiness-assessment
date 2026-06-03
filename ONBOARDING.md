@@ -68,6 +68,12 @@ that prose matter more than anything mechanical.
   `name` equals the filename, for skills `name` equals the directory.
 - **Plain-text output.** Any rendered output (HTML, PDF) uses
   print-friendly typography and **no emoji**.
+- **Spec-first for substantive changes.** Substantive,
+  behaviour-changing work (the instrument, the model/scoring, a new
+  workflow) is captured as a spec under `specs/` — at minimum a
+  one-paragraph intent — written with the change and referenced in the
+  PR. Docs/chore/sync/fix are exempt. Each spec carries a "Risks / what
+  could go wrong" section. Currently a convention, not yet enforced.
 
 ---
 

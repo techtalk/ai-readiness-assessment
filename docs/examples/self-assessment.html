@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Readiness Assessment — ai-readiness-assessment</title>
+<style>
+  :root{
+    --grey:#9aa0a6; --l1:#7fb3d5; --l2:#3f7cac; --l3:#1f9e8f;
+    --l4:#2e8b57; --l5:#caa14a; --ink:#1c1c1c; --muted:#5b5b5b;
+    --line:#e3e3e3; --bg:#fdfdfc; --techtalk:#0b2b3c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:Georgia,"Times New Roman",serif;line-height:1.55}
+  .wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.25rem 4rem}
+  h1,h2,h3,.badge,.chip,.btn,.cardlabel,th{font-family:-apple-system,
+    BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  h1{font-size:1.7rem;margin:0 0 .25rem}
+  h2{font-size:1.2rem;margin:2.2rem 0 .6rem;border-bottom:1px solid var(--line);
+    padding-bottom:.3rem}
+  .sub{color:var(--muted);margin:.1rem 0 1rem}
+  .badges{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+  .badge{display:inline-flex;flex-direction:column;align-items:flex-start;
+    color:#fff;border-radius:8px;padding:.45rem .7rem;font-size:.8rem;font-weight:600}
+  .badge .big{font-size:1.15rem;line-height:1}
+  .badge small{font-weight:500;opacity:.92}
+  .rationale{font-style:italic;color:var(--muted)}
+  .note{background:#f4f7f6;border-left:3px solid var(--l3);padding:.6rem .9rem;
+    border-radius:4px;color:var(--muted);font-size:.95rem}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;margin:.4rem 0}
+  th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+  .profile-row{display:grid;grid-template-columns:9.5rem 1fr;gap:.6rem;align-items:center;margin:.28rem 0}
+  .dim{font-size:.86rem}
+  .bar{display:flex;gap:3px}
+  .seg{flex:1;height:14px;border-radius:3px;background:#ececec}
+  .seg.on{background:var(--l3)}
+  .verb{font-size:.78rem;color:var(--muted);font-family:-apple-system,Helvetica,Arial,sans-serif}
+  .cards{display:flex;gap:.7rem;flex-wrap:wrap}
+  .card{flex:1 1 30%;min-width:170px;border:1px solid var(--line);border-radius:8px;padding:.7rem .8rem}
+  .cardlabel{font-size:.82rem;font-weight:600}
+  .dots{margin-top:.35rem}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:3px;
+    background:#e6e6e6}
+  .dot.on{background:var(--l3)}
+  .axes{display:flex;gap:.7rem;flex-wrap:wrap;margin:.5rem 0}
+  .axis{flex:1 1 22%;min-width:120px;border:1px solid var(--line);border-radius:8px;padding:.55rem .65rem}
+  .gapbadge{display:inline-block;background:var(--l3);color:#fff;border-radius:8px;
+    padding:.5rem .8rem;font-family:-apple-system,Helvetica,Arial,sans-serif;font-weight:600}
+  .twocol{display:flex;gap:1.2rem;flex-wrap:wrap}
+  .twocol>div{flex:1 1 45%;min-width:230px}
+  ol,ul{padding-left:1.2rem}
+  .reading,.cta{border-radius:10px;padding:1rem 1.1rem;margin-top:1rem}
+  .reading{background:#f4f7f6}
+  .cta{background:var(--techtalk);color:#eaf2f6}
+  .cta h2{color:#fff;border-color:rgba(255,255,255,.25)}
+  .btn{display:inline-block;margin-top:.5rem;background:var(--l3);color:#fff;text-decoration:none;
+    border-radius:6px;padding:.5rem .9rem;font-weight:600;font-size:.9rem}
+  .cta .btn{background:#caa14a;color:#1c1c1c}
+  a{color:var(--l2)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+    background:#f0f0ef;padding:.05rem .3rem;border-radius:3px}
+  footer{margin-top:2.5rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);
+    padding-top:.8rem}
+  @media print{body{background:#fff}.wrap{max-width:none}.cta{background:#fff;color:#000;border:1px solid var(--line)}.cta h2{color:#000}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>AI Readiness Assessment</h1>
+  <div class="sub">Project: <strong>ai-readiness-assessment</strong> &middot; 2026-06-03</div>
+
+  <div class="badges">
+    <span class="badge" style="background:var(--l3)">
+      <small>Habitat Maturity (model)</small><span class="big">Level 3</span>
+    </span>
+    <span class="badge" style="background:var(--l3)">
+      <small>Cognitive read (Sovereign Engineer)</small><span class="big">Level 3 — Habitat design</span>
+    </span>
+    <span class="gapbadge" title="cognitive − 14-dim mean">Habitat Build Gap +0.2 &middot; Coherent</span>
+  </div>
+  <p class="rationale">A strong, persistent habitat — synced context, a running reflection loop,
+  policy-as-code CI, a published plugin — with the specifications layer (L3&rarr;L4) as the one missing rung.</p>
+
+  <p class="note">This is the plugin assessed against <strong>its own repository</strong> — a dogfooding
+  example of the report <code>/ai-readiness-assess</code> produces.</p>
+
+  <h2>Habitat Maturity Profile</h2>
+  <p class="verb">All fourteen dimensions of the Agentic Experience 5-Level Habitat Maturity Model, placed L1&ndash;L5.</p>
+  <div id="profile"></div>
+  <p class="verb" style="margin-top:.6rem"><strong>Habitat Maturity Level:</strong> L3 (mean L2.8) &mdash;
+  held back by L2 Agent input, Agent composition, Testing, and Observability.</p>
+
+  <h2>Discipline Maturity</h2>
+  <div class="cards">
+    <div class="card"><div class="cardlabel">Context Engineering</div>
+      <div class="dots" data-n="4"></div><div class="verb">4 / 5</div></div>
+    <div class="card"><div class="cardlabel">Architectural Constraints</div>
+      <div class="dots" data-n="3"></div><div class="verb">3 / 5</div></div>
+    <div class="card"><div class="cardlabel">Guardrail Design</div>
+      <div class="dots" data-n="3"></div><div class="verb">3 / 5</div></div>
+  </div>
+
+  <h2>Operational Axes (Part D)</h2>
+  <p class="verb">The four discipline-aligned headline dimensions (a focused view; the gap uses all fourteen).</p>
+  <div class="axes">
+    <div class="axis"><div class="cardlabel">Composition</div><div class="verb">L2 &mdash; single + saved patterns</div></div>
+    <div class="axis"><div class="cardlabel">Testing</div><div class="verb">L2 &mdash; Asserting</div></div>
+    <div class="axis"><div class="cardlabel">Observability</div><div class="verb">L2 &mdash; Captured</div></div>
+    <div class="axis"><div class="cardlabel">Governance</div><div class="verb">L3 &mdash; Constitutional</div></div>
+  </div>
+
+  <h2>Habitat Build Gap</h2>
+  <pre style="font-family:ui-monospace,Menlo,monospace;font-size:.85rem;background:#f0f0ef;padding:.8rem;border-radius:6px;white-space:pre-wrap">Habitat Maturity Level (model):  L3  (14-dim mean L2.79)
+Cognitive read (Parts A&ndash;C):      L3
+Habitat Build Gap:               +0.21   (cognitive &minus; 14-dim mean)
+Interpretation:                  Coherent</pre>
+  <p>Team and habitat are in step. The single dimension most worth lifting is
+  <strong>Agent input</strong> (toward specs) — it is also the L3&rarr;L4 ceiling for the cognitive read.</p>
+
+  <h2>Strengths &amp; Gaps</h2>
+  <div class="twocol">
+    <div>
+      <h3>Strengths</h3>
+      <ol>
+        <li>The reflection&rarr;promotion loop runs end to end (verified <code>Promoted</code> lines into AGENTS.md / HARNESS.md).</li>
+        <li>Policy-as-code governance: two required CI checks on a protected <code>main</code> + a changelog-driven release pipeline.</li>
+        <li>Rich, synchronised context (HARNESS / AGENTS / ONBOARDING + Cursor/Copilot/Windsurf) and a 22-page docs site.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>Gaps</h3>
+      <ol>
+        <li>No specifications layer (no <code>specs/</code>, no spec-first ordering, no adversarial spec review) — the L3&rarr;L4 ceiling.</li>
+        <li>Verification is shallow: structural assertions against committed samples; behavioural/semantic checks are manual.</li>
+        <li>No agent composition or observability for development (single agent; CI logs only).</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Recommendations</h2>
+  <ol>
+    <li><strong>Introduce a lightweight specs layer</strong> — a one-paragraph spec atop substantive PRs,
+      graduating into a <code>specs/</code> directory, with an adversarial "what could go wrong" review before
+      implementation. <em>Closes the L3&rarr;L4 ceiling.</em></li>
+    <li><strong>Deepen verification</strong> — golden-output diffs or an LLM-judge harness for the B/C tiers,
+      moving Testing from <em>Asserting</em> to <em>Verifying</em>.</li>
+    <li><strong>Add a read-only critic step and basic observability</strong> — lifting Composition and
+      Observability off L2.</li>
+  </ol>
+
+  <div class="reading">
+    <h2 style="border:none;margin-top:0">Reading Path</h2>
+    <p>Assessed at <strong>L3 — Habitat design</strong>. The next read in <em>The Sovereign Engineer</em> is the
+    <strong>Level 4 (specifications)</strong> chapter — make intent first-class, separating "what" from "how".</p>
+    <a class="btn" href="https://leanpub.com/thesovereignengineer/c/ai-readiness">Read on Leanpub</a>
+  </div>
+
+  <div class="cta">
+    <h2 style="margin-top:0">Next Steps</h2>
+    <p>Your habitat is healthy at L3, and the L3&rarr;L4 jump is about making specifications first-class.
+    TechTalk can support a <strong>specification-first engagement</strong> — a <code>specs/</code> layer wired
+    into your existing HARNESS and CI, an adversarial-review touchpoint at plan approval, and orchestration
+    patterns so agents act on specs rather than ad-hoc instructions.</p>
+    <a class="btn" href="https://techtalk.ai">Get in touch</a>
+  </div>
+
+  <footer>Generated by the ai-readiness-assessment plugin (self-assessment, 2026-06-03).
+  Markdown source: <code>assessments/2026-06-03-assessment.md</code>.</footer>
+</div>
+
+<script>
+  // Habitat Maturity Profile bars (no animation; static render).
+  var dims=[
+    ["Agent behaviour",3,"Regulating"],["Agent input",2,"larger prompts"],
+    ["Workflow",4,"workflow defined"],["Operating model",3,"drive / verify"],
+    ["Teams provide",3,"comprehensive constitution"],["Output role",3,"Standardising"],
+    ["Output artefact",3,"process & consistency rules"],["Humans review",3,"implementation detail"],
+    ["Work patterns",3,"e2e development"],["Agent composition",2,"single + saved"],
+    ["Agents…",3,"Develop (stories)"],["Testing",2,"Asserting"],
+    ["Observability",2,"Captured"],["Governance",3,"Constitutional"]
+  ];
+  var lvlColor=["","#7fb3d5","#3f7cac","#1f9e8f","#2e8b57","#caa14a"];
+  var p=document.getElementById("profile");
+  dims.forEach(function(d){
+    var row=document.createElement("div");row.className="profile-row";
+    var name=document.createElement("div");name.className="dim";
+    name.innerHTML="<strong>"+d[0]+"</strong> <span class='verb'>L"+d[1]+" &middot; "+d[2]+"</span>";
+    var bar=document.createElement("div");bar.className="bar";
+    for(var i=1;i<=5;i++){var s=document.createElement("div");s.className="seg";
+      if(i<=d[1]){s.style.background=lvlColor[d[1]];}bar.appendChild(s);}
+    row.appendChild(name);row.appendChild(bar);p.appendChild(row);
+  });
+  document.querySelectorAll(".dots").forEach(function(el){
+    var n=parseInt(el.getAttribute("data-n"),10);
+    for(var i=1;i<=5;i++){var d=document.createElement("span");
+      d.className="dot"+(i<=n?" on":"");el.appendChild(d);}
+  });
+</script>
+</body>
+</html>

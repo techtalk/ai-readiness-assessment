@@ -211,6 +211,18 @@ sections:
 
 A shareable HTML version is offered on request.
 
+### Example
+
+See a real report — this plugin assessed against **its own repo**
+(a coherent **L3**, Habitat Build Gap +0.2):
+
+- Markdown: [`assessments/2026-06-03-assessment.md`](assessments/2026-06-03-assessment.md)
+- Rendered HTML: [view on the docs site](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment.html)
+  (also committed at `assessments/2026-06-03-assessment.html`)
+
+More on the example — including what it found — in the
+[docs](https://techtalk.github.io/ai-readiness-assessment/examples/).
+
 ## Layout
 
 ```

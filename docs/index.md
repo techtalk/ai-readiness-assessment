@@ -19,6 +19,11 @@ a coherence diagnostic that points at the single most valuable next move.
 [Run your first assessment](tutorials/your-first-assessment.md){ .md-button .md-button--primary }
 [Install the plugin](how-to/install-github-copilot.md){ .md-button }
 
+!!! tip "See a real report"
+    Curious what the output looks like? We ran the assessment against
+    **this plugin's own repo** — read the
+    [example self-assessment](examples.md) (markdown + rendered HTML).
+
 ---
 
 ## Find your way around

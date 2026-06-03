@@ -138,6 +138,18 @@
   plugin.json version
 - **Auto-fix**: false
 
+### Onboarding document staleness
+
+- **What it checks**: Whether `ONBOARDING.md` is older than the most
+  recent change to the HARNESS.md body or `AGENTS.md` — i.e. the
+  onboarding guide has fallen behind its sources
+- **Frequency**: monthly
+- **Enforcement**: deterministic
+- **Tool**: PR-time gate `.github/workflows/onboarding-gate.yml` (fails a
+  PR that changes the HARNESS body or AGENTS.md without refreshing
+  ONBOARDING.md); file-date comparison as the periodic backstop
+- **Auto-fix**: false (run `/harness-onboarding` to regenerate)
+
 ---
 
 ## Observability
@@ -162,7 +174,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-03 (Status reconciled via /harness-sync)
+Last audit: 2026-06-03 (added Onboarding document staleness GC rule)
 Constraints enforced: 2/3
-Garbage collection active: 1/1
+Garbage collection active: 2/2
 Drift detected: no

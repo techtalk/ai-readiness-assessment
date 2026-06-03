@@ -22,6 +22,10 @@ and fails the release if the entry is missing. Record day-to-day changes under
 - A `specs/` layer (README + template + the first spec) and a
   **spec-first** convention in HARNESS.md — starting the L3→L4 jump the
   self-assessment recommended.
+- An **Onboarding gate** (`.github/workflows/onboarding-gate.yml`) and a
+  matching GC rule: a PR that changes the HARNESS body or AGENTS.md must
+  refresh ONBOARDING.md, so the onboarding guide can't silently trail its
+  sources.
 
 ## [0.4.1] - 2026-06-03
 

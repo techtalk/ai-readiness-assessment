@@ -1,0 +1,65 @@
+# Cuts a GitHub Release whenever the plugin's version changes on main.
+#
+# The plugin version in .claude-plugin/plugin.json is the source of
+# truth. When a PR that bumps it merges to main, this workflow tags the
+# merge commit `v<version>` and publishes a Release with auto-generated
+# notes (the PRs merged since the previous release). It is idempotent —
+# if a release for the current version already exists, it does nothing,
+# so re-runs and unrelated edits to the manifest are safe.
+#
+# Trigger it manually from the Actions tab (workflow_dispatch) to release
+# the current version on demand — e.g. the first release, or after
+# landing this workflow itself.
+name: Release on version bump
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".claude-plugin/plugin.json"
+      - ".claude-plugin/marketplace.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Cut a GitHub Release when the plugin version changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Read and validate the plugin version
+        id: ver
+        run: |
+          set -euo pipefail
+          plugin_ver=$(jq -r '.version' .claude-plugin/plugin.json)
+          market_ver=$(jq -r '.plugins[] | select(.name=="ai-readiness-assessment") | .version' .claude-plugin/marketplace.json)
+          if [ -z "$plugin_ver" ] || [ "$plugin_ver" = "null" ]; then
+            echo "::error::No version found in .claude-plugin/plugin.json"; exit 1
+          fi
+          if [ "$plugin_ver" != "$market_ver" ]; then
+            echo "::error::Version mismatch — plugin.json=$plugin_ver but marketplace.json=$market_ver. Keep them in lockstep."; exit 1
+          fi
+          echo "version=$plugin_ver" >> "$GITHUB_OUTPUT"
+          echo "tag=v$plugin_ver" >> "$GITHUB_OUTPUT"
+          echo "Plugin version: $plugin_ver"
+
+      - name: Create the release if it does not already exist
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${{ steps.ver.outputs.tag }}"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $tag already exists — nothing to do."
+            exit 0
+          fi
+          gh release create "$tag" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "$tag" \
+            --generate-notes
+          echo "Created release $tag at $GITHUB_SHA"

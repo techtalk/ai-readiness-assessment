@@ -28,6 +28,35 @@ instrument itself is **inspired by** the
 [ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
 plugin — see *Inspired by* below.
 
+## Prerequisites
+
+To run the assessment you need:
+
+- **One supported AI coding tool**, with an active account or
+  subscription — either:
+  - **GitHub Copilot CLI** — Node.js 18+ (`npm install -g @github/copilot`)
+    and a signed-in GitHub account with Copilot access; or
+  - **Claude Code** — the `claude` CLI installed
+    ([code.claude.com](https://code.claude.com)) and a signed-in
+    Anthropic account.
+  - Cursor and Windsurf also work via their convention-file wrappers.
+- **The plugin installed** from the `techtalkai` marketplace — two
+  commands, see [Install](#install) below.
+- **A repository to assess.** Open the tool with that repository as the
+  working directory / project root, so the scan can see its instruction
+  files, CI config, specs, and other habitat signals. A git repo is
+  recommended but not required.
+- **Write access to the working directory** — the assessment saves its
+  report to `assessments/YYYY-MM-DD-assessment.md` in the repo.
+- **Network access** the first time, to register the marketplace from
+  GitHub.
+
+The assessment itself runs entirely inside the AI tool — there is no
+language runtime, build step, or service to set up. Budget around ten
+minutes, and expect to answer 3–5 short clarifying questions
+interactively. (The Python in `tests/` is only for contributors
+verifying the instrument — not needed to run an assessment.)
+
 ## Install
 
 This repo is the **`techtalkai`** plugin marketplace. The plugin format

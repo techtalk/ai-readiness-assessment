@@ -91,6 +91,21 @@
 - **Tool**: python3 tests/run.py
 - **Scope**: pr
 
+### Dual-surface sync (command ≡ skill)
+
+- **Rule**: The embedded framework content (the model, the cognitive
+  read, the scoring heuristic, and the assessment process) in
+  `commands/ai-readiness-assess.md` must match the same content in
+  `skills/ai-readiness-assessment/SKILL.md`. Editing one without
+  updating the other is forbidden. Intentional command-vs-skill wording
+  differences in the preamble are allowed; the model and process
+  substance must agree.
+- **Enforcement**: agent
+- **Tool**: agent review at PR — a reviewer (or review agent) diffs the
+  embedded model and process sections of the two files and confirms they
+  agree
+- **Scope**: pr
+
 ---
 
 ## Garbage Collection
@@ -130,7 +145,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-02 (Status reconciled via /harness-sync)
-Constraints enforced: 1/2
+Last audit: 2026-06-02 (constraint added via /reflect → /harness-constrain)
+Constraints enforced: 2/3
 Garbage collection active: 1/1
-Drift detected: no
+Drift detected: yes (convention files predate the Dual-surface sync constraint — re-run /harness-sync)

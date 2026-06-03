@@ -1,0 +1,22 @@
+# Reflection Log
+
+Post-task reflections captured via `/reflect`. Each entry records what
+was done, what surprised the agent, and the signal it carries for future
+work. Curators promote durable entries into `AGENTS.md` or `HARNESS.md`
+and add a `Promoted` line in the same commit.
+
+---
+
+- **Date**: 2026-06-02
+- **Agent**: Claude Code (Opus 4.8)
+- **Task**: Hardened the ai-readiness-assessment plugin end to end — made the Agentic Experience 5-Level Habitat Maturity Model the assessment spine (fourteen dimensions; Habitat Build Gap on the fourteen-dimension mean) — and added CI (the TDAB structural suite), required status checks on `main`, GitHub Releases with a changelog-driven release workflow, a PR-time changelog gate, an Apache-2.0 licence, repo metadata (description / topics / homepage), and a Diátaxis MkDocs documentation site on GitHub Pages.
+- **Surprise**: The TDAB suite (`tests/run.py`) asserts against the **committed sample assessments** under `tests/fixtures/`, not freshly-generated output — so the model-as-spine rewrite did not break CI until all six fixtures and their `expected.md` were hand-regenerated and `run.py`'s expected gap regimes updated. Two infrastructure gotchas: GitHub blocks required status checks on a **free private** repo (resolved only by making the repo public), and `gh release create --target <short-sha>` returns HTTP 422 for retroactive tags — the robust path is to push real git tags first, then `gh release create --verify-tag`.
+- **Proposal**: Add an instrument-change checklist to AGENTS.md — edit `commands/ai-readiness-assess.md` and `skills/ai-readiness-assessment/SKILL.md` identically (dual-surface sync); regenerate the six `tests/fixtures/*/assessments/*.md` and their `expected.md`; update `run.py` expected regimes; then `mkdocs build --strict`. (Human decides; AGENTS.md is human-edited only.)
+- **Improvement**: Enforce dual-surface sync in CI so the command and skill cannot silently drift — it was declared as a HARNESS convention but previously unverified.
+- **Signal**: workflow
+- **Constraint**: Dual-surface sync — command ≡ skill (agent)
+- **Session metadata**:
+  - Duration: unknown
+  - Model tiers used: unknown
+  - Pipeline stages completed: manual (no orchestrator pipeline)
+  - Agent delegation: manual

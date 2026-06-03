@@ -2,10 +2,14 @@
 #
 # The plugin version in .claude-plugin/plugin.json is the source of
 # truth. When a PR that bumps it merges to main, this workflow tags the
-# merge commit `v<version>` and publishes a Release with auto-generated
-# notes (the PRs merged since the previous release). It is idempotent —
+# merge commit `v<version>` and publishes a Release whose notes are the
+# matching `## [<version>]` section of CHANGELOG.md. It is idempotent —
 # if a release for the current version already exists, it does nothing,
 # so re-runs and unrelated edits to the manifest are safe.
+#
+# Keeping CHANGELOG.md current is enforced here: the workflow FAILS if
+# there is no `## [<version>]` section for the version being released, so
+# a version bump cannot ship without its changelog entry.
 #
 # Trigger it manually from the Actions tab (workflow_dispatch) to release
 # the current version on demand — e.g. the first release, or after
@@ -47,6 +51,25 @@ jobs:
           echo "tag=v$plugin_ver" >> "$GITHUB_OUTPUT"
           echo "Plugin version: $plugin_ver"
 
+      - name: Extract release notes from CHANGELOG.md
+        run: |
+          set -euo pipefail
+          ver="${{ steps.ver.outputs.version }}"
+          if [ ! -f CHANGELOG.md ]; then
+            echo "::error::CHANGELOG.md not found."; exit 1
+          fi
+          # Capture the body of the "## [<ver>]" section, stopping at the next
+          # "## [" heading or the link-reference block at the foot of the file.
+          awk -v ver="$ver" '
+            $0 ~ ("^## \\[" ver "\\]") { flag=1; next }
+            flag && (/^## \[/ || /^\[[^]]+\]: /) { exit }
+            flag { print }
+          ' CHANGELOG.md > release-notes.md
+          if ! grep -q '[^[:space:]]' release-notes.md; then
+            echo "::error::No CHANGELOG.md entry for $ver. Add a '## [$ver]' section before releasing."; exit 1
+          fi
+          echo "Release notes for v$ver:"; echo "----"; cat release-notes.md
+
       - name: Create the release if it does not already exist
         env:
           GH_TOKEN: ${{ github.token }}
@@ -61,5 +84,5 @@ jobs:
             --repo "$GITHUB_REPOSITORY" \
             --target "$GITHUB_SHA" \
             --title "$tag" \
-            --generate-notes
+            --notes-file release-notes.md
           echo "Created release $tag at $GITHUB_SHA"

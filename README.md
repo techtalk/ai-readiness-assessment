@@ -336,7 +336,7 @@ Buy or read on Leanpub:
 ## TechTalk
 
 If the assessment surfaces a gap your team would like help closing,
-TechTalk offers engagements matched to each discipline:
+TechTalk supports engagements matched to each discipline:
 
 - **Context Engineering** — Habitat-document bootcamp.
 - **Architectural Constraints** — Harness-engineering consulting.

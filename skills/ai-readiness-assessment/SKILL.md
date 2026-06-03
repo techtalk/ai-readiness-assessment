@@ -526,7 +526,7 @@ discipline. The pattern:
 
 ```
 > If you'd like help moving from Level <N> to Level <N+1>, TechTalk
-> offers <specific engagement type> focused on <the weakest
+> can support <specific engagement type> focused on <the weakest
 > discipline>. The most common starting points for teams at your level:
 >
 > - <engagement option 1 — concrete, named>

@@ -14,13 +14,7 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
-### Changed
-
-- The Sovereign Engineer call-to-action link now points to the
-  AI-readiness campaign URL
-  (`https://leanpub.com/thesovereignengineer/c/ai-readiness`) — in the
-  assessment's reading-path CTA (command + skill) and the "buy the book"
-  CTAs in the README, the docs, and the docs site's book link.
+## [0.4.0] - 2026-06-02
 
 ### Added
 
@@ -31,6 +25,24 @@ and fails the release if the entry is missing. Record day-to-day changes under
   `docs/`, deployed to GitHub Pages via `.github/workflows/pages.yml`,
   covering tutorials, how-to guides, reference, and explanation for the
   whole plugin — especially the assessment.
+- `CHANGELOG.md` and a changelog-driven release workflow: every version
+  bump publishes a GitHub Release whose notes are the matching CHANGELOG
+  section.
+- CI for the TDAB structural suite, a PR-time changelog gate, and
+  required status checks (`A-tier structural assertions`, `Changelog
+  gate`) on a protected `main`.
+- `AGENTS.md`, `ONBOARDING.md`, and `REFLECTION_LOG.md` for contributors,
+  plus a "Dual-surface sync" harness constraint (command ≡ skill) and
+  synced Cursor / Copilot / Windsurf convention files.
+- README prerequisites and status / scope badges; repo description,
+  topics, and homepage.
+
+### Changed
+
+- The Sovereign Engineer call-to-action now points to the AI-readiness
+  campaign URL (`https://leanpub.com/thesovereignengineer/c/ai-readiness`)
+  — in the assessment's reading-path CTA (command + skill) and the
+  "buy the book" CTAs in the README and the docs.
 
 ## [0.3.0] - 2026-06-02
 
@@ -74,7 +86,8 @@ and fails the release if the entry is missing. Record day-to-day changes under
 - `techtalkai` marketplace manifest.
 - Harness and TDAB scaffolding.
 
-[Unreleased]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/techtalk/ai-readiness-assessment/releases/tag/v0.1.0

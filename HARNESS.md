@@ -130,7 +130,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: never
-Constraints enforced: 0/0
-Garbage collection active: 0/0
-Drift detected: not yet audited
+Last audit: 2026-06-02 (Status reconciled via /harness-sync)
+Constraints enforced: 1/2
+Garbage collection active: 1/1
+Drift detected: no

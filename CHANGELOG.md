@@ -26,8 +26,9 @@ and fails the release if the entry is missing. Record day-to-day changes under
   (Context · Conventions · Architectural guidance · Guardrails · Agent
   readiness) is added; and Recommendations are reframed as a
   **Prioritised Improvement Plan** ordered by what the team must develop
-  and the organisation must provide. The two example reports were
-  regenerated to match.
+  and the organisation must provide. The two example reports — and the
+  narrative example surfaces (the docs `examples` page and the README
+  example table) — were aligned to match.
 
 ### Added
 

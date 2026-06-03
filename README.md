@@ -219,10 +219,14 @@ two reports show real progression — and an honest twist:
 
 | | Baseline | After enforcing spec-first |
 |---|---|---|
+| **AI Readiness — Habitat Maturity** | Level 3 (Regulating) | Level 3 (Regulating) |
+| **Next Step / Gap** | +1.2 to Level 4 (Orchestrating) | +1.1 to Level 4 (Orchestrating) |
 | Cognitive read | L3 — Habitat design | **L4 — Specification-led** |
-| Habitat Build Gap | +0.2 — Coherent | **+1.1 — Ambition outpaces enablement** |
+| Habitat Build Gap (coherence) | +0.2 — Coherent | **+1.1 — Ambition outpaces enablement** |
 | Report | [md](assessments/2026-06-03-assessment.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment.html) | [md](assessments/2026-06-03-assessment-2.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment-2.html) |
 
+Each report leads with those two lines, then an **AI Readiness Score**
+across five readiness dimensions and a **Prioritised Improvement Plan**.
 Lifting the spec discipline to L4 left the operational habitat behind, so
 the gap flipped from coherent to ambition-outpaces-enablement — the
 instrument tracking coherence, not just level. Full write-up in the

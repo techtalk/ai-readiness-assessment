@@ -7,6 +7,7 @@
     "url": "https://techtalk.ai"
   },
   "homepage": "https://leanpub.com/thesovereignengineer",
+  "license": "Apache-2.0",
   "keywords": [
     "ai-literacy",
     "ai-readiness",

@@ -14,6 +14,12 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Added
+
+- Apache License 2.0 (`LICENSE`), declared as `Apache-2.0` in
+  `plugin.json` and `marketplace.json`, with a License badge in the
+  README.
+
 ## [0.3.0] - 2026-06-02
 
 ### Changed

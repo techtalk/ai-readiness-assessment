@@ -49,6 +49,7 @@ and add a `Promoted` line in the same commit.
 - **Improvement**: When deliberately chasing a level jump, check the projected gap regime first — a discipline-only jump trades coherence for level unless the lagging operational dimensions are lifted too.
 - **Signal**: workflow
 - **Constraint**: none
+- **Promoted**: 2026-06-03 → AGENTS.md ARCH_DECISIONS ("A single-dimension level jump can trade coherence for level") + GATES scoping note
 - **Session metadata**:
   - Duration: unknown
   - Model tiers used: unknown

@@ -119,6 +119,28 @@ rationale lives in `docs/explanation/` — linked, not duplicated.
   identical framework content (enforced by the Dual-surface sync
   constraint). *Why:* the same assessment, reachable by slash command or
   natural language, must never disagree with itself.
+- **A single-dimension level jump can trade coherence for level.** When
+  we enforced spec-first, the cognitive read crossed L3→L4 but the
+  Habitat Build Gap flipped +0.2 (Coherent) → +1.1 (Ambition outpaces
+  enablement), because the operational habitat (Testing, Observability,
+  Composition) didn't move with it. *Lesson:* when deliberately chasing a
+  level jump, lift the lagging operational dimensions *alongside* the
+  discipline, or expect — and name — a temporary positive gap. Coherence,
+  not level, is the signal. (Promoted from REFLECTION_LOG, 2026-06-03;
+  see `assessments/2026-06-03-assessment-2.md`.)
+
+## GATES — scoping note
+
+The four required CI gates must be scoped so they don't fire on each
+other or on housekeeping PRs:
+
+- **Spec-first gate** triggers only on `commands/**` / `skills/**`
+  changes — so docs, chore, sync, and reflection PRs pass.
+- **Onboarding gate** compares the HARNESS *body* (not the Status block)
+  — so `/harness-sync` PRs (Status-block-only HARNESS edits) pass.
+
+When adding a gate, check it passes on a `/harness-sync` PR and on its
+own introduction PR before making it required.
 
 ---
 

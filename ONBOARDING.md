@@ -1,8 +1,5 @@
-<!-- Generated from HARNESS.md and REFLECTION_LOG.md.
-     Do not edit directly — regenerate with /harness-onboarding.
-     (AGENTS.md is not present in this repo yet, so the Architecture
-     Decisions and How We Test sections are derived from HARNESS.md and
-     the codebase rather than from AGENTS.md.) -->
+<!-- Generated from HARNESS.md, AGENTS.md, and REFLECTION_LOG.md.
+     Do not edit directly — regenerate with /harness-onboarding. -->
 
 # Welcome to ai-readiness-assessment
 
@@ -100,56 +97,64 @@ These block merges into `main` (which is branch-protected):
 
 ## Common Pitfalls
 
-Drawn from `REFLECTION_LOG.md` (workflow-signal entries):
+From `AGENTS.md` GOTCHAS and the `REFLECTION_LOG.md` workflow entry —
+practical traps with what happened and how to avoid them.
 
 - **The tests assert against committed sample assessments, not live
   output.** `tests/run.py` reads the pre-written reports under
-  `tests/fixtures/*/assessments/`. *What happened:* a large instrument
-  change passed CI even though the samples were stale. *How to avoid it:*
-  when you change the instrument, regenerate the six fixtures **and**
-  their `expected.md`, and update `run.py`'s expected gap regimes — the
-  green check alone does not prove your change is reflected.
-- **Don't desync the command and the skill.** It's easy to edit one
-  surface and forget the other. *How to avoid it:* make the identical
-  edit to both in the same change (the Dual-surface sync constraint).
+  `tests/fixtures/<level>/assessments/`. A green check does *not* prove
+  your instrument change is reflected — when you change scoring,
+  regenerate those samples (see *How We Test*).
+- **Don't desync the command and the skill.** Make the identical edit to
+  both surfaces in the same change (the Dual-surface sync constraint).
 - **Retroactive releases need real tags.** `gh release create --target
-  <short-sha>` returns HTTP 422 for past commits. *How to avoid it:* push
-  an annotated git tag first, then `gh release create --verify-tag`.
+  <short-sha>` returns HTTP 422 for past commits — push an annotated git
+  tag first, then `gh release create --verify-tag`.
+- **The two manifests must agree on the version.** The release workflow
+  and the changelog gate both fail if `plugin.json` and
+  `marketplace.json` disagree.
+- **`main` is branch-protected.** Branch and open a PR; the
+  `A-tier structural assertions` and `Changelog gate` checks must pass.
 
 ---
 
 ## Architecture Decisions
 
-*(No `AGENTS.md` yet — these are the load-bearing decisions captured in
-`HARNESS.md`, the README, and the docs. Don't reverse them without good
-reason.)*
+From `AGENTS.md` ARCH_DECISIONS — the load-bearing choices, each with the
+alternative that was rejected. The user-facing rationale lives in
+`docs/explanation/`; don't reverse these without good reason.
 
-- **The Agentic Maturity Model is the spine.** The assessment scores all
-  fourteen model dimensions (L1–L5) as the primary read; the Sovereign
-  Engineer cognitive ladder is folded in as the second, cognitive read.
+- **The Agentic Maturity Model is the spine; the cognitive ladder is
+  folded in.** All fourteen dimensions are the primary read; the
+  Sovereign Engineer L0–L5 ladder is the second, cognitive read.
 - **The Habitat Build Gap uses the mean of all fourteen dimensions** —
-  not a subset — so every dimension moves the coherence signal.
-- **Self-contained by design.** The instrument deliberately depends on
-  nothing else; if a team wants the full habitat, that's
-  `ai-literacy-superpowers`.
+  not just the four headline axes (the rejected alternative was more
+  stable but ignored ten dimensions).
+- **Self-contained by design.** The instrument depends on no other
+  plugin or service; the alternative — depending on
+  `ai-literacy-superpowers` — is richer but won't run standalone.
+- **Two entry points, one instrument.** The command and skill carry
+  identical content so the assessment never disagrees with itself.
 
 ---
 
 ## How We Test
 
-Quality is assured through **TDAB** — Test-Driven Agentic Behaviours:
+From `AGENTS.md` TEST_STRATEGY. Quality is assured through **TDAB** —
+Test-Driven Agentic Behaviours:
 
-- **A-tier (structural)** — automated in `tests/run.py`. It reads each
-  fixture's committed sample assessment and checks the report has the
-  required structure: the level line, discovery ordering, discipline
-  bounds, the four headline Operational Axes, the Habitat Build Gap
-  regime, and the full fourteen-dimension Habitat Maturity Profile. It
-  needs only the Python standard library and exits non-zero on any
-  failure, so it gates PRs.
+- **A-tier (structural)** — automated in `tests/run.py` (stdlib-only). It
+  reads each fixture's committed sample assessment and checks the report
+  has the required structure: the level line, discovery ordering,
+  discipline bounds, the four headline Operational Axes, the Habitat
+  Build Gap regime, and the full fourteen-dimension Habitat Maturity
+  Profile. It exits non-zero on any failure, so it gates PRs.
 - **B-tier (behavioural) and C-tier (semantic)** — described in each
-  fixture's `expected.md`. These need an interactive session or an LLM
-  judge and are run manually; see `tests/README.md`.
+  fixture's `expected.md`; they need an interactive session or an LLM
+  judge and are run manually. See `tests/README.md`.
 
+The fixtures are **committed sample assessments** — regenerate them (and
+`expected.md`, and `run.py`'s expected regimes) whenever scoring changes.
 Run the suite locally with `python3 tests/run.py` (or
 `python3 tests/run.py --fixture level-3-habitat` for one fixture).
 
@@ -200,6 +205,8 @@ heavier observability machinery isn't wired up.
 
 ## Where to Learn More
 
+- [AGENTS.md](AGENTS.md) — gotchas, workflows, test strategy, and
+  architecture decisions for working on the plugin
 - [HARNESS.md](HARNESS.md) — the full constraint and convention reference
 - [REFLECTION_LOG.md](REFLECTION_LOG.md) — session-by-session learnings
 - [README.md](README.md) — what the plugin is, install, and usage

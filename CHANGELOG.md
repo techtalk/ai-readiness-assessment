@@ -14,6 +14,12 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Changed
+
+- Reworded the TechTalk call to action in the assessment ("TechTalk
+  offers …" → "TechTalk can support …"), kept in sync across the command
+  and skill.
+
 ## [0.4.0] - 2026-06-02
 
 ### Added

@@ -14,6 +14,13 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Added
+
+- An **AI Literacy: Level 4** badge (and an **Agent Harness Enabled**
+  badge) in the README, after `/assess` independently confirmed the repo
+  reads **Level 4 — Specification-led**. Also corrected the stale harness
+  badge (2/3 → 3/4 enforced) after the Spec-first constraint.
+
 ### Changed
 
 - The assessment now **leads with two headline lines** — *AI Readiness —

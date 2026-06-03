@@ -53,9 +53,7 @@ directly — run `/convention-sync` to regenerate.
   — written or updated with the change and referenced in the PR. Docs,
   chore, surface-sync, dependency, and pure-fix PRs are exempt. Each spec
   carries a "Risks / what could go wrong" section (a lightweight
-  adversarial review). This is a convention, not yet an enforced
-  constraint. A reviewer can verify by checking a substantive PR links a
-  `specs/NNNN-*.md` entry.
+  adversarial review). Enforced — see the Spec-first constraint.
 
 ## Constraints
 
@@ -81,4 +79,13 @@ directly — run `/convention-sync` to regenerate.
   `skills/ai-readiness-assessment/SKILL.md`. Editing one without
   updating the other is forbidden.
 - Enforcement: agent
+- Scope: pr
+
+### Spec-first
+
+- Rule: A PR that changes the instrument (commands/ or skills/) or the
+  model/scoring must reference a spec under `specs/` (a changed
+  `specs/NNNN-*.md`), unless labelled chore/fix/docs. Each substantive
+  spec carries an adjudicated Adversarial review.
+- Enforcement: deterministic (ordering) + agent (review adjudication)
 - Scope: pr

@@ -1,8 +1,8 @@
 {
   "name": "techtalkai",
   "owner": {
-    "name": "Russ Miles / TechTalk",
-    "url": "https://techtalk.ai"
+    "name": "TechTalk",
+    "url": "https://github.com/techtalk/ai-readiness-assessment"
   },
   "description": "TechTalk AI marketplace — self-contained tooling for AI readiness, literacy, and habitat thinking, anchored in The Sovereign Engineer.",
   "plugins": [
@@ -11,7 +11,7 @@
       "source": "./",
       "description": "Self-contained AI readiness assessment for any repo — scan for evidence, ask clarifying questions, place the team across all fourteen dimensions of the Agentic Experience 5-Level Habitat Maturity Model (the spine) and the six-level Sovereign Engineer cognitive ladder, compute the Habitat Build Gap, and produce a timestamped assessment with a gap-anchored reading path through The Sovereign Engineer and a single TechTalk engagement recommendation.",
       "version": "0.3.0",
-      "homepage": "https://leanpub.com/thesovereignengineer",
+      "homepage": "https://github.com/techtalk/ai-readiness-assessment",
       "keywords": [
         "ai-literacy",
         "ai-readiness",

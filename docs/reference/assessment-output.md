@@ -6,12 +6,26 @@ paths, counts, dates.
 
 ## Header
 
+The report leads with **two lines** — the current level and the next
+step — so the headline answer is legible at a glance. Coherence (the
+Habitat Build Gap) and the cognitive read follow as secondary fields.
+
 ```text
-**Date**: YYYY-MM-DD
-**Habitat Maturity Level**: Level N (model) — <held back by: weakest dimensions>
+**Current Habitat Maturity**: Level N (Verb)
+**Next Step / Gap**: +X to Level N+1 (NextVerb)
+
+**Habitat Build Gap**: <signed gap> (<regime>)   (coherence; secondary)
 **Assessed level**: Level N — <Level Name>   (the cognitive read)
-**Habitat Build Gap**: <signed gap> (<regime>)
+**Date**: YYYY-MM-DD
 ```
+
+The level **verb** is the model's Agent-behaviour archetype: L1
+Dictating, L2 Commanding, L3 Regulating, L4 Orchestrating, L5
+Supervising. **Next Step / Gap** is `(N+1) − the 14-dimension mean` — the
+distance to the next level (at L5: "at the top — sustaining"). It is
+distinct from the **Habitat Build Gap**, which is the
+[coherence](../explanation/coherence-not-level.md) diagnostic
+(cognitive − operational) and can differ in both value and sign.
 
 ## Habitat Document Discovery
 

@@ -404,13 +404,30 @@ negative gap there (a cognitive-L0 repo against an L1 floor) as the
 Write `assessments/YYYY-MM-DD-assessment.md` using the structure below.
 Fill every section with specific evidence — paths, counts, dates.
 
+The report **leads with two lines** — the current level and the next
+step — so the answer is legible at a glance. Compute them as:
+
+- **Current Habitat Maturity**: `Level N (<Verb>)` — N is the rounded
+  fourteen-dimension Habitat Maturity mean; `<Verb>` is the model's
+  Agent-behaviour archetype for that level: **L1 Dictating · L2
+  Commanding · L3 Regulating · L4 Orchestrating · L5 Supervising**.
+- **Next Step / Gap**: `+X to Level N+1 (<NextVerb>)` — X is
+  `(N+1) − maturity_mean` to one decimal (the distance to the next
+  level). At L5, write `at the top level (Supervising) — sustaining`.
+
+Coherence stays as a **secondary** line (the Habitat Build Gap + regime),
+not in the headline — the signal is still there, just not what you lead
+with.
+
 ```markdown
 # AI Readiness Assessment — <project name>
 
-**Date**: YYYY-MM-DD
-**Habitat Maturity Level**: Level N (model) — <held back by: weakest dimensions>
+**Current Habitat Maturity**: Level N (<Verb>)
+**Next Step / Gap**: +X to Level N+1 (<NextVerb>)
+
+**Habitat Build Gap**: <signed gap> (<regime>)   <!-- coherence (cognitive − operational); secondary -->
 **Assessed level**: Level N — <Level Name>   <!-- cognitive read; do not remove -->
-**Habitat Build Gap**: <signed gap> (<regime>)
+**Date**: YYYY-MM-DD
 
 ## Habitat Document Discovery
 <table of documents found, paths, markers matched>
@@ -562,10 +579,12 @@ Ask: "Would you like this assessment rendered as a shareable HTML page?"
 If yes, produce an HTML artifact with the following design rules:
 
 - Single column, comfortable reading width (~720px max).
-- Header block: project name, date, a **Habitat Maturity Level badge**
-  (the model's L1–L5) and the **cognitive level badge** (large,
-  colour-coded L0=grey, L1=light-blue, L2=steel-blue, L3=teal,
-  L4=sea-green, L5=gold), one-line rationale.
+- Header block leads with the **two headline lines** — *Current Habitat
+  Maturity: Level N (Verb)* and *Next Step / Gap: +X to Level N+1
+  (NextVerb)* — then the project name and date, a **Habitat Maturity
+  Level badge** and the **cognitive level badge** (colour-coded L0=grey,
+  L1=light-blue, L2=steel-blue, L3=teal, L4=sea-green, L5=gold), and a
+  secondary **Habitat Build Gap** badge (coherence regime).
 - A **Habitat Maturity Profile** block: all fourteen dimensions as a
   small-multiples grid of L1–L5 bars, each labelled with the model's
   verb at the placed level (Dictating…Supervising, Asserting…Assuring,
@@ -603,8 +622,10 @@ hasn't opted into.
 
 Present a short summary to the user in chat:
 
-- Habitat Maturity Level (the model, L1–L5) with the weakest dimensions
-  named, and the cognitive level with its one-line rationale
+- The two headline lines: **Current Habitat Maturity: Level N (Verb)**
+  and **Next Step / Gap: +X to Level N+1 (NextVerb)** — then, secondary,
+  the Habitat Build Gap regime and the cognitive level's one-line
+  rationale
 - Top strength, top gap
 - The one recommendation
 - Link to `assessments/YYYY-MM-DD-assessment.md`

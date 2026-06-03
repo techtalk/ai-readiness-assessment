@@ -1,9 +1,11 @@
 # AI Readiness Assessment — ai-readiness-assessment
 
-**Date**: 2026-06-03
-**Habitat Maturity Level**: Level 3 (model) — held back by L2 Agent input, Agent composition, Testing, and Observability
+**Current Habitat Maturity**: Level 3 (Regulating)
+**Next Step / Gap**: +1.2 to Level 4 (Orchestrating)
+
+**Habitat Build Gap**: +0.2 (Coherent)   <!-- coherence (cognitive − operational); secondary -->
 **Assessed level**: Level 3 — Habitat design   <!-- cognitive read; do not remove -->
-**Habitat Build Gap**: +0.2 (Coherent)
+**Date**: 2026-06-03
 
 > **Note**: this is the plugin assessed against **its own repository** — a
 > dogfooding example of the output `/ai-readiness-assess` produces.

@@ -1,9 +1,11 @@
 # AI Readiness Assessment — ai-readiness-assessment (re-assessment)
 
-**Date**: 2026-06-03
-**Habitat Maturity Level**: Level 3 (model) — held back by L2 Testing, Observability, and Agent composition
+**Current Habitat Maturity**: Level 3 (Regulating)
+**Next Step / Gap**: +1.1 to Level 4 (Orchestrating)
+
+**Habitat Build Gap**: +1.1 (Ambition outpaces enablement)   <!-- coherence (cognitive − operational); secondary -->
 **Assessed level**: Level 4 — Specification-led   <!-- cognitive read; do not remove -->
-**Habitat Build Gap**: +1.1 (Ambition outpaces enablement)
+**Date**: 2026-06-03
 
 > **Note**: a re-assessment of the plugin against **its own repository**,
 > after spec-first was made an enforced discipline (specs 0001–0003, the

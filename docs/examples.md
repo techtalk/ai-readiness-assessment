@@ -5,13 +5,20 @@ real reports. We ran it against **this plugin's own repository** —
 dogfooding the instrument on itself — and then again after acting on its
 own top recommendation. The two reports together show **progression**.
 
+Each report opens with two lines — the level and the next step — then an
+**AI Readiness Score** broken down across five readiness dimensions
+(Context · Conventions · Architectural guidance · Guardrails · Agent
+readiness) and a **Prioritised Improvement Plan**.
+
 ## The progression at a glance
 
 | | Baseline | After enforcing spec-first |
 | --- | --- | --- |
-| **Cognitive read** | L3 — Habitat design | **L4 — Specification-led** |
-| **Habitat Maturity Level** | L3 (mean 2.79) | L3 (mean 2.93) |
-| **Habitat Build Gap** | +0.2 — **Coherent** | +1.1 — **Ambition outpaces enablement** |
+| **AI Readiness — Habitat Maturity** | Level 3 (Regulating) | Level 3 (Regulating) |
+| **Next Step / Gap** | +1.2 to Level 4 (Orchestrating) | +1.1 to Level 4 (Orchestrating) |
+| Architectural guidance (readiness dim.) | L3 | **L4** |
+| Cognitive read | L3 — Habitat design | **L4 — Specification-led** |
+| Habitat Build Gap (coherence, secondary) | +0.2 — **Coherent** | +1.1 — **Ambition outpaces enablement** |
 | Report | [HTML](examples/self-assessment.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-06-03-assessment.md) | [HTML](examples/self-assessment-2.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-06-03-assessment-2.md) |
 
 ## The story

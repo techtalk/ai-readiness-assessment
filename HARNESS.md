@@ -23,11 +23,12 @@
 - **Primary languages**: Markdown (content), JSON (plugin manifest). No
   programming language is compiled or executed; the plugin's entire
   product is the prose inside the command and skill files.
-- **Build system**: None. This is a Claude Code / Copilot plugin
+- **Build system**: None for the plugin artifact — it's a plugin
   distribution layout (`.claude-plugin/plugin.json` + `commands/` +
-  `skills/`). The plugin is consumed directly by Claude Code, Copilot,
-  Cursor, and Windsurf — there is no compilation, bundling, or packaging
-  step.
+  `skills/`) consumed directly by Claude Code, Copilot, Cursor, and
+  Windsurf, with no compilation, bundling, or packaging. The one build
+  step in the repo is the documentation site (`mkdocs build --strict` —
+  see CI/CD).
 - **Test framework**: TDAB (Test-Driven Agentic Behaviours). The A-tier
   (structural) assertions are automated in `tests/run.py` — a stdlib-only
   runner that checks each fixture's committed sample assessment for the
@@ -36,6 +37,13 @@
   and C-tier (semantic) assertions in each fixture's `expected.md` need
   an interactive Claude session or an LLM judge and are run manually —
   see `tests/README.md`.
+- **CI/CD**: GitHub Actions (`.github/workflows/`). On every PR to a
+  branch-protected `main`, two **required status checks** run: the TDAB
+  suite (`agentic-behaviours.yml`) and the changelog gate
+  (`changelog-gate.yml`). On a version bump, `release.yml` tags
+  `vX.Y.Z` and publishes a GitHub Release whose notes are the matching
+  `CHANGELOG.md` section. On docs changes, `pages.yml` builds the MkDocs
+  Material site and deploys it to GitHub Pages.
 - **Container strategy**: N/A. No runtime, no container.
 
 ### Conventions
@@ -145,7 +153,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-02 (Status reconciled via /harness-sync)
+Last audit: 2026-06-03 (Context > Stack updated via /reflect)
 Constraints enforced: 2/3
 Garbage collection active: 1/1
-Drift detected: no
+Drift detected: yes (convention files' Stack predates the CI/CD entry — re-run /harness-sync)

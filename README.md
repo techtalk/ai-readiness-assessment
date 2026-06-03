@@ -44,6 +44,9 @@ plugin — see *Inspired by* below.
 — a Diátaxis-structured site with tutorials, how-to guides, reference,
 and explanation.
 
+Contributing or working on the plugin itself? Start with
+[ONBOARDING.md](ONBOARDING.md).
+
 ## Prerequisites
 
 To run the assessment you need:

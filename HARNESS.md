@@ -162,7 +162,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-03 (Conventions updated — spec-first added)
+Last audit: 2026-06-03 (Status reconciled via /harness-sync)
 Constraints enforced: 2/3
 Garbage collection active: 1/1
-Drift detected: yes (convention files predate the spec-first convention — re-run /harness-sync)
+Drift detected: no

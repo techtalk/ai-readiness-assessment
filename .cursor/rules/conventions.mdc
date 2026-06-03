@@ -53,3 +53,12 @@ directly — run `/convention-sync` to regenerate.
 - **Plain-text output**: The optional rendered output (HTML, printable
   PDF, or other) must use print-friendly typography. No emojis appear in
   any rendering template the skill emits.
+- **Spec-first for substantive changes**: Substantive, behaviour-changing
+  work (the assessment instrument, the model or scoring, a new workflow)
+  is captured as a spec under `specs/` — at minimum a one-paragraph intent
+  — written or updated with the change and referenced in the PR. Docs,
+  chore, surface-sync, dependency, and pure-fix PRs are exempt. Each spec
+  carries a "Risks / what could go wrong" section (a lightweight
+  adversarial review). This is a convention, not yet an enforced
+  constraint. A reviewer can verify by checking a substantive PR links a
+  `specs/NNNN-*.md` entry.

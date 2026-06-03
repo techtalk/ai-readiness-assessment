@@ -14,6 +14,14 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Changed
+
+- The assessment now **leads with two headline lines** — *Current
+  Habitat Maturity: Level N (Verb)* and *Next Step / Gap: +X to Level N+1
+  (NextVerb)* — with the Habitat Build Gap (coherence) kept as a
+  secondary line. The two committed example reports were reformatted to
+  match. (Spec 0004.)
+
 ### Added
 
 - An example self-assessment — the plugin run against its own repo —

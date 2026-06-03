@@ -123,17 +123,13 @@ above the floor.
 ## Habitat Build Gap
 
 ```text
-Cognitive level (Parts A–C):     L1
-Operational axes mean (Part D):  L1.0
-  Composition:   L1
-  Testing:       L1
-  Observability: L1
-  Governance:    L1
-Habitat Build Gap:               0.00
+Habitat Maturity Level (model):  L1  (14-dim mean L1.36)
+Cognitive read (Parts A–C):      L1
+Habitat Build Gap:               -0.36   (cognitive − 14-dim mean)
 Interpretation:                  Coherent
 ```
 
-Team and habitat sit together at the L1 floor — coherent, if early. The next move lifts cognition and operations together: a CI gate (Governance) and a first test (Testing).
+Across all fourteen dimensions the operational mean (1.36) sits just below L1 cognition — coherent, if early (the small negative gap is the bottom-of-scale baseline). The next move lifts cognition and operations together: a CI gate (Governance) and a first test (Testing).
 
 ## Strengths
 

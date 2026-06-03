@@ -360,7 +360,8 @@ def level_2_assertions() -> list:
         }),
         a7_reading_path(["Level 3"]),
         a12_operational_axes(),
-        a13_build_gap("Ambition outpaces enablement"),
+        # 14-dim mean (1.86) sits close to L2 cognition → Coherent
+        a13_build_gap("Coherent"),
         a14_maturity_profile(),
         a9_single_cta(),
         a10_cta_mentions(["Context Engineering", "habitat-document", "CLAUDE.md"]),
@@ -417,7 +418,8 @@ def level_4_assertions() -> list:
         }),
         a7_reading_path(["Level 5"]),
         a12_operational_axes(),
-        a13_build_gap("Ambition outpaces enablement"),
+        # 14-dim mean (3.64) sits close to L4 cognition → Coherent
+        a13_build_gap("Coherent"),
         a14_maturity_profile(),
         a9_single_cta(),
         a10_cta_mentions([

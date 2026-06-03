@@ -96,18 +96,20 @@ that boundary) fails.
 
 ### Operational Axes & Habitat Build Gap (Part D)
 
-Part D places four operational axes (L1–L5) and computes the Habitat
-Build Gap (cognitive level − operational-axes mean). Expected placement
-for this fixture:
+Part D places all fourteen model dimensions (L1–L5). The four headline
+axes below are the discipline-aligned view; the Habitat Build Gap is
+cognitive level − the mean of all fourteen dimensions. Expected
+placement for this fixture:
 
 - Composition: L4
 - Testing: L3
 - Observability: L3
 - Governance: L5
-- Operational axes mean: L3.75
-- **Habitat Build Gap: +1.25 (Ambition outpaces enablement)**
+- Headline axes mean (focused view): L3.75
+- Fourteen-dimension mean: L4.14
+- **Habitat Build Gap: +0.86 (Ambition outpaces enablement)**
 
-Even at sovereign cognition (L5) the operational mean (3.75) lags, driven by Testing and Observability. Governance (L5) is consistent with the Architectural Constraints discipline score.
+Even at sovereign cognition (L5) the fourteen-dimension operational mean (4.14) lags, driven by Testing and Observability (both L3). Governance (L5) is consistent with the Architectural Constraints discipline score.
 
 A12. **Operational Axes section present.** The assessment contains a
 `## Operational Axes (Part D)` section naming all four axes
@@ -169,5 +171,5 @@ Output role, Output artefact, Humans review, Work patterns, Agent
 composition, Agents…, Testing, Observability, Governance) and reports a
 headline **Habitat Maturity Level**. The four discipline-aligned headline
 axes in `## Operational Axes (Part D)` must agree with the same four rows
-in the profile. The Habitat Build Gap continues to use the four headline
-axes as its operational term.
+in the profile. The Habitat Build Gap is measured against the mean of all fourteen
+dimensions, not just these four.

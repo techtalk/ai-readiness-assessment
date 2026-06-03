@@ -154,8 +154,9 @@ context is L2, not L3.
 #### The four discipline-aligned headline axes
 
 Four of the model's fourteen dimensions are the most repo-observable and
-map cleanly onto the disciplines. They are the **headline axes** that
-feed the Habitat Build Gap (below):
+map cleanly onto the disciplines. They are reported as the **headline
+axes** — a discipline-aligned view of the profile (the
+`## Operational Axes (Part D)` table in the output):
 
 - **Agent composition** (reported as **Composition**)
 - **Testing**
@@ -165,7 +166,8 @@ feed the Habitat Build Gap (below):
   discipline score is the deeper read.
 
 These four are detailed level-by-level below; the other ten dimensions
-are placed from the table and evidence map above.
+are placed from the table and evidence map above. The Habitat Build Gap
+uses the mean of **all fourteen** dimensions, not just these four.
 
 #### Composition — *how structurally sophisticated is the agent topology?*
 
@@ -212,28 +214,20 @@ can think and do) against the operational maturity its habitat
 delivers:
 
 ```text
-Habitat Build Gap = cognitive_level − operational_axes_mean
+Habitat Build Gap = cognitive_level − habitat_maturity_mean
 ```
 
-`operational_axes_mean` is the arithmetic mean of the **four
-discipline-aligned headline axes** (Composition, Testing, Observability,
-Governance — each 1–5). These four are the most repo-observable of the
-fourteen dimensions and keep the gap a stable, evidence-anchored
-diagnostic. The full fourteen-dimension profile is reported alongside as
-the **Habitat Maturity Level** (the spine); the gap uses the four
-headline axes as its operational term. The cognitive level is 0–5 and
-the axes mean is 1–5; both sit on the same 0–5 ruler, so the gap is
-signed. Output it in this shape:
+`habitat_maturity_mean` is the arithmetic mean of **all fourteen
+dimension placements** — the same mean that yields the Habitat Maturity
+Level. The gap is measured against the whole model, not a subset, so
+every dimension the team is weak (or strong) on moves it. The cognitive
+level is 0–5 and the maturity mean is 1–5; both sit on the same 0–5
+ruler, so the gap is signed. Output it in this shape:
 
 ```text
-Habitat Maturity Level (model):  L2 (mean L2.3; weakest: L1 Observability, L1 Work patterns)
+Habitat Maturity Level (model):  L2  (14-dim mean L2.3; weakest: L1 Observability, L1 Work patterns)
 Cognitive read (Sovereign Eng):  L3
-Operational axes mean (headline):L2.0
-  Composition:    L2
-  Testing:        L2
-  Observability:  L1
-  Governance:     L3
-Habitat Build Gap:               +1.0
+Habitat Build Gap:               +0.7   (cognitive − 14-dim mean)
 Interpretation:                  Ambition outpaces enablement
 ```
 
@@ -369,11 +363,11 @@ weakest discipline. Score the three disciplines 0–5.
 
 #### 3c. The Habitat Build Gap
 
-The four discipline-aligned headline axes (Composition, Testing,
-Observability, Governance) are already placed in the profile. Compute:
+All fourteen dimensions are already placed in the profile. Compute:
 
-- **Operational axes mean** = arithmetic mean of those four axis scores (1–5).
-- **Habitat Build Gap** = cognitive level − operational axes mean.
+- **Habitat maturity mean** = arithmetic mean of all fourteen dimension
+  scores (1–5) — the same mean behind the Habitat Maturity Level.
+- **Habitat Build Gap** = cognitive level − habitat maturity mean.
 - **Interpretation** = the regime the gap falls into (Coherent /
   Ambition outpaces enablement / Inherited habitat).
 
@@ -440,7 +434,8 @@ the one that doesn't>
 
 ## Operational Axes (Part D)
 The four discipline-aligned headline dimensions, lifted from the profile
-above — these feed the Habitat Build Gap.
+above — a discipline-aligned view (the Habitat Build Gap uses all
+fourteen dimensions, not just these four).
 
 | Axis | Level (L1–L5) | Evidence |
 |---|---|---|
@@ -449,14 +444,13 @@ above — these feed the Habitat Build Gap.
 | Observability | L? | ... |
 | Governance | L? | ... |
 
-**Operational axes mean**: L?.?
+**Headline axes mean**: L?.?
 
 ## Habitat Build Gap
 
-    Habitat Maturity Level (model):  L?  (mean L?.?)
+    Habitat Maturity Level (model):  L?  (14-dim mean L?.?)
     Cognitive read (Parts A–C):      L?
-    Operational axes mean (headline):L?.?
-    Habitat Build Gap:               <signed>
+    Habitat Build Gap:               <signed>   (cognitive − 14-dim mean)
     Interpretation:                  <regime>
 
 <one line: what the gap points at — habitat investment (positive gap)

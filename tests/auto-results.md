@@ -48,7 +48,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A6 | PASS | scores within bounds: {'Context Engineering': 1, 'Architectural Constraints': 3, 'Guardrail Design': 3} |
 | A7 | PASS | reading path contains ['Level 3'] |
 | A12 | PASS | Operational Axes section names all four axes |
-| A13 | PASS | Habitat Build Gap present with regime 'Ambition outpaces enablement' |
+| A13 | PASS | Habitat Build Gap present with regime 'Coherent' |
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
@@ -82,7 +82,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A6 | PASS | scores within bounds: {'Context Engineering': 4, 'Architectural Constraints': 4, 'Guardrail Design': 4} |
 | A7 | PASS | reading path contains ['Level 5'] |
 | A12 | PASS | Operational Axes section names all four axes |
-| A13 | PASS | Habitat Build Gap present with regime 'Ambition outpaces enablement' |
+| A13 | PASS | Habitat Build Gap present with regime 'Coherent' |
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['platform-engineering', 'published plugin', 'governance audit', 'fitness functions', 'cross-team'] |

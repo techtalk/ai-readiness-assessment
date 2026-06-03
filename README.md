@@ -150,11 +150,11 @@ sections:
    Constraints, Guardrail Design, each scored 0–5.
 7. **Operational Axes (Part D)** — the four discipline-aligned headline
    dimensions — Composition, Testing, Observability, Governance — lifted
-   from the profile; these feed the Habitat Build Gap.
-8. **Habitat Build Gap** — `cognitive level − operational-axes mean`,
-   read through three regimes (Coherent / Ambition outpaces enablement
-   / Inherited habitat). The signal is coherence, not the size of the
-   level.
+   from the profile as a focused view.
+8. **Habitat Build Gap** — `cognitive level − habitat maturity mean`
+   (the mean of all fourteen dimensions), read through three regimes
+   (Coherent / Ambition outpaces enablement / Inherited habitat). The
+   signal is coherence, not the size of the level.
 9. **Strengths, Gaps, Recommendations** — top three each, anchored in
    evidence.
 10. **Reading Path** — the specific chapter of *The Sovereign Engineer*
@@ -245,13 +245,12 @@ is "aware but nothing encoded" — on the model that is the L1 floor.)
 
 ### The Habitat Build Gap
 
-The gap reconciles the two reads. Its operational term is the mean of
-the **four discipline-aligned headline dimensions** — Composition,
-Testing, Observability, Governance — the most repo-observable of the
-fourteen, kept as a stable, evidence-anchored diagnostic:
+The gap reconciles the two reads. Its operational term is the
+**Habitat Maturity Level** — the mean of **all fourteen** model
+dimensions — so every dimension the team is weak or strong on moves it:
 
 ```text
-Habitat Build Gap = cognitive level − operational-axes mean
+Habitat Build Gap = cognitive level − habitat maturity mean (all 14 dimensions)
 ```
 
 Both terms are on the same 0–5 scale, so the gap can be positive or
@@ -265,10 +264,13 @@ not the size of the level:
 | `gap ≤ −0.5` | **Inherited habitat** | The habitat is more mature than current practice. Literacy uplift before further harness extension. |
 
 A coherent L2/L2 team is healthier than an incoherent L4-cognitive /
-L1-operational one. The fourteen dimensions and their verbs, the
-cognitive ladder, the evidence map, the gap formula, and these regimes
-are embedded in the command and skill files in full, so the instrument
-stays self-contained.
+L1-operational one. The four discipline-aligned headline axes
+(Composition, Testing, Observability, Governance) are still reported as
+a focused view of the profile, but the gap is measured against all
+fourteen dimensions. The dimensions and their verbs, the cognitive
+ladder, the evidence map, the gap formula, and these regimes are
+embedded in the command and skill files in full, so the instrument stays
+self-contained.
 
 ## The book
 

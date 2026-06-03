@@ -1,0 +1,54 @@
+# PR-time gate: if a pull request bumps the plugin version, it must also
+# add the matching CHANGELOG.md section — caught before merge, not at
+# release time. On PRs that don't change the version the gate is a no-op
+# and passes, so it is safe to make a required status check on main.
+name: Changelog gate
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: Changelog gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the PR (full history for base comparison)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require a CHANGELOG entry when the plugin version changes
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          head_ver=$(jq -r '.version' .claude-plugin/plugin.json)
+          market_ver=$(jq -r '.plugins[] | select(.name=="ai-readiness-assessment") | .version' .claude-plugin/marketplace.json)
+          if [ "$head_ver" != "$market_ver" ]; then
+            echo "::error::Version mismatch — plugin.json=$head_ver but marketplace.json=$market_ver. Keep them in lockstep."; exit 1
+          fi
+
+          base_ver=$(git show "$BASE_SHA:.claude-plugin/plugin.json" 2>/dev/null | jq -r '.version' 2>/dev/null || echo "")
+          echo "base version: ${base_ver:-<none>} · head version: $head_ver"
+          if [ "$base_ver" = "$head_ver" ]; then
+            echo "Plugin version unchanged — changelog gate not applicable. ✓"
+            exit 0
+          fi
+
+          echo "Version bump detected: ${base_ver:-<none>} → $head_ver. A CHANGELOG.md entry is required."
+          if [ ! -f CHANGELOG.md ]; then
+            echo "::error::CHANGELOG.md not found."; exit 1
+          fi
+          body=$(awk -v ver="$head_ver" '
+            $0 ~ ("^## \\[" ver "\\]") { flag=1; next }
+            flag && (/^## \[/ || /^\[[^]]+\]: /) { exit }
+            flag { print }
+          ' CHANGELOG.md)
+          if ! printf '%s' "$body" | grep -q '[^[:space:]]'; then
+            echo "::error::Version bumped to $head_ver but CHANGELOG.md has no non-empty '## [$head_ver]' section. Add it before merging."; exit 1
+          fi
+          echo "CHANGELOG.md has an entry for $head_ver ✓"

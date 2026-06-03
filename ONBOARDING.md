@@ -155,6 +155,11 @@ alternative that was rejected. The user-facing rationale lives in
   `ai-literacy-superpowers` — is richer but won't run standalone.
 - **Two entry points, one instrument.** The command and skill carry
   identical content so the assessment never disagrees with itself.
+- **A single-dimension level jump can trade coherence for level.**
+  Enforcing spec-first crossed the cognitive read L3→L4 but flipped the
+  Habitat Build Gap to *ambition outpaces enablement* — lift the lagging
+  operational dimensions alongside the discipline, or expect a temporary
+  positive gap. Coherence, not level, is the signal.
 
 ---
 

@@ -1,0 +1,55 @@
+# PR-time gate: spec-first for substantive changes.
+#
+# A PR that changes the instrument (commands/** or skills/**) must also
+# add or update a spec under specs/ — so behaviour-changing work is
+# captured as intent before/with the implementation. Exempt via a
+# `chore`, `fix`, or `docs` label.
+#
+# This enforces spec-first *ordering* (a spec accompanies the change);
+# quality rests on the spec's Adversarial review disposition and human
+# PR review, not on this deterministic check.
+name: Spec-first gate
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: Spec-first gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the PR (full history for base comparison)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require a spec when the instrument changes
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          set -euo pipefail
+
+          # Exempt labels.
+          case ",$LABELS," in
+            *,chore,*|*,fix,*|*,docs,*)
+              echo "Exempt label present ($LABELS) — spec-first gate skipped."; exit 0 ;;
+          esac
+
+          changed=$(git diff --name-only "$BASE_SHA" HEAD)
+          instrument_changed=no
+          echo "$changed" | grep -qE '^(commands/|skills/)' && instrument_changed=yes
+          spec_changed=no
+          echo "$changed" | grep -qE '^specs/.*\.md$' && spec_changed=yes
+
+          echo "instrument_changed=$instrument_changed · spec_changed=$spec_changed · labels=[$LABELS]"
+
+          if [ "$instrument_changed" = yes ] && [ "$spec_changed" = no ]; then
+            echo "::error::This PR changes the instrument (commands/ or skills/) but adds no spec under specs/. Write a spec (see specs/TEMPLATE.md) and reference it, or label the PR chore/fix/docs if it is genuinely exempt."
+            exit 1
+          fi
+          echo "Spec-first satisfied."

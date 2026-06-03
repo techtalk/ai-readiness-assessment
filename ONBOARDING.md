@@ -73,7 +73,8 @@ that prose matter more than anything mechanical.
   workflow) is captured as a spec under `specs/` — at minimum a
   one-paragraph intent — written with the change and referenced in the
   PR. Docs/chore/sync/fix are exempt. Each spec carries a "Risks / what
-  could go wrong" section. Currently a convention, not yet enforced.
+  could go wrong" section plus an adjudicated Adversarial review.
+  **Enforced** by the Spec-first gate (see What's Enforced).
 
 ---
 
@@ -97,6 +98,14 @@ These block merges into `main` (which is branch-protected):
   a matching `## [x.y.z]` section to `CHANGELOG.md`. The required check
   **`Changelog gate`** enforces this; it's a no-op on PRs that don't
   change the version.
+- **Spec-first** — a PR that changes the instrument (`commands/` or
+  `skills/`) must add or update a spec under `specs/`, unless labelled
+  `chore`/`fix`/`docs`. The required check **`Spec-first gate`** enforces
+  the ordering; each substantive spec carries an adjudicated Adversarial
+  review.
+- **Onboarding gate** — a PR that changes the HARNESS body or AGENTS.md
+  must refresh `ONBOARDING.md`. The required check **`Onboarding gate`**
+  enforces it.
 
 ### On schedule
 
@@ -179,8 +188,9 @@ Three loops protect the codebase:
   *(None configured for this minimal repo.)*
 - **Strict loop** — CI gates that block merges. Required checks on
   `main`: `A-tier structural assertions` (the TDAB suite), `Changelog
-  gate`, and the **Onboarding gate** (fails a PR that changes the HARNESS
-  body or AGENTS.md without refreshing this file). Two more workflows run
+  gate`, the **Spec-first gate** (instrument changes carry a spec), and
+  the **Onboarding gate** (HARNESS-body / AGENTS.md changes refresh this
+  file). Two more workflows run
   automatically: a changelog-driven **release** workflow that cuts a
   GitHub Release on every version bump, and the **Pages** workflow that
   rebuilds the docs.
@@ -205,6 +215,9 @@ heavier observability machinery isn't wired up.
 - [ ] If you changed how the assessment scores, regenerate the six
       `tests/fixtures/*/assessments/` reports **and** their
       `expected.md`, and update `run.py`'s expected regimes.
+- [ ] If you changed the instrument (`commands/` or `skills/`), write or
+      update a spec under `specs/` (see `specs/TEMPLATE.md`) — the
+      Spec-first gate requires it.
 - [ ] Run `python3 tests/run.py` — it must be green.
 - [ ] If you bumped the version, update **both** manifests to match and
       add a `## [x.y.z]` section to `CHANGELOG.md`.

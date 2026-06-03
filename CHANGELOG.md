@@ -32,6 +32,11 @@ and fails the release if the entry is missing. Record day-to-day changes under
   carry a spec. The spec format gained an adjudicated **Adversarial
   review** disposition, and specs 0002–0003 were added (completing the
   L3→L4 specifications discipline).
+- A **re-assessment** showing the L3→L4 progression
+  (`assessments/2026-06-03-assessment-2.md` + HTML), linked from the
+  README and docs as a progression example: cognitive read L3→L4, with
+  the Habitat Build Gap flipping +0.2 (Coherent) → +1.1 (Ambition
+  outpaces enablement).
 
 ## [0.4.1] - 2026-06-03
 

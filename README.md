@@ -211,16 +211,21 @@ sections:
 
 A shareable HTML version is offered on request.
 
-### Example
+### Example — and a progression
 
-See a real report — this plugin assessed against **its own repo**
-(a coherent **L3**, Habitat Build Gap +0.2):
+We ran the assessment against **this plugin's own repo**, then again
+after acting on its own top recommendation (enforcing spec-first). The
+two reports show real progression — and an honest twist:
 
-- Markdown: [`assessments/2026-06-03-assessment.md`](assessments/2026-06-03-assessment.md)
-- Rendered HTML: [view on the docs site](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment.html)
-  (also committed at `assessments/2026-06-03-assessment.html`)
+| | Baseline | After enforcing spec-first |
+|---|---|---|
+| Cognitive read | L3 — Habitat design | **L4 — Specification-led** |
+| Habitat Build Gap | +0.2 — Coherent | **+1.1 — Ambition outpaces enablement** |
+| Report | [md](assessments/2026-06-03-assessment.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment.html) | [md](assessments/2026-06-03-assessment-2.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment-2.html) |
 
-More on the example — including what it found — in the
+Lifting the spec discipline to L4 left the operational habitat behind, so
+the gap flipped from coherent to ambition-outpaces-enablement — the
+instrument tracking coherence, not just level. Full write-up in the
 [docs](https://techtalk.github.io/ai-readiness-assessment/examples/).
 
 ## Layout

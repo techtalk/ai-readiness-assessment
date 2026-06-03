@@ -19,6 +19,9 @@ and fails the release if the entry is missing. Record day-to-day changes under
 - An example self-assessment — the plugin run against its own repo —
   committed under `assessments/` (markdown + HTML) and linked from the
   README and the docs site (`/examples/`).
+- A `specs/` layer (README + template + the first spec) and a
+  **spec-first** convention in HARNESS.md — starting the L3→L4 jump the
+  self-assessment recommended.
 
 ## [0.4.1] - 2026-06-03
 

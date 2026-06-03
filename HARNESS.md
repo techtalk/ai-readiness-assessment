@@ -78,6 +78,15 @@
 - **Plain-text output**: The optional rendered output (HTML, printable
   PDF, or other) must use print-friendly typography. No emojis appear in
   any rendering template the skill emits.
+- **Spec-first for substantive changes**: Substantive, behaviour-changing
+  work (the assessment instrument, the model or scoring, a new workflow)
+  is captured as a spec under `specs/` — at minimum a one-paragraph intent
+  — written or updated with the change and referenced in the PR. Docs,
+  chore, surface-sync, dependency, and pure-fix PRs are exempt. Each spec
+  carries a "Risks / what could go wrong" section (a lightweight
+  adversarial review). This is a convention, not yet an enforced
+  constraint. A reviewer can verify by checking a substantive PR links a
+  `specs/NNNN-*.md` entry.
 
 ---
 
@@ -153,7 +162,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-03 (Status reconciled via /harness-sync)
+Last audit: 2026-06-03 (Conventions updated — spec-first added)
 Constraints enforced: 2/3
 Garbage collection active: 1/1
-Drift detected: no
+Drift detected: yes (convention files predate the spec-first convention — re-run /harness-sync)

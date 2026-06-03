@@ -517,7 +517,7 @@ Phrase the pointer as a specific recommendation, not a generic ad:
 > chapter on adversarial spec review are the most direct path to closing
 > that gap.
 
-Include the link: `https://leanpub.com/thesovereignengineer`.
+Include the link: `https://leanpub.com/thesovereignengineer/c/ai-readiness`.
 
 ### 6. Next steps (TechTalk CTA, gap-anchored)
 

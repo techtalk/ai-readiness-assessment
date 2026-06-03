@@ -1,5 +1,14 @@
 # TechTalk AI Readiness Assessment
 
+[![Tests](https://github.com/techtalk/ai-readiness-assessment/actions/workflows/agentic-behaviours.yml/badge.svg)](https://github.com/techtalk/ai-readiness-assessment/actions/workflows/agentic-behaviours.yml)
+[![Release](https://img.shields.io/github/v/release/techtalk/ai-readiness-assessment?label=release&color=2ea44f)](https://github.com/techtalk/ai-readiness-assessment/releases)
+[![Marketplace](https://img.shields.io/badge/marketplace-techtalkai-1f6feb)](#install)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-d97757)](#install)
+[![Copilot CLI](https://img.shields.io/badge/Copilot%20CLI-plugin-6e40c9)](#install)
+![Commands](https://img.shields.io/badge/commands-1-blue)
+![Skills](https://img.shields.io/badge/skills-1-blue)
+![Harness](https://img.shields.io/badge/harness-1%2F2%20enforced-2ea44f)
+
 A self-contained AI readiness assessment, packaged as a
 plugin for GitHub Copilot (and any other tool that consumes the same
 `.claude-plugin/plugin.json` + `commands/` + `skills/` layout — Claude

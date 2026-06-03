@@ -22,3 +22,13 @@ directly — run `/convention-sync` to regenerate.
   code is merged
 - Enforcement: deterministic
 - Scope: pr
+
+## Dual-surface sync (command ≡ skill)
+
+- Rule: The embedded framework content (the model, the cognitive read,
+  the scoring heuristic, and the assessment process) in
+  `commands/ai-readiness-assess.md` must match the same content in
+  `skills/ai-readiness-assessment/SKILL.md`. Editing one without
+  updating the other is forbidden.
+- Enforcement: agent
+- Scope: pr

@@ -145,7 +145,7 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-02 (constraint added via /reflect → /harness-constrain)
+Last audit: 2026-06-02 (Status reconciled via /harness-sync)
 Constraints enforced: 2/3
 Garbage collection active: 1/1
-Drift detected: yes (convention files predate the Dual-surface sync constraint — re-run /harness-sync)
+Drift detected: no

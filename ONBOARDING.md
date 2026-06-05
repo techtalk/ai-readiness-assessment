@@ -106,6 +106,9 @@ These block merges into `main` (which is branch-protected):
 - **Onboarding gate** — a PR that changes the HARNESS body or AGENTS.md
   must refresh `ONBOARDING.md`. The required check **`Onboarding gate`**
   enforces it.
+- **No direct pushes** — changes must arrive via PR; direct pushes to
+  `main` are blocked by GitHub branch protection (including for
+  administrators). There is no bypass.
 
 ### On schedule
 
@@ -133,8 +136,11 @@ practical traps with what happened and how to avoid them.
 - **The two manifests must agree on the version.** The release workflow
   and the changelog gate both fail if `plugin.json` and
   `marketplace.json` disagree.
-- **`main` is branch-protected.** Branch and open a PR; the
-  `A-tier structural assertions` and `Changelog gate` checks must pass.
+- **`main` is branch-protected — no direct pushes, including for admins.**
+  Branch and open a PR; the `A-tier structural assertions`, `Changelog
+  gate`, `Spec-first gate`, and `Onboarding gate` checks must pass.
+  GitHub branch protection enforces the PR requirement at the platform
+  level.
 
 ---
 

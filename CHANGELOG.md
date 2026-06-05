@@ -14,6 +14,16 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Changed
+
+- **Aligned repo language and links with the TechTalk marketing site**:
+  fixed the TechTalk CTA domain (`techtalk.ai`, a parked GoDaddy page →
+  `techtalk.at` with `thomas.stangl@techtalk.at`) in the command and
+  skill; corrected the command description from "AI literacy" to "AI
+  readiness"; added a **Product page** link to the README and a matching
+  button to `docs/index.md`; echoed the "scan, score, and a plan"
+  framing in the README intro line. (#42)
+
 ### Added
 
 - An **AI Literacy: Level 4** badge (and an **Agent Harness Enabled**

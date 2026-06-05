@@ -134,6 +134,17 @@
   of the spec's Risks at PR
 - **Scope**: pr
 
+### No direct pushes to main
+
+- **Rule**: All changes must be committed on a feature branch and merged
+  via a pull request — direct pushes to `main` are not permitted,
+  including for administrators
+- **Enforcement**: deterministic
+- **Tool**: GitHub branch protection — `require_pull_request_reviews`
+  enabled on `main` with `enforce_admins: true`, configured in
+  repository Settings → Branches
+- **Scope**: pr
+
 ---
 
 ## Garbage Collection
@@ -186,6 +197,6 @@
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
 Last audit: 2026-06-03 (Status reconciled via /harness-sync)
-Constraints enforced: 3/4
+Constraints enforced: 4/5
 Garbage collection active: 2/2
 Drift detected: no

@@ -16,6 +16,12 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Changed
 
+- **Aligned HTML report design with the TechTalk marketing site** (spec
+  0006): all-sans-serif typography (drop Georgia serif body); dark navy
+  header band with TechTalk wordmark, headline lines, and a five-level
+  progress strip; TechTalk navy `h2` headings and borders; TechTalk GmbH
+  footer branding. Updated the two example reports and fixed their
+  `techtalk.ai` CTA links to `techtalk.at`.
 - **Aligned repo language and links with the TechTalk marketing site**:
   fixed the TechTalk CTA domain (`techtalk.ai`, a parked GoDaddy page →
   `techtalk.at` with `thomas.stangl@techtalk.at`) in the command and

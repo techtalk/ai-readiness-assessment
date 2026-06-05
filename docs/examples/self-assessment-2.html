@@ -5,77 +5,151 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Readiness Assessment (re-assessment) — ai-readiness-assessment</title>
 <style>
-  :root{--grey:#9aa0a6;--l1:#7fb3d5;--l2:#3f7cac;--l3:#1f9e8f;--l4:#2e8b57;
-    --l5:#caa14a;--amber:#c77d31;--ink:#1c1c1c;--muted:#5b5b5b;--line:#e3e3e3;
-    --bg:#fdfdfc;--techtalk:#0b2b3c;}
+  :root{
+    --l1:#7fb3d5;--l2:#3f7cac;--l3:#1f9e8f;--l4:#2e8b57;--l5:#caa14a;
+    --amber:#c77d31;--ink:#1c1c1c;--muted:#5b5b5b;--line:#e3e3e3;
+    --bg:#fdfdfc;--techtalk:#0b2b3c;--tt-light:#eaf2f6;
+  }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.55}
-  .wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.25rem 4rem}
-  h1,h2,h3,.badge,.btn,.cardlabel,.verb{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-  h1{font-size:1.7rem;margin:0 0 .25rem}
-  h2{font-size:1.2rem;margin:2.2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.3rem}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.6}
+  /* Dark header band */
+  .tt-header{background:var(--techtalk);color:var(--tt-light);
+    padding:2rem 1.5rem 1.75rem}
+  .tt-wordmark{font-size:.68rem;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;opacity:.55;margin-bottom:1rem}
+  .tt-header h1{font-size:1.55rem;font-weight:700;margin:0 0 .2rem;
+    color:#fff;font-family:inherit}
+  .tt-meta{font-size:.85rem;opacity:.65;margin-bottom:1.25rem}
+  .tt-headline{background:rgba(255,255,255,.09);border-radius:8px;
+    padding:.9rem 1.1rem;font-size:1.05rem;font-weight:700;line-height:1.55}
+  .hl-now{color:#fff}
+  .hl-now span{color:var(--l3)}
+  .hl-next{color:rgba(255,255,255,.85);margin-top:.15rem}
+  .hl-next span{color:var(--l5)}
+  /* Five-level progress strip */
+  .level-strip{display:flex;gap:3px;margin:1.1rem 0 0}
+  .lpip{flex:1;text-align:center;padding:.4rem .25rem;border-radius:6px;
+    background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);
+    font-size:.68rem;font-weight:600;border:2px solid transparent;line-height:1.3}
+  .lpip .lpip-n{display:block;font-size:.95rem;font-weight:800;
+    line-height:1;margin-bottom:.1rem}
+  .lpip.active{background:rgba(255,255,255,.17);color:#fff;
+    border-color:rgba(255,255,255,.45)}
+  .lpip.active .lpip-n{color:#fff}
+  .lpip.target{background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);
+    border-color:rgba(255,255,255,.25);border-style:dashed}
+  .lpip-tag{display:block;font-size:.58rem;font-weight:500;margin-top:.1rem;opacity:.8}
+  /* Body */
+  .wrap{max-width:720px;margin:0 auto;padding:2rem 1.25rem 4rem}
+  h2{font-size:1.15rem;font-weight:700;margin:2.2rem 0 .6rem;
+    border-bottom:2px solid var(--techtalk);padding-bottom:.3rem;color:var(--techtalk)}
+  h3{font-size:1rem;margin:1rem 0 .4rem}
+  .reading h2,.cta h2{border-bottom:none;margin-top:0}
+  .cta h2{color:#fff}
+  .reading h2{color:var(--techtalk)}
   .sub{color:var(--muted);margin:.1rem 0 1rem}
   .badges{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0;align-items:stretch}
-  .badge{display:inline-flex;flex-direction:column;color:#fff;border-radius:8px;padding:.45rem .7rem;font-size:.8rem;font-weight:600}
+  .badge{display:inline-flex;flex-direction:column;color:#fff;border-radius:8px;
+    padding:.45rem .7rem;font-size:.8rem;font-weight:600}
   .badge .big{font-size:1.15rem;line-height:1.1}
   .badge small{font-weight:500;opacity:.92}
-  .gapbadge{display:inline-flex;align-items:center;background:var(--amber);color:#fff;border-radius:8px;padding:.45rem .8rem;font-family:-apple-system,Helvetica,Arial,sans-serif;font-weight:600;font-size:.85rem}
+  .gapbadge{display:inline-flex;align-items:center;background:var(--amber);color:#fff;
+    border-radius:8px;padding:.45rem .8rem;font-weight:600;font-size:.85rem}
   .rationale{font-style:italic;color:var(--muted)}
-  .note{background:#f4f7f6;border-left:3px solid var(--l3);padding:.6rem .9rem;border-radius:4px;color:var(--muted);font-size:.95rem}
-  .prog{background:#fbf3ea;border-left:3px solid var(--amber);padding:.6rem .9rem;border-radius:4px;font-size:.95rem}
-  .profile-row{display:grid;grid-template-columns:9.5rem 1fr;gap:.6rem;align-items:center;margin:.28rem 0}
-  .dim{font-size:.86rem}.bar{display:flex;gap:3px}.seg{flex:1;height:14px;border-radius:3px;background:#ececec}
+  .note{background:#f4f7f6;border-left:3px solid var(--l3);padding:.6rem .9rem;
+    border-radius:4px;color:var(--muted);font-size:.95rem}
+  .prog{background:#fbf3ea;border-left:3px solid var(--amber);padding:.6rem .9rem;
+    border-radius:4px;font-size:.95rem}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;margin:.4rem 0}
+  th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+  .profile-row{display:grid;grid-template-columns:9.5rem 1fr;gap:.6rem;
+    align-items:center;margin:.28rem 0}
+  .dim{font-size:.86rem}
+  .bar{display:flex;gap:3px}
+  .seg{flex:1;height:14px;border-radius:3px;background:#ececec}
   .verb{font-size:.78rem;color:var(--muted)}
   .cards{display:flex;gap:.7rem;flex-wrap:wrap}
-  .card{flex:1 1 30%;min-width:170px;border:1px solid var(--line);border-radius:8px;padding:.7rem .8rem}
-  .cardlabel{font-size:.82rem;font-weight:600}.dots{margin-top:.35rem}
-  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:3px;background:#e6e6e6}
+  .card{flex:1 1 30%;min-width:170px;border:1px solid var(--line);
+    border-radius:8px;padding:.7rem .8rem}
+  .cardlabel{font-size:.82rem;font-weight:600}
+  .dots{margin-top:.35rem}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;
+    margin-right:3px;background:#e6e6e6}
   .dot.on{background:var(--l4)}
   .axes{display:flex;gap:.7rem;flex-wrap:wrap;margin:.5rem 0}
-  .axis{flex:1 1 22%;min-width:120px;border:1px solid var(--line);border-radius:8px;padding:.55rem .65rem}
-  .twocol{display:flex;gap:1.2rem;flex-wrap:wrap}.twocol>div{flex:1 1 45%;min-width:230px}
+  .axis{flex:1 1 22%;min-width:120px;border:1px solid var(--line);
+    border-radius:8px;padding:.55rem .65rem}
+  .twocol{display:flex;gap:1.2rem;flex-wrap:wrap}
+  .twocol>div{flex:1 1 45%;min-width:230px}
   ol,ul{padding-left:1.2rem}
-  .reading,.cta{border-radius:10px;padding:1rem 1.1rem;margin-top:1rem}.reading{background:#f4f7f6}
-  .cta{background:var(--techtalk);color:#eaf2f6}.cta h2{color:#fff;border-color:rgba(255,255,255,.25)}
-  .btn{display:inline-block;margin-top:.5rem;background:var(--l4);color:#fff;text-decoration:none;border-radius:6px;padding:.5rem .9rem;font-weight:600;font-size:.9rem}
+  .reading,.cta{border-radius:10px;padding:1rem 1.1rem;margin-top:1rem}
+  .reading{background:#f4f7f6}
+  .cta{background:var(--techtalk);color:var(--tt-light)}
+  .btn{display:inline-block;margin-top:.5rem;background:var(--l4);color:#fff;
+    text-decoration:none;border-radius:6px;padding:.5rem .9rem;
+    font-weight:600;font-size:.9rem}
   .cta .btn{background:#caa14a;color:#1c1c1c}
   a{color:var(--l2)}
-  code{font-family:ui-monospace,Menlo,monospace;font-size:.86em;background:#f0f0ef;padding:.05rem .3rem;border-radius:3px}
-  pre{font-family:ui-monospace,Menlo,monospace;font-size:.85rem;background:#f0f0ef;padding:.8rem;border-radius:6px;white-space:pre-wrap}
-  footer{margin-top:2.5rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:.8rem}
-  @media print{body{background:#fff}.cta{background:#fff;color:#000;border:1px solid var(--line)}.cta h2{color:#000}}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+    background:#f0f0ef;padding:.05rem .3rem;border-radius:3px}
+  pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
+    background:#f0f0ef;padding:.8rem;border-radius:6px;white-space:pre-wrap}
+  footer{margin-top:2.5rem;color:var(--muted);font-size:.8rem;
+    border-top:1px solid var(--line);padding-top:.8rem;line-height:1.7}
+  @media print{
+    body{background:#fff}
+    .tt-header{background:var(--techtalk);-webkit-print-color-adjust:exact;
+      print-color-adjust:exact}
+    .wrap{max-width:none}
+    .cta{background:#fff;color:#000;border:1px solid var(--line)}
+    .cta h2{color:#000}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>AI Readiness Assessment — re-assessment</h1>
-  <div class="sub">Project: <strong>ai-readiness-assessment</strong> &middot; 2026-06-03</div>
 
-  <div style="margin:.9rem 0;padding:.85rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:#f7faf9;font-family:-apple-system,Helvetica,Arial,sans-serif">
-    <div style="font-size:1.25rem;font-weight:700">AI Readiness — Habitat Maturity: <span style="color:var(--l3)">Level 3 (Regulating)</span></div>
-    <div style="font-size:1.25rem;font-weight:700;margin-top:.2rem">Next Step / Gap: <span style="color:var(--l4)">+1.1 to Level 4 (Orchestrating)</span></div>
+<div class="tt-header">
+  <div class="tt-wordmark">TechTalk &middot; AI Readiness Assessment</div>
+  <h1>AI Readiness Assessment &mdash; re-assessment</h1>
+  <div class="tt-meta">Project: <strong>ai-readiness-assessment</strong> &middot; 2026-06-03</div>
+  <div class="tt-headline">
+    <div class="hl-now">AI Readiness &mdash; Habitat Maturity: <span>Level 3 (Regulating)</span></div>
+    <div class="hl-next">Next Step / Gap: <span>+1.1 to Level 4 (Orchestrating)</span></div>
   </div>
+  <div class="level-strip">
+    <div class="lpip"><span class="lpip-n">1</span>Dictating</div>
+    <div class="lpip"><span class="lpip-n">2</span>Commanding</div>
+    <div class="lpip active"><span class="lpip-n">3</span>Regulating<span class="lpip-tag">&larr; you are here</span></div>
+    <div class="lpip target"><span class="lpip-n">4</span>Orchestrating<span class="lpip-tag">&rarr; target</span></div>
+    <div class="lpip"><span class="lpip-n">5</span>Supervising</div>
+  </div>
+</div>
+
+<div class="wrap">
 
   <div class="badges">
     <span class="badge" style="background:var(--l3)"><small>Habitat Maturity (model)</small><span class="big">Level 3</span></span>
-    <span class="badge" style="background:var(--l4)"><small>Cognitive read</small><span class="big">Level 4 — Specification-led</span></span>
-    <span class="gapbadge" title="cognitive − 14-dim mean">Habitat Build Gap +1.1 &middot; Ambition outpaces enablement</span>
+    <span class="badge" style="background:var(--l4)"><small>Cognitive read</small><span class="big">Level 4 &mdash; Specification-led</span></span>
+    <span class="gapbadge" title="cognitive &minus; 14-dim mean">Habitat Build Gap +1.1 &middot; Ambition outpaces enablement</span>
   </div>
 
   <p class="prog"><strong>Progression.</strong> The baseline
   (<a href="self-assessment.html">view</a>) read a <strong>coherent L3</strong>
   (gap +0.2). Enforcing spec-first lifted the cognitive read to
-  <strong>L4</strong> — but the operational habitat didn't move with it, so the
-  gap flipped to <strong>+1.1 — ambition outpaces enablement</strong>. The
+  <strong>L4</strong> &mdash; but the operational habitat didn&rsquo;t move with it, so the
+  gap flipped to <strong>+1.1 &mdash; ambition outpaces enablement</strong>. The
   discipline jumped; now the habitat must catch up.</p>
 
   <p class="note">A re-assessment of the plugin against <strong>its own
   repository</strong>, after spec-first became an enforced discipline
-  (specs 0001–0003, the Spec-first constraint + gate).</p>
+  (specs 0001&ndash;0003, the Spec-first constraint + gate).</p>
 
   <h2>Habitat Maturity Profile</h2>
   <div id="profile"></div>
-  <p class="verb" style="margin-top:.6rem"><strong>Habitat Maturity Level:</strong> L3 (mean L2.93) — held back by L2 Testing, Observability, and Agent composition.</p>
+  <p class="verb" style="margin-top:.6rem"><strong>Habitat Maturity Level:</strong> L3 (mean L2.93) &mdash; held back by L2 Testing, Observability, and Agent composition.</p>
 
   <h2>Discipline Maturity</h2>
   <div class="cards">
@@ -84,7 +158,7 @@
     <div class="card"><div class="cardlabel">Guardrail Design</div><div class="dots" data-n="4"></div><div class="verb">4 / 5 &middot; was 3</div></div>
   </div>
 
-  <h2>AI Readiness Score — five readiness dimensions</h2>
+  <h2>AI Readiness Score &mdash; five readiness dimensions</h2>
   <p class="verb">A view over the same evidence; the headline level is the 14-dimension Habitat Maturity.</p>
   <div class="axes">
     <div class="axis"><div class="cardlabel">Context</div><div class="verb">L4</div></div>
@@ -109,18 +183,18 @@ Habitat Build Gap:               +1.07   (cognitive &minus; 14-dim mean)
 Interpretation:                  Ambition outpaces enablement</pre>
   <p>Lifting the spec discipline to L4 moved the cognitive read up; the operational
   habitat (Testing, Observability, Composition still L2) did not move with it. Not a
-  regression — the expected, healthy consequence of a deliberate discipline jump,
+  regression &mdash; the expected, healthy consequence of a deliberate discipline jump,
   and it names the next work: build the habitat the L4 thinking now implies.</p>
 
   <h2>Strengths &amp; Gaps</h2>
   <div class="twocol">
     <div><h3>Strengths</h3><ol>
       <li>Spec-first is lived and <strong>enforced</strong> (a required gate), with adversarial review at plan approval.</li>
-      <li>Policy-as-code governance — four required CI gates on a protected <code>main</code>.</li>
+      <li>Policy-as-code governance &mdash; four required CI gates on a protected <code>main</code>.</li>
       <li>The progression was executed spec-first (spec 0002 drove its own change).</li>
     </ol></div>
     <div><h3>Gaps</h3><ol>
-      <li>Operational habitat lags the discipline (Testing / Observability / Composition at L2) — the +1.1 gap.</li>
+      <li>Operational habitat lags the discipline (Testing / Observability / Composition at L2) &mdash; the +1.1 gap.</li>
       <li>Thin spec practice (3 specs, 2 about the spec system).</li>
       <li>No orchestration acting on specs (the L4&rarr;L5 edge).</li>
     </ol></div>
@@ -128,24 +202,34 @@ Interpretation:                  Ambition outpaces enablement</pre>
 
   <h2>Prioritised Improvement Plan</h2>
   <p class="verb"><em>Team develops</em> = practice the team builds; <em>Org provides</em> = enablement the organisation supplies.</p>
-  <p>The gap flipped, so the advice flips — <strong>build the habitat your thinking now implies</strong>:</p>
+  <p>The gap flipped, so the advice flips &mdash; <strong>build the habitat your thinking now implies</strong>:</p>
   <ol>
-    <li><strong>Lift Testing off L2</strong> — behavioural/semantic verification (golden-output or LLM-judge for the B/C tiers): <em>Asserting &rarr; Verifying</em>.</li>
-    <li><strong>Lift Observability off L2</strong> — capture agent-activity / cost signals.</li>
-    <li><strong>Lift Agent composition off L2</strong> — a read-only critic on PRs (primary-plus-critic).</li>
+    <li><strong>Lift Testing off L2</strong> &mdash; behavioural/semantic verification (golden-output or LLM-judge for the B/C tiers): <em>Asserting &rarr; Verifying</em>.</li>
+    <li><strong>Lift Observability off L2</strong> &mdash; capture agent-activity / cost signals.</li>
+    <li><strong>Lift Agent composition off L2</strong> &mdash; a read-only critic on PRs (primary-plus-critic).</li>
   </ol>
 
-  <div class="reading"><h2 style="border:none;margin-top:0">Reading Path</h2>
-    <p>Assessed at <strong>L4 — Specification-led</strong>. Next read: the <strong>Level 5 (systems and orchestration)</strong> chapter — specs are in place; the next leverage is agents that orchestrate around them.</p>
-    <a class="btn" href="https://leanpub.com/thesovereignengineer/c/ai-readiness">Read on Leanpub</a></div>
+  <div class="reading">
+    <h2>Reading Path</h2>
+    <p>Assessed at <strong>L4 &mdash; Specification-led</strong>. Next read: the <strong>Level 5 (systems and orchestration)</strong> chapter &mdash; specs are in place; the next leverage is agents that orchestrate around them.</p>
+    <a class="btn" href="https://leanpub.com/thesovereignengineer/c/ai-readiness">Read on Leanpub</a>
+  </div>
 
-  <div class="cta"><h2 style="margin-top:0">Next Steps</h2>
-    <p>The gap is now <strong>+1.1 — ambition outpaces enablement</strong>: the habitat needs to catch up to the thinking. TechTalk can support a <strong>habitat-build engagement</strong> on the lagging operational axes — verification depth, observability, and agent composition — so the environment delivers what your L4 specs already imply.</p>
-    <a class="btn" href="https://techtalk.ai">Get in touch</a></div>
+  <div class="cta">
+    <h2>Next Steps</h2>
+    <p>The gap is now <strong>+1.1 &mdash; ambition outpaces enablement</strong>: the habitat needs to catch up to the thinking. TechTalk can support a <strong>habitat-build engagement</strong> on the lagging operational axes &mdash; verification depth, observability, and agent composition &mdash; so the environment delivers what your L4 specs already imply.</p>
+    <a class="btn" href="https://techtalk.at">Get in touch</a>
+    <div style="margin-top:.6rem;font-size:.85rem;opacity:.8">thomas.stangl@techtalk.at</div>
+  </div>
 
-  <footer>Generated by the ai-readiness-assessment plugin (re-assessment, 2026-06-03).
-  Source: <code>assessments/2026-06-03-assessment-2.md</code> &middot; baseline: <a href="self-assessment.html">self-assessment.html</a>.</footer>
+  <footer>
+    Generated by the <a href="https://techtalk.at" style="color:inherit">TechTalk</a> AI Readiness Assessment &middot; re-assessment, 2026-06-03<br>
+    &copy; TechTalk GmbH &middot; Vienna, Austria<br>
+    Source: <code>assessments/2026-06-03-assessment-2.md</code> &middot; baseline: <a href="self-assessment.html">self-assessment.html</a>
+  </footer>
+
 </div>
+
 <script>
   var dims=[["Agent behaviour",3,"Regulating"],["Agent input",3,"specs co-authored"],
     ["Workflow",4,"workflow defined"],["Operating model",3,"drive / verify"],
@@ -160,10 +244,12 @@ Interpretation:                  Ambition outpaces enablement</pre>
     var n=document.createElement("div");n.className="dim";
     n.innerHTML="<strong>"+d[0]+"</strong> <span class='verb'>L"+d[1]+" &middot; "+d[2]+"</span>";
     var b=document.createElement("div");b.className="bar";
-    for(var i=1;i<=5;i++){var s=document.createElement("div");s.className="seg";if(i<=d[1])s.style.background=lvl[d[1]];b.appendChild(s);}
+    for(var i=1;i<=5;i++){var s=document.createElement("div");s.className="seg";
+      if(i<=d[1])s.style.background=lvl[d[1]];b.appendChild(s);}
     r.appendChild(n);r.appendChild(b);p.appendChild(r);});
   document.querySelectorAll(".dots").forEach(function(el){var n=parseInt(el.getAttribute("data-n"),10);
-    for(var i=1;i<=5;i++){var d=document.createElement("span");d.className="dot"+(i<=n?" on":"");el.appendChild(d);}});
+    for(var i=1;i<=5;i++){var d=document.createElement("span");
+      d.className="dot"+(i<=n?" on":"");el.appendChild(d);}});
 </script>
 </body>
 </html>

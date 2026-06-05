@@ -55,3 +55,19 @@ and add a `Promoted` line in the same commit.
   - Model tiers used: unknown
   - Pipeline stages completed: manual (no orchestrator pipeline)
   - Agent delegation: manual
+
+---
+
+- **Date**: 2026-06-05
+- **Agent**: Claude Code (Opus 4.8)
+- **Task**: Compared repo language and links against the TechTalk marketing site and applied five alignment fixes; committed directly to `main` (corrected by user); updated CHANGELOG via PR; then added a "no direct pushes to main" harness constraint enforced by GitHub branch protection.
+- **Surprise**: Two findings. First: `techtalk.ai` — the domain the model had been filling into the `<techtalk contact URL or email>` template placeholder — is a GoDaddy parked/for-sale page, not TechTalk Austria's website. Every assessment CTA silently pointed to a dead domain. Second and more structural: committing directly to `main` was the first instinct, and there was no gate to catch it — the workflow failure happened before being corrected by the user.
+- **Proposal**: Add to AGENTS.md GOTCHAS: "TechTalk Austria's domain is `techtalk.at` (not `.ai`); contact is `thomas.stangl@techtalk.at`. The CTA URL in the command and skill is now hardcoded — do not revert to a placeholder."
+- **Improvement**: Template placeholders for external URLs invite the model to guess — and the model guesses plausibly but wrongly. Hardcoding the real value at the point of template authoring removes the failure mode entirely. Similarly, branch-first discipline needs to be machine-enforced, not just remembered: a rule not backed by a gate will eventually be skipped.
+- **Signal**: failure
+- **Constraint**: No direct pushes to main — GitHub branch protection with `enforce_admins: true` (deterministic, PR #44)
+- **Session metadata**:
+  - Duration: ~45 min
+  - Model tiers used: unknown
+  - Pipeline stages completed: manual (single-agent, no orchestrator)
+  - Agent delegation: manual

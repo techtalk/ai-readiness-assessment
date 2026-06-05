@@ -1,0 +1,8 @@
+/* TechTalk brand primary colour — overrides Material's built-in indigo */
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color:        #0b2b3c;
+  --md-primary-fg-color--light: #1a4a60;
+  --md-primary-fg-color--dark:  #061720;
+  --md-primary-bg-color:        #fff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, .7);
+}

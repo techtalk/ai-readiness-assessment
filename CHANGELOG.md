@@ -16,6 +16,11 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Changed
 
+- **Aligned docs site style with TechTalk branding**: TechTalk navy
+  primary colour (`#0b2b3c`) for the nav bar and active links; teal
+  accent; system font stack (drop Google Fonts Roboto); copyright footer
+  "© TechTalk GmbH · Vienna, Austria" on every page; TechTalk website
+  added to social links.
 - **Aligned HTML report design with the TechTalk marketing site** (spec
   0006): all-sans-serif typography (drop Georgia serif body); dark navy
   header band with TechTalk wordmark, headline lines, and a five-level

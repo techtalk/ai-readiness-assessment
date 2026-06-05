@@ -18,6 +18,7 @@ a coherence diagnostic that points at the single most valuable next move.
 
 [Run your first assessment](tutorials/your-first-assessment.md){ .md-button .md-button--primary }
 [Install the plugin](how-to/install-github-copilot.md){ .md-button }
+[Product overview (techtalk.at)](https://techtalk.at/ai-readiness-assessment-draft/){ .md-button }
 
 !!! tip "See a real report"
     Curious what the output looks like? We ran the assessment against

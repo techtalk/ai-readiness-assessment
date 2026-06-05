@@ -568,7 +568,7 @@ discipline. The pattern:
 > - <engagement option 1 — concrete, named>
 > - <engagement option 2 — concrete, named>
 >
-> Get in touch: <techtalk contact URL or email>
+> Get in touch: [techtalk.at](https://techtalk.at) · thomas.stangl@techtalk.at
 ```
 
 Engagement map (template — customise to TechTalk's actual offering):

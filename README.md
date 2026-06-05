@@ -13,12 +13,14 @@
 [![AI Literacy](https://img.shields.io/badge/AI_Literacy-Level_4-2E8B57)](assessments/2026-06-03-assessment-2.md)
 [![Agent Harness Enabled](https://img.shields.io/badge/Agent_Harness-Enabled-000000)](HARNESS.md)
 
+**Product page:** [techtalk.at/ai-readiness-assessment](https://techtalk.at/ai-readiness-assessment-draft/)
+
 A self-contained AI readiness assessment, packaged as a
 plugin for GitHub Copilot (and any other tool that consumes the same
 `.claude-plugin/plugin.json` + `commands/` + `skills/` layout — Claude
 Code, Cursor via wrapper, Windsurf via wrapper).
 
-Drop into any repository, invoke once, get:
+Drop into any repository, invoke once — get a scan, a score, and a plan:
 
 - A timestamped assessment at `assessments/YYYY-MM-DD-assessment.md`.
 - A full placement on the **Agentic Experience 5-Level Habitat Maturity

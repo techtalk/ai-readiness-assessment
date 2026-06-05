@@ -6,90 +6,141 @@
 <title>AI Readiness Assessment — ai-readiness-assessment</title>
 <style>
   :root{
-    --grey:#9aa0a6; --l1:#7fb3d5; --l2:#3f7cac; --l3:#1f9e8f;
-    --l4:#2e8b57; --l5:#caa14a; --ink:#1c1c1c; --muted:#5b5b5b;
-    --line:#e3e3e3; --bg:#fdfdfc; --techtalk:#0b2b3c;
+    --l1:#7fb3d5;--l2:#3f7cac;--l3:#1f9e8f;--l4:#2e8b57;--l5:#caa14a;
+    --ink:#1c1c1c;--muted:#5b5b5b;--line:#e3e3e3;
+    --bg:#fdfdfc;--techtalk:#0b2b3c;--tt-light:#eaf2f6;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:Georgia,"Times New Roman",serif;line-height:1.55}
-  .wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.25rem 4rem}
-  h1,h2,h3,.badge,.chip,.btn,.cardlabel,th{font-family:-apple-system,
-    BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-  h1{font-size:1.7rem;margin:0 0 .25rem}
-  h2{font-size:1.2rem;margin:2.2rem 0 .6rem;border-bottom:1px solid var(--line);
-    padding-bottom:.3rem}
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.6}
+  /* Dark header band */
+  .tt-header{background:var(--techtalk);color:var(--tt-light);
+    padding:2rem 1.5rem 1.75rem}
+  .tt-wordmark{font-size:.68rem;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;opacity:.55;margin-bottom:1rem}
+  .tt-header h1{font-size:1.55rem;font-weight:700;margin:0 0 .2rem;
+    color:#fff;font-family:inherit}
+  .tt-meta{font-size:.85rem;opacity:.65;margin-bottom:1.25rem}
+  .tt-headline{background:rgba(255,255,255,.09);border-radius:8px;
+    padding:.9rem 1.1rem;font-size:1.05rem;font-weight:700;line-height:1.55}
+  .hl-now{color:#fff}
+  .hl-now span{color:var(--l3)}
+  .hl-next{color:rgba(255,255,255,.85);margin-top:.15rem}
+  .hl-next span{color:var(--l5)}
+  /* Five-level progress strip */
+  .level-strip{display:flex;gap:3px;margin:1.1rem 0 0}
+  .lpip{flex:1;text-align:center;padding:.4rem .25rem;border-radius:6px;
+    background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);
+    font-size:.68rem;font-weight:600;border:2px solid transparent;line-height:1.3}
+  .lpip .lpip-n{display:block;font-size:.95rem;font-weight:800;
+    line-height:1;margin-bottom:.1rem}
+  .lpip.active{background:rgba(255,255,255,.17);color:#fff;
+    border-color:rgba(255,255,255,.45)}
+  .lpip.active .lpip-n{color:#fff}
+  .lpip.target{background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);
+    border-color:rgba(255,255,255,.25);border-style:dashed}
+  .lpip-tag{display:block;font-size:.58rem;font-weight:500;margin-top:.1rem;opacity:.8}
+  /* Body */
+  .wrap{max-width:720px;margin:0 auto;padding:2rem 1.25rem 4rem}
+  h2{font-size:1.15rem;font-weight:700;margin:2.2rem 0 .6rem;
+    border-bottom:2px solid var(--techtalk);padding-bottom:.3rem;color:var(--techtalk)}
+  h3{font-size:1rem;margin:1rem 0 .4rem}
+  .reading h2,.cta h2{border-bottom:none;margin-top:0}
+  .cta h2{color:#fff}
+  .reading h2{color:var(--techtalk)}
   .sub{color:var(--muted);margin:.1rem 0 1rem}
   .badges{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
   .badge{display:inline-flex;flex-direction:column;align-items:flex-start;
     color:#fff;border-radius:8px;padding:.45rem .7rem;font-size:.8rem;font-weight:600}
   .badge .big{font-size:1.15rem;line-height:1}
   .badge small{font-weight:500;opacity:.92}
+  .gapbadge{display:inline-block;background:var(--l3);color:#fff;border-radius:8px;
+    padding:.5rem .8rem;font-weight:600}
   .rationale{font-style:italic;color:var(--muted)}
   .note{background:#f4f7f6;border-left:3px solid var(--l3);padding:.6rem .9rem;
     border-radius:4px;color:var(--muted);font-size:.95rem}
   table{border-collapse:collapse;width:100%;font-size:.92rem;margin:.4rem 0}
   th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
   th{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
-  .profile-row{display:grid;grid-template-columns:9.5rem 1fr;gap:.6rem;align-items:center;margin:.28rem 0}
+  .profile-row{display:grid;grid-template-columns:9.5rem 1fr;gap:.6rem;
+    align-items:center;margin:.28rem 0}
   .dim{font-size:.86rem}
   .bar{display:flex;gap:3px}
   .seg{flex:1;height:14px;border-radius:3px;background:#ececec}
-  .seg.on{background:var(--l3)}
-  .verb{font-size:.78rem;color:var(--muted);font-family:-apple-system,Helvetica,Arial,sans-serif}
+  .verb{font-size:.78rem;color:var(--muted)}
   .cards{display:flex;gap:.7rem;flex-wrap:wrap}
-  .card{flex:1 1 30%;min-width:170px;border:1px solid var(--line);border-radius:8px;padding:.7rem .8rem}
+  .card{flex:1 1 30%;min-width:170px;border:1px solid var(--line);
+    border-radius:8px;padding:.7rem .8rem}
   .cardlabel{font-size:.82rem;font-weight:600}
   .dots{margin-top:.35rem}
-  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:3px;
-    background:#e6e6e6}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;
+    margin-right:3px;background:#e6e6e6}
   .dot.on{background:var(--l3)}
   .axes{display:flex;gap:.7rem;flex-wrap:wrap;margin:.5rem 0}
-  .axis{flex:1 1 22%;min-width:120px;border:1px solid var(--line);border-radius:8px;padding:.55rem .65rem}
-  .gapbadge{display:inline-block;background:var(--l3);color:#fff;border-radius:8px;
-    padding:.5rem .8rem;font-family:-apple-system,Helvetica,Arial,sans-serif;font-weight:600}
+  .axis{flex:1 1 22%;min-width:120px;border:1px solid var(--line);
+    border-radius:8px;padding:.55rem .65rem}
   .twocol{display:flex;gap:1.2rem;flex-wrap:wrap}
   .twocol>div{flex:1 1 45%;min-width:230px}
   ol,ul{padding-left:1.2rem}
   .reading,.cta{border-radius:10px;padding:1rem 1.1rem;margin-top:1rem}
   .reading{background:#f4f7f6}
-  .cta{background:var(--techtalk);color:#eaf2f6}
-  .cta h2{color:#fff;border-color:rgba(255,255,255,.25)}
-  .btn{display:inline-block;margin-top:.5rem;background:var(--l3);color:#fff;text-decoration:none;
-    border-radius:6px;padding:.5rem .9rem;font-weight:600;font-size:.9rem}
+  .cta{background:var(--techtalk);color:var(--tt-light)}
+  .btn{display:inline-block;margin-top:.5rem;background:var(--l3);color:#fff;
+    text-decoration:none;border-radius:6px;padding:.5rem .9rem;
+    font-weight:600;font-size:.9rem}
   .cta .btn{background:#caa14a;color:#1c1c1c}
   a{color:var(--l2)}
   code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
     background:#f0f0ef;padding:.05rem .3rem;border-radius:3px}
-  footer{margin-top:2.5rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);
-    padding-top:.8rem}
-  @media print{body{background:#fff}.wrap{max-width:none}.cta{background:#fff;color:#000;border:1px solid var(--line)}.cta h2{color:#000}}
+  pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
+    background:#f0f0ef;padding:.8rem;border-radius:6px;white-space:pre-wrap}
+  footer{margin-top:2.5rem;color:var(--muted);font-size:.8rem;
+    border-top:1px solid var(--line);padding-top:.8rem;line-height:1.7}
+  @media print{
+    body{background:#fff}
+    .tt-header{background:var(--techtalk);-webkit-print-color-adjust:exact;
+      print-color-adjust:exact}
+    .wrap{max-width:none}
+    .cta{background:#fff;color:#000;border:1px solid var(--line)}
+    .cta h2{color:#000}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
 
+<div class="tt-header">
+  <div class="tt-wordmark">TechTalk &middot; AI Readiness Assessment</div>
   <h1>AI Readiness Assessment</h1>
-  <div class="sub">Project: <strong>ai-readiness-assessment</strong> &middot; 2026-06-03</div>
-
-  <div style="margin:.9rem 0;padding:.85rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:#f7faf9;font-family:-apple-system,Helvetica,Arial,sans-serif">
-    <div style="font-size:1.25rem;font-weight:700">AI Readiness — Habitat Maturity: <span style="color:var(--l3)">Level 3 (Regulating)</span></div>
-    <div style="font-size:1.25rem;font-weight:700;margin-top:.2rem">Next Step / Gap: <span style="color:var(--l4)">+1.2 to Level 4 (Orchestrating)</span></div>
+  <div class="tt-meta">Project: <strong>ai-readiness-assessment</strong> &middot; 2026-06-03</div>
+  <div class="tt-headline">
+    <div class="hl-now">AI Readiness &mdash; Habitat Maturity: <span>Level 3 (Regulating)</span></div>
+    <div class="hl-next">Next Step / Gap: <span>+1.2 to Level 4 (Orchestrating)</span></div>
   </div>
+  <div class="level-strip">
+    <div class="lpip"><span class="lpip-n">1</span>Dictating</div>
+    <div class="lpip"><span class="lpip-n">2</span>Commanding</div>
+    <div class="lpip active"><span class="lpip-n">3</span>Regulating<span class="lpip-tag">&larr; you are here</span></div>
+    <div class="lpip target"><span class="lpip-n">4</span>Orchestrating<span class="lpip-tag">&rarr; target</span></div>
+    <div class="lpip"><span class="lpip-n">5</span>Supervising</div>
+  </div>
+</div>
+
+<div class="wrap">
 
   <div class="badges">
     <span class="badge" style="background:var(--l3)">
       <small>Habitat Maturity (model)</small><span class="big">Level 3</span>
     </span>
     <span class="badge" style="background:var(--l3)">
-      <small>Cognitive read (Sovereign Engineer)</small><span class="big">Level 3 — Habitat design</span>
+      <small>Cognitive read (Sovereign Engineer)</small><span class="big">Level 3 &mdash; Habitat design</span>
     </span>
-    <span class="gapbadge" title="cognitive − 14-dim mean">Habitat Build Gap +0.2 &middot; Coherent</span>
+    <span class="gapbadge" title="cognitive &minus; 14-dim mean">Habitat Build Gap +0.2 &middot; Coherent</span>
   </div>
-  <p class="rationale">A strong, persistent habitat — synced context, a running reflection loop,
-  policy-as-code CI, a published plugin — with the specifications layer (L3&rarr;L4) as the one missing rung.</p>
+  <p class="rationale">A strong, persistent habitat &mdash; synced context, a running reflection loop,
+  policy-as-code CI, a published plugin &mdash; with the specifications layer (L3&rarr;L4) as the one missing rung.</p>
 
-  <p class="note">This is the plugin assessed against <strong>its own repository</strong> — a dogfooding
+  <p class="note">This is the plugin assessed against <strong>its own repository</strong> &mdash; a dogfooding
   example of the report <code>/ai-readiness-assess</code> produces.</p>
 
   <h2>Habitat Maturity Profile</h2>
@@ -108,7 +159,7 @@
       <div class="dots" data-n="3"></div><div class="verb">3 / 5</div></div>
   </div>
 
-  <h2>AI Readiness Score — five readiness dimensions</h2>
+  <h2>AI Readiness Score &mdash; five readiness dimensions</h2>
   <p class="verb">A view over the same evidence; the headline level is the 14-dimension Habitat Maturity.</p>
   <div class="axes">
     <div class="axis"><div class="cardlabel">Context</div><div class="verb">L4</div></div>
@@ -128,12 +179,12 @@
   </div>
 
   <h2>Habitat Build Gap</h2>
-  <pre style="font-family:ui-monospace,Menlo,monospace;font-size:.85rem;background:#f0f0ef;padding:.8rem;border-radius:6px;white-space:pre-wrap">Habitat Maturity Level (model):  L3  (14-dim mean L2.79)
+  <pre>Habitat Maturity Level (model):  L3  (14-dim mean L2.79)
 Cognitive read (Parts A&ndash;C):      L3
 Habitat Build Gap:               +0.21   (cognitive &minus; 14-dim mean)
 Interpretation:                  Coherent</pre>
   <p>Team and habitat are in step. The single dimension most worth lifting is
-  <strong>Agent input</strong> (toward specs) — it is also the L3&rarr;L4 ceiling for the cognitive read.</p>
+  <strong>Agent input</strong> (toward specs) &mdash; it is also the L3&rarr;L4 ceiling for the cognitive read.</p>
 
   <h2>Strengths &amp; Gaps</h2>
   <div class="twocol">
@@ -148,7 +199,7 @@ Interpretation:                  Coherent</pre>
     <div>
       <h3>Gaps</h3>
       <ol>
-        <li>No specifications layer (no <code>specs/</code>, no spec-first ordering, no adversarial spec review) — the L3&rarr;L4 ceiling.</li>
+        <li>No specifications layer (no <code>specs/</code>, no spec-first ordering, no adversarial spec review) &mdash; the L3&rarr;L4 ceiling.</li>
         <li>Verification is shallow: structural assertions against committed samples; behavioural/semantic checks are manual.</li>
         <li>No agent composition or observability for development (single agent; CI logs only).</li>
       </ol>
@@ -158,37 +209,41 @@ Interpretation:                  Coherent</pre>
   <h2>Prioritised Improvement Plan</h2>
   <p class="verb"><em>Team develops</em> = practice the team builds; <em>Org provides</em> = enablement the organisation supplies.</p>
   <ol>
-    <li><strong>Introduce a lightweight specs layer</strong> — a one-paragraph spec atop substantive PRs,
-      graduating into a <code>specs/</code> directory, with an adversarial "what could go wrong" review before
+    <li><strong>Introduce a lightweight specs layer</strong> &mdash; a one-paragraph spec atop substantive PRs,
+      graduating into a <code>specs/</code> directory, with an adversarial &ldquo;what could go wrong&rdquo; review before
       implementation. <em>Closes the L3&rarr;L4 ceiling.</em></li>
-    <li><strong>Deepen verification</strong> — golden-output diffs or an LLM-judge harness for the B/C tiers,
+    <li><strong>Deepen verification</strong> &mdash; golden-output diffs or an LLM-judge harness for the B/C tiers,
       moving Testing from <em>Asserting</em> to <em>Verifying</em>.</li>
-    <li><strong>Add a read-only critic step and basic observability</strong> — lifting Composition and
+    <li><strong>Add a read-only critic step and basic observability</strong> &mdash; lifting Composition and
       Observability off L2.</li>
   </ol>
 
   <div class="reading">
-    <h2 style="border:none;margin-top:0">Reading Path</h2>
-    <p>Assessed at <strong>L3 — Habitat design</strong>. The next read in <em>The Sovereign Engineer</em> is the
-    <strong>Level 4 (specifications)</strong> chapter — make intent first-class, separating "what" from "how".</p>
+    <h2>Reading Path</h2>
+    <p>Assessed at <strong>L3 &mdash; Habitat design</strong>. The next read in <em>The Sovereign Engineer</em> is the
+    <strong>Level 4 (specifications)</strong> chapter &mdash; make intent first-class, separating &ldquo;what&rdquo; from &ldquo;how&rdquo;.</p>
     <a class="btn" href="https://leanpub.com/thesovereignengineer/c/ai-readiness">Read on Leanpub</a>
   </div>
 
   <div class="cta">
-    <h2 style="margin-top:0">Next Steps</h2>
+    <h2>Next Steps</h2>
     <p>Your habitat is healthy at L3, and the L3&rarr;L4 jump is about making specifications first-class.
-    TechTalk can support a <strong>specification-first engagement</strong> — a <code>specs/</code> layer wired
+    TechTalk can support a <strong>specification-first engagement</strong> &mdash; a <code>specs/</code> layer wired
     into your existing HARNESS and CI, an adversarial-review touchpoint at plan approval, and orchestration
     patterns so agents act on specs rather than ad-hoc instructions.</p>
-    <a class="btn" href="https://techtalk.ai">Get in touch</a>
+    <a class="btn" href="https://techtalk.at">Get in touch</a>
+    <div style="margin-top:.6rem;font-size:.85rem;opacity:.8">thomas.stangl@techtalk.at</div>
   </div>
 
-  <footer>Generated by the ai-readiness-assessment plugin (self-assessment, 2026-06-03).
-  Markdown source: <code>assessments/2026-06-03-assessment.md</code>.</footer>
+  <footer>
+    Generated by the <a href="https://techtalk.at" style="color:inherit">TechTalk</a> AI Readiness Assessment &middot; self-assessment, 2026-06-03<br>
+    &copy; TechTalk GmbH &middot; Vienna, Austria<br>
+    Markdown source: <code>assessments/2026-06-03-assessment.md</code>
+  </footer>
+
 </div>
 
 <script>
-  // Habitat Maturity Profile bars (no animation; static render).
   var dims=[
     ["Agent behaviour",3,"Regulating"],["Agent input",2,"larger prompts"],
     ["Workflow",4,"workflow defined"],["Operating model",3,"drive / verify"],

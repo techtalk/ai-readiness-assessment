@@ -6,3 +6,9 @@
   --md-primary-bg-color:        #fff;
   --md-primary-bg-color--light: rgba(255, 255, 255, .7);
 }
+
+/* Lighten links in dark mode — teal-500 (#009688) is hard to read on
+   the slate background; teal-300 (#4db6ac) is clearly readable */
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #4db6ac;
+}

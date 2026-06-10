@@ -16,11 +16,16 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Changed
 
+- **Updated the TechTalk CTA to a calendar booking link**: the "Get in
+  touch" / "Book a call with TechTalk" button in the command, skill, and
+  both example reports now points to the Outlook *Book With Me* page;
+  `thomas.stangl@techtalk.at` retained as a secondary contact line. (#50)
 - **Aligned docs site style with TechTalk branding**: TechTalk navy
-  primary colour (`#0b2b3c`) for the nav bar and active links; teal
-  accent; system font stack (drop Google Fonts Roboto); copyright footer
-  "© TechTalk GmbH · Vienna, Austria" on every page; TechTalk website
-  added to social links.
+  primary colour (`#0b2b3c`) for the nav bar and active links — in both
+  light and dark mode (#47, #48); teal accent, lightened to teal-300 for
+  links in dark mode for readability (#49); system font stack (drop
+  Google Fonts Roboto); copyright footer "© TechTalk GmbH · Vienna,
+  Austria" on every page; TechTalk website added to social links.
 - **Aligned HTML report design with the TechTalk marketing site** (spec
   0006): all-sans-serif typography (drop Georgia serif body); dark navy
   header band with TechTalk wordmark, headline lines, and a five-level
@@ -37,6 +42,10 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Added
 
+- A **No direct pushes to main** harness constraint (HARNESS.md,
+  deterministic), enforced by GitHub branch protection with
+  `enforce_admins: true` — all changes must arrive via a pull request.
+  Constraint count 3/4 → 4/5. (#44)
 - An **AI Literacy: Level 4** badge (and an **Agent Harness Enabled**
   badge) in the README, after `/assess` independently confirmed the repo
   reads **Level 4 — Specification-led**. Also corrected the stale harness

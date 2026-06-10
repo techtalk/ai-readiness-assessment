@@ -16,6 +16,14 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Changed
 
+- **Made the TechTalk engagement the primary answer; the book is now
+  secondary** (spec 0007): Next Steps (the TechTalk CTA) is rendered
+  before the Reading Path in both the markdown report and the HTML; the
+  HTML CTA block leads as the prominent answer with a secondary "Want to
+  read more?" link to the matched chapter below the button, and the
+  Reading Path follows as a lighter self-guided resource. The book stays
+  in every report. Updated both example reports, and fixed their stale
+  `techtalk.ai` markdown CTA links to the booking link (missed in #50).
 - **Updated the TechTalk CTA to a calendar booking link**: the "Get in
   touch" / "Book a call with TechTalk" button in the command, skill, and
   both example reports now points to the Outlook *Book With Me* page;

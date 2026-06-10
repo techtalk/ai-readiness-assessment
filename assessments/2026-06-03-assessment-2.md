@@ -158,15 +158,6 @@ supplies.
 3. **Lift Agent composition off L2** *(org provides → Agent readiness)* —
    a read-only critic on PRs, toward a primary-plus-critic topology.
 
-## Reading Path
-
-Assessed at **L4 — Specification-led**. The next read in *The Sovereign
-Engineer* is the **Level 5 (systems and orchestration)** chapter — specs
-are in place; the next leverage is platform discipline and agents that
-orchestrate around those specs.
-
-Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
-
 ## Next Steps
 
 > Your spec discipline has reached L4, but the gap is now **+1.1 —
@@ -181,4 +172,19 @@ Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 >   work agents produce;
 > - a read-only critic agent on PRs and basic agent-activity observability.
 >
-> Get in touch: <https://techtalk.ai>
+> **[Book a call with TechTalk](https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard)** · thomas.stangl@techtalk.at
+>
+> *Prefer to explore on your own first? The Reading Path below names your
+> matched chapter of The Sovereign Engineer.*
+
+## Reading Path
+
+*Prefer to go deeper on your own first? Here is your matched read — the
+self-guided alternative to the engagement above.*
+
+Assessed at **L4 — Specification-led**. The next read in *The Sovereign
+Engineer* is the **Level 5 (systems and orchestration)** chapter — specs
+are in place; the next leverage is platform discipline and agents that
+orchestrate around those specs.
+
+Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>

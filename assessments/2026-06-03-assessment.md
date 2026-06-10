@@ -208,15 +208,6 @@ organisation supplies.
    Agent readiness)*. A review-agent touchpoint on PRs plus simple
    agent-activity / cost capture lift two L2 dimensions.
 
-## Reading Path
-
-Your assessed level is **L3 — Habitat design**. The natural next read in
-*The Sovereign Engineer* is the **Level 4 (specifications) chapter** —
-your habitat is in place; the next leverage is making intent first-class,
-separating "what we're trying to do" from "how we're doing it".
-
-Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
-
 ## Next Steps
 
 > Your habitat is healthy at L3, and the L3→L4 jump is about making
@@ -232,4 +223,19 @@ Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 > - an adversarial "what could go wrong with this spec" review before
 >   implementation begins.
 >
-> Get in touch: <https://techtalk.ai>
+> **[Book a call with TechTalk](https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard)** · thomas.stangl@techtalk.at
+>
+> *Prefer to explore on your own first? The Reading Path below names your
+> matched chapter of The Sovereign Engineer.*
+
+## Reading Path
+
+*Prefer to go deeper on your own first? Here is your matched read — the
+self-guided alternative to the engagement above.*
+
+Your assessed level is **L3 — Habitat design**. The natural next read in
+*The Sovereign Engineer* is the **Level 4 (specifications) chapter** —
+your habitat is in place; the next leverage is making intent first-class,
+separating "what we're trying to do" from "how we're doing it".
+
+Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>

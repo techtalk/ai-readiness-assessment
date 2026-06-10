@@ -14,6 +14,15 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Removed
+
+- The orphaned `assessments/2026-06-03-assessment.html` and
+  `assessments/2026-06-03-assessment-2.html` — unreferenced duplicates of
+  the maintained example reports under `docs/examples/`, still carrying
+  the pre-redesign look and the dead `techtalk.ai` link. The canonical
+  rendered examples live in `docs/examples/` (linked from the README and
+  docs site).
+
 ### Changed
 
 - **Made the TechTalk engagement the primary answer; the book is now

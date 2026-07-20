@@ -377,9 +377,7 @@ This plugin is **inspired by** the
 [ai-literacy-superpowers](https://github.com/Habitat-Thinking/ai-literacy-superpowers)
 plugin — the canonical home of the AI Literacy framework, with its
 full agent team, harness engineering, governance audit, compound
-learning loop, and orchestrator pipeline. The supporting reference
-repository is
-[ai-literacy-for-software-engineers](https://github.com/russmiles/ai-literacy-for-software-engineers).
+learning loop, and orchestrator pipeline.
 
 What you get here is narrower by design: just the assessment
 instrument, extracted into a standalone, dependency-free package that

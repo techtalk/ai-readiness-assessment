@@ -25,6 +25,9 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Removed
 
+- The *Inspired by* pointer to the `ai-literacy-for-software-engineers`
+  reference repository in `README.md` — the repository is private, so the
+  link was unreachable for public readers.
 - The orphaned `assessments/2026-06-03-assessment.html` and
   `assessments/2026-06-03-assessment-2.html` — unreferenced duplicates of
   the maintained example reports under `docs/examples/`, still carrying

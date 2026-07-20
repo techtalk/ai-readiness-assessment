@@ -19,6 +19,9 @@ and fails the release if the entry is missing. Record day-to-day changes under
 - The product page link in `README.md` and `docs/index.md` now points at the
   published `https://techtalk.at/ai-readiness-assessment/` instead of the
   `-draft` URL (#42).
+- The two `ai-literacy-superpowers` links in `README.md` now point at the
+  canonical `Habitat-Thinking/` org rather than relying on the
+  `russmiles/` rename redirect, matching the docs site.
 
 ### Removed
 

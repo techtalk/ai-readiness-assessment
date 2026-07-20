@@ -40,7 +40,7 @@ The assessment is fully self-contained. It does **not** depend on any
 external plugin, skill, agent, or service. The model, the framework,
 scoring heuristic, and evidence checklist all live inside this repo. The
 instrument itself is **inspired by** the
-[ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
+[ai-literacy-superpowers](https://github.com/Habitat-Thinking/ai-literacy-superpowers)
 plugin — see *Inspired by* below.
 
 **Full documentation:**
@@ -374,7 +374,7 @@ like advice.
 ## Inspired by
 
 This plugin is **inspired by** the
-[ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
+[ai-literacy-superpowers](https://github.com/Habitat-Thinking/ai-literacy-superpowers)
 plugin — the canonical home of the AI Literacy framework, with its
 full agent team, harness engineering, governance audit, compound
 learning loop, and orchestrator pipeline. The supporting reference

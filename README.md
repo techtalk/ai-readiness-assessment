@@ -13,7 +13,7 @@
 [![AI Literacy](https://img.shields.io/badge/AI_Literacy-Level_4-2E8B57)](assessments/2026-06-03-assessment-2.md)
 [![Agent Harness Enabled](https://img.shields.io/badge/Agent_Harness-Enabled-000000)](HARNESS.md)
 
-**Product page:** [techtalk.at/ai-readiness-assessment](https://techtalk.at/ai-readiness-assessment-draft/)
+**Product page:** [techtalk.at/ai-readiness-assessment](https://techtalk.at/ai-readiness-assessment/)
 
 A self-contained AI readiness assessment, packaged as a
 plugin for GitHub Copilot (and any other tool that consumes the same
@@ -40,7 +40,7 @@ The assessment is fully self-contained. It does **not** depend on any
 external plugin, skill, agent, or service. The model, the framework,
 scoring heuristic, and evidence checklist all live inside this repo. The
 instrument itself is **inspired by** the
-[ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
+[ai-literacy-superpowers](https://github.com/Habitat-Thinking/ai-literacy-superpowers)
 plugin — see *Inspired by* below.
 
 **Full documentation:**
@@ -374,12 +374,10 @@ like advice.
 ## Inspired by
 
 This plugin is **inspired by** the
-[ai-literacy-superpowers](https://github.com/russmiles/ai-literacy-superpowers)
+[ai-literacy-superpowers](https://github.com/Habitat-Thinking/ai-literacy-superpowers)
 plugin — the canonical home of the AI Literacy framework, with its
 full agent team, harness engineering, governance audit, compound
-learning loop, and orchestrator pipeline. The supporting reference
-repository is
-[ai-literacy-for-software-engineers](https://github.com/russmiles/ai-literacy-for-software-engineers).
+learning loop, and orchestrator pipeline.
 
 What you get here is narrower by design: just the assessment
 instrument, extracted into a standalone, dependency-free package that

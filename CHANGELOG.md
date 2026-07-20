@@ -14,8 +14,20 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Fixed
+
+- The product page link in `README.md` and `docs/index.md` now points at the
+  published `https://techtalk.at/ai-readiness-assessment/` instead of the
+  `-draft` URL (#42).
+- The two `ai-literacy-superpowers` links in `README.md` now point at the
+  canonical `Habitat-Thinking/` org rather than relying on the
+  `russmiles/` rename redirect, matching the docs site.
+
 ### Removed
 
+- The *Inspired by* pointer to the `ai-literacy-for-software-engineers`
+  reference repository in `README.md` — the repository is private, so the
+  link was unreachable for public readers.
 - The orphaned `assessments/2026-06-03-assessment.html` and
   `assessments/2026-06-03-assessment-2.html` — unreferenced duplicates of
   the maintained example reports under `docs/examples/`, still carrying

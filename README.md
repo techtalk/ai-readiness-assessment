@@ -13,7 +13,7 @@
 [![AI Literacy](https://img.shields.io/badge/AI_Literacy-Level_4-2E8B57)](assessments/2026-06-03-assessment-2.md)
 [![Agent Harness Enabled](https://img.shields.io/badge/Agent_Harness-Enabled-000000)](HARNESS.md)
 
-**Product page:** [techtalk.at/ai-readiness-assessment](https://techtalk.at/ai-readiness-assessment-draft/)
+**Product page:** [techtalk.at/ai-readiness-assessment](https://techtalk.at/ai-readiness-assessment/)
 
 A self-contained AI readiness assessment, packaged as a
 plugin for GitHub Copilot (and any other tool that consumes the same

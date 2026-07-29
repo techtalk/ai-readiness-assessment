@@ -30,7 +30,7 @@ Drop into any repository, invoke once — get a scan, a score, and a plan:
   Engineer* (Russ Miles, Habitat-Thinking) —
   [leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer) —
   L0 *Aware of the landscape* through L5 *Sovereign engineering* — and
-  the **Habitat Build Gap** between the two reads.
+  the **Habitat/Workflow Gap** between the two reads.
 - A gap-anchored reading path into the book.
 - Recommendations on next steps matched to the
   weakest of the three disciplines: Context Engineering, Architectural
@@ -203,7 +203,7 @@ sections:
 7. **Operational Axes (Part D)** — the four discipline-aligned headline
    dimensions — Composition, Testing, Observability, Governance — lifted
    from the profile as a focused view.
-8. **Habitat Build Gap** — `cognitive level − habitat maturity mean`
+8. **Habitat/Workflow Gap** — `cognitive level − habitat maturity mean`
    (the mean of all fourteen dimensions), read through three regimes
    (Coherent / Ambition outpaces enablement / Inherited habitat). The
    signal is coherence, not the size of the level.
@@ -230,7 +230,7 @@ two reports show real progression — and an honest twist:
 | **AI Readiness — Habitat Maturity** | Level 3 (Regulating) | Level 3 (Regulating) |
 | **Next Step / Gap** | +1.2 to Level 4 (Orchestrating) | +1.1 to Level 4 (Orchestrating) |
 | Cognitive read | L3 — Habitat design | **L4 — Specification-led** |
-| Habitat Build Gap (coherence) | +0.2 — Coherent | **+1.1 — Ambition outpaces enablement** |
+| Habitat/Workflow Gap (coherence) | +0.2 — Coherent | **+1.1 — Ambition outpaces enablement** |
 | Report | [md](assessments/2026-06-03-assessment.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment.html) | [md](assessments/2026-06-03-assessment-2.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment-2.html) |
 
 Each report leads with those two lines, then an **AI Readiness Score**
@@ -320,14 +320,14 @@ ceiling** — strong specs with weak verification is L2, not L4.
 (The cognitive ladder runs L0–L5; the model's dimensions run L1–L5. L0
 is "aware but nothing encoded" — on the model that is the L1 floor.)
 
-### The Habitat Build Gap
+### The Habitat/Workflow Gap
 
 The gap reconciles the two reads. Its operational term is the
 **Habitat Maturity Level** — the mean of **all fourteen** model
 dimensions — so every dimension the team is weak or strong on moves it:
 
 ```text
-Habitat Build Gap = cognitive level − habitat maturity mean (all 14 dimensions)
+Habitat/Workflow Gap = cognitive level − habitat maturity mean (all 14 dimensions)
 ```
 
 Both terms are on the same 0–5 scale, so the gap can be positive or

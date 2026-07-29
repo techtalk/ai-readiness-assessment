@@ -8,13 +8,13 @@ paths, counts, dates.
 
 The report leads with **two lines** — the current level and the next
 step — so the headline answer is legible at a glance. Coherence (the
-Habitat Build Gap) and the cognitive read follow as secondary fields.
+Habitat/Workflow Gap) and the cognitive read follow as secondary fields.
 
 ```text
 **AI Readiness — Habitat Maturity**: Level N (Verb)
 **Next Step / Gap**: +X to Level N+1 (NextVerb)
 
-**Habitat Build Gap**: <signed gap> (<regime>)   (coherence; secondary)
+**Habitat/Workflow Gap**: <signed gap> (<regime>)   (coherence; secondary)
 **Assessed level**: Level N — <Level Name>   (the cognitive read)
 **Date**: YYYY-MM-DD
 ```
@@ -23,7 +23,7 @@ The level **verb** is the model's Agent-behaviour archetype: L1
 Dictating, L2 Commanding, L3 Regulating, L4 Orchestrating, L5
 Supervising. **Next Step / Gap** is `(N+1) − the 14-dimension mean` — the
 distance to the next level (at L5: "at the top — sustaining"). It is
-distinct from the **Habitat Build Gap**, which is the
+distinct from the **Habitat/Workflow Gap**, which is the
 [coherence](../explanation/coherence-not-level.md) diagnostic
 (cognitive − operational) and can differ in both value and sign.
 
@@ -83,10 +83,10 @@ one-line rationale anchored in the weakest discipline.
 The four discipline-aligned headline dimensions — Composition, Testing,
 Observability, Governance — lifted from the profile as a focused view.
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
 The signed gap and its regime. See
-[The Habitat Build Gap](habitat-build-gap.md).
+[The Habitat/Workflow Gap](habitat-workflow-gap.md).
 
 ## Strengths · Gaps
 

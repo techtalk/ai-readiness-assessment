@@ -27,7 +27,7 @@ Or, mid-run, when the tool offers the evidence-first placement:
 - It takes the higher-scoring level as the dimension's placement; ties
   resolve to the higher level.
 - The rest of the report (Habitat Maturity Level, cognitive read,
-  Habitat Build Gap, recommendations) is computed exactly as in the
+  Habitat/Workflow Gap, recommendations) is computed exactly as in the
   evidence-first run.
 
 ## When to choose which

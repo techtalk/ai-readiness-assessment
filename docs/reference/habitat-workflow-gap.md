@@ -1,6 +1,6 @@
-# The Habitat Build Gap
+# The Habitat/Workflow Gap
 
-The Habitat Build Gap is the coherence diagnostic that reconciles the two
+The Habitat/Workflow Gap is the coherence diagnostic that reconciles the two
 reads — the [cognitive level](cognitive-ladder.md) (what the team can
 think and do) against the [habitat maturity](habitat-maturity-model.md)
 its environment actually delivers.
@@ -8,7 +8,7 @@ its environment actually delivers.
 ## The formula
 
 ```text
-Habitat Build Gap = cognitive level − habitat maturity mean
+Habitat/Workflow Gap = cognitive level − habitat maturity mean
 ```
 
 `habitat maturity mean` is the arithmetic mean of **all fourteen**
@@ -45,7 +45,7 @@ A verification-disciplined team with no habitat documents:
 ```text
 Habitat Maturity Level (model):  L2  (14-dim mean L1.86)
 Cognitive read (Parts A–C):      L2
-Habitat Build Gap:               +0.14   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.14   (cognitive − 14-dim mean)
 Interpretation:                  Coherent
 ```
 
@@ -54,7 +54,7 @@ A spec-led team whose observability lags:
 ```text
 Habitat Maturity Level (model):  L4  (14-dim mean L3.64)
 Cognitive read (Parts A–C):      L4
-Habitat Build Gap:               +0.36   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.36   (cognitive − 14-dim mean)
 Interpretation:                  Coherent
 ```
 
@@ -63,13 +63,13 @@ A team whose thinking has outrun a thin habitat:
 ```text
 Habitat Maturity Level (model):  L3  (14-dim mean L2.50)
 Cognitive read (Parts A–C):      L3
-Habitat Build Gap:               +0.50   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.50   (cognitive − 14-dim mean)
 Interpretation:                  Ambition outpaces enablement
 ```
 
 ## Acting on it
 
-See [Read the Habitat Build Gap](../how-to/read-the-habitat-build-gap.md)
+See [Read the Habitat/Workflow Gap](../how-to/read-the-habitat-workflow-gap.md)
 for what to do in each regime, and
 [Coherence, not level](../explanation/coherence-not-level.md) for why the
 gap — not the level — is the signal that matters.

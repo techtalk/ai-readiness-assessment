@@ -3,7 +3,7 @@
 **AI Readiness — Habitat Maturity**: Level 3 (Regulating)
 **Next Step / Gap**: +1.1 to Level 4 (Orchestrating)
 
-**Habitat Build Gap**: +1.1 (Ambition outpaces enablement)   <!-- coherence (cognitive − operational); secondary -->
+**Habitat/Workflow Gap**: +1.1 (Ambition outpaces enablement)   <!-- coherence (cognitive − operational); secondary -->
 **Assessed level**: Level 4 — Specification-led   <!-- cognitive read; do not remove -->
 **Date**: 2026-06-03
 
@@ -107,11 +107,11 @@ track record will thicken with use.
 
 **Headline axes mean**: L2.5
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
     Habitat Maturity Level (model):  L3  (14-dim mean L2.93)
     Cognitive read (Parts A–C):      L4
-    Habitat Build Gap:               +1.07   (cognitive − 14-dim mean)
+    Habitat/Workflow Gap:            +1.07   (cognitive − 14-dim mean)
     Interpretation:                  Ambition outpaces enablement
 
 This is the headline of the progression. Lifting the **spec discipline**

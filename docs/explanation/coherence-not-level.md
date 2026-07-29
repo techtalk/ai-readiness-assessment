@@ -14,7 +14,7 @@ move up together. The second team's thinking has outrun its habitat —
 its specs and ambitions rest on tooling that can't enforce them, so the
 gap shows up later as drift, rework, and "the AI keeps breaking things".
 
-This is why the **[Habitat Build Gap](../reference/habitat-build-gap.md)**
+This is why the **[Habitat/Workflow Gap](../reference/habitat-workflow-gap.md)**
 reports a *regime*, not just a magnitude. The regime tells you which way
 to invest; the magnitude alone would just tempt you to chase levels.
 
@@ -42,5 +42,5 @@ believing it's further along than it is.
   you're optimising for.
 
 The framework's other ideas — the amplifier principle, the human pace —
-all assume coherence as the baseline. The Habitat Build Gap is the early
+all assume coherence as the baseline. The Habitat/Workflow Gap is the early
 warning that coherence has slipped.

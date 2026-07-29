@@ -6,7 +6,7 @@ section of the report.
 
 - **[Habitat Maturity Model (14 dimensions)](habitat-maturity-model.md)** — the spine: every dimension, its L1–L5 verbs, and the evidence that places it.
 - **[Cognitive ladder & disciplines](cognitive-ladder.md)** — the six-level Sovereign Engineer ladder, the three disciplines, and the scoring heuristic.
-- **[The Habitat Build Gap](habitat-build-gap.md)** — the formula, the three interpretation regimes, and worked examples.
+- **[The Habitat/Workflow Gap](habitat-workflow-gap.md)** — the formula, the three interpretation regimes, and worked examples.
 - **[Assessment output structure](assessment-output.md)** — the report, section by section.
 - **[Command & skill](command-and-skill.md)** — the entry points and how they're triggered.
 

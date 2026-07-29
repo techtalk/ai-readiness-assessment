@@ -71,7 +71,7 @@ Four dimensions — **Agent composition** (reported as *Composition*),
 repo-observable and map cleanly onto the
 [three disciplines](cognitive-ladder.md). They're surfaced as the
 *Operational Axes (Part D)* table in the report. The
-[Habitat Build Gap](habitat-build-gap.md), however, uses the mean of
+[Habitat/Workflow Gap](habitat-workflow-gap.md), however, uses the mean of
 **all fourteen** dimensions.
 
 ## Provenance

@@ -34,7 +34,7 @@ of the leverage to lift a team actually lives.
 ## The gap is the point
 
 The distance between the two reads is the
-**[Habitat Build Gap](../reference/habitat-build-gap.md)**. It turns two
+**[Habitat/Workflow Gap](../reference/habitat-workflow-gap.md)**. It turns two
 maps into one actionable diagnostic:
 
 - thinking ahead of habitat → **build the habitat**;

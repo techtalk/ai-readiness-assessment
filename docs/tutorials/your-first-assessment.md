@@ -64,7 +64,7 @@ The assessment runs in four visible movements:
 3. **Assessment.** It places all fourteen
    [model dimensions](../reference/habitat-maturity-model.md), reads your
    [cognitive level](../reference/cognitive-ladder.md), and computes the
-   [Habitat Build Gap](../reference/habitat-build-gap.md).
+   [Habitat/Workflow Gap](../reference/habitat-workflow-gap.md).
 4. **Report.** It writes `assessments/YYYY-MM-DD-assessment.md` and
    prints a short summary in the chat.
 
@@ -79,12 +79,12 @@ bottom:
   mean, with the weakest dimensions named as the ceiling.
 - **Level Assessment** — your cognitive level (L0–L5) and the one
   discipline holding you back.
-- **Habitat Build Gap** — the signed gap and its
-  [regime](../reference/habitat-build-gap.md#interpretation-regimes).
+- **Habitat/Workflow Gap** — the signed gap and its
+  [regime](../reference/habitat-workflow-gap.md#interpretation-regimes).
   This is the headline signal: are your habitat and your thinking *in
   step*?
 
-See [Read the Habitat Build Gap](../how-to/read-the-habitat-build-gap.md)
+See [Read the Habitat/Workflow Gap](../how-to/read-the-habitat-workflow-gap.md)
 for how to act on each regime.
 
 ## Step 4 — Act on one thing

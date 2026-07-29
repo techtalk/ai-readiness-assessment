@@ -40,7 +40,7 @@ The runner reads each fixture's most recent
 encoded in `tests/run.py` (level line, discovery-section ordering,
 required absences enumerated, discipline-score bounds, reading-path
 content, single CTA, Leanpub link present, CTA gap-language, the four
-headline Operational Axes, the Habitat Build Gap regime, and the full
+headline Operational Axes, the Habitat/Workflow Gap regime, and the full
 fourteen-dimension Habitat Maturity Profile). It
 writes a fresh report to `tests/auto-results.md` and exits non-zero
 if any assertion fails — suitable for a CI gate.

@@ -82,7 +82,7 @@ Quality is assured through **TDAB** (Test-Driven Agentic Behaviours):
 - **A-tier (structural)** — automated in `tests/run.py`, stdlib-only.
   Checks each fixture's report for the required structure (level line,
   discovery ordering, discipline bounds, the four headline Operational
-  Axes, the Habitat Build Gap regime, the fourteen-dimension Habitat
+  Axes, the Habitat/Workflow Gap regime, the fourteen-dimension Habitat
   Maturity Profile). Runs in CI on every PR and gates merges.
 - **B-tier (behavioural) and C-tier (semantic)** — described in each
   fixture's `expected.md`; need an interactive session or an LLM judge,
@@ -105,10 +105,10 @@ rationale lives in `docs/explanation/` — linked, not duplicated.
   Sovereign Engineer L0–L5 ladder is the second, cognitive read.
   *Why:* the mismatch between the two is the signal a single score hides.
   → `docs/explanation/two-reads.md`.
-- **The Habitat Build Gap uses the mean of all fourteen dimensions** —
+- **The Habitat/Workflow Gap uses the mean of all fourteen dimensions** —
   not just the four headline axes. *Alternative rejected:* the four-axis
   mean (more stable, but ignores ten dimensions and undercuts "evaluate
-  against the whole model"). → `docs/reference/habitat-build-gap.md`,
+  against the whole model"). → `docs/reference/habitat-workflow-gap.md`,
   `docs/explanation/coherence-not-level.md`.
 - **Self-contained by design.** The instrument depends on no other
   plugin, agent, or service; the model and scoring are embedded in the
@@ -121,7 +121,7 @@ rationale lives in `docs/explanation/` — linked, not duplicated.
   natural language, must never disagree with itself.
 - **A single-dimension level jump can trade coherence for level.** When
   we enforced spec-first, the cognitive read crossed L3→L4 but the
-  Habitat Build Gap flipped +0.2 (Coherent) → +1.1 (Ambition outpaces
+  Habitat/Workflow Gap flipped +0.2 (Coherent) → +1.1 (Ambition outpaces
   enablement), because the operational habitat (Testing, Observability,
   Composition) didn't move with it. *Lesson:* when deliberately chasing a
   level jump, lift the lagging operational dimensions *alongside* the

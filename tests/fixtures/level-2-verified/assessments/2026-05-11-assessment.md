@@ -3,7 +3,7 @@
 **Date**: 2026-05-11
 **Assessed level**: Level 2 — Verification discipline
 **Habitat Maturity Level**: Level 2 (model)
-**Habitat Build Gap**: +0.14 (Coherent)
+**Habitat/Workflow Gap**: +0.14 (Coherent)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -84,7 +84,7 @@ ones and marked accordingly.)
 | Observability | L1 | Eyeballs | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
 | Governance | L2 | conventional | CI + tests + pre-commit drive an asserting/inspecting habit; no habitat docs, single agent, no metrics. |
 
-**Habitat Maturity Level**: Level 2 (model) — mean L1.9; verification stack present, held back by L1 Composition and L1 Observability. This fourteen-dimension mean (L1.86) is the Habitat Build Gap's operational term.
+**Habitat Maturity Level**: Level 2 (model) — mean L1.9; verification stack present, held back by L1 Composition and L1 Observability. This fourteen-dimension mean (L1.86) is the Habitat/Workflow Gap's operational term.
 
 ## Level Assessment
 
@@ -119,14 +119,14 @@ and Guardrails at 3 each).
 | Observability | L1 | CI build logs only; no agent-activity metrics, dashboards, or acceptance tracking. |
 | Governance | L2 | Style + coverage enforced in CI, but no written constitution (CLAUDE.md/HARNESS.md) — conventional, partly-enforced norms. |
 
-**Headline axes mean**: L1.5 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
+**Headline axes mean**: L1.5 — a focused, discipline-aligned view; the Habitat/Workflow Gap uses all fourteen dimensions
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
 ```text
 Habitat Maturity Level (model):  L2  (14-dim mean L1.86)
 Cognitive read (Parts A–C):      L2
-Habitat Build Gap:               +0.14   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.14   (cognitive − 14-dim mean)
 Interpretation:                  Coherent
 ```
 

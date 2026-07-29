@@ -3,7 +3,7 @@
 **Date**: 2026-05-11
 **Assessed level**: Level 1 — Communicating through prompts
 **Habitat Maturity Level**: Level 1 (model)
-**Habitat Build Gap**: 0.00 (Coherent)
+**Habitat/Workflow Gap**: 0.00 (Coherent)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -84,7 +84,7 @@ ones and marked accordingly.)
 | Observability | L1 | Eyeballs | inferred from the thin instruction file; no verification or habitat layer. |
 | Governance | L1 | trust-based, ambient | inferred from the thin instruction file; no verification or habitat layer. |
 
-**Habitat Maturity Level**: Level 1 (model) — mean L1.4; a thin `.cursorrules` constitution lifts a few dimensions just off the floor. (fourteen-dimension mean L1.4). The Habitat Build Gap below uses the four discipline-aligned headline axes (Composition, Testing, Observability, Governance) as its operational term.
+**Habitat Maturity Level**: Level 1 (model) — mean L1.4; a thin `.cursorrules` constitution lifts a few dimensions just off the floor. (fourteen-dimension mean L1.4). The Habitat/Workflow Gap below uses the four discipline-aligned headline axes (Composition, Testing, Observability, Governance) as its operational term.
 
 ## Level Assessment
 
@@ -120,12 +120,12 @@ above the floor.
 
 **Operational axes mean**: L1.0
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
 ```text
 Habitat Maturity Level (model):  L1  (14-dim mean L1.36)
 Cognitive read (Parts A–C):      L1
-Habitat Build Gap:               -0.36   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            -0.36   (cognitive − 14-dim mean)
 Interpretation:                  Coherent
 ```
 

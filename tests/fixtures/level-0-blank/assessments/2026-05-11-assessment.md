@@ -3,7 +3,7 @@
 **Date**: 2026-05-11
 **Assessed level**: Level 0 — Aware of the landscape
 **Habitat Maturity Level**: Level 1 (model floor)
-**Habitat Build Gap**: -1.00 (Inherited habitat — floor baseline)
+**Habitat/Workflow Gap**: -1.00 (Inherited habitat — floor baseline)
 
 > **Test-run note**: This assessment was produced by the
 > `ai-readiness-assessment` skill running in **batch mode** against a
@@ -95,7 +95,7 @@ ones and marked accordingly.)
 | Observability | L1 | Eyeballs | L1 floor — no AI-collaboration evidence in the repo. |
 | Governance | L1 | trust-based, ambient | L1 floor — no AI-collaboration evidence in the repo. |
 
-**Habitat Maturity Level**: Level 1 (model floor) — mean L1.0; nothing is encoded, so every dimension sits at the L1 floor. This fourteen-dimension mean (L1.00) is the Habitat Build Gap's operational term.
+**Habitat Maturity Level**: Level 1 (model floor) — mean L1.0; nothing is encoded, so every dimension sits at the L1 floor. This fourteen-dimension mean (L1.00) is the Habitat/Workflow Gap's operational term.
 
 ## Level Assessment
 
@@ -128,14 +128,14 @@ fresh every session.
 | Observability | L1 | No metrics, logs, or dashboards for agent activity. |
 | Governance | L1 | No written policies; AI use implicit and trust-based. |
 
-**Headline axes mean**: L1.0 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
+**Headline axes mean**: L1.0 — a focused, discipline-aligned view; the Habitat/Workflow Gap uses all fourteen dimensions
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
 ```text
 Habitat Maturity Level (model):  L1  (14-dim mean L1.00)
 Cognitive read (Parts A–C):      L0
-Habitat Build Gap:               -1.00   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            -1.00   (cognitive − 14-dim mean)
 Interpretation:                  Inherited habitat (floor baseline)
 ```
 

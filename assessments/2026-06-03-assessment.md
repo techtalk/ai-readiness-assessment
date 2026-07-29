@@ -227,7 +227,7 @@ biggest impact, and what should come next.
 > Your assessment tells you **where** you are. A review helps you
 > understand **why** you received these scores and **what to do next**.
 >
-> **Review your results with Russell Miles**
+> **Review your results with Russ Miles**
 > *Creator of the AI Readiness Assessment | Author of The Sovereign Engineer*
 >
 > For one hour, you'll review your report together, discuss the reasoning

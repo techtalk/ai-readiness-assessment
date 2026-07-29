@@ -37,7 +37,7 @@ fixed copy.
 
 `## Assessment Review` is new and carries the report's one call to action
 as a single blockquote run: headline ("Not sure what these results
-mean?"), intro, the reviewer subheadline (Russell Miles — *Creator of the
+mean?"), intro, the reviewer subheadline (Russ Miles — *Creator of the
 AI Readiness Assessment | Author of The Sovereign Engineer*), the
 one-hour framing, a four-item "After 60 minutes you'll leave knowing"
 list, and the **Book your AI Readiness Review** link. The quiet pointer

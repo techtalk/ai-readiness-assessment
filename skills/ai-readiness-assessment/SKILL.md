@@ -615,7 +615,7 @@ exactly one call to action:
 > Your assessment tells you **where** you are. A review helps you
 > understand **why** you received these scores and **what to do next**.
 >
-> **Review your results with Russell Miles**
+> **Review your results with Russ Miles**
 > *Creator of the AI Readiness Assessment | Author of The Sovereign Engineer*
 >
 > For one hour, you'll review your report together, discuss the reasoning
@@ -716,7 +716,7 @@ If yes, produce an HTML artifact with the following design rules:
   - headline `h2` "Not sure what these results mean?" in white, no
     bottom border;
   - the intro copy, with "where" and "what to do next" in bold;
-  - the subheadline "Review your results with Russell Miles" in bold
+  - the subheadline "Review your results with Russ Miles" in bold
     white, and the credit line "Creator of the AI Readiness Assessment |
     Author of The Sovereign Engineer" in teal (`#00b2a2`) italic;
   - the one-hour paragraph;

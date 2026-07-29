@@ -36,6 +36,11 @@ and fails the release if the entry is missing. Record day-to-day changes under
 - Both dogfood examples in `docs/examples/`, their markdown sources under
   `assessments/`, and the output reference docs updated to the new structure.
   The **Reading Path** section is unchanged.
+- The booking link behind the call to action now points at the AI Readiness
+  Review calendar (`.../bookwithme/user/f16fa59…@techtalk.at`), replacing the
+  previous TechTalk booking link across both surfaces, both examples, and both
+  markdown assessments. The `thomas.stangl@techtalk.at` contact line under the
+  button is dropped.
 
 ### Fixed
 

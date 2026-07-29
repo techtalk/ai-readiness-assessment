@@ -97,10 +97,10 @@ The `.reading` block keeps its existing styling and position.
 - **Fixed copy drifting from the dynamic paragraph.** The transition
   paragraph is deliberately generic ("why these findings matter") so it
   reads correctly against any gap regime, positive or negative.
-- **Booking URL.** The button copy names Russell Miles but the interim
-  URL is the existing TechTalk booking link, pending a replacement URL.
-  *Accepted, tracked in #55* — a one-line swap in four places
-  (both surfaces, both examples) plus the two markdown assessments.
+- **Booking URL.** The button now points at the dedicated AI Readiness
+  Review calendar, supplied after the first implementation pass and
+  applied across both surfaces, both examples, and both markdown
+  assessments. *Resolved.*
 - **Fixture drift.** The six `tests/fixtures/*/assessments/*.md` keep the
   old shape until regenerated. No assertion depends on the new sections
   existing, so the suite stays green. *Accepted.*

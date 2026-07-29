@@ -241,7 +241,7 @@ biggest impact, and what should come next.
 > - what can wait
 > - how to explain the results internally
 >
-> **[Book your AI Readiness Review](https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard)**
+> **[Book your AI Readiness Review](https://outlook.office.com/bookwithme/user/f16fa59374724894aebc49506ac9bc20@techtalk.at?anonymous&ismsaljsauthenabled)**
 >
 > *Prefer exploring on your own first? The Reading Path below names your
 > matched chapter of The Sovereign Engineer.*

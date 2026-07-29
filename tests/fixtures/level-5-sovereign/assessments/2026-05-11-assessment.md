@@ -3,7 +3,7 @@
 **Date**: 2026-05-11
 **Assessed level**: Level 5 — Sovereign engineering
 **Habitat Maturity Level**: Level 4 (model)
-**Habitat Build Gap**: +0.86 (Ambition outpaces enablement)
+**Habitat/Workflow Gap**: +0.86 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -91,7 +91,7 @@ ones and marked accordingly.)
 | Observability | L3 | Instrumented | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
 | Governance | L5 | Continuous certification | published plugin + governance audits + CHOICES + MODEL_ROUTING give an automated workflow and evidence artefacts; testing/observability still maturing. |
 
-**Habitat Maturity Level**: Level 4 (model) — mean L4.1; the cognitive read (L5) outruns it — held back by L3 Testing and Observability. This fourteen-dimension mean (L4.14) is the Habitat Build Gap's operational term.
+**Habitat Maturity Level**: Level 4 (model) — mean L4.1; the cognitive read (L5) outruns it — held back by L3 Testing and Observability. This fourteen-dimension mean (L4.14) is the Habitat/Workflow Gap's operational term.
 
 ## Level Assessment
 
@@ -131,14 +131,14 @@ across the wider organisation?".
 | Observability | L3 | Fitness functions in CI, a quarterly governance audit on file, and GC rules run at cadence — instrumented at known cadences, but not closed-loop or cross-team aggregated. |
 | Governance | L5 | A running governance-audit cadence that found and corrected drift, policy-as-code constraints, and decision archaeology (CHOICES.md) carrying per-change compliance evidence — consistent with the L5 Architectural Constraints score. |
 
-**Headline axes mean**: L3.75 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
+**Headline axes mean**: L3.75 — a focused, discipline-aligned view; the Habitat/Workflow Gap uses all fourteen dimensions
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
 ```text
 Habitat Maturity Level (model):  L4  (14-dim mean L4.14)
 Cognitive read (Parts A–C):      L5
-Habitat Build Gap:               +0.86   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.86   (cognitive − 14-dim mean)
 Interpretation:                  Ambition outpaces enablement
 ```
 

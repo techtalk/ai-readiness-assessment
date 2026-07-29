@@ -3,7 +3,7 @@
 **Date**: 2026-05-11
 **Assessed level**: Level 3 — Habitat design
 **Habitat Maturity Level**: Level 3 (model)
-**Habitat Build Gap**: +0.50 (Ambition outpaces enablement)
+**Habitat/Workflow Gap**: +0.50 (Ambition outpaces enablement)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -86,7 +86,7 @@ ones and marked accordingly.)
 | Observability | L2 | Captured | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
 | Governance | L3 | Constitutional | HARNESS.md harness + rich CLAUDE.md drive a regulating/standardising habitat; no specs, single agent + one skill. |
 
-**Habitat Maturity Level**: Level 3 (model) — mean L2.5 (on the L2/L3 boundary); held back by L2 Composition, Testing, and Observability. This fourteen-dimension mean (L2.50) is the Habitat Build Gap's operational term.
+**Habitat Maturity Level**: Level 3 (model) — mean L2.5 (on the L2/L3 boundary); held back by L2 Composition, Testing, and Observability. This fourteen-dimension mean (L2.50) is the Habitat/Workflow Gap's operational term.
 
 ## Level Assessment
 
@@ -126,14 +126,14 @@ sits at the intersection of context (encoded intent) and constraint
 | Observability | L2 | REFLECTION_LOG captures patterns and CI logs are searchable, but there are no instrumented dashboards or per-PR acceptance tracking. |
 | Governance | L3 | HARNESS.md is an enforced written constitution (4 deterministic + 1 unverified constraint) with a visible promotion path — consistent with the L3 Architectural Constraints score. |
 
-**Headline axes mean**: L2.25 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
+**Headline axes mean**: L2.25 — a focused, discipline-aligned view; the Habitat/Workflow Gap uses all fourteen dimensions
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
 ```text
 Habitat Maturity Level (model):  L3  (14-dim mean L2.50)
 Cognitive read (Parts A–C):      L3
-Habitat Build Gap:               +0.50   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.50   (cognitive − 14-dim mean)
 Interpretation:                  Ambition outpaces enablement
 ```
 

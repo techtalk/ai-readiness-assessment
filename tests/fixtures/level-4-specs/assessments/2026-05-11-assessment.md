@@ -3,7 +3,7 @@
 **Date**: 2026-05-11
 **Assessed level**: Level 4 — Specification-led
 **Habitat Maturity Level**: Level 4 (model)
-**Habitat Build Gap**: +0.36 (Coherent)
+**Habitat/Workflow Gap**: +0.36 (Coherent)
 
 > **Test-run note**: batch mode, clarifying questions skipped.
 
@@ -89,7 +89,7 @@ ones and marked accordingly.)
 | Observability | L2 | Captured | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
 | Governance | L4 | Policy-as-code | specs/ + plans + objections + spec-implement workflow give an orchestrating/specifying habitat; observability not yet instrumented. |
 
-**Habitat Maturity Level**: Level 4 (model) — mean L3.6; held back by L2 Observability, the lagging axis. This fourteen-dimension mean (L3.64) is the Habitat Build Gap's operational term.
+**Habitat Maturity Level**: Level 4 (model) — mean L3.6; held back by L2 Observability, the lagging axis. This fourteen-dimension mean (L3.64) is the Habitat/Workflow Gap's operational term.
 
 ## Level Assessment
 
@@ -129,14 +129,14 @@ discipline.
 | Observability | L2 | REFLECTION_LOG records workflow catches and CI logs are searchable; no instrumented dashboards, acceptance metrics, or calibration data. |
 | Governance | L4 | Spec-first ordering enforced deterministically in CI plus a spec-conformance agent check — policy-as-code with blocking rules; consistent with the L4 Architectural Constraints score. |
 
-**Headline axes mean**: L3.25 — a focused, discipline-aligned view; the Habitat Build Gap uses all fourteen dimensions
+**Headline axes mean**: L3.25 — a focused, discipline-aligned view; the Habitat/Workflow Gap uses all fourteen dimensions
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
 ```text
 Habitat Maturity Level (model):  L4  (14-dim mean L3.64)
 Cognitive read (Parts A–C):      L4
-Habitat Build Gap:               +0.36   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.36   (cognitive − 14-dim mean)
 Interpretation:                  Coherent
 ```
 

@@ -242,21 +242,14 @@ def a12_operational_axes():
     return ("A12", check)
 
 
-# The metric was renamed Habitat Build Gap -> Habitat/Workflow Gap (spec
-# 0009). Fixture assessments generated before the rename still carry the
-# old name, so A13 accepts either spelling until they are regenerated.
-# Drop the old form from this tuple once every fixture has been re-run.
-GAP_NAMES = ("Habitat/Workflow Gap", "Habitat Build Gap")
-
-
 def a13_build_gap(regime: str):
     """Habitat/Workflow Gap present — the scannable header line, the section,
     and the expected interpretation regime for this fixture."""
 
     def check(text: str, fixture: Path) -> Result:
-        if not any(f"## {name}" in text for name in GAP_NAMES):
+        if "## Habitat/Workflow Gap" not in text:
             return failing("A13", "no Habitat/Workflow Gap section")
-        if not any(f"**{name}**:" in text for name in GAP_NAMES):
+        if "**Habitat/Workflow Gap**:" not in text:
             return failing("A13", "no scannable **Habitat/Workflow Gap** header line")
         if regime not in text:
             return failing("A13", f"expected regime not found: {regime!r}")

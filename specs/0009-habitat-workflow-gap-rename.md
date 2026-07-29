@@ -78,8 +78,9 @@ rewriting them would falsify what was said when:
   filename, which is an identifier) and `specs/0004-simplify-report-header.md`
 - released `CHANGELOG.md` entries
 - `REFLECTION_LOG.md`
-- the six `tests/fixtures/*/assessments/*.md` and their test reports —
-  generated output from real runs
+- ~~the six `tests/fixtures/*/assessments/*.md` and their test reports —
+  generated output from real runs~~ — **superseded, see the amendment
+  below**
 
 ## Alternatives considered
 
@@ -129,6 +130,33 @@ filename is a poor trade.
 maintainer in favour of renaming. Recorded here rather than re-litigated.
 
 **Disposition**: Proceed.
+
+## Amendment (2026-07-29, same day)
+
+The original decision left the six `tests/fixtures/*/assessments/*.md`
+carrying the old name, on the grounds that they are generated output
+from real runs and rewriting them would falsify the record.
+
+That was the wrong call for these particular files. They are the only
+complete example reports in the repo besides the two dogfood examples,
+they read as examples rather than as records, and leaving them stale is
+what forced A13 to accept both spellings — a permissive assertion that
+would have quietly stayed permissive.
+
+They have been rewritten to `Habitat/Workflow Gap` (29 occurrences
+across the six files, with the fixed-column block re-padded), and A13 is
+strict again on the single new name. The `GAP_NAMES` transitional tuple
+is removed.
+
+The trade accepted: these files no longer match byte-for-byte what the
+skill emitted on 2026-05-11. Their value is as current-format fixtures,
+which is worth more than the date-stamped rendering. The scores,
+placements, and regimes in them are untouched — only the metric's name
+changed, so every assertion they back still tests the same thing.
+
+Records that describe past *decisions* — specs 0003 and 0004, released
+changelog entries, `REFLECTION_LOG.md` — are unaffected and keep the old
+name.
 
 ## Acceptance
 

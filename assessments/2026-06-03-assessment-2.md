@@ -160,21 +160,40 @@ supplies.
 
 ## Next Steps
 
-> Your spec discipline has reached L4, but the gap is now **+1.1 —
-> ambition outpaces enablement**: the habitat needs to catch up to the
-> thinking. TechTalk can support a **habitat-build engagement** focused
-> on the lagging operational axes — verification depth, observability,
-> and agent composition — so the environment delivers what your L4
-> specifications already imply. The most common starting points for teams
-> at your level:
+The gap is now **+1.1 — ambition outpaces enablement**: the habitat needs
+to catch up to the thinking. TechTalk can support a **habitat-build
+engagement** on the lagging operational axes — verification depth,
+observability, and agent composition — so the environment delivers what
+your L4 specs already imply.
+
+Your assessment shows where your repository is today. A review helps you
+understand why these findings matter, which improvements will have the
+biggest impact, and what should come next.
+
+## Assessment Review
+
+> ### Not sure what these results mean?
 >
-> - a behavioural test harness (golden-output / LLM-judge) for the
->   work agents produce;
-> - a read-only critic agent on PRs and basic agent-activity observability.
+> Your assessment tells you **where** you are. A review helps you
+> understand **why** you received these scores and **what to do next**.
 >
-> **[Book a call with TechTalk](https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard)** · thomas.stangl@techtalk.at
+> **Review your results with Russ Miles**
+> *Creator of the AI Readiness Assessment | Author of The Sovereign Engineer*
 >
-> *Prefer to explore on your own first? The Reading Path below names your
+> For one hour, you'll review your report together, discuss the reasoning
+> behind the findings, and identify the highest-leverage improvements for
+> your organisation.
+>
+> **After 60 minutes you'll leave knowing**
+>
+> - which findings actually matter
+> - where to invest first
+> - what can wait
+> - how to explain the results internally
+>
+> **[Book your AI Readiness Review](https://outlook.office.com/bookwithme/user/f16fa59374724894aebc49506ac9bc20@techtalk.at?anonymous&ismsaljsauthenabled)**
+>
+> *Prefer exploring on your own first? The Reading Path below names your
 > matched chapter of The Sovereign Engineer.*
 
 ## Reading Path

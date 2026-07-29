@@ -210,22 +210,40 @@ organisation supplies.
 
 ## Next Steps
 
-> Your habitat is healthy at L3, and the L3→L4 jump is about making
-> specifications first-class. If you'd like help making that jump,
-> TechTalk can support a **specification-first engagement** — guided work
-> that introduces a `specs/` layer wired into your existing `HARNESS.md`
-> and CI, an adversarial-review touchpoint at plan approval, and a small
-> set of orchestration patterns so agents act on specs rather than ad-hoc
-> instructions. The most common starting points for teams at your level:
+Your habitat is healthy at L3, and the L3→L4 jump is about making
+specifications first-class. TechTalk can support a **specification-first
+engagement** — a `specs/` layer wired into your existing `HARNESS.md` and
+CI, an adversarial-review touchpoint at plan approval, and orchestration
+patterns so agents act on specs rather than ad-hoc instructions.
+
+Your assessment shows where your repository is today. A review helps you
+understand why these findings matter, which improvements will have the
+biggest impact, and what should come next.
+
+## Assessment Review
+
+> ### Not sure what these results mean?
 >
-> - a one-paragraph spec at the top of each substantive PR, graduating
->   into a `specs/` directory;
-> - an adversarial "what could go wrong with this spec" review before
->   implementation begins.
+> Your assessment tells you **where** you are. A review helps you
+> understand **why** you received these scores and **what to do next**.
 >
-> **[Book a call with TechTalk](https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard)** · thomas.stangl@techtalk.at
+> **Review your results with Russ Miles**
+> *Creator of the AI Readiness Assessment | Author of The Sovereign Engineer*
 >
-> *Prefer to explore on your own first? The Reading Path below names your
+> For one hour, you'll review your report together, discuss the reasoning
+> behind the findings, and identify the highest-leverage improvements for
+> your organisation.
+>
+> **After 60 minutes you'll leave knowing**
+>
+> - which findings actually matter
+> - where to invest first
+> - what can wait
+> - how to explain the results internally
+>
+> **[Book your AI Readiness Review](https://outlook.office.com/bookwithme/user/f16fa59374724894aebc49506ac9bc20@techtalk.at?anonymous&ismsaljsauthenabled)**
+>
+> *Prefer exploring on your own first? The Reading Path below names your
 > matched chapter of The Sovereign Engineer.*
 
 ## Reading Path

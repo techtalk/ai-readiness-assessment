@@ -100,17 +100,29 @@ organisation needs to provide** (the latter maps to the model's *Teams
 provide* dimension). Each item ties to a readiness dimension or
 discipline gap.
 
-## Reading Path
-
-The specific chapter of *[The Sovereign Engineer](../explanation/the-sovereign-engineer.md)*
-that closes the weakest discipline gap — gap-anchored, not a generic
-plug — with the Leanpub link.
-
 ## Next Steps
 
-**One** TechTalk engagement matched to the same gap — deliberately one
-recommendation, not a menu. A menu reads like marketing; a specific
-recommendation reads like advice.
+The generated explanation of what to do about the gap, naming **one**
+TechTalk engagement matched to it — deliberately one recommendation, not
+a menu. A menu reads like marketing; a specific recommendation reads like
+advice. It closes with a fixed paragraph introducing the purpose of a
+review. This section carries no call to action of its own.
+
+## Assessment Review
+
+The report's single call to action — a one-hour session reviewing the
+report with the assessment's author, framed as the continuation of the
+assessment rather than as consulting promotion: why these scores came
+out this way, which findings matter, where to invest first, what can
+wait, and how to explain the results internally. Fixed copy, identical
+in every report.
+
+## Reading Path
+
+The secondary, self-guided alternative — the specific chapter of
+*[The Sovereign Engineer](../explanation/the-sovereign-engineer.md)* that
+closes the weakest discipline gap, gap-anchored rather than a generic
+plug, with the Leanpub link.
 
 ---
 

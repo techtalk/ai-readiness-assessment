@@ -9,6 +9,7 @@
     --l1:#7fb3d5;--l2:#3f7cac;--l3:#1f9e8f;--l4:#2e8b57;--l5:#caa14a;
     --ink:#1c1c1c;--muted:#5b5b5b;--line:#e3e3e3;
     --bg:#fdfdfc;--techtalk:#0b2b3c;--tt-light:#eaf2f6;
+    --review-bg:#162e40;--outcomes-bg:#dcdbdd;--teal:#00b2a2;--nextsteps-bg:#f0eeeb;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -46,9 +47,9 @@
   h2{font-size:1.15rem;font-weight:700;margin:2.2rem 0 .6rem;
     border-bottom:2px solid var(--techtalk);padding-bottom:.3rem;color:var(--techtalk)}
   h3{font-size:1rem;margin:1rem 0 .4rem}
-  .reading h2,.cta h2{border-bottom:none;margin-top:0}
-  .cta h2{color:#fff}
-  .reading h2{color:var(--techtalk)}
+  .reading h2,.nextsteps h2,.review h2{border-bottom:none;margin-top:0}
+  .review h2{color:#fff}
+  .reading h2,.nextsteps h2{color:var(--techtalk)}
   .sub{color:var(--muted);margin:.1rem 0 1rem}
   .badges{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
   .badge{display:inline-flex;flex-direction:column;align-items:flex-start;
@@ -83,16 +84,35 @@
   .twocol{display:flex;gap:1.2rem;flex-wrap:wrap}
   .twocol>div{flex:1 1 45%;min-width:230px}
   ol,ul{padding-left:1.2rem}
-  .reading,.cta{border-radius:10px;padding:1rem 1.1rem;margin-top:1rem}
+  .reading,.nextsteps,.review{border-radius:10px;padding:1rem 1.1rem;margin-top:1rem}
   .reading{background:#f4f7f6}
-  .cta{background:var(--techtalk);color:var(--tt-light)}
   .btn{display:inline-block;margin-top:.5rem;background:var(--l3);color:#fff;
     text-decoration:none;border-radius:6px;padding:.5rem .9rem;
     font-weight:600;font-size:.9rem}
-  .cta .btn{background:#caa14a;color:#1c1c1c}
-  .cta-secondary{margin-top:.9rem;padding-top:.7rem;
-    border-top:1px solid rgba(255,255,255,.18);font-size:.85rem;opacity:.92}
-  .cta-secondary a{color:#caa14a}
+  /* Next steps — the generated explanation, quarantined from the invitation */
+  .nextsteps{background:var(--nextsteps-bg);padding:1.4rem 1.5rem}
+  .nextsteps p{margin:.7rem 0 0}
+  /* Assessment Review — the one call to action */
+  .review{background:var(--review-bg);color:var(--outcomes-bg);
+    padding:1.75rem 1.6rem 1.5rem;margin-top:1.4rem}
+  .review h2{font-size:1.5rem;margin-bottom:.9rem}
+  .review p{margin:.7rem 0 0}
+  .review strong{color:#fff}
+  .review-who{margin-top:1.5rem !important;font-weight:700;color:#fff}
+  .review-credit{margin-top:.1rem !important;color:var(--teal);
+    font-style:italic;font-size:.9rem}
+  .outcomes{background:var(--outcomes-bg);color:var(--techtalk);
+    border-radius:8px;padding:1rem 1.2rem;margin:1.4rem 0 0}
+  .outcomes-title{font-weight:700;margin-bottom:.5rem}
+  .outcomes ul{list-style:none;padding:0;margin:0}
+  .outcomes li{position:relative;padding-left:1.6rem;margin:.3rem 0}
+  .outcomes li::before{content:"\2713";position:absolute;left:0;
+    color:var(--teal);font-weight:700}
+  .review-cta{text-align:center;margin:1.7rem 0 .3rem}
+  .review .btn{background:var(--teal);color:#fff;font-size:1.05rem;
+    font-weight:700;padding:.85rem 1.7rem;border-radius:8px;margin-top:0}
+  .review-secondary{margin-top:1.4rem;font-size:.78rem;color:var(--teal)}
+  .review-secondary a{color:var(--teal)}
   .reading-lead{font-size:.82rem;color:var(--muted);font-weight:600;
     text-transform:uppercase;letter-spacing:.03em;margin:0 0 .3rem}
   a{color:var(--l2)}
@@ -107,8 +127,8 @@
     .tt-header{background:var(--techtalk);-webkit-print-color-adjust:exact;
       print-color-adjust:exact}
     .wrap{max-width:none}
-    .cta{background:#fff;color:#000;border:1px solid var(--line)}
-    .cta h2{color:#000}
+    .nextsteps,.review,.outcomes{-webkit-print-color-adjust:exact;
+      print-color-adjust:exact}
   }
 </style>
 </head>
@@ -223,17 +243,37 @@ Interpretation:                  Coherent</pre>
       Observability off L2.</li>
   </ol>
 
-  <div class="cta">
-    <h2>Next Steps</h2>
+  <div class="nextsteps">
+    <h2>Next steps</h2>
     <p>Your habitat is healthy at L3, and the L3&rarr;L4 jump is about making specifications first-class.
     TechTalk can support a <strong>specification-first engagement</strong> &mdash; a <code>specs/</code> layer wired
     into your existing HARNESS and CI, an adversarial-review touchpoint at plan approval, and orchestration
     patterns so agents act on specs rather than ad-hoc instructions.</p>
-    <a class="btn" href="https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&amp;ismsaljsauthenabled&amp;ep=pcard">Book a call with TechTalk</a>
-    <div style="margin-top:.6rem;font-size:.85rem;opacity:.8">thomas.stangl@techtalk.at</div>
-    <div class="cta-secondary">
-      Prefer to explore on your own first? Your matched read is the
-      <a href="https://leanpub.com/thesovereignengineer/c/ai-readiness">Level 4 (specifications) chapter of <em>The Sovereign Engineer</em> &rarr;</a>
+    <p>Your assessment shows where your repository is today. A review helps you understand why these findings matter, which improvements will have the biggest impact, and what should come next.</p>
+  </div>
+
+  <div class="review">
+    <h2>Not sure what these results mean?</h2>
+    <p>Your assessment tells you <strong>where</strong> you are.<br>
+      A review helps you understand why you received these scores and <strong>what to do next.</strong></p>
+    <p class="review-who">Review your results with Russ Miles</p>
+    <p class="review-credit">Creator of the AI Readiness Assessment | Author of The Sovereign Engineer</p>
+    <p>For one hour, you&rsquo;ll review your report together, discuss the reasoning behind the findings, and identify the highest-leverage improvements for your organisation.</p>
+    <div class="outcomes">
+      <div class="outcomes-title">After 60 minutes you&rsquo;ll leave knowing</div>
+      <ul>
+        <li>which findings actually matter</li>
+        <li>where to invest first</li>
+        <li>what can wait</li>
+        <li>how to explain the results internally</li>
+      </ul>
+    </div>
+    <div class="review-cta">
+      <a class="btn" href="https://outlook.office.com/bookwithme/user/f16fa59374724894aebc49506ac9bc20@techtalk.at?anonymous&amp;ismsaljsauthenabled">Book your AI Readiness Review</a>
+    </div>
+    <div class="review-secondary">
+      Prefer exploring on your own first? Read the chapter matched to your assessment<br>
+      &rarr; <a href="https://leanpub.com/thesovereignengineer/c/ai-readiness">Level 4 (specifications)</a>
     </div>
   </div>
 

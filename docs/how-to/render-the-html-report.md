@@ -27,9 +27,11 @@ A single, print-friendly page (no emoji, no animations) with:
 - Three **discipline cards** with 0–5 strength indicators.
 - An **Operational Axes** strip (the four headline dimensions) and a
   **Habitat Build Gap** badge showing the signed gap and its regime.
-- Strengths and gaps side by side, numbered recommendations, the reading
-  path with a clear Leanpub button, and the single TechTalk call to
-  action.
+- Strengths and gaps side by side and numbered recommendations.
+- A light grey **Next steps** box holding the generated explanation of
+  the gap, then a dark **Assessment Review** box carrying the report's
+  single call to action — book a one-hour review of the report — and,
+  below it, the reading path with a clear Leanpub button.
 
 ## Tips
 

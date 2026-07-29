@@ -85,13 +85,25 @@ def discipline_scores(text: str) -> dict[str, int] | None:
 
 
 def count_cta_paragraphs(text: str) -> int:
-    """Count blockquote-CTA paragraphs in the Next Steps section.
+    """Count blockquote-CTA paragraphs in the section that carries the CTA.
 
     A CTA paragraph is a contiguous run of '> ' lines. Each contiguous
     run counts as one CTA.
+
+    Since spec 0008 the call to action lives in '## Assessment Review'
+    and '## Next Steps' explains without selling. Reports written before
+    that split carry the CTA inside '## Next Steps', so fall back to it —
+    one assertion covers both shapes, and a report that puts a CTA in
+    both sections still counts two and fails.
     """
-    body = section(text, "## Next Steps")
-    if body is None:
+    body = "\n\n".join(
+        s or ""
+        for s in (
+            section(text, "## Assessment Review"),
+            section(text, "## Next Steps"),
+        )
+    )
+    if not body:
         return 0
     runs = re.findall(r"(?:^>.*\n)+", body, re.MULTILINE)
     return len(runs)

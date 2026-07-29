@@ -209,9 +209,13 @@ sections:
    signal is coherence, not the size of the level.
 9. **Strengths, Gaps, Recommendations** — top three each, anchored in
    evidence.
-10. **Reading Path** — the specific chapter of *The Sovereign Engineer*
-    that closes your weakest discipline gap.
-11. **Next Steps** — one TechTalk engagement matched to that same gap.
+10. **Next Steps** — what to do about the gap, naming one TechTalk
+    engagement matched to it.
+11. **Assessment Review** — the one call to action: a one-hour session
+    reviewing the report with the assessment's author.
+12. **Reading Path** — the secondary, self-guided alternative: the
+    specific chapter of *The Sovereign Engineer* that closes your
+    weakest discipline gap.
 
 A shareable HTML version is offered on request.
 

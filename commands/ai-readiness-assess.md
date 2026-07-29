@@ -503,7 +503,11 @@ dimension). Each item ties to a readiness dimension or discipline gap.
 org-provides, and the level/dimension it lifts>
 
 ## Next Steps
-<see step 6 — the primary recommendation; comes before the Reading Path>
+<see step 6a — the generated, gap-anchored explanation, followed by the
+fixed transition paragraph; carries no call to action of its own>
+
+## Assessment Review
+<see step 6b — the single call to action; comes before the Reading Path>
 
 ## Reading Path
 <see step 5 — the secondary, self-guided alternative>
@@ -512,9 +516,9 @@ org-provides, and the level/dimension it lifts>
 ### 5. Reading path (book reference, gap-anchored — the secondary option)
 
 The reading path is the **secondary, self-guided alternative** to the
-TechTalk engagement in step 6 — for a reader who would rather explore on
-their own first. In the report it follows the Next Steps CTA (it does not
-precede it), and is framed as such ("Prefer to go deeper on your own
+Assessment Review in step 6 — for a reader who would rather explore on
+their own first. In the report it follows the Assessment Review (it does
+not precede it), and is framed as such ("Prefer to go deeper on your own
 first?"). The book remains a resource in every report; it is just no
 longer the first answer a reader meets.
 
@@ -539,35 +543,80 @@ Phrase the pointer as a specific recommendation, not a generic ad:
 
 Include the link: `https://leanpub.com/thesovereignengineer/c/ai-readiness`.
 
-### 6. Next steps (TechTalk CTA, gap-anchored — the primary answer)
+### 6. Next steps and the Assessment Review (the primary answer)
 
-This is the assessment's **primary recommendation** — the most prominent
-answer in the results and reports. It comes **before** the Reading Path,
-and in the rendered HTML it is the visually dominant block. The book
-(step 5) is offered after it as the secondary, self-guided option.
+The report's tail is two beats, in this order, and they do different
+jobs. **Next Steps** explains — it is generated from this team's gap and
+carries no call to action. **Assessment Review** invites — it is fixed
+copy and carries the report's one call to action. Both come **before**
+the Reading Path, and in the rendered HTML the Assessment Review is the
+visually dominant block. The book (step 5) is offered after it as the
+secondary, self-guided option.
 
-Generate **one** call to action — not three — matched to the weakest
-discipline. The pattern (a single CTA blockquote; the closing line may
-add a quiet pointer to the Reading Path as the self-guided alternative):
+#### 6a. Next Steps — generated explanation, then the transition
+
+The first paragraph is **fully dynamic**: write it from the gap, naming
+the regime, the lagging dimensions, and the engagement type matched to
+the weakest discipline (use the engagement map below). This is the
+paragraph that makes the report this team's report — do not template it.
 
 ```
-> If you'd like help moving from Level <N> to Level <N+1>, TechTalk
-> can support <specific engagement type> focused on <the weakest
-> discipline>. The most common starting points for teams at your level:
+The gap is now <signed gap> — <regime>: <one sentence on what that means
+here>. TechTalk can support <specific engagement type> on <the lagging
+axes / weakest discipline>, so <the outcome that closes the gap>.
+```
+
+Then, below it, add this paragraph **verbatim**. It is fixed copy — it
+introduces the purpose of a review and bridges the report to the
+invitation that follows:
+
+```
+Your assessment shows where your repository is today. A review helps you
+understand why these findings matter, which improvements will have the
+biggest impact, and what should come next.
+```
+
+Next Steps carries **no** link, button, or blockquote. The call to action
+belongs to 6b.
+
+#### 6b. Assessment Review — the single call to action
+
+Fixed copy. It positions the review as the natural continuation of the
+assessment, not as consulting promotion. Emit it as a **single**
+blockquote run (every line prefixed with `>`), so the report carries
+exactly one call to action:
+
+```
+> ### Not sure what these results mean?
 >
-> - <engagement option 1 — concrete, named>
-> - <engagement option 2 — concrete, named>
+> Your assessment tells you **where** you are. A review helps you
+> understand **why** you received these scores and **what to do next**.
 >
-> **[Book a call with TechTalk](https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard)** · thomas.stangl@techtalk.at
+> **Review your results with Russell Miles**
+> *Creator of the AI Readiness Assessment | Author of The Sovereign Engineer*
 >
-> *Prefer to explore on your own first? The Reading Path below names your
+> For one hour, you'll review your report together, discuss the reasoning
+> behind the findings, and identify the highest-leverage improvements for
+> your organisation.
+>
+> **After 60 minutes you'll leave knowing**
+>
+> - which findings actually matter
+> - where to invest first
+> - what can wait
+> - how to explain the results internally
+>
+> **[Book your AI Readiness Review](https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard)**
+>
+> *Prefer exploring on your own first? The Reading Path below names your
 > matched chapter of The Sovereign Engineer.*
 ```
 
-Keep the whole CTA as a **single** blockquote run (every line prefixed
-with `>`), so it remains exactly one call to action.
+Only the engagement type named in 6a varies by team; the Assessment
+Review section itself is identical in every report.
 
-Engagement map (template — customise to TechTalk's actual offering):
+Engagement map for the 6a paragraph (template — customise to TechTalk's
+actual offering):
 
 | Weakest gap | Suggested engagement type |
 |---|---|
@@ -584,8 +633,9 @@ balanced L3 habitat with no `specs/` directory. Use the L4→L5 row
 when the team has specs but no cross-team or platform-level artefacts
 yet.
 
-The CTA must be **one** specific recommendation, not a menu. A menu
-reads like marketing; a specific recommendation reads like advice.
+The engagement named in 6a must be **one** specific recommendation, not
+a menu. A menu reads like marketing; a specific recommendation reads
+like advice.
 
 ### 7. Offer the rendered version
 
@@ -617,8 +667,9 @@ If yes, produce an HTML artifact with the following design rules:
   Gap regime badge: teal for Coherent; amber (`#c77d31`) for Ambition
   outpaces enablement or Inherited habitat.
 - **Section headings** (`h2`): TechTalk navy `#0b2b3c` text with a 2px
-  navy bottom border. Inside `.reading` and `.cta` blocks `h2` drops
-  the border; `.cta h2` is white, `.reading h2` stays navy.
+  navy bottom border. Inside the `.reading`, `.nextsteps`, and `.review`
+  blocks `h2` drops the border; `.review h2` is white, `.reading h2` and
+  `.nextsteps h2` stay navy.
 - **Habitat Maturity Profile**: all fourteen dimensions as a
   small-multiples grid of L1–L5 filled bars, each labelled with the
   model's verb at the placed level (Dictating…Supervising,
@@ -630,22 +681,38 @@ If yes, produce an HTML artifact with the following design rules:
 - **AI Readiness Score** and **Operational Axes** as flex card strips.
 - Strengths and Gaps as two parallel columns with `<h3>` headings.
 - Prioritised Improvement Plan as a numbered list.
-- **TechTalk CTA block** (`.cta`, `background: #0b2b3c`,
-  `color: #eaf2f6`, rounded) — **rendered first and the most prominent
-  block of the answer**, immediately after the Prioritised Improvement
-  Plan: the one recommendation, a gold button (`background: #caa14a`,
-  `color: #1c1c1c`) linking to
-  `https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard`
-  (TechTalk calendar booking link), and a contact line
-  `thomas.stangl@techtalk.at` below the button. Below that, separated by
-  a faint divider, a **secondary "Want to read more?" link** to the
-  matched chapter (the self-guided alternative).
+- **Next steps block** (`.nextsteps`, `background: #f0eeeb`, rounded,
+  navy `h2` "Next steps" with no bottom border) — rendered immediately
+  after the Prioritised Improvement Plan. It holds exactly the two
+  paragraphs from step 6a: the generated gap explanation, then the fixed
+  transition paragraph. **No button, no link** — this box explains, it
+  does not sell.
+- **Assessment Review block** (`.review`, `background: #162e40`,
+  `color: #dcdbdd`, rounded) — the **most prominent block of the answer**,
+  rendered directly below the Next steps box, carrying the step 6b copy:
+  - headline `h2` "Not sure what these results mean?" in white, no
+    bottom border;
+  - the intro copy, with "where" and "what to do next" in bold;
+  - the subheadline "Review your results with Russell Miles" in bold
+    white, and the credit line "Creator of the AI Readiness Assessment |
+    Author of The Sovereign Engineer" in teal (`#00b2a2`) italic;
+  - the one-hour paragraph;
+  - a **highlighted outcomes box** (`.outcomes`, `background: #dcdbdd`,
+    dark navy text, rounded) titled "After 60 minutes you'll leave
+    knowing", listing the four outcomes with teal (`#00b2a2`) check
+    marks and no bullets;
+  - a **centred CTA button** (`background: #00b2a2`, white text, larger
+    than the other buttons) reading **Book your AI Readiness Review**,
+    linking to
+    `https://outlook.office.com/bookwithme/user/129484fb9c5648688428890bc72c1ee7@techtalk.at?anonymous&ismsaljsauthenabled&ep=pcard`;
+  - below the button, in small teal text, the **secondary reading
+    pointer** to the matched chapter (the self-guided alternative).
 - **Reading Path block** (`.reading`, light gray background, rounded) —
-  rendered **after** the CTA as a lighter secondary resource: a lead-in
-  framing it as the self-guided option ("Prefer to go deeper on your own
-  first?"), the matched chapter pointer, and the Leanpub link as a teal
-  button. The book stays in the report; it is simply no longer the first
-  answer.
+  rendered **after** the Assessment Review as a lighter secondary
+  resource, unchanged: a lead-in framing it as the self-guided option
+  ("Prefer to go deeper on your own first?"), the matched chapter
+  pointer, and the Leanpub link as a teal button. The book stays in the
+  report; it is simply no longer the first answer.
 - **Footer**: three lines — "Generated by the TechTalk AI Readiness
   Assessment · [date]", "© TechTalk GmbH · Vienna, Austria", and
   "Markdown source: [path]".
@@ -673,6 +740,7 @@ Present a short summary to the user in chat:
 - Link to `assessments/YYYY-MM-DD-assessment.md`
 - The Habitat Build Gap and its regime, naming the one dimension most
   worth lifting
-- **Lead with the TechTalk engagement as the primary next step**, then —
-  secondary — the matched book chapter as the self-guided alternative
-  ("or, to explore on your own first, …")
+- **Lead with the AI Readiness Review as the primary next step** — the
+  one-hour session that explains why these scores came out this way and
+  what to do first — then, secondary, the matched book chapter as the
+  self-guided alternative ("or, to explore on your own first, …")

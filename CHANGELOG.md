@@ -14,6 +14,29 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Added
+
+- **Assessment Review section** in the generated report (spec
+  [0008](specs/0008-assessment-review-section.md), #55) — the report's single
+  call to action now lives in its own section that positions a one-hour review
+  of the results as the continuation of the assessment: "Not sure what these
+  results mean?", the reviewer credit, the four outcomes of the hour, and a
+  **Book your AI Readiness Review** button. In HTML it renders as a `#162e40`
+  box with a `#dcdbdd` outcomes panel and a `#00b2a2` button.
+- A fixed transition paragraph closing `## Next Steps`, introducing the purpose
+  of a review and bridging the report to the invitation that follows.
+
+### Changed
+
+- `## Next Steps` now explains without selling — it keeps its fully generated,
+  gap-anchored first paragraph and carries no link or button. In HTML it is its
+  own light grey (`#f0eeeb`) box rather than the navy CTA block.
+- `tests/run.py` A9 (single CTA) reads `## Assessment Review`, falling back to
+  `## Next Steps` so reports written before the split are still checked.
+- Both dogfood examples in `docs/examples/`, their markdown sources under
+  `assessments/`, and the output reference docs updated to the new structure.
+  The **Reading Path** section is unchanged.
+
 ### Fixed
 
 - The product page link in `README.md` and `docs/index.md` now points at the

@@ -1,10 +1,10 @@
-# Read the Habitat Build Gap
+# Read the Habitat/Workflow Gap
 
-The Habitat Build Gap is the assessment's headline signal. It reconciles
+The Habitat/Workflow Gap is the assessment's headline signal. It reconciles
 the two reads:
 
 ```text
-Habitat Build Gap = cognitive level − habitat maturity mean (all 14 dimensions)
+Habitat/Workflow Gap = cognitive level − habitat maturity mean (all 14 dimensions)
 ```
 
 Both terms sit on the same 0–5 ruler, so the gap is signed. What matters
@@ -14,12 +14,12 @@ not the size of the level. See
 
 ## Find it in the report
 
-Look for the `## Habitat Build Gap` block:
+Look for the `## Habitat/Workflow Gap` block:
 
 ```text
 Habitat Maturity Level (model):  L2  (14-dim mean L1.9)
 Cognitive read (Parts A–C):      L2
-Habitat Build Gap:               +0.1   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.1   (cognitive − 14-dim mean)
 Interpretation:                  Coherent
 ```
 
@@ -43,5 +43,5 @@ Interpretation:                  Coherent
 
 ## Next
 
-- [The Habitat Build Gap reference](../reference/habitat-build-gap.md) — the full formula, regimes, and worked examples.
+- [The Habitat/Workflow Gap reference](../reference/habitat-workflow-gap.md) — the full formula, regimes, and worked examples.
 - [The fourteen dimensions](../reference/habitat-maturity-model.md) — what each axis means and how to lift it.

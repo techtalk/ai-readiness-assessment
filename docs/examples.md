@@ -18,7 +18,7 @@ readiness) and a **Prioritised Improvement Plan**.
 | **Next Step / Gap** | +1.2 to Level 4 (Orchestrating) | +1.1 to Level 4 (Orchestrating) |
 | Architectural guidance (readiness dim.) | L3 | **L4** |
 | Cognitive read | L3 — Habitat design | **L4 — Specification-led** |
-| Habitat Build Gap (coherence, secondary) | +0.2 — **Coherent** | +1.1 — **Ambition outpaces enablement** |
+| Habitat/Workflow Gap (coherence, secondary) | +0.2 — **Coherent** | +1.1 — **Ambition outpaces enablement** |
 | Report | [HTML](examples/self-assessment.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-06-03-assessment.md) | [HTML](examples/self-assessment-2.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-06-03-assessment-2.md) |
 
 ## The story

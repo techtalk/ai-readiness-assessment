@@ -3,7 +3,7 @@
 **AI Readiness — Habitat Maturity**: Level 3 (Regulating)
 **Next Step / Gap**: +1.2 to Level 4 (Orchestrating)
 
-**Habitat Build Gap**: +0.2 (Coherent)   <!-- coherence (cognitive − operational); secondary -->
+**Habitat/Workflow Gap**: +0.2 (Coherent)   <!-- coherence (cognitive − operational); secondary -->
 **Assessed level**: Level 3 — Habitat design   <!-- cognitive read; do not remove -->
 **Date**: 2026-06-03
 
@@ -139,7 +139,7 @@ layer that L4 implies.
 ## Operational Axes (Part D)
 
 The four discipline-aligned headline dimensions, lifted from the profile
-above — a focused, discipline-aligned view. The Habitat Build Gap uses
+above — a focused, discipline-aligned view. The Habitat/Workflow Gap uses
 all fourteen dimensions, not just these four.
 
 | Axis | Level (L1–L5) | Evidence |
@@ -151,11 +151,11 @@ all fourteen dimensions, not just these four.
 
 **Headline axes mean**: L2.25
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
     Habitat Maturity Level (model):  L3  (14-dim mean L2.79)
     Cognitive read (Parts A–C):      L3
-    Habitat Build Gap:               +0.21   (cognitive − 14-dim mean)
+    Habitat/Workflow Gap:            +0.21   (cognitive − 14-dim mean)
     Interpretation:                  Coherent
 
 The team and its habitat are in step — a coherent L3. Thinking is not

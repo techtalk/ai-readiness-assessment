@@ -5,7 +5,7 @@
 # committed sample assessment and checks that the assessment the skill
 # produces carries the required structure — the level line, discovery
 # ordering, discipline-score bounds, the four headline Operational Axes,
-# the Habitat Build Gap regime, and the full fourteen-dimension Habitat
+# the Habitat/Workflow Gap regime, and the full fourteen-dimension Habitat
 # Maturity Profile. It needs no dependencies beyond the Python stdlib.
 #
 # The B-tier (behavioural) and C-tier (semantic) assertions in each

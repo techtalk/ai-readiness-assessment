@@ -56,7 +56,7 @@ ai-readiness-assessment/
 2. **Present & question** — a structured summary, then 3–5 clarifying
    questions one at a time.
 3. **Assess** — the fourteen-dimension profile, the cognitive read, and
-   the Habitat Build Gap.
+   the Habitat/Workflow Gap.
 4. **Document** — write the [report](assessment-output.md).
 5. **Reading path** & **Next steps** — gap-anchored book chapter and a
    single TechTalk engagement.

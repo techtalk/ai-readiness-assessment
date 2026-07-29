@@ -12,7 +12,7 @@ the steps.
 ## Use
 
 - [Run an assessment](run-an-assessment.md)
-- [Read the Habitat Build Gap](read-the-habitat-build-gap.md)
+- [Read the Habitat/Workflow Gap](read-the-habitat-workflow-gap.md)
 - [Run the precise survey](run-the-precise-survey.md) (opt-in, rigorous scoring)
 - [Render the HTML report](render-the-html-report.md)
 

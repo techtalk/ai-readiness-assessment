@@ -166,7 +166,7 @@ axes** — a discipline-aligned view of the profile (the
   discipline score is the deeper read.
 
 These four are detailed level-by-level below; the other ten dimensions
-are placed from the table and evidence map above. The Habitat Build Gap
+are placed from the table and evidence map above. The Habitat/Workflow Gap
 uses the mean of **all fourteen** dimensions, not just these four.
 
 #### Composition — *how structurally sophisticated is the agent topology?*
@@ -207,14 +207,14 @@ governance — in this instrument it is the operational face of the
 score must report a consistent level: the axis is the one-line
 placement, the discipline score is the deeper read.
 
-### The Habitat Build Gap
+### The Habitat/Workflow Gap
 
 The gap reconciles the two reads — the cognitive level (what the team
 can think and do) against the operational maturity its habitat
 delivers:
 
 ```text
-Habitat Build Gap = cognitive_level − habitat_maturity_mean
+Habitat/Workflow Gap = cognitive_level − habitat_maturity_mean
 ```
 
 `habitat_maturity_mean` is the arithmetic mean of **all fourteen
@@ -227,7 +227,7 @@ ruler, so the gap is signed. Output it in this shape:
 ```text
 Habitat Maturity Level (model):  L2  (14-dim mean L2.3; weakest: L1 Observability, L1 Work patterns)
 Cognitive read (Sovereign Eng):  L3
-Habitat Build Gap:               +0.7   (cognitive − 14-dim mean)
+Habitat/Workflow Gap:            +0.7   (cognitive − 14-dim mean)
 Interpretation:                  Ambition outpaces enablement
 ```
 
@@ -306,7 +306,7 @@ informs — one of the eight repo-observable dimensions (Workflow, Teams
 provide, Agent input, Output artefact, Agent composition, Testing,
 Observability, Governance — use the evidence map in "Placing each
 dimension" above). You will place all fourteen dimensions, derive the
-Habitat Maturity Level, and compute the Habitat Build Gap in step 3.
+Habitat Maturity Level, and compute the Habitat/Workflow Gap in step 3.
 
 ### 2. Present and Question
 
@@ -361,13 +361,13 @@ Apply the cognitive scoring heuristic. State the cognitive level
 (L0–L5), name it, and give a **one-line rationale** anchored in the
 weakest discipline. Score the three disciplines 0–5.
 
-#### 3c. The Habitat Build Gap
+#### 3c. The Habitat/Workflow Gap
 
 All fourteen dimensions are already placed in the profile. Compute:
 
 - **Habitat maturity mean** = arithmetic mean of all fourteen dimension
   scores (1–5) — the same mean behind the Habitat Maturity Level.
-- **Habitat Build Gap** = cognitive level − habitat maturity mean.
+- **Habitat/Workflow Gap** = cognitive level − habitat maturity mean.
 - **Interpretation** = the regime the gap falls into (Coherent /
   Ambition outpaces enablement / Inherited habitat).
 
@@ -392,7 +392,7 @@ step — so the answer is legible at a glance. Compute them as:
   `(N+1) − maturity_mean` to one decimal (the distance to the next
   level). At L5, write `at the top level (Supervising) — sustaining`.
 
-Coherence stays as a **secondary** line (the Habitat Build Gap + regime),
+Coherence stays as a **secondary** line (the Habitat/Workflow Gap + regime),
 not in the headline — the signal is still there, just not what you lead
 with.
 
@@ -402,7 +402,7 @@ with.
 **AI Readiness — Habitat Maturity**: Level N (<Verb>)
 **Next Step / Gap**: +X to Level N+1 (<NextVerb>)
 
-**Habitat Build Gap**: <signed gap> (<regime>)   <!-- coherence (cognitive − operational); secondary -->
+**Habitat/Workflow Gap**: <signed gap> (<regime>)   <!-- coherence (cognitive − operational); secondary -->
 **Assessed level**: Level N — <Level Name>   <!-- cognitive read; do not remove -->
 **Date**: YYYY-MM-DD
 
@@ -464,7 +464,7 @@ the one that doesn't>
 
 ## Operational Axes (Part D)
 The four discipline-aligned headline dimensions, lifted from the profile
-above — a discipline-aligned view (the Habitat Build Gap uses all
+above — a discipline-aligned view (the Habitat/Workflow Gap uses all
 fourteen dimensions, not just these four).
 
 | Axis | Level (L1–L5) | Evidence |
@@ -476,11 +476,11 @@ fourteen dimensions, not just these four).
 
 **Headline axes mean**: L?.?
 
-## Habitat Build Gap
+## Habitat/Workflow Gap
 
     Habitat Maturity Level (model):  L?  (14-dim mean L?.?)
     Cognitive read (Parts A–C):      L?
-    Habitat Build Gap:               <signed>   (cognitive − 14-dim mean)
+    Habitat/Workflow Gap:            <signed>   (cognitive − 14-dim mean)
     Interpretation:                  <regime>
 
 <one line: what the gap points at — habitat investment (positive gap)
@@ -733,12 +733,12 @@ Present a short summary to the user in chat:
 
 - The two headline lines: **Current Habitat Maturity: Level N (Verb)**
   and **Next Step / Gap: +X to Level N+1 (NextVerb)** — then, secondary,
-  the Habitat Build Gap regime and the cognitive level's one-line
+  the Habitat/Workflow Gap regime and the cognitive level's one-line
   rationale
 - Top strength, top gap
 - The one recommendation
 - Link to `assessments/YYYY-MM-DD-assessment.md`
-- The Habitat Build Gap and its regime, naming the one dimension most
+- The Habitat/Workflow Gap and its regime, naming the one dimension most
   worth lifting
 - **Lead with the AI Readiness Review as the primary next step** — the
   one-hour session that explains why these scores came out this way and

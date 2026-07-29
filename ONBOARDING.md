@@ -8,7 +8,7 @@ that assesses how ready a team — and its codebase — is to collaborate
 with AI. Someone installs it in any repository, runs one command, and
 gets a report placing the team on the Agentic Experience 5-Level Habitat
 Maturity Model and the *Sovereign Engineer* cognitive ladder, with a
-Habitat Build Gap that points at the single most valuable next move.
+Habitat/Workflow Gap that points at the single most valuable next move.
 
 The thing to internalise on day one: **the product is the prose.** There
 is no application to compile or run — the plugin's entire behaviour lives
@@ -153,7 +153,7 @@ alternative that was rejected. The user-facing rationale lives in
 - **The Agentic Maturity Model is the spine; the cognitive ladder is
   folded in.** All fourteen dimensions are the primary read; the
   Sovereign Engineer L0–L5 ladder is the second, cognitive read.
-- **The Habitat Build Gap uses the mean of all fourteen dimensions** —
+- **The Habitat/Workflow Gap uses the mean of all fourteen dimensions** —
   not just the four headline axes (the rejected alternative was more
   stable but ignored ten dimensions).
 - **Self-contained by design.** The instrument depends on no other
@@ -163,7 +163,7 @@ alternative that was rejected. The user-facing rationale lives in
   identical content so the assessment never disagrees with itself.
 - **A single-dimension level jump can trade coherence for level.**
   Enforcing spec-first crossed the cognitive read L3→L4 but flipped the
-  Habitat Build Gap to *ambition outpaces enablement* — lift the lagging
+  Habitat/Workflow Gap to *ambition outpaces enablement* — lift the lagging
   operational dimensions alongside the discipline, or expect a temporary
   positive gap. Coherence, not level, is the signal.
 

@@ -13,7 +13,7 @@ team on two complementary maps:
 - the **[Sovereign Engineer cognitive ladder](reference/cognitive-ladder.md)** (L0–L5) —
   what the team can *think and do*.
 
-The distance between them is the **[Habitat Build Gap](reference/habitat-build-gap.md)** —
+The distance between them is the **[Habitat/Workflow Gap](reference/habitat-workflow-gap.md)** —
 a coherence diagnostic that points at the single most valuable next move.
 
 [Run your first assessment](tutorials/your-first-assessment.md){ .md-button .md-button--primary }
@@ -46,7 +46,7 @@ four kinds of documentation for four kinds of need.
 1. A discovery report of the habitat documents and signals found (with paths).
 2. A **Habitat Maturity Profile** — all fourteen model dimensions placed L1–L5, with the model's own verbs, and a headline **Habitat Maturity Level**.
 3. A **cognitive level** (L0–L5) with a one-line rationale anchored in the weakest of three disciplines.
-4. The **Habitat Build Gap** and its regime (Coherent / Ambition outpaces enablement / Inherited habitat).
+4. The **Habitat/Workflow Gap** and its regime (Coherent / Ambition outpaces enablement / Inherited habitat).
 5. Strengths, gaps, and three evidence-anchored recommendations.
 6. A gap-anchored reading path into *[The Sovereign Engineer](explanation/the-sovereign-engineer.md)* and a single TechTalk engagement suggestion.
 

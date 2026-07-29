@@ -31,7 +31,7 @@ Or trigger it by natural language — the skill responds to phrases like:
 3. **Assessment** — all fourteen
    [model dimensions](../reference/habitat-maturity-model.md) placed
    L1–L5, the [cognitive level](../reference/cognitive-ladder.md), and
-   the [Habitat Build Gap](../reference/habitat-build-gap.md).
+   the [Habitat/Workflow Gap](../reference/habitat-workflow-gap.md).
 4. **Report** — written to `assessments/YYYY-MM-DD-assessment.md`, with
    a short summary in the chat.
 
@@ -51,6 +51,6 @@ for a section-by-section breakdown.
 
 ## Next
 
-- [Read the Habitat Build Gap](read-the-habitat-build-gap.md) to act on the result.
+- [Read the Habitat/Workflow Gap](read-the-habitat-workflow-gap.md) to act on the result.
 - [Render the HTML report](render-the-html-report.md) to share it.
 - Want rigorous per-dimension scoring? [Run the precise survey](run-the-precise-survey.md).

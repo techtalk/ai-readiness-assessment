@@ -14,6 +14,20 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Changed
+
+- **The Habitat Build Gap is now the Habitat/Workflow Gap** (spec
+  [0009](specs/0009-habitat-workflow-gap-rename.md), #57) — renamed across the
+  command, the skill, the plugin manifests, every documentation page, both
+  dogfood examples, and the test suite. The measure is unchanged: still
+  `cognitive level − 14-dimension habitat maturity mean` with the same three
+  regimes. Two documentation pages moved with it:
+  `reference/habitat-build-gap` → `reference/habitat-workflow-gap` and
+  `how-to/read-the-habitat-build-gap` → `how-to/read-the-habitat-workflow-gap`;
+  the old URLs no longer resolve. Historical records — specs 0003 and 0004,
+  released changelog entries, `REFLECTION_LOG.md`, and the fixture assessments —
+  keep the name the instrument used at the time.
+
 ### Added
 
 - **Assessment Review section** in the generated report (spec

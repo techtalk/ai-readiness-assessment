@@ -26,7 +26,7 @@ A single, print-friendly page (no emoji, no animations) with:
   "(inferred)" tag.
 - Three **discipline cards** with 0–5 strength indicators.
 - An **Operational Axes** strip (the four headline dimensions) and a
-  **Habitat Build Gap** badge showing the signed gap and its regime.
+  **Habitat/Workflow Gap** badge showing the signed gap and its regime.
 - Strengths and gaps side by side and numbered recommendations.
 - A light grey **Next steps** box holding the generated explanation of
   the gap, then a dark **Assessment Review** box carrying the report's
@@ -42,4 +42,4 @@ A single, print-friendly page (no emoji, no animations) with:
 
 ## Next
 
-- [Read the Habitat Build Gap](read-the-habitat-build-gap.md) before you share — make sure you can explain the headline.
+- [Read the Habitat/Workflow Gap](read-the-habitat-workflow-gap.md) before you share — make sure you can explain the headline.

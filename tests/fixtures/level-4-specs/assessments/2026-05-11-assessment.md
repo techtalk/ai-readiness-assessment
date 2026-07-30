@@ -188,11 +188,11 @@ Across all fourteen dimensions the operational mean (3.64) sits close to L4 cogn
 ## Reading Path
 
 Your assessed level is **L4 — Specification-led**. The natural next
-read in *The Sovereign Engineer* is the **Level 5 (systems and
+read in *[The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)* is the **Level 5 (systems and
 orchestration) chapter** — your specs are in place; the next move is
 platform-level discipline across teams.
 
-Get the book: <https://leanpub.com/thesovereignengineer>
+Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 
 ## Next Steps
 

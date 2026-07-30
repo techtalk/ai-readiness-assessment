@@ -173,12 +173,12 @@ Across all fourteen dimensions the operational mean (1.86) sits close to L2 cogn
 ## Reading Path
 
 Your assessed level is **L2 — Verification discipline**. The natural
-next read in *The Sovereign Engineer* is the **Level 3 (habitat
+next read in *[The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)* is the **Level 3 (habitat
 design) chapter** — your team already has the verification habit; the
 next compounding move is to persist it in the environment so it isn't
 re-derived every session.
 
-Get the book: <https://leanpub.com/thesovereignengineer>
+Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 
 ## Next Steps
 

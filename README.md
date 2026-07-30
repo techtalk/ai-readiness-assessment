@@ -28,7 +28,7 @@ Drop into any repository, invoke once — get a scan, a score, and a plan:
   own verbs — and a headline **Habitat Maturity Level**.
 - A position on the six-level cognitive ladder from *The Sovereign
   Engineer* (Russ Miles, Habitat-Thinking) —
-  [leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer) —
+  [leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer/c/ai-readiness) —
   L0 *Aware of the landscape* through L5 *Sovereign engineering* — and
   the **Habitat/Workflow Gap** between the two reads.
 - A gap-anchored reading path into the book.
@@ -393,4 +393,4 @@ that is what `ai-literacy-superpowers` provides.
 The conceptual ground for both — the six levels, the three
 disciplines, the habitat-thinking lens — is set out in
 *The Sovereign Engineer*:
-[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer).
+[leanpub.com/thesovereignengineer](https://leanpub.com/thesovereignengineer/c/ai-readiness).

@@ -199,12 +199,12 @@ Even at sovereign cognition (L5) the fourteen-dimension operational mean (4.14) 
 ## Reading Path
 
 Your assessed level is **L5 — Sovereign engineering**. The natural
-next read in *The Sovereign Engineer* is the **Enchiridion chapter**
+next read in *[The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)* is the **Enchiridion chapter**
 — distilling the practice into a personal handbook — and the
 **portfolio-scale chapters** that follow, on carrying the practice
 across teams and over years.
 
-Get the book: <https://leanpub.com/thesovereignengineer>
+Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 
 ## Next Steps
 

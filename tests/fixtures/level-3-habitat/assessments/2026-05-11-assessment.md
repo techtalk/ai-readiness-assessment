@@ -186,12 +186,12 @@ Across all fourteen dimensions the operational mean (2.50) trails L3 cognition. 
 ## Reading Path
 
 Your assessed level is **L3 — Habitat design**. The natural next read
-in *The Sovereign Engineer* is the **Level 4 (specifications)
+in *[The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)* is the **Level 4 (specifications)
 chapter** — your habitat is in place; the next leverage is making
 intent first-class, separating "what we're trying to do" from "how
 we're doing it".
 
-Get the book: <https://leanpub.com/thesovereignengineer>
+Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 
 ## Next Steps
 

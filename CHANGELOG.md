@@ -16,6 +16,17 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Changed
 
+- **Every mention of *The Sovereign Engineer* in a report is now a link** (spec
+  [0010](specs/0010-book-mentions-are-links.md), #58) — the Reading Path prose,
+  the Assessment Review credit line, and the closing pointer all link the
+  book's title. Two labels stay unlinked by design: the "Cognitive read
+  (Sovereign Engineer)" badge and the provenance note.
+- **One Leanpub URL throughout** — the AI-readiness campaign link
+  (`/c/ai-readiness`) is now used by every book link in the reports, the docs,
+  and the README, replacing the bare product-page URL that was in use in about
+  half of them. `.claude-plugin/plugin.json`'s `homepage` keeps the canonical
+  product URL.
+
 - **The Habitat Build Gap is now the Habitat/Workflow Gap** (spec
   [0009](specs/0009-habitat-workflow-gap-rename.md), #57) — renamed across the
   command, the skill, the plugin manifests, every documentation page, both

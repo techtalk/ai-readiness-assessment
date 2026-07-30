@@ -166,13 +166,13 @@ Across all fourteen dimensions the operational mean (1.36) sits just below L1 co
 ## Reading Path
 
 Your assessed level is **L1 — Communicating through prompts**. The
-direct next read in *The Sovereign Engineer* is the **Level 1
+direct next read in *[The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)* is the **Level 1
 chapter** on prompts and structured context, **plus** the **Level 2
 verification chapter** so the next step is already in view. Read them
 back to back — the Level 1 chapter validates what you have; the Level
 2 chapter is the bridge.
 
-Get the book: <https://leanpub.com/thesovereignengineer>
+Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 
 ## Next Steps
 

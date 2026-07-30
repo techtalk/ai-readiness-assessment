@@ -178,7 +178,8 @@ biggest impact, and what should come next.
 > understand **why** you received these scores and **what to do next**.
 >
 > **Review your results with Russ Miles**
-> *Creator of the AI Readiness Assessment | Author of The Sovereign Engineer*
+> *Creator of the AI Readiness Assessment | Author of
+> [The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)*
 >
 > For one hour, you'll review your report together, discuss the reasoning
 > behind the findings, and identify the highest-leverage improvements for
@@ -194,15 +195,16 @@ biggest impact, and what should come next.
 > **[Book your AI Readiness Review](https://outlook.office.com/bookwithme/user/f16fa59374724894aebc49506ac9bc20@techtalk.at?anonymous&ismsaljsauthenabled)**
 >
 > *Prefer exploring on your own first? The Reading Path below names your
-> matched chapter of The Sovereign Engineer.*
+> matched chapter of
+> [The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness).*
 
 ## Reading Path
 
 *Prefer to go deeper on your own first? Here is your matched read — the
 self-guided alternative to the engagement above.*
 
-Assessed at **L4 — Specification-led**. The next read in *The Sovereign
-Engineer* is the **Level 5 (systems and orchestration)** chapter — specs
+Assessed at **L4 — Specification-led**. The next read in *[The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)* is the
+**Level 5 (systems and orchestration)** chapter — specs
 are in place; the next leverage is platform discipline and agents that
 orchestrate around those specs.
 

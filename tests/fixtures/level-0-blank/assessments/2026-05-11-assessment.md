@@ -180,14 +180,14 @@ Every one of the fourteen dimensions sits at the L1 floor because the repo holds
 ## Reading Path
 
 Your assessed level is **L0 — Aware of the landscape**. The natural
-next read in *The Sovereign Engineer* is **Act I in full** — the
+next read in *[The Sovereign Engineer](https://leanpub.com/thesovereignengineer/c/ai-readiness)* is **Act I in full** — the
 amplifier thesis, the two kinds of intelligence, and why the
 collaboration space (not the agent) is the unit of leverage. That
 framing makes the next concrete steps (an instruction file, a test
 suite, a CI gate) feel like investments in a shared environment
 rather than chores.
 
-Get the book: <https://leanpub.com/thesovereignengineer>
+Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 
 ## Next Steps
 

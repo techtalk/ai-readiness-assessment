@@ -315,10 +315,19 @@ SUMMARY_DIMENSIONS = [
 ]
 
 SUMMARY_SCALARS = [
-    "schema", "subject", "team", "habitat", "assessed_at", "tool_version",
-    "habitat_maturity_mean", "habitat_maturity_level", "cognitive_level",
-    "gap", "regime", "ceiling_dimensions", "weakest_discipline",
+    "schema", "subject", "team", "habitat", "posture", "assessed_at",
+    "tool_version", "habitat_maturity_mean", "habitat_maturity_level",
+    "cognitive_level", "cognitive_source", "gap", "regime",
+    "ceiling_dimensions", "weakest_discipline",
 ]
+
+# Invariant I6: a cognitive read gathered against the team's general
+# practice and applied here must say so. `subject` means it was asked
+# about this subject specifically.
+VALID_COGNITIVE_SOURCE = {"team", "subject"}
+
+# A dead repository must not pin the portfolio ceiling forever.
+VALID_POSTURE = {"active", "maintenance", "archived"}
 
 # Invariant I5: every placement carries how it was arrived at, and
 # — from Slice 2 — where the evidence for it lives.
@@ -413,6 +422,13 @@ def a15_summary_block():
         absent = [k for k in SUMMARY_SCALARS if block_scalar(block, k) is None]
         if absent:
             return failing("A15", f"block missing keys: {absent}")
+        for key, allowed in (
+            ("cognitive_source", VALID_COGNITIVE_SOURCE),
+            ("posture", VALID_POSTURE),
+        ):
+            value = block_scalar(block, key)
+            if value not in allowed:
+                return failing("A15", f"{key} is {value!r}, expected one of {sorted(allowed)}")
         return passing("A15", f"summary block complete ({len(rows)} dimensions)")
 
     return ("A15", check)
@@ -733,6 +749,12 @@ BINDING_SIGNALS = [
     "Shadowing",
 ]
 
+SLICE3_DOCS = [
+    "docs/tutorials/assess-a-team-across-repositories.md",
+    "docs/how-to/assess-a-monorepo-with-several-habitats.md",
+    "docs/explanation/subject-habitat-team.md",
+]
+
 SYNTHETIC_BANNER = (
     "Synthetic example — constructed to illustrate the report shape."
 )
@@ -908,8 +930,66 @@ def r11_synthetic_examples_labelled() -> Result:
     return passing("R11", "every synthetic example carries the banner")
 
 
+def r12_scope_run_specified() -> Result:
+    """Both surfaces must describe the single-session run identically —
+    the invocation, the one cheap difference question, and the two
+    cognitive_source values."""
+    needed = ["--scope", "cognitive_source", "materially different"]
+    problems = []
+    for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE)):
+        text = path.read_text() if path.is_file() else ""
+        missing = [n for n in needed if n not in text]
+        if missing:
+            problems.append(f"{label}: {missing}")
+    if problems:
+        return failing("R12", f"scope-run vocabulary missing — {problems}")
+    return passing("R12", "both surfaces specify the single-session scope run")
+
+
+def r13_posture_handled() -> Result:
+    """A dead repository must not pin the portfolio ceiling forever, so
+    the roll-up has to know what each posture means for the ceiling."""
+    problems = []
+    for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL)):
+        text = path.read_text() if path.is_file() else ""
+        missing = [p for p in sorted(VALID_POSTURE) if p not in text]
+        if missing:
+            problems.append(f"roll-up {label}: {missing}")
+    if problems:
+        return failing("R13", f"posture values missing — {problems}")
+    return passing("R13", "roll-up surfaces handle all three postures")
+
+
+def r14_reuse_is_declared() -> Result:
+    """I6 — a reused cognitive read is declared in the body, not a
+    footnote. Silent reuse is a lie about evidence."""
+    marker = "the team's general practice"
+    problems = [
+        label
+        for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE))
+        if not path.is_file() or marker not in path.read_text()
+    ]
+    if problems:
+        return failing("R14", f"reuse-declaration wording missing from: {problems}")
+    return passing("R14", "both surfaces require reuse to be declared in the body")
+
+
+def r15_context_discipline_stated() -> Result:
+    """The scope run must process subjects sequentially and say how many
+    it will do, rather than degrading silently on a large estate."""
+    problems = [
+        label
+        for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE))
+        if not path.is_file()
+        or "one subject's raw evidence" not in path.read_text()
+    ]
+    if problems:
+        return failing("R15", f"context-budget discipline not stated in: {problems}")
+    return passing("R15", "sequential context discipline stated in both surfaces")
+
+
 def r5_multi_repo_docs_present() -> Result:
-    pages = MULTI_REPO_DOCS + SLICE2_DOCS
+    pages = MULTI_REPO_DOCS + SLICE2_DOCS + SLICE3_DOCS
     missing = [d for d in pages if not (ROOT / d).is_file()]
     if missing:
         return failing("R5", f"missing docs pages: {missing}")
@@ -929,6 +1009,10 @@ REPO_CHECKS = [
     ("R8", r8_binding_checklist_present),
     ("R9", r9_silent_is_not_negative),
     ("R11", r11_synthetic_examples_labelled),
+    ("R12", r12_scope_run_specified),
+    ("R13", r13_posture_handled),
+    ("R14", r14_reuse_is_declared),
+    ("R15", r15_context_discipline_stated),
 ]
 
 

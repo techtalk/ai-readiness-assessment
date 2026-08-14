@@ -18,7 +18,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
-| A15 | PASS | summary block complete (14 dimensions) |
+| A15 | FAIL | block missing keys: ['posture', 'cognitive_source'] |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-1-thin-rules`
@@ -37,7 +37,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Architectural Constraints', 'harness-engineering', 'CI enforcement'] |
-| A15 | PASS | summary block complete (14 dimensions) |
+| A15 | FAIL | block missing keys: ['posture', 'cognitive_source'] |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-2-verified`
@@ -56,7 +56,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
-| A15 | PASS | summary block complete (14 dimensions) |
+| A15 | FAIL | block missing keys: ['posture', 'cognitive_source'] |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-3-habitat`
@@ -75,7 +75,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['specification', 'specs/'] |
-| A15 | PASS | summary block complete (14 dimensions) |
+| A15 | FAIL | block missing keys: ['posture', 'cognitive_source'] |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-4-specs`
@@ -94,7 +94,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['platform-engineering', 'published plugin', 'governance audit', 'fitness functions', 'cross-team'] |
-| A15 | PASS | summary block complete (14 dimensions) |
+| A15 | FAIL | block missing keys: ['posture', 'cognitive_source'] |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-5-sovereign`
@@ -113,7 +113,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['portfolio', 'cross-team', 'top of'] |
-| A15 | PASS | summary block complete (14 dimensions) |
+| A15 | FAIL | block missing keys: ['posture', 'cognitive_source'] |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `instrument (repo-level)`
@@ -124,15 +124,19 @@ Runner: `tests/run.py` (structural assertions only).
 | R2 | PASS | both surfaces specify the assessment-summary block |
 | R3 | PASS | roll-up command and skill both present |
 | R4 | PASS | I4 stated; no unguarded portfolio-score language |
-| R5 | PASS | all 11 multi-repo docs pages present |
+| R5 | FAIL | missing docs pages: ['docs/tutorials/assess-a-team-across-repositories.md', 'docs/how-to/assess-a-monorepo-with-several-habitats.md', 'docs/explanation/subject-habitat-team.md'] |
 | R6 | PASS | framework bodies identical from '## What a roll-up is' |
 | R7 | PASS | both surfaces specify the merge and all three provenance values |
 | R8 | PASS | all 6 binding signals in both surfaces |
 | R9 | PASS | silent-vs-negative mitigation stated in both surfaces |
 | R11 | PASS | every synthetic example carries the banner |
+| R12 | FAIL | scope-run vocabulary missing — ["command: ['--scope', 'cognitive_source', 'materially different']", "skill: ['--scope', 'cognitive_source', 'materially different']"] |
+| R13 | FAIL | posture values missing — ["roll-up command: ['active', 'archived', 'maintenance']", "roll-up skill: ['active', 'archived', 'maintenance']"] |
+| R14 | FAIL | reuse-declaration wording missing from: ['command', 'skill'] |
+| R15 | FAIL | context-budget discipline not stated in: ['command', 'skill'] |
 
 ---
 
-**Total: 94 PASS, 0 FAIL.**
+**Total: 87 PASS, 11 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

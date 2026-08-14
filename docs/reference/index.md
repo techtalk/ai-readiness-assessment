@@ -13,3 +13,9 @@ section of the report.
 The model, the ladder, the gap formula, and the regimes are all embedded
 in the command and skill files in full, so the instrument stays
 [self-contained](../explanation/self-contained.md).
+
+## Multi-repo
+
+- **[Scope manifest schema](scope-manifest.md)** — `.habitat/scope.yml`: every field, and what is an error versus a recorded gap.
+- **[Assessment summary block](assessment-summary-block.md)** — the machine-readable block that closes every report.
+- **[Portfolio report structure](portfolio-report.md)** — the roll-up, section by section.

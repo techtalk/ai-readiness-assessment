@@ -9,3 +9,7 @@ run. If you're new here, start with the first one.
 Once you've done that, the [How-to guides](../how-to/index.md) cover
 individual tasks, and the [Reference](../reference/index.md) explains
 every part of the result in detail.
+
+## Multi-repo
+
+- **[Roll up existing assessments](roll-up-existing-assessments.md)** — three repositories to one portfolio report, about ten minutes.

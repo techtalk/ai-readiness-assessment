@@ -124,11 +124,11 @@ Runner: `tests/run.py` (structural assertions only).
 | R2 | PASS | both surfaces specify the assessment-summary block |
 | R3 | PASS | roll-up command and skill both present |
 | R4 | PASS | I4 stated; no unguarded portfolio-score language |
-| R5 | FAIL | missing docs pages: ['docs/reference/scope-manifest.md', 'docs/reference/assessment-summary-block.md', 'docs/reference/portfolio-report.md', 'docs/explanation/why-no-portfolio-score.md', 'docs/how-to/write-a-scope-manifest.md', 'docs/tutorials/roll-up-existing-assessments.md'] |
+| R5 | PASS | all 6 multi-repo docs pages present |
 | R6 | PASS | framework bodies identical from '## What a roll-up is' |
 
 ---
 
-**Total: 89 PASS, 1 FAIL.**
+**Total: 90 PASS, 0 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

@@ -104,3 +104,17 @@ nav:
       - Coherence, not level: explanation/coherence-not-level.md
       - Why it is self-contained: explanation/self-contained.md
       - The Sovereign Engineer: explanation/the-sovereign-engineer.md
+  # Multi-repo is grouped as one section rather than folded into the
+  # Diataxis lists above: it is an opt-in capability, and single-repo
+  # readers should not have to step over it to find anything.
+  - Multi-repo:
+      - Tutorials:
+          - Roll up existing assessments: tutorials/roll-up-existing-assessments.md
+      - How-to guides:
+          - Write a scope manifest: how-to/write-a-scope-manifest.md
+      - Reference:
+          - Scope manifest schema: reference/scope-manifest.md
+          - Assessment summary block: reference/assessment-summary-block.md
+          - Portfolio report structure: reference/portfolio-report.md
+      - Explanation:
+          - Why there is no portfolio score: explanation/why-no-portfolio-score.md

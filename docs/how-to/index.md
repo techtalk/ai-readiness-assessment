@@ -18,3 +18,7 @@ the steps.
 
 New to the tool? The [tutorial](../tutorials/your-first-assessment.md)
 walks the whole flow once, end to end.
+
+## Multi-repo
+
+- **[Write a scope manifest](write-a-scope-manifest.md)** — declare the subjects a roll-up covers.

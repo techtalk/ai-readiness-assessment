@@ -179,6 +179,28 @@ Or invoke by natural language — the skill is triggered by phrases like
 "assess our AI readiness", "where are we on the framework?", "check our
 literacy level", "score our AI maturity".
 
+### Across several repositories
+
+Once more than one repository has an assessment, roll them into one
+portfolio view:
+
+```
+/ai-readiness-rollup
+```
+
+It reads the machine-readable summary block from reports that already
+exist — no re-assessment, no behavioural questions — and reports a
+coverage ledger, a matrix of subjects against the fourteen dimensions,
+and the **spread** of the gaps.
+
+The spread is the point. One team's cognitive read measured against
+several habitats produces several gaps, and their range is a finding a
+single-repository assessment cannot produce. There is deliberately no
+portfolio score: averaging the gaps erases exactly that signal.
+
+Needs a [scope manifest](https://techtalk.github.io/ai-readiness-assessment/how-to/write-a-scope-manifest/);
+with none present, `/ai-readiness-assess` behaves exactly as before.
+
 ## What you get
 
 The command produces a structured assessment with the following
@@ -248,15 +270,19 @@ ai-readiness-assessment/
 │   ├── plugin.json                  # plugin manifest
 │   └── marketplace.json             # techtalkai marketplace manifest
 ├── commands/
-│   └── ai-readiness-assess.md       # /ai-readiness-assess
+│   ├── ai-readiness-assess.md       # /ai-readiness-assess
+│   └── ai-readiness-rollup.md       # /ai-readiness-rollup
 ├── skills/
-│   └── ai-readiness-assessment/
+│   ├── ai-readiness-assessment/
+│   │   └── SKILL.md                 # natural-language trigger
+│   └── ai-readiness-rollup/
 │       └── SKILL.md                 # natural-language trigger
 └── README.md
 ```
 
-The command and the skill carry identical framework content, so
-either entry point produces the same assessment.
+Each command and its skill carry identical framework content, so either
+entry point produces the same result. That parity is asserted by the
+test suite rather than left to discipline — see `tests/run.py`.
 
 ## The model
 

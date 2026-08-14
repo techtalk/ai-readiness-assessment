@@ -22,3 +22,4 @@ walks the whole flow once, end to end.
 ## Multi-repo
 
 - **[Write a scope manifest](write-a-scope-manifest.md)** — declare the subjects a roll-up covers.
+- **[Assess repos with a shared harness](assess-repos-with-a-shared-harness.md)** — a harness that lives outside the subject, and whether it binds.

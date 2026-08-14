@@ -11,3 +11,4 @@ instrument. Read these when you want to know *why*, not *how*.
 ## Multi-repo
 
 - **[Why there is no portfolio score](why-no-portfolio-score.md)** — why the roll-up refuses to average, and what it offers instead.
+- **[Distribution is not federation](distribution-is-not-federation.md)** — a harness held centrally is not a harness that governs.

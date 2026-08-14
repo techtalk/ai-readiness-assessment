@@ -43,6 +43,34 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Added
 
+- **Shared-habitat inheritance and binding** (spec
+  [0011](specs/0011-multi-repo-scope.md), #64) — a subject governed by a harness
+  that lives elsewhere is now placed against the **effective habitat**: the
+  shared layer merged with the local one, with each dimension recording its
+  `provenance` as `local`, `inherited`, or `inherited-unbound`. The third value
+  is the point of the slice — it caps the dimension at what the *local*
+  evidence supports and names the shared artefact that was expected to bind.
+  A harness held centrally is not a harness that governs; recorded is not
+  enforced. Comes with a six-signal binding evidence checklist (CI reuse, hook
+  and plugin config, submodule pin, lockfile pin, convention-file references,
+  shadowing), the rule that a **pinned revision is the governing habitat**
+  rather than the shared repo's tip, and `.gitmodules` autodetection that
+  *offers* a manifest and leaves the run unchanged if declined. The manifest
+  gains `habitats:` with kinds `repo`, `submodule` and `self`; the summary
+  block gains `provenance` on every row, a `habitat` key, and an optional
+  `binding:` section recording what was found rather than only the conclusion.
+- **Silence is not negation.** Where the binding checklist finds no signal but
+  no evidence of absence either, the dimension is placed `inferred` and a
+  clarifying question is spent before anything is called `inherited-unbound` —
+  so a team binding its harness by an unrecognised mechanism is never accused
+  of a discipline failure it does not have. Every binding finding names the
+  artefact expected to bind and where it was looked for. Asserted by the suite.
+- **Two worked examples** on the docs site, both clearly banner-marked as
+  synthetic: a parent repo with three bound submodules (narrow spread), and a
+  platform harness governing four services where one is stale-pinned and one is
+  not bound at all (spread of 1.79 across the same team). A test asserts every
+  synthetic example carries its banner — nothing on the docs site should be
+  ambiguous about whether it is a real reading.
 - **`/ai-readiness-rollup` — portfolio roll-up across repositories** (spec
   [0011](specs/0011-multi-repo-scope.md), #63) — the first slice of multi-repo
   scope. A new command and skill read the machine-readable summary block from

@@ -315,7 +315,7 @@ SUMMARY_DIMENSIONS = [
 ]
 
 SUMMARY_SCALARS = [
-    "schema", "subject", "team", "assessed_at", "tool_version",
+    "schema", "subject", "team", "habitat", "assessed_at", "tool_version",
     "habitat_maturity_mean", "habitat_maturity_level", "cognitive_level",
     "gap", "regime", "ceiling_dimensions", "weakest_discipline",
 ]

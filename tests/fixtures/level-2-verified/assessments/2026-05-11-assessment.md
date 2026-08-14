@@ -198,24 +198,25 @@ schema: 1
 subject: level-2-verified
 subject_path: .
 team: level-2-verified
+habitat: self
 assessed_at: 2026-05-11
 tool_version: 0.4.1
 
 dimensions:
-  agent_behaviour:   { level: 2, confidence: inferred }
-  agent_input:       { level: 2, confidence: observed }
-  workflow:          { level: 2, confidence: observed }
-  operating_model:   { level: 2, confidence: inferred }
-  teams_provide:     { level: 2, confidence: observed }
-  output_role:       { level: 2, confidence: inferred }
-  output_artefact:   { level: 2, confidence: observed }
-  humans_review:     { level: 2, confidence: inferred }
-  work_patterns:     { level: 2, confidence: inferred }
-  agent_composition: { level: 1, confidence: observed }
-  agents_do:         { level: 2, confidence: inferred }
-  testing:           { level: 2, confidence: observed }
-  observability:     { level: 1, confidence: observed }
-  governance:        { level: 2, confidence: observed }
+  agent_behaviour:   { level: 2, confidence: inferred, provenance: local }
+  agent_input:       { level: 2, confidence: observed, provenance: local }
+  workflow:          { level: 2, confidence: observed, provenance: local }
+  operating_model:   { level: 2, confidence: inferred, provenance: local }
+  teams_provide:     { level: 2, confidence: observed, provenance: local }
+  output_role:       { level: 2, confidence: inferred, provenance: local }
+  output_artefact:   { level: 2, confidence: observed, provenance: local }
+  humans_review:     { level: 2, confidence: inferred, provenance: local }
+  work_patterns:     { level: 2, confidence: inferred, provenance: local }
+  agent_composition: { level: 1, confidence: observed, provenance: local }
+  agents_do:         { level: 2, confidence: inferred, provenance: local }
+  testing:           { level: 2, confidence: observed, provenance: local }
+  observability:     { level: 1, confidence: observed, provenance: local }
+  governance:        { level: 2, confidence: observed, provenance: local }
 
 habitat_maturity_mean: 1.86
 habitat_maturity_level: 2

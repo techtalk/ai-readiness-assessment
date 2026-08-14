@@ -18,7 +18,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
-| A15 | FAIL | dimensions without provenance: ['agent_behaviour', 'agent_composition', 'agent_input', 'agents_do', 'governance', 'humans_review', 'observability', 'operating_model', 'output_artefact', 'output_role', 'teams_provide', 'testing', 'work_patterns', 'workflow'] |
+| A15 | PASS | summary block complete (14 dimensions) |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-1-thin-rules`
@@ -37,7 +37,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Architectural Constraints', 'harness-engineering', 'CI enforcement'] |
-| A15 | FAIL | dimensions without provenance: ['agent_behaviour', 'agent_composition', 'agent_input', 'agents_do', 'governance', 'humans_review', 'observability', 'operating_model', 'output_artefact', 'output_role', 'teams_provide', 'testing', 'work_patterns', 'workflow'] |
+| A15 | PASS | summary block complete (14 dimensions) |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-2-verified`
@@ -56,7 +56,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
-| A15 | FAIL | dimensions without provenance: ['agent_behaviour', 'agent_composition', 'agent_input', 'agents_do', 'governance', 'humans_review', 'observability', 'operating_model', 'output_artefact', 'output_role', 'teams_provide', 'testing', 'work_patterns', 'workflow'] |
+| A15 | PASS | summary block complete (14 dimensions) |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-3-habitat`
@@ -75,7 +75,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['specification', 'specs/'] |
-| A15 | FAIL | dimensions without provenance: ['agent_behaviour', 'agent_composition', 'agent_input', 'agents_do', 'governance', 'humans_review', 'observability', 'operating_model', 'output_artefact', 'output_role', 'teams_provide', 'testing', 'work_patterns', 'workflow'] |
+| A15 | PASS | summary block complete (14 dimensions) |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-4-specs`
@@ -94,7 +94,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['platform-engineering', 'published plugin', 'governance audit', 'fitness functions', 'cross-team'] |
-| A15 | FAIL | dimensions without provenance: ['agent_behaviour', 'agent_composition', 'agent_input', 'agents_do', 'governance', 'humans_review', 'observability', 'operating_model', 'output_artefact', 'output_role', 'teams_provide', 'testing', 'work_patterns', 'workflow'] |
+| A15 | PASS | summary block complete (14 dimensions) |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-5-sovereign`
@@ -113,7 +113,7 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['portfolio', 'cross-team', 'top of'] |
-| A15 | FAIL | dimensions without provenance: ['agent_behaviour', 'agent_composition', 'agent_input', 'agents_do', 'governance', 'humans_review', 'observability', 'operating_model', 'output_artefact', 'output_role', 'teams_provide', 'testing', 'work_patterns', 'workflow'] |
+| A15 | PASS | summary block complete (14 dimensions) |
 | A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `instrument (repo-level)`
@@ -126,13 +126,13 @@ Runner: `tests/run.py` (structural assertions only).
 | R4 | PASS | I4 stated; no unguarded portfolio-score language |
 | R5 | FAIL | missing docs pages: ['docs/how-to/assess-repos-with-a-shared-harness.md', 'docs/reference/provenance-and-binding.md', 'docs/explanation/distribution-is-not-federation.md', 'docs/examples/parent-repo-submodules.md', 'docs/examples/separate-harness-partially-bound.md'] |
 | R6 | PASS | framework bodies identical from '## What a roll-up is' |
-| R7 | FAIL | effective-habitat vocabulary missing — ["command: ['effective habitat', 'inherited-unbound']", "skill: ['effective habitat', 'inherited-unbound']"] |
-| R8 | FAIL | binding signals missing — ["command: ['CI configuration', 'Hook / plugin configuration', 'Submodule pin', 'Package/lockfile pin', 'Convention file references', 'Shadowing']", "skill: ['CI configuration', 'Hook / plugin configuration', 'Submodule pin', 'Package/lockfile pin', 'Convention file references', 'Shadowing']"] |
-| R9 | FAIL | silent-vs-negative mitigation not stated in: ['command', 'skill'] |
+| R7 | PASS | both surfaces specify the merge and all three provenance values |
+| R8 | PASS | all 6 binding signals in both surfaces |
+| R9 | PASS | silent-vs-negative mitigation stated in both surfaces |
 | R11 | PASS | every synthetic example carries the banner |
 
 ---
 
-**Total: 84 PASS, 10 FAIL.**
+**Total: 93 PASS, 1 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

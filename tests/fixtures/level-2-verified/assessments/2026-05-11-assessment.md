@@ -192,3 +192,36 @@ Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 > existing CI rules with their stated intent.
 >
 > Get in touch: <https://techtalk.ai>
+
+```yaml assessment-summary
+schema: 1
+subject: level-2-verified
+subject_path: .
+team: level-2-verified
+assessed_at: 2026-05-11
+tool_version: 0.4.1
+
+dimensions:
+  agent_behaviour:   { level: 2, confidence: inferred }
+  agent_input:       { level: 2, confidence: observed }
+  workflow:          { level: 2, confidence: observed }
+  operating_model:   { level: 2, confidence: inferred }
+  teams_provide:     { level: 2, confidence: observed }
+  output_role:       { level: 2, confidence: inferred }
+  output_artefact:   { level: 2, confidence: observed }
+  humans_review:     { level: 2, confidence: inferred }
+  work_patterns:     { level: 2, confidence: inferred }
+  agent_composition: { level: 1, confidence: observed }
+  agents_do:         { level: 2, confidence: inferred }
+  testing:           { level: 2, confidence: observed }
+  observability:     { level: 1, confidence: observed }
+  governance:        { level: 2, confidence: observed }
+
+habitat_maturity_mean: 1.86
+habitat_maturity_level: 2
+cognitive_level: 2
+gap: +0.14
+regime: coherent
+ceiling_dimensions: [agent_composition, observability]
+weakest_discipline: context-engineering
+```

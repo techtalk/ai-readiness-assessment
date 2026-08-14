@@ -210,3 +210,36 @@ Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 > the cross-team transfer is verified, not theoretical.
 >
 > Get in touch: <https://techtalk.ai>
+
+```yaml assessment-summary
+schema: 1
+subject: level-4-specs
+subject_path: .
+team: level-4-specs
+assessed_at: 2026-05-11
+tool_version: 0.4.1
+
+dimensions:
+  agent_behaviour:   { level: 4, confidence: inferred }
+  agent_input:       { level: 4, confidence: observed }
+  workflow:          { level: 4, confidence: observed }
+  operating_model:   { level: 4, confidence: inferred }
+  teams_provide:     { level: 4, confidence: observed }
+  output_role:       { level: 4, confidence: inferred }
+  output_artefact:   { level: 4, confidence: observed }
+  humans_review:     { level: 4, confidence: inferred }
+  work_patterns:     { level: 3, confidence: inferred }
+  agent_composition: { level: 4, confidence: observed }
+  agents_do:         { level: 3, confidence: inferred }
+  testing:           { level: 3, confidence: observed }
+  observability:     { level: 2, confidence: observed }
+  governance:        { level: 4, confidence: observed }
+
+habitat_maturity_mean: 3.64
+habitat_maturity_level: 4
+cognitive_level: 4
+gap: +0.36
+regime: coherent
+ceiling_dimensions: [observability]
+weakest_discipline: architectural-constraints
+```

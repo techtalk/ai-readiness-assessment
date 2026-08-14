@@ -43,6 +43,38 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Added
 
+- **`/ai-readiness-rollup` — portfolio roll-up across repositories** (spec
+  [0011](specs/0011-multi-repo-scope.md), #63) — the first slice of multi-repo
+  scope. A new command and skill read the machine-readable summary block from
+  assessments that already exist and produce one portfolio report: a coverage
+  ledger, a matrix of subjects against the fourteen dimensions, the gap
+  **spread**, and a ceiling split into what enablement owes the estate and what
+  each team owes itself. No re-assessment and no behavioural questions — twelve
+  repositories interactively is not a session anyone sits through. Driven by an
+  opt-in `.habitat/scope.yml`; with no manifest present `/ai-readiness-assess`
+  behaves exactly as before. There is deliberately **no portfolio score**:
+  averaging the gaps erases the spread, which is the only thing the portfolio
+  view adds.
+- **Every report now ends with a machine-readable `assessment-summary` block**
+  — all fourteen dimensions with their level and `confidence`
+  (`observed` / `asked` / `inferred`), plus the maturity mean, cognitive read,
+  signed gap, regime, ceiling dimensions and weakest discipline. This is what
+  decouples *running* an assessment from *summarising* one, so a roll-up can
+  read a report months later without re-parsing prose. `provenance` is
+  deliberately not emitted yet — it arrives with shared-habitat support, and a
+  placeholder `local` on every row would make an unbound inherited rule
+  indistinguishable from local evidence.
+- **Command/skill parity is now asserted, not assumed.** The rule that both
+  entry points carry identical framework content had been running on trust; the
+  suite now compares the two bodies directly (`R1`, and `R6` for the roll-up
+  pair) and names the first divergent line. It caught a real drift during its
+  own slice. Also new: `A15`/`A16` assert the summary block is complete, is the
+  last element of the file, and agrees with the prose on maturity level,
+  cognitive read and regime. 72 → 90 assertions.
+- **Multi-repo documentation** — a tutorial (roll up existing assessments), a
+  how-to (write a scope manifest), three reference pages (scope manifest schema,
+  assessment summary block, portfolio report structure) and an explanation
+  (why there is no portfolio score), under a new **Multi-repo** nav section.
 - **Assessment Review section** in the generated report (spec
   [0008](specs/0008-assessment-review-section.md), #55) — the report's single
   call to action now lives in its own section that positions a one-hour review

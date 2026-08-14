@@ -294,6 +294,161 @@ def a14_maturity_profile():
 
 
 # ---------------------------------------------------------------------------
+# Assessment summary block (spec 0011, Slice 1)
+#
+# Every per-unit report ends with a machine-readable summary block. It is
+# the thing that makes a roll-up possible without re-running an
+# assessment, so its structure is asserted rather than trusted — a
+# malformed block silently degrades every portfolio report built on it.
+# ---------------------------------------------------------------------------
+
+SUMMARY_BLOCK_RE = re.compile(r"```yaml assessment-summary\n(.*?)\n```", re.DOTALL)
+
+# The model's fourteen dimensions in the block's key form, ordered to
+# match the Habitat Maturity Profile table rather than alphabetically, so
+# a reader can diff block against prose line by line.
+SUMMARY_DIMENSIONS = [
+    "agent_behaviour", "agent_input", "workflow", "operating_model",
+    "teams_provide", "output_role", "output_artefact", "humans_review",
+    "work_patterns", "agent_composition", "agents_do", "testing",
+    "observability", "governance",
+]
+
+SUMMARY_SCALARS = [
+    "schema", "subject", "team", "assessed_at", "tool_version",
+    "habitat_maturity_mean", "habitat_maturity_level", "cognitive_level",
+    "gap", "regime", "ceiling_dimensions", "weakest_discipline",
+]
+
+# Invariant I5: every placement carries how it was arrived at.
+VALID_CONFIDENCE = {"observed", "inferred", "asked"}
+
+# Prose regime wording -> block slug.
+REGIME_SLUGS = {
+    "Coherent": "coherent",
+    "Ambition outpaces enablement": "ambition-outpaces-enablement",
+    "Inherited habitat": "inherited-habitat",
+}
+
+
+def summary_block(text: str) -> str | None:
+    m = SUMMARY_BLOCK_RE.search(text)
+    return m.group(1) if m else None
+
+
+def summary_dimension_rows(block: str) -> dict[str, tuple[int, str]]:
+    """Parse `key: { level: N, confidence: word ... }` rows from a block."""
+    rows: dict[str, tuple[int, str]] = {}
+    for m in re.finditer(
+        r"^\s*(\w+):\s*\{\s*level:\s*(\d)\s*,\s*confidence:\s*(\w+)",
+        block,
+        re.MULTILINE,
+    ):
+        rows[m.group(1)] = (int(m.group(2)), m.group(3))
+    return rows
+
+
+def block_scalar(block: str, key: str) -> str | None:
+    m = re.search(rf"^{re.escape(key)}:\s*(.+?)\s*$", block, re.MULTILINE)
+    return m.group(1) if m else None
+
+
+def a15_summary_block():
+    """The report ends with a complete summary block.
+
+    'Ends with' is load-bearing: the roll-up reads the block as the last
+    element, so anything appended after it means a report the roll-up
+    will misparse.
+    """
+
+    def check(text: str, fixture: Path) -> Result:
+        m = SUMMARY_BLOCK_RE.search(text)
+        if m is None:
+            return failing("A15", "no ```yaml assessment-summary block")
+        if text[m.end():].strip():
+            return failing(
+                "A15",
+                f"summary block is not the last element; "
+                f"{len(text[m.end():].strip())} chars follow it",
+            )
+        block = m.group(1)
+        rows = summary_dimension_rows(block)
+        missing = [d for d in SUMMARY_DIMENSIONS if d not in rows]
+        if missing:
+            return failing("A15", f"block missing dimensions: {missing}")
+        bad = {d: c for d, (_lvl, c) in rows.items() if c not in VALID_CONFIDENCE}
+        if bad:
+            return failing("A15", f"invalid confidence values: {bad}")
+        absent = [k for k in SUMMARY_SCALARS if block_scalar(block, k) is None]
+        if absent:
+            return failing("A15", f"block missing keys: {absent}")
+        return passing("A15", f"summary block complete ({len(rows)} dimensions)")
+
+    return ("A15", check)
+
+
+def a16_block_agrees_with_prose():
+    """The block is generated from the placements the prose reports,
+    never computed separately. If the two disagree, one of them is lying
+    to whoever reads it — and the roll-up only ever sees the block."""
+
+    def check(text: str, fixture: Path) -> Result:
+        block = summary_block(text)
+        if block is None:
+            return failing("A16", "no summary block to compare against prose")
+        problems: list[str] = []
+
+        prose_level = re.search(
+            r"\*\*Habitat Maturity Level\*\*:\s*Level\s*(\d)", text
+        )
+        blk_level = block_scalar(block, "habitat_maturity_level")
+        if prose_level and blk_level and prose_level.group(1) != blk_level:
+            problems.append(
+                f"habitat_maturity_level: prose L{prose_level.group(1)} "
+                f"vs block {blk_level}"
+            )
+
+        prose_cog = re.search(r"Cognitive read \(Parts A–C\):\s*L(\d)", text)
+        blk_cog = block_scalar(block, "cognitive_level")
+        if prose_cog and blk_cog and prose_cog.group(1) != blk_cog:
+            problems.append(
+                f"cognitive_level: prose L{prose_cog.group(1)} vs block {blk_cog}"
+            )
+
+        # The regime may carry a qualifier — "Inherited habitat (floor
+        # baseline)" — so match on the regime prefix, not equality, or
+        # the check silently passes on the fixtures that use one.
+        prose_regime = re.search(
+            r"\*\*Habitat/Workflow Gap\*\*:\s*[-+][\d.]+\s*\((.+)\)", text
+        )
+        blk_regime = block_scalar(block, "regime")
+        if prose_regime and blk_regime:
+            stated = prose_regime.group(1).strip()
+            named = next((r for r in REGIME_SLUGS if stated.startswith(r)), None)
+            if named is None:
+                problems.append(f"prose regime {stated!r} names no known regime")
+            elif REGIME_SLUGS[named] != blk_regime:
+                problems.append(f"regime: prose {stated!r} vs block {blk_regime!r}")
+
+        if problems:
+            return failing("A16", "; ".join(problems))
+        return passing(
+            "A16", "block agrees with prose on maturity level, cognitive read, regime"
+        )
+
+    return ("A16", check)
+
+
+def universal_assertions():
+    """Assertions that hold for every fixture regardless of its level.
+
+    Kept separate from the per-fixture sets so a new report-wide rule is
+    added once rather than six times.
+    """
+    return [a15_summary_block(), a16_block_agrees_with_prose()]
+
+
+# ---------------------------------------------------------------------------
 # Per-fixture assertion sets
 # ---------------------------------------------------------------------------
 
@@ -480,6 +635,190 @@ CHECKERS = {
 
 
 # ---------------------------------------------------------------------------
+# Repo-level (instrument) assertions — spec 0011
+#
+# These examine the instrument itself rather than a generated report, so
+# they run once rather than once per fixture.
+# ---------------------------------------------------------------------------
+
+COMMAND_FILE = ROOT / "commands" / "ai-readiness-assess.md"
+SKILL_FILE = ROOT / "skills" / "ai-readiness-assessment" / "SKILL.md"
+ROLLUP_COMMAND = ROOT / "commands" / "ai-readiness-rollup.md"
+ROLLUP_SKILL = ROOT / "skills" / "ai-readiness-rollup" / "SKILL.md"
+
+# Invariant I3: framework content is identical across both surfaces from
+# this heading to end of file. Everything above it is surface-specific
+# framing (the command's invocation line, the skill's "when to use").
+PARITY_ANCHOR = "## The model (embedded)"
+
+# The only sanctioned divergence: each surface names itself. Both
+# phrasings fold to a neutral token before comparison, so any *other*
+# difference fails. Adding an entry here is a deliberate act — it widens
+# the hole in I3 and should be argued for in the PR that does it.
+PARITY_VARIANCES = [
+    ("This command is fully", "This instrument is fully"),
+    ("the standalone command does not create files",
+     "the standalone skill does not create files"),
+]
+
+# The roll-up pair's shared body is written without self-reference, so
+# it needs no variance allowance — the stricter position, chosen while
+# the surfaces were new enough to make it free.
+ROLLUP_PARITY_ANCHOR = "## What a roll-up is"
+
+# Invariant I4: the roll-up never reduces the estate to one number.
+PORTFOLIO_SCORE_SMELLS = [
+    "average gap", "averaged gap", "mean gap", "portfolio score",
+    "overall score", "portfolio grade", "overall grade",
+    "portfolio percentage",
+]
+
+MULTI_REPO_DOCS = [
+    "docs/reference/scope-manifest.md",
+    "docs/reference/assessment-summary-block.md",
+    "docs/reference/portfolio-report.md",
+    "docs/explanation/why-no-portfolio-score.md",
+    "docs/how-to/write-a-scope-manifest.md",
+    "docs/tutorials/roll-up-existing-assessments.md",
+]
+
+
+def parity_body(path: Path, anchor: str, variances: list) -> str | None:
+    """The framework half of a surface file, normalised for comparison."""
+    if not path.is_file():
+        return None
+    text = path.read_text()
+    i = text.find(anchor)
+    if i == -1:
+        return None
+    body = text[i:]
+    for command_phrasing, skill_phrasing in variances:
+        body = body.replace(command_phrasing, "<surface>")
+        body = body.replace(skill_phrasing, "<surface>")
+    return body
+
+
+def check_parity(
+    aid: str, command: Path, skill: Path, anchor: str, variances: list
+) -> Result:
+    """Compare a command/skill pair, reporting the first divergent line.
+
+    Naming the line matters more than reporting a boolean: the failure a
+    contributor sees should point at the edit that broke it.
+    """
+    a = parity_body(command, anchor, variances)
+    b = parity_body(skill, anchor, variances)
+    if a is None or b is None:
+        which = [p.name for p, v in ((command, a), (skill, b)) if v is None]
+        return failing(aid, f"parity anchor {anchor!r} missing from: {which}")
+    if a == b:
+        return passing(aid, f"framework bodies identical from {anchor!r}")
+    al, bl = a.splitlines(), b.splitlines()
+    for n, (x, y) in enumerate(zip(al, bl), start=1):
+        if x != y:
+            return failing(
+                aid,
+                f"surfaces diverge at framework line {n} — "
+                f"command: {x.strip()[:50]!r} / skill: {y.strip()[:50]!r}",
+            )
+    return failing(
+        aid,
+        f"framework bodies differ in length: "
+        f"command {len(al)} lines, skill {len(bl)} lines",
+    )
+
+
+def r1_command_skill_parity() -> Result:
+    """I3 — both entry points must produce the same assessment."""
+    return check_parity("R1", COMMAND_FILE, SKILL_FILE, PARITY_ANCHOR, PARITY_VARIANCES)
+
+
+def r6_rollup_parity() -> Result:
+    """I3 applied to the roll-up pair. Its shared body carries no
+    self-reference at all, so unlike R1 it tolerates no variance."""
+    return check_parity(
+        "R6", ROLLUP_COMMAND, ROLLUP_SKILL, ROLLUP_PARITY_ANCHOR, []
+    )
+
+
+def r2_surfaces_specify_summary_block() -> Result:
+    """Both surfaces must instruct the agent to emit the summary block,
+    or the two entry points produce reports the roll-up treats
+    differently — which is I3 failing by another route."""
+    missing = [
+        label
+        for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE))
+        if not path.is_file() or "assessment-summary" not in path.read_text()
+    ]
+    if missing:
+        return failing("R2", f"surfaces not specifying the summary block: {missing}")
+    return passing("R2", "both surfaces specify the assessment-summary block")
+
+
+def r3_rollup_surfaces_exist() -> Result:
+    missing = [
+        str(p.relative_to(ROOT))
+        for p in (ROLLUP_COMMAND, ROLLUP_SKILL)
+        if not p.is_file()
+    ]
+    if missing:
+        return failing("R3", f"missing roll-up surfaces: {missing}")
+    return passing("R3", "roll-up command and skill both present")
+
+
+def r4_no_portfolio_score() -> Result:
+    """I4 — the invariant most likely to erode, because every stakeholder
+    shown a matrix asks for the one number. Checked two ways: the rule is
+    stated, and no score language appears except as a prohibition."""
+    if not ROLLUP_SKILL.is_file():
+        return failing("R4", "roll-up skill absent; cannot check I4")
+    text = ROLLUP_SKILL.read_text().lower()
+    if "no portfolio score" not in text:
+        return failing("R4", "roll-up skill does not state the no-portfolio-score rule")
+    negations = ("never", "no ", "not ", "without", "refuse")
+    offenders = [
+        line.strip()[:70]
+        for line in text.splitlines()
+        for smell in PORTFOLIO_SCORE_SMELLS
+        if smell in line and not any(neg in line for neg in negations)
+    ]
+    if offenders:
+        return failing(
+            "R4", f"score language not framed as prohibition: {offenders[:2]}"
+        )
+    return passing("R4", "I4 stated; no unguarded portfolio-score language")
+
+
+def r5_multi_repo_docs_present() -> Result:
+    missing = [d for d in MULTI_REPO_DOCS if not (ROOT / d).is_file()]
+    if missing:
+        return failing("R5", f"missing docs pages: {missing}")
+    return passing("R5", f"all {len(MULTI_REPO_DOCS)} multi-repo docs pages present")
+
+
+REPO_GROUP = "instrument (repo-level)"
+
+REPO_CHECKS = [
+    ("R1", r1_command_skill_parity),
+    ("R2", r2_surfaces_specify_summary_block),
+    ("R3", r3_rollup_surfaces_exist),
+    ("R4", r4_no_portfolio_score),
+    ("R5", r5_multi_repo_docs_present),
+    ("R6", r6_rollup_parity),
+]
+
+
+def run_repo_checks() -> list[Result]:
+    results: list[Result] = []
+    for rid, fn in REPO_CHECKS:
+        try:
+            results.append(fn())
+        except Exception as exc:  # noqa: BLE001 — test runner must not crash
+            results.append(failing(rid, f"assertion raised: {exc!r}"))
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Runner
 # ---------------------------------------------------------------------------
 
@@ -493,7 +832,7 @@ def run_fixture(name: str) -> list[Result]:
         return [failing("A1", "no assessment file under assessments/")]
     text = asmnt.read_text()
     results: list[Result] = []
-    for _aid, fn in CHECKERS[name]():
+    for _aid, fn in CHECKERS[name]() + universal_assertions():
         try:
             results.append(fn(text, fixture))
         except Exception as exc:  # noqa: BLE001 — test runner must not crash
@@ -563,6 +902,11 @@ def main() -> int:
     all_results: dict[str, list[Result]] = {}
     for name in targets:
         all_results[name] = run_fixture(name)
+
+    # Repo-level checks examine the instrument, not a report, so they run
+    # only on a full sweep — a single-fixture run is a debugging aid.
+    if not args.fixture:
+        all_results[REPO_GROUP] = run_repo_checks()
 
     _p, f = print_summary(all_results)
     write_report(all_results)

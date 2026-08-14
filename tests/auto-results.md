@@ -18,6 +18,8 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
+| A15 | PASS | summary block complete (14 dimensions) |
+| A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-1-thin-rules`
 
@@ -35,6 +37,8 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Architectural Constraints', 'harness-engineering', 'CI enforcement'] |
+| A15 | PASS | summary block complete (14 dimensions) |
+| A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-2-verified`
 
@@ -52,6 +56,8 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['Context Engineering', 'habitat-document', 'CLAUDE.md'] |
+| A15 | PASS | summary block complete (14 dimensions) |
+| A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-3-habitat`
 
@@ -69,6 +75,8 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['specification', 'specs/'] |
+| A15 | PASS | summary block complete (14 dimensions) |
+| A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-4-specs`
 
@@ -86,6 +94,8 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['platform-engineering', 'published plugin', 'governance audit', 'fitness functions', 'cross-team'] |
+| A15 | PASS | summary block complete (14 dimensions) |
+| A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
 
 ## `level-5-sovereign`
 
@@ -103,9 +113,22 @@ Runner: `tests/run.py` (structural assertions only).
 | A14 | PASS | full 14-dimension model profile present |
 | A9 | PASS | exactly one CTA paragraph |
 | A10 | PASS | CTA mentions ['portfolio', 'cross-team', 'top of'] |
+| A15 | PASS | summary block complete (14 dimensions) |
+| A16 | PASS | block agrees with prose on maturity level, cognitive read, regime |
+
+## `instrument (repo-level)`
+
+| ID | Status | Evidence |
+|---|---|---|
+| R1 | PASS | framework bodies identical from '## The model (embedded)' |
+| R2 | PASS | both surfaces specify the assessment-summary block |
+| R3 | PASS | roll-up command and skill both present |
+| R4 | PASS | I4 stated; no unguarded portfolio-score language |
+| R5 | PASS | all 6 multi-repo docs pages present |
+| R6 | PASS | framework bodies identical from '## What a roll-up is' |
 
 ---
 
-**Total: 72 PASS, 0 FAIL.**
+**Total: 90 PASS, 0 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

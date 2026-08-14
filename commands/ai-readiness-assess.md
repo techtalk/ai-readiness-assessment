@@ -513,6 +513,83 @@ fixed transition paragraph; carries no call to action of its own>
 <see step 5 — the secondary, self-guided alternative>
 ```
 
+### 4a. Close the report with the summary block
+
+The last element of the file is a machine-readable summary of the same
+placements the prose just reported. It exists so a portfolio roll-up
+(`/ai-readiness-rollup`) can read this report months later without
+re-running the assessment and without re-parsing prose.
+
+Three rules:
+
+- **It is generated from the placements above, never computed
+  separately.** If the block and the prose disagree, the report is lying
+  to somebody — the prose to its reader, or the block to every roll-up
+  built on it.
+- **It is the last thing in the file.** Nothing follows the closing
+  fence.
+- **Every dimension records how it was arrived at.** `observed` for a
+  dimension placed evidence-first from the scan, `asked` where a
+  clarifying question was spent on it, `inferred` where it was placed
+  from what the other dimensions imply. Never write `observed` for a
+  dimension that was not directly evidenced — the flag is the honesty
+  mechanism, and a roll-up cannot re-derive it.
+
+`provenance` is not emitted. It arrives with shared-habitat support; a
+faked `local` on every row today would make an unbound inherited rule
+indistinguishable from local evidence tomorrow.
+
+````markdown
+```yaml assessment-summary
+schema: 1
+subject: <repo or directory name>
+subject_path: .
+team: <team name, or the project name where no team is named>
+assessed_at: YYYY-MM-DD
+tool_version: <plugin version>
+
+dimensions:
+  agent_behaviour:   { level: N, confidence: inferred }
+  agent_input:       { level: N, confidence: observed }
+  workflow:          { level: N, confidence: observed }
+  operating_model:   { level: N, confidence: inferred }
+  teams_provide:     { level: N, confidence: observed }
+  output_role:       { level: N, confidence: inferred }
+  output_artefact:   { level: N, confidence: observed }
+  humans_review:     { level: N, confidence: inferred }
+  work_patterns:     { level: N, confidence: inferred }
+  agent_composition: { level: N, confidence: observed }
+  agents_do:         { level: N, confidence: inferred }
+  testing:           { level: N, confidence: observed }
+  observability:     { level: N, confidence: observed }
+  governance:        { level: N, confidence: observed }
+
+habitat_maturity_mean: N.NN
+habitat_maturity_level: N
+cognitive_level: N
+gap: <signed — cognitive_level minus habitat_maturity_mean>
+regime: <coherent | ambition-outpaces-enablement | inherited-habitat>
+ceiling_dimensions: [<the weakest dimensions, as named in the profile>]
+weakest_discipline: <context-engineering | architectural-constraints | guardrail-design>
+```
+````
+
+The fourteen keys follow the Habitat Maturity Profile table in order:
+*Agent behaviour, Agent input, Workflow, Operating model, Teams provide,
+Output role, Output artefact, Humans review, Work patterns, Agent
+composition, Agents…, Testing, Observability, Governance.* `agents_do`
+is the key for *Agents…*.
+
+The confidence values shown above are the defaults implied by the
+model's own split — the eight repo-observable dimensions `observed`, the
+six behavioural ones `inferred`. Depart from them where the assessment
+did: a dimension that got a clarifying question becomes `asked`.
+
+Absence is itself evidence. A repo-observable dimension placed at L1
+because the scan found nothing is `observed` — the scan looked and the
+artefacts were not there. Reserve `inferred` for a dimension the
+evidence could not place either way.
+
 ### 5. Reading path (book reference, gap-anchored — the secondary option)
 
 The reading path is the **secondary, self-guided alternative** to the

@@ -178,3 +178,6 @@ lands, and take what is good from it then.
 matters. If those five habitats shared nothing, extraction would be the
 wrong move and the answer would be to move people instead. See
 [Extract or bind](../explanation/extract-or-bind.md).*
+
+**[View this report as a shareable HTML page](fragmented-estate.html)** — a single
+self-contained file, no network assets, works opened straight from disk.

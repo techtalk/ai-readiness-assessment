@@ -312,9 +312,20 @@ Ticked per slice as each PR merges.
       habitat has none, which is precisely why it must never raise a
       dimension. Coverage is now reported against **named** subjects
       rather than readable ones — the denominator is the claim.*
-- [ ] **S6** (#68) — Self-contained HTML portfolio, matrix as
+- [x] **S6** (#68) — Self-contained HTML portfolio, matrix as
       centrepiece, spread as a distribution, coverage ledger above the
       fold, no gauge or grade.
+      *Landed: 109 assertions green. Two findings while building it.
+      First, spec 0009's rename left **four** occurrences of "Habitat
+      Build Gap" in the live surfaces — including the instrument's own
+      definition of the metric — all wrapped across a line break, which
+      is why 0009's acceptance check passed; R23 now matches the term
+      across whitespace. Second, R4 caught a sentence in this slice's
+      own render spec that named a portfolio score without a negation:
+      the invariant guard fired on its author, and the prose was
+      reworded rather than the guard loosened. Structural validation
+      only — the pages were parsed and confirmed well-formed and
+      asset-free, but not visually rendered.*
 - [ ] **Example 1** (#69) — the real Habitat-Thinking estate roll-up,
       published whatever it says.
 

@@ -781,6 +781,36 @@ SLICE5_DOCS = [
 # Habitat that cannot be read from any subject checkout.
 HABITAT_KINDS_BEYOND_CHECKOUT = ["package", "org", "upstream"]
 
+SLICE6_EXAMPLES = [
+    "docs/examples/parent-repo-submodules.html",
+    "docs/examples/separate-harness-partially-bound.html",
+    "docs/examples/fragmented-estate.html",
+]
+
+# Retired by spec 0009. Matched across whitespace because two
+# occurrences survived that rename: the term was line-wrapped as
+# "Habitat Build\n  Gap", and the acceptance check grepped for the
+# unwrapped string and passed.
+RETIRED_GAP_TERM = re.compile(r"Habitat\s+Build\s+Gap")
+
+# Invariant I4 in rendered form: the spread is a distribution, never a
+# single dial, gauge or grade.
+GAUGE_LANGUAGE = [
+    "gauge", "overall score", "overall grade", "portfolio score",
+    "portfolio grade", "single score",
+]
+
+NEGATIONS = ("never", "no ", "not ", "without", "refuse", "neither")
+
+# A page may link out; it may not *load* anything over the network.
+EXTERNAL_ASSET_PATTERNS = [
+    (re.compile(r"<script[^>]+src\s*=\s*[\"']https?://", re.I), "external script"),
+    (re.compile(r"<link[^>]+href\s*=\s*[\"']https?://", re.I), "external link/stylesheet"),
+    (re.compile(r"<img[^>]+src\s*=\s*[\"']https?://", re.I), "external image"),
+    (re.compile(r"@import\s+url\(\s*[\"']?https?://", re.I), "external @import"),
+    (re.compile(r"url\(\s*[\"']?https?://[^)]*\.(?:woff2?|ttf|otf|css)", re.I), "external font/css"),
+]
+
 # The exact phrasing an org habitat gets in a report. An org rule that
 # silently raised a dimension would be `inherited-unbound`'s failure
 # mode one layer up — and unlike a sibling repo, there is nothing to
@@ -1119,6 +1149,93 @@ def r22_partial_scope_reported() -> Result:
     return passing("R22", "partial scope reported against named subjects, not readable ones")
 
 
+def r23_no_retired_gap_terminology() -> Result:
+    """Spec 0009 renamed the Habitat Build Gap to the Habitat/Workflow Gap.
+
+    Two occurrences survived in the live surfaces, line-wrapped, because
+    the acceptance check matched the unwrapped string. Matched across
+    whitespace here so a wrap cannot hide it again.
+
+    Scoped to the live instrument. Specs, the changelog and the
+    reflection log deliberately keep the name the instrument used at the
+    time — they are records of past decisions, not instructions.
+    """
+    offenders = []
+    for path in (COMMAND_FILE, SKILL_FILE, ROLLUP_COMMAND, ROLLUP_SKILL):
+        if not path.is_file():
+            continue
+        text = path.read_text()
+        for m in RETIRED_GAP_TERM.finditer(text):
+            offenders.append(
+                f"{path.relative_to(ROOT)}:{text[: m.start()].count(chr(10)) + 1}"
+            )
+    if offenders:
+        return failing("R23", f"retired term still in the live surfaces: {offenders}")
+    return passing("R23", "no retired gap terminology in the live surfaces")
+
+
+def r24_html_portfolio_specified() -> Result:
+    """Both roll-up surfaces must specify the shareable render the same
+    way, or the two entry points produce different artefacts."""
+    needed = ["self-contained", "no network assets", "above the fold"]
+    problems = []
+    for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL)):
+        text = path.read_text().lower() if path.is_file() else ""
+        missing = [n for n in needed if n not in text]
+        if missing:
+            problems.append(f"roll-up {label}: {missing}")
+    if problems:
+        return failing("R24", f"HTML portfolio spec incomplete — {problems}")
+    return passing("R24", "both roll-up surfaces specify the HTML portfolio")
+
+
+def r25_html_examples_self_contained() -> Result:
+    """I1 in rendered form — the page must work opened from the
+    filesystem, with nothing fetched over the network."""
+    missing = [p for p in SLICE6_EXAMPLES if not (ROOT / p).is_file()]
+    if missing:
+        return failing("R25", f"missing HTML examples: {missing}")
+    problems = []
+    for rel in SLICE6_EXAMPLES:
+        text = (ROOT / rel).read_text()
+        if "<style" not in text.lower():
+            problems.append(f"{rel}: no inlined <style>")
+        for pattern, what in EXTERNAL_ASSET_PATTERNS:
+            if pattern.search(text):
+                problems.append(f"{rel}: {what}")
+    if problems:
+        return failing("R25", f"not self-contained: {problems}")
+    return passing("R25", f"all {len(SLICE6_EXAMPLES)} HTML examples are self-contained")
+
+
+def r26_html_leads_with_coverage() -> Result:
+    """An incomplete assessment must *look* incomplete.
+
+    The matrix is the artefact people screenshot, and it is persuasive
+    whether or not the data behind it is complete — so the coverage
+    ledger comes first, and no single gauge or grade appears anywhere.
+    """
+    present = [p for p in SLICE6_EXAMPLES if (ROOT / p).is_file()]
+    if not present:
+        return failing("R26", "no HTML examples to check")
+    problems = []
+    for rel in present:
+        text = (ROOT / rel).read_text()
+        lower = text.lower()
+        cov, mat = lower.find("coverage"), lower.find("dimension matrix")
+        if cov == -1:
+            problems.append(f"{rel}: no coverage ledger")
+        elif mat != -1 and cov > mat:
+            problems.append(f"{rel}: matrix precedes the coverage ledger")
+        for line in lower.splitlines():
+            for smell in GAUGE_LANGUAGE:
+                if smell in line and not any(n in line for n in NEGATIONS):
+                    problems.append(f"{rel}: unguarded {smell!r}")
+    if problems:
+        return failing("R26", f"{problems[:3]}")
+    return passing("R26", "coverage leads; no gauge or grade in any rendered portfolio")
+
+
 def r16_internal_doc_links_resolve() -> Result:
     """Every relative markdown link in docs/ points at a file that exists.
 
@@ -1173,6 +1290,10 @@ REPO_CHECKS = [
     ("R20", r20_habitat_kinds_beyond_checkout),
     ("R21", r21_org_habitat_never_raises),
     ("R22", r22_partial_scope_reported),
+    ("R23", r23_no_retired_gap_terminology),
+    ("R24", r24_html_portfolio_specified),
+    ("R25", r25_html_examples_self_contained),
+    ("R26", r26_html_leads_with_coverage),
 ]
 
 

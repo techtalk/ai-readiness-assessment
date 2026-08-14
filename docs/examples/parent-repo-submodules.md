@@ -115,3 +115,6 @@ is out of step with itself.
 *Portfolio regime naming — Federated, Distributed, Fragmented,
 Islanded — arrives in a later release. This example shows the shape a
 federated estate produces, without asserting the label.*
+
+**[View this report as a shareable HTML page](parent-repo-submodules.html)** — a single
+self-contained file, no network assets, works opened straight from disk.

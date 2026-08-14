@@ -141,9 +141,13 @@ Runner: `tests/run.py` (structural assertions only).
 | R20 | PASS | package, org and upstream kinds in both surfaces |
 | R21 | PASS | org habitats are declared-and-unverifiable in both surfaces |
 | R22 | PASS | partial scope reported against named subjects, not readable ones |
+| R23 | PASS | no retired gap terminology in the live surfaces |
+| R24 | PASS | both roll-up surfaces specify the HTML portfolio |
+| R25 | PASS | all 3 HTML examples are self-contained |
+| R26 | PASS | coverage leads; no gauge or grade in any rendered portfolio |
 
 ---
 
-**Total: 105 PASS, 0 FAIL.**
+**Total: 109 PASS, 0 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

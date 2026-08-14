@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Readiness Portfolio — payments-tribe</title>
+<style>
+:root{
+  --l1:#7fb3d5;--l2:#3f7cac;--l3:#1f9e8f;--l4:#2e8b57;--l5:#caa14a;
+  --ink:#1c1c1c;--muted:#5b5b5b;--line:#e3e3e3;
+  --bg:#fdfdfc;--techtalk:#0b2b3c;--tt-light:#eaf2f6;
+  --amber:#c77d31;--teal:#00b2a2;--panel:#f0eeeb;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.5rem 4rem}
+.tt-header{background:var(--techtalk);color:var(--tt-light);
+  padding:2rem 1.5rem 1.75rem;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.tt-header .inner{max-width:1040px;margin:0 auto}
+.tt-wordmark{font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;opacity:.55;margin-bottom:1rem}
+.tt-header h1{font-size:1.55rem;font-weight:700;margin:0 0 .2rem;color:#fff}
+.tt-meta{font-size:.85rem;opacity:.65}
+.tt-headline{background:rgba(255,255,255,.09);border-radius:8px;
+  padding:.9rem 1.1rem;margin-top:1.25rem;font-size:1rem;line-height:1.6}
+.tt-headline .k{opacity:.7;font-size:.8rem;text-transform:uppercase;
+  letter-spacing:.06em;display:block}
+.tt-headline strong{color:#fff}
+.synthetic{background:#fff6e5;border:1px solid #e6c489;border-left:4px solid var(--amber);
+  border-radius:6px;padding:.75rem 1rem;margin:1.5rem 0 0;font-size:.9rem}
+h2{color:var(--techtalk);border-bottom:2px solid var(--techtalk);
+  padding-bottom:.3rem;margin:2.5rem 0 1rem;font-size:1.15rem}
+h3{font-size:1rem;margin:1.5rem 0 .5rem;color:var(--techtalk)}
+table{border-collapse:collapse;width:100%;font-size:.85rem;margin:.5rem 0 1rem}
+th,td{border:1px solid var(--line);padding:.4rem .5rem;text-align:left}
+th{background:#f5f5f4;font-weight:600}
+.coverage{background:var(--panel);border-radius:8px;padding:1rem 1.25rem;margin-top:.5rem}
+.coverage table{margin-bottom:.5rem;background:#fff}
+.coverage .plain{font-weight:700;color:var(--techtalk)}
+.matrix{overflow-x:auto}
+.matrix table{font-size:.8rem}
+.matrix th.dim{text-align:center;width:2.6rem}
+.matrix td.cell{text-align:center;font-weight:700;color:#fff;padding:.35rem .2rem}
+.matrix td.subj{white-space:nowrap;font-weight:600}
+.lv1{background:var(--l1)}.lv2{background:var(--l2)}.lv3{background:var(--l3)}
+.lv4{background:var(--l4)}.lv5{background:var(--l5)}
+.ceil{outline:2px solid #b3261e;outline-offset:-2px}
+.prov{font-size:.7em;vertical-align:super;opacity:.9}
+tr.dim-off td{opacity:.5}
+.key{font-size:.8rem;color:var(--muted);margin:.25rem 0 0}
+.spread{margin:1rem 0 1.5rem}
+.axis{position:relative;height:80px;border-left:1px solid var(--line);
+  border-right:1px solid var(--line);background:
+  linear-gradient(to right,transparent 0,transparent calc(50% - .5px),
+  var(--line) calc(50% - .5px),var(--line) calc(50% + .5px),transparent calc(50% + .5px));
+  margin:1.75rem 0 .25rem}
+.axis .rule{position:absolute;top:38px;left:0;right:0;height:2px;background:var(--line)}
+.pt{position:absolute;top:30px;width:14px;height:14px;border-radius:50%;
+  transform:translateX(-7px);border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.pt-lab{position:absolute;top:0;transform:translateX(-50%);font-size:.7rem;
+  white-space:nowrap;color:var(--muted)}
+.pt-lab.low{top:52px}
+.axis-ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+.regime{background:var(--techtalk);color:#fff;border-radius:8px;padding:1.1rem 1.25rem;
+  print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.regime h2{color:#fff;border:0;margin:0 0 .4rem;padding:0}
+.regime .name{font-size:1.3rem;font-weight:800;color:var(--teal)}
+.regime ul{margin:.6rem 0 0;padding-left:1.1rem}
+.regime li{margin:.2rem 0}
+.split{display:flex;gap:1rem;flex-wrap:wrap}
+.split>div{flex:1 1 260px;background:var(--panel);border-radius:8px;padding:.9rem 1.1rem}
+.split h3{margin-top:0}
+.note{font-size:.85rem;color:var(--muted)}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);
+  font-size:.8rem;color:var(--muted)}
+@media print{.tt-header{padding:1.2rem}}
+</style>
+</head>
+<body>
+<div class="tt-header"><div class="inner">
+  <div class="tt-wordmark">TechTalk · AI Readiness Portfolio</div>
+  <h1>Separate harness repo, partially bound</h1>
+  <div class="tt-meta">payments-tribe · 2026-08-14</div>
+  <div class="tt-headline">
+    <span class="k">Coverage</span><strong>4 of 4 subjects assessed; 0 stale; 0 unreachable.</strong><br>
+    <span class="k" style="margin-top:.6rem">Gap spread</span><strong>−0.29 (orders-api) to +1.50 (legacy-batch) — range 1.79</strong>
+  </div>
+</div></div>
+
+<div class="wrap">
+<div class="synthetic"><strong>Synthetic example — constructed to illustrate the report shape.</strong> These figures are invented to
+show the report shape. They are not a reading of any real estate.</div>
+
+<h2>Coverage ledger</h2>
+<div class="coverage">
+  <table><tr><th>Subject</th><th>Status</th><th>Report date</th><th>Age</th><th>Note</th></tr>
+  <tr><td>orders-api</td><td>assessed</td><td>2026-08-01</td><td>13d</td><td>—</td></tr><tr><td>billing</td><td>assessed</td><td>2026-07-29</td><td>16d</td><td>—</td></tr><tr><td>reporting</td><td>assessed</td><td>2026-08-06</td><td>8d</td><td>harness pinned 412d</td></tr><tr><td>legacy-batch</td><td>assessed</td><td>2026-08-02</td><td>12d</td><td>harness declared, not bound</td></tr></table>
+  <p class="plain">4 of 4 subjects assessed; 0 stale; 0 unreachable.</p>
+</div>
+
+<h2>Dimension matrix</h2>
+<div class="matrix"><table><tr><th>Subject</th><th class="dim" title="Agent behaviour">AB</th><th class="dim" title="Agent input">AI</th><th class="dim" title="Workflow">WF</th><th class="dim" title="Operating model">OM</th><th class="dim" title="Teams provide">TP</th><th class="dim" title="Output role">OR</th><th class="dim" title="Output artefact">OA</th><th class="dim" title="Humans review">HR</th><th class="dim" title="Work patterns">WP</th><th class="dim" title="Agent composition">AC</th><th class="dim" title="Agents…">AD</th><th class="dim" title="Testing">Te</th><th class="dim" title="Observability">Ob</th><th class="dim" title="Governance">Gv</th></tr><tr><td class="subj">orders-api</td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv4">4<span class="prov">ᶦ</span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv4">4<span class="prov">ᶦ</span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv4">4<span class="prov">ᶦ</span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv4">4<span class="prov">ᶦ</span></td></tr><tr><td class="subj">billing</td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv4">4<span class="prov">ᶦ</span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv4">4<span class="prov">ᶦ</span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv2">2<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv4">4<span class="prov">ᶦ</span></td><td class="cell lv2">2<span class="prov"></span></td><td class="cell lv4">4<span class="prov">ᶦ</span></td></tr><tr><td class="subj">reporting</td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv2">2<span class="prov"></span></td><td class="cell lv3">3<span class="prov">ᶦ</span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov">ᶦ</span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv2 ceil">2<span class="prov"></span></td><td class="cell lv2">2<span class="prov"></span></td><td class="cell lv3">3<span class="prov"></span></td><td class="cell lv3">3<span class="prov">ᶦ</span></td><td class="cell lv2">2<span class="prov"></span></td><td class="cell lv3">3<span class="prov">ᶦ</span></td></tr><tr><td class="subj">legacy-batch</td><td class="cell lv2 ceil">2<span class="prov"></span></td><td class="cell lv1 ceil">1<span class="prov"></span></td><td class="cell lv1 ceil">1<span class="prov">ᵘ</span></td><td class="cell lv2 ceil">2<span class="prov"></span></td><td class="cell lv1 ceil">1<span class="prov">ᵘ</span></td><td class="cell lv2 ceil">2<span class="prov"></span></td><td class="cell lv2 ceil">2<span class="prov"></span></td><td class="cell lv2 ceil">2<span class="prov"></span></td><td class="cell lv2 ceil">2<span class="prov"></span></td><td class="cell lv1 ceil">1<span class="prov"></span></td><td class="cell lv2 ceil">2<span class="prov"></span></td><td class="cell lv1 ceil">1<span class="prov">ᵘ</span></td><td class="cell lv1 ceil">1<span class="prov"></span></td><td class="cell lv1 ceil">1<span class="prov">ᵘ</span></td></tr></table></div>
+<p class="key">Level in cell, coloured L1–L5. <strong>ᶦ</strong> inherited ·
+<strong>ᵘ</strong> inherited-unbound · unmarked is local. Red outline marks the
+weakest cell in the column among active subjects. Non-active rows are
+de-emphasised and do not set the ceiling.<br>
+<strong>AB</strong> Agent behaviour · <strong>AI</strong> Agent input · <strong>WF</strong> Workflow · <strong>OM</strong> Operating model · <strong>TP</strong> Teams provide · <strong>OR</strong> Output role · <strong>OA</strong> Output artefact · <strong>HR</strong> Humans review · <strong>WP</strong> Work patterns · <strong>AC</strong> Agent composition · <strong>AD</strong> Agents… · <strong>Te</strong> Testing · <strong>Ob</strong> Observability · <strong>Gv</strong> Governance</p>
+
+<h2>Gap table</h2>
+<table><tr><th>Subject</th><th>Habitat maturity mean</th><th>Cognitive level</th>
+<th>Gap</th><th>Regime</th></tr><tr><td>orders-api</td><td>3.29</td><td>3</td><td>-0.29</td><td>Coherent</td></tr><tr><td>billing</td><td>3.14</td><td>3</td><td>-0.14</td><td>Coherent</td></tr><tr><td>reporting</td><td>2.71</td><td>3</td><td>+0.29</td><td>Coherent</td></tr><tr><td>legacy-batch</td><td>1.50</td><td>3</td><td>+1.50</td><td>Ambition outpaces enablement</td></tr></table>
+
+<h2>Spread</h2>
+<div class="spread"><div class="axis"><div class="rule"></div><div class="pt lv3" style="left:9.7%"></div><div class="pt-lab" style="left:9.7%">orders-api -0.29</div><div class="pt lv3" style="left:16.1%"></div><div class="pt-lab low" style="left:16.1%">billing -0.14</div><div class="pt lv3" style="left:35.5%"></div><div class="pt-lab" style="left:35.5%">reporting +0.29</div><div class="pt lv5" style="left:90.3%"></div><div class="pt-lab low" style="left:90.3%">legacy-batch +1.50</div></div><div class="axis-ends"><span>-0.50</span><span>gap = cognitive read − 14-dimension habitat mean</span><span>+1.71</span></div></div>
+<p>One team, one way of working, four habitats. The same engineers who sit comfortably Coherent in orders-api are working a full level and a half ahead of their environment in legacy-batch. That is not a capability difference — it is an environment difference, and a single-repository assessment of orders-api would have reported a healthy team and missed it.</p>
+
+<h2>Portfolio regime</h2>
+<div class="regime">
+  <h2>Portfolio regime</h2>
+  <div class="name">Distributed</div>
+  <ul><li>One shared habitat declared for all four subjects.</li><li>Binds in three; <strong>four dimensions inherited-unbound</strong> in legacy-batch, whose CI defines its own workflows and whose AGENTS.md restates rather than defers.</li><li>reporting is bound but pinned <strong>412 days</strong> back; it is assessed against the pinned revision.</li><li>Gap spread 1.79 — driven almost entirely by the unbound subject.</li></ul>
+</div>
+
+<h2>Split ceiling</h2>
+<div class="split">
+  <div><h3>Common weak — enablement backlog</h3><p><strong>Observability, Agent composition</strong> — weak in three of four, including subjects where the harness does bind. The shared harness does not supply these, so binding harder will not fix them.</p></div>
+  <div><h3>Locally weak — team backlogs</h3><p><strong>legacy-batch</strong>: Workflow, Teams provide, Testing, Governance — all four <em>inherited-unbound</em>. A binding failure, not a team failure. It belongs to whoever owns the harness.</p></div>
+</div>
+
+<h2>What this estate should do next</h2>
+<p><strong>Bind the harness in legacy-batch.</strong> The cheapest uplift in the estate, and not a build — the testing policy and governance model already exist. Four dimensions move the day it lands.</p><p><strong>Refresh the reporting pin.</strong> It is bound, which is the hard part. It is 412 days behind, which is the easy part.</p><p><strong>Then</strong> lift observability and agent composition in the harness itself — after the binding work, not before, or you improve a harness half the estate cannot see.</p><p class="note">The instinct on seeing this matrix is to treat legacy-batch as a struggling team. The provenance marks say otherwise: the capability exists twenty metres away.</p>
+
+<footer>
+There is no overall score, grade or percentage in this report, and no averaged
+gap across subjects — averaging destroys the spread, which is the only thing a
+portfolio view adds. The headline is a distribution and a ceiling.<br>
+© TechTalk GmbH · Vienna, Austria · Markdown source: examples/separate-harness-partially-bound.md
+</footer>
+</div>
+</body>
+</html>

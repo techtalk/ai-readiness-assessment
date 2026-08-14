@@ -315,13 +315,19 @@ SUMMARY_DIMENSIONS = [
 ]
 
 SUMMARY_SCALARS = [
-    "schema", "subject", "team", "assessed_at", "tool_version",
+    "schema", "subject", "team", "habitat", "assessed_at", "tool_version",
     "habitat_maturity_mean", "habitat_maturity_level", "cognitive_level",
     "gap", "regime", "ceiling_dimensions", "weakest_discipline",
 ]
 
-# Invariant I5: every placement carries how it was arrived at.
+# Invariant I5: every placement carries how it was arrived at, and
+# — from Slice 2 — where the evidence for it lives.
 VALID_CONFIDENCE = {"observed", "inferred", "asked"}
+
+# `inherited` means the shared habitat supplies it *and* it demonstrably
+# reaches this subject. `inherited-unbound` means the shared habitat
+# declares it and nothing here executes or enforces it.
+VALID_PROVENANCE = {"local", "inherited", "inherited-unbound"}
 
 # Prose regime wording -> block slug.
 REGIME_SLUGS = {
@@ -336,15 +342,26 @@ def summary_block(text: str) -> str | None:
     return m.group(1) if m else None
 
 
-def summary_dimension_rows(block: str) -> dict[str, tuple[int, str]]:
-    """Parse `key: { level: N, confidence: word ... }` rows from a block."""
-    rows: dict[str, tuple[int, str]] = {}
+def summary_dimension_rows(block: str) -> dict[str, dict]:
+    """Parse `key: { level: N, confidence: c, provenance: p }` rows.
+
+    `provenance` is captured optionally so the parser can report its
+    absence as a finding rather than failing to match the row at all —
+    a row that silently does not parse looks identical to a missing
+    dimension, which is a much less useful failure message.
+    """
+    rows: dict[str, dict] = {}
     for m in re.finditer(
-        r"^\s*(\w+):\s*\{\s*level:\s*(\d)\s*,\s*confidence:\s*(\w+)",
+        r"^\s*(\w+):\s*\{\s*level:\s*(\d)\s*,\s*confidence:\s*([\w-]+)\s*"
+        r"(?:,\s*provenance:\s*([\w-]+)\s*)?\}",
         block,
         re.MULTILINE,
     ):
-        rows[m.group(1)] = (int(m.group(2)), m.group(3))
+        rows[m.group(1)] = {
+            "level": int(m.group(2)),
+            "confidence": m.group(3),
+            "provenance": m.group(4),
+        }
     return rows
 
 
@@ -376,9 +393,23 @@ def a15_summary_block():
         missing = [d for d in SUMMARY_DIMENSIONS if d not in rows]
         if missing:
             return failing("A15", f"block missing dimensions: {missing}")
-        bad = {d: c for d, (_lvl, c) in rows.items() if c not in VALID_CONFIDENCE}
+        bad = {
+            d: r["confidence"]
+            for d, r in rows.items()
+            if r["confidence"] not in VALID_CONFIDENCE
+        }
         if bad:
             return failing("A15", f"invalid confidence values: {bad}")
+        no_prov = sorted(d for d, r in rows.items() if r["provenance"] is None)
+        if no_prov:
+            return failing("A15", f"dimensions without provenance: {no_prov}")
+        bad_prov = {
+            d: r["provenance"]
+            for d, r in rows.items()
+            if r["provenance"] not in VALID_PROVENANCE
+        }
+        if bad_prov:
+            return failing("A15", f"invalid provenance values: {bad_prov}")
         absent = [k for k in SUMMARY_SCALARS if block_scalar(block, k) is None]
         if absent:
             return failing("A15", f"block missing keys: {absent}")
@@ -682,6 +713,30 @@ MULTI_REPO_DOCS = [
     "docs/tutorials/roll-up-existing-assessments.md",
 ]
 
+SLICE2_DOCS = [
+    "docs/how-to/assess-repos-with-a-shared-harness.md",
+    "docs/reference/provenance-and-binding.md",
+    "docs/explanation/distribution-is-not-federation.md",
+    "docs/examples/parent-repo-submodules.md",
+    "docs/examples/separate-harness-partially-bound.md",
+]
+
+# The six ways a shared habitat can demonstrably reach a subject. A
+# finding of `inherited-unbound` is only answerable if the report can say
+# what was looked for, so these must appear in both surfaces verbatim.
+BINDING_SIGNALS = [
+    "CI configuration",
+    "Hook / plugin configuration",
+    "Submodule pin",
+    "Package/lockfile pin",
+    "Convention file references",
+    "Shadowing",
+]
+
+SYNTHETIC_BANNER = (
+    "Synthetic example — constructed to illustrate the report shape."
+)
+
 
 def parity_body(path: Path, anchor: str, variances: list) -> str | None:
     """The framework half of a surface file, normalised for comparison."""
@@ -789,11 +844,76 @@ def r4_no_portfolio_score() -> Result:
     return passing("R4", "I4 stated; no unguarded portfolio-score language")
 
 
+def r7_effective_habitat_specified() -> Result:
+    """Both surfaces must describe the shared-plus-local merge and all
+    three provenance values, or the two entry points disagree about what
+    an inherited placement even means."""
+    needed = ["effective habitat", *sorted(VALID_PROVENANCE)]
+    problems = []
+    for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE)):
+        text = path.read_text().lower() if path.is_file() else ""
+        missing = [n for n in needed if n.lower() not in text]
+        if missing:
+            problems.append(f"{label}: {missing}")
+    if problems:
+        return failing("R7", f"effective-habitat vocabulary missing — {problems}")
+    return passing("R7", "both surfaces specify the merge and all three provenance values")
+
+
+def r8_binding_checklist_present() -> Result:
+    """The binding evidence checklist is what makes an `inherited-unbound`
+    finding answerable — it tells a team what was looked for."""
+    problems = []
+    for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE)):
+        text = path.read_text() if path.is_file() else ""
+        missing = [s for s in BINDING_SIGNALS if s not in text]
+        if missing:
+            problems.append(f"{label}: {missing}")
+    if problems:
+        return failing("R8", f"binding signals missing — {problems}")
+    return passing("R8", f"all {len(BINDING_SIGNALS)} binding signals in both surfaces")
+
+
+def r9_silent_is_not_negative() -> Result:
+    """The agreed mitigation for the slice's central risk: a checklist
+    that is silent about a binding mechanism must not be read as proof
+    that none exists. Without this the instrument accuses teams of
+    discipline failures they do not have."""
+    problems = [
+        label
+        for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE))
+        if not path.is_file()
+        or "silent rather than negative" not in path.read_text()
+    ]
+    if problems:
+        return failing(
+            "R9", f"silent-vs-negative mitigation not stated in: {problems}"
+        )
+    return passing("R9", "silent-vs-negative mitigation stated in both surfaces")
+
+
+def r11_synthetic_examples_labelled() -> Result:
+    """Nothing on the docs site should be ambiguous about whether it is a
+    real reading. A synthetic example that looks real is worse than no
+    example."""
+    unlabelled = [
+        d
+        for d in SLICE2_DOCS
+        if d.startswith("docs/examples/")
+        and (ROOT / d).is_file()
+        and SYNTHETIC_BANNER not in (ROOT / d).read_text()
+    ]
+    if unlabelled:
+        return failing("R11", f"synthetic examples without the banner: {unlabelled}")
+    return passing("R11", "every synthetic example carries the banner")
+
+
 def r5_multi_repo_docs_present() -> Result:
-    missing = [d for d in MULTI_REPO_DOCS if not (ROOT / d).is_file()]
+    pages = MULTI_REPO_DOCS + SLICE2_DOCS
+    missing = [d for d in pages if not (ROOT / d).is_file()]
     if missing:
         return failing("R5", f"missing docs pages: {missing}")
-    return passing("R5", f"all {len(MULTI_REPO_DOCS)} multi-repo docs pages present")
+    return passing("R5", f"all {len(pages)} multi-repo docs pages present")
 
 
 REPO_GROUP = "instrument (repo-level)"
@@ -805,6 +925,10 @@ REPO_CHECKS = [
     ("R4", r4_no_portfolio_score),
     ("R5", r5_multi_repo_docs_present),
     ("R6", r6_rollup_parity),
+    ("R7", r7_effective_habitat_specified),
+    ("R8", r8_binding_checklist_present),
+    ("R9", r9_silent_is_not_negative),
+    ("R11", r11_synthetic_examples_labelled),
 ]
 
 

@@ -81,11 +81,19 @@ The roll-up is driven by `.habitat/scope.yml`.
 version: 1
 team: payments-tribe          # the cognitive read is scoped to this
 
+habitats:                     # optional — omit when every subject governs itself
+  - id: platform-harness
+    kind: repo                # repo | submodule | self
+    path: ../platform-harness
+    provides: [HARNESS.md, AGENTS.md, hooks, skills, agents, ci]
+
 subjects:
   - id: orders-api
     path: ../orders-api       # repo, submodule, or directory
+    habitat: platform-harness # omit ⇒ self-governed
   - id: billing
     path: ../billing
+    habitat: platform-harness
   - id: legacy-batch
     path: ../legacy-batch
 
@@ -93,15 +101,20 @@ report:
   output: assessments/        # roll-up destination, relative to the manifest
 ```
 
-**Validation.** `subjects` must be non-empty, and each subject needs an
-`id` and a `path`. Every `id` must be unique. A path that cannot be read
-is **not** an error — record it in the coverage ledger as `unreachable`
-and carry on. Keys not described here produce a warning and are then
-ignored: the schema grows over later releases, and a manifest written
-today must keep working.
+`provides` is a hint about what the shared habitat offers. It is never
+taken as proof — a declared artefact still has to bind to a subject
+before it raises anything there.
 
-Stop with a clear message naming the problem only when the manifest is
-absent, has no `subjects`, or has a duplicate `id`.
+**Validation.** `subjects` must be non-empty, and each subject needs an
+`id` and a `path`. Every `id` must be unique across both `subjects` and
+`habitats`. A path that cannot be read is **not** an error — record it in
+the coverage ledger as `unreachable` and carry on. Keys not described
+here produce a warning and are then ignored: the schema grows over later
+releases, and a manifest written today must keep working.
+
+Stop with a clear message naming the problem when the manifest is
+absent, has no `subjects`, has a duplicate `id`, or when a subject's
+`habitat` names no declared habitat — name the bad reference.
 
 ## Procedure
 
@@ -166,6 +179,12 @@ moved — they belong to their subjects.
 Subjects by the model's fourteen dimensions. The weakest cell in each
 column is marked — that is the dimension's estate-wide ceiling.
 
+Where a report records `provenance`, mark it in the cell: a level
+reached through an *inherited* rule is a different fact from one reached
+locally, and an `inherited-unbound` dimension is a different fact again —
+the shared habitat declares it and nothing in that subject enforces it.
+Use a consistent notation and give it a key beneath the matrix.
+
 | Subject | Agent behaviour | Agent input | Workflow | Operating model | Teams provide | Output role | Output artefact | Humans review | Work patterns | Agent composition | Agents… | Testing | Observability | Governance |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | orders-api | 3 | 2 | 3 | 4 | 3 | 4 | 3 | 4 | 3 | 2* | 3 | 2* | 2* | 3 |
@@ -222,6 +241,12 @@ advice.>
   reader scanning the matrix must be able to see that.
 - **The weakest dimensions name the ceiling** — per subject and per
   portfolio. Do not average dimensions into a subject score.
+- **An unbound rule is not a weak team.** Where several subjects share a
+  habitat and a dimension is `inherited-unbound` across them, that is a
+  *binding* failure, not a capability failure. It belongs in the common-weak
+  column — the enablement backlog — and the steer is to bind what already
+  exists rather than to build anything new. Name the subjects and the
+  artefact expected to bind.
 
 ## Report to the user
 

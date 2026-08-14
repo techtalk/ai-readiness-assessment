@@ -112,6 +112,64 @@ dimensions and **flag it as inferred, not evidenced** in the profile.
   level, taking the higher-scoring level (ties → the higher level).
   Offer this only if the user asks for a precise score.
 
+#### The effective habitat (subjects governed from elsewhere)
+
+Skip this section when the subject governs itself — the common case, and
+the default whenever no `.habitat/scope.yml` names a habitat for it.
+
+Where the harness lives outside the subject — a platform-harness repo, a
+parent holding submodules, a shared package — place dimensions against
+the **effective habitat**: the shared layer merged with the local one.
+Record where each placement's evidence came from:
+
+| Provenance | Meaning |
+|---|---|
+| `local` | The evidence is in the subject itself. |
+| `inherited` | The shared habitat supplies it **and** it demonstrably reaches this subject. |
+| `inherited-unbound` | The shared habitat declares it; nothing in this subject executes, references, or enforces it. |
+
+`inherited-unbound` is the finding that matters. It **caps the dimension
+at the level the local evidence supports** and names the shared artefact
+that was expected to bind. A harness held centrally is not the same as a
+harness that governs — distribution is not federation, and recorded is
+not enforced.
+
+##### Binding evidence checklist
+
+A shared artefact is *bound* to this subject on any of these signals:
+
+| Signal | Reads as bound when |
+|---|---|
+| **CI configuration** | Subject workflows call, extend, or reuse the shared workflows. |
+| **Hook / plugin configuration** | Subject config points at the shared harness, plugin, or marketplace. |
+| **Submodule pin** | The submodule is present *and* pinned within a recent window. Report the pin age. |
+| **Package/lockfile pin** | The shared harness package resolves in the lockfile. Report the version and its age. |
+| **Convention file references** | The subject's `AGENTS.md` / `CLAUDE.md` includes or defers to the shared file rather than restating it. |
+| **Shadowing** | A local file overriding a shared rule means **not bound** for that dimension. Report the override as a divergence; never silently take the higher level. |
+
+Two rules keep this honest:
+
+- **The pinned revision is the governing habitat, not the shared repo's
+  tip.** Assess what the pin actually points at, and state its age. A
+  subject pinned eighteen months back is governed by an eighteen-month-old
+  harness however good the current one is.
+- **Silent is not negative.** Where the checklist is
+  silent rather than negative — no signal found, but no evidence of
+  absence either — place the dimension `inferred` and say so, and spend a
+  clarifying question before asserting `inherited-unbound`. A team
+  binding its harness by a
+  mechanism this checklist does not recognise must not be accused of a
+  discipline failure it does not have. Every binding finding names the
+  artefact expected to bind and where it was looked for, so the team can
+  correct it.
+
+##### When a scope is not declared
+
+If the repository has a `.gitmodules` file and no `.habitat/scope.yml`,
+say that a multi-subject scope appears to be present and offer to write a
+manifest. If the offer is declined, assess the current repository exactly
+as normal. Never restructure the run on a guess.
+
 ### The cognitive read (folded in)
 
 The model above is the spine. The framework's six-level ladder is the
@@ -535,9 +593,9 @@ Three rules:
   dimension that was not directly evidenced — the flag is the honesty
   mechanism, and a roll-up cannot re-derive it.
 
-`provenance` is not emitted. It arrives with shared-habitat support; a
-faked `local` on every row today would make an unbound inherited rule
-indistinguishable from local evidence tomorrow.
+Every dimension also carries its `provenance` — `local`, `inherited`, or
+`inherited-unbound`, as placed above. A self-governed subject records
+`local` throughout; that is a real reading, not a placeholder.
 
 ````markdown
 ```yaml assessment-summary
@@ -545,24 +603,25 @@ schema: 1
 subject: <repo or directory name>
 subject_path: .
 team: <team name, or the project name where no team is named>
+habitat: <habitat id from the manifest, or "self">
 assessed_at: YYYY-MM-DD
 tool_version: <plugin version>
 
 dimensions:
-  agent_behaviour:   { level: N, confidence: inferred }
-  agent_input:       { level: N, confidence: observed }
-  workflow:          { level: N, confidence: observed }
-  operating_model:   { level: N, confidence: inferred }
-  teams_provide:     { level: N, confidence: observed }
-  output_role:       { level: N, confidence: inferred }
-  output_artefact:   { level: N, confidence: observed }
-  humans_review:     { level: N, confidence: inferred }
-  work_patterns:     { level: N, confidence: inferred }
-  agent_composition: { level: N, confidence: observed }
-  agents_do:         { level: N, confidence: inferred }
-  testing:           { level: N, confidence: observed }
-  observability:     { level: N, confidence: observed }
-  governance:        { level: N, confidence: observed }
+  agent_behaviour:   { level: N, confidence: inferred, provenance: local }
+  agent_input:       { level: N, confidence: observed, provenance: local }
+  workflow:          { level: N, confidence: observed, provenance: local }
+  operating_model:   { level: N, confidence: inferred, provenance: local }
+  teams_provide:     { level: N, confidence: observed, provenance: local }
+  output_role:       { level: N, confidence: inferred, provenance: local }
+  output_artefact:   { level: N, confidence: observed, provenance: local }
+  humans_review:     { level: N, confidence: inferred, provenance: local }
+  work_patterns:     { level: N, confidence: inferred, provenance: local }
+  agent_composition: { level: N, confidence: observed, provenance: local }
+  agents_do:         { level: N, confidence: inferred, provenance: local }
+  testing:           { level: N, confidence: observed, provenance: local }
+  observability:     { level: N, confidence: observed, provenance: local }
+  governance:        { level: N, confidence: observed, provenance: local }
 
 habitat_maturity_mean: N.NN
 habitat_maturity_level: N
@@ -573,6 +632,26 @@ ceiling_dimensions: [<the weakest dimensions, as named in the profile>]
 weakest_discipline: <context-engineering | architectural-constraints | guardrail-design>
 ```
 ````
+
+Where the subject is governed from elsewhere, add a `binding:` section
+before `habitat_maturity_mean`, recording what was found rather than
+just the conclusion:
+
+````markdown
+```yaml
+binding:
+  habitat: platform-harness
+  kind: <repo | submodule | self>
+  pin_age_days: N              # submodule or package pins only
+  signals_found: [ci, convention-references]
+  unbound_dimensions: [testing, observability]
+  expected_to_bind: [.github/workflows/harness-tests.yml]
+```
+````
+
+Omit `binding:` entirely for a self-governed subject. An empty section
+implies a shared habitat was looked for and not found, which is a
+different claim.
 
 The fourteen keys follow the Habitat Maturity Profile table in order:
 *Agent behaviour, Agent input, Workflow, Operating model, Teams provide,

@@ -268,10 +268,17 @@ Ticked per slice as each PR merges.
       registering the new surfaces in `plugin.json` (Claude Code
       auto-discovers `commands/` and `skills/`; there is nothing to
       register). Example 1 deferred to #69.*
-- [ ] **S2** (#64) — Effective habitat merge with `local` /
+- [x] **S2** (#64) — Effective habitat merge with `local` /
       `inherited` / `inherited-unbound` provenance; binding checklist;
       `habitats:` support; `.gitmodules` autodetection that offers a
       manifest and assesses unchanged if declined.
+      *Landed: 94 assertions green. The silent-versus-negative
+      mitigation is implemented with the feature as the adversarial
+      review required, and asserted by R9. Examples 2 and 3 shipped
+      synthetic and banner-marked, with R11 asserting the banner.
+      Portfolio regime names are deliberately absent from both — they
+      are Slice 4, and the examples describe the shape without
+      claiming the label.*
 - [ ] **S3** (#65) — Behavioural questions asked once per team;
       per-subject difference question; reuse declared in the body;
       `posture` excluding archived subjects from the ceiling;

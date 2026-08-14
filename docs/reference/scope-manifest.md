@@ -78,11 +78,43 @@ That last rule is deliberate. Strictness here would mean every schema
 extension breaks every existing manifest, and the manifests live in
 other people's repositories.
 
+## Declaring a shared habitat
+
+Where the harness governing a subject lives outside it, declare it under
+`habitats:` and point subjects at it:
+
+```yaml
+habitats:
+  - id: platform-harness
+    kind: repo                  # repo | submodule | self
+    path: ../platform-harness
+    provides: [HARNESS.md, AGENTS.md, ci, hooks]
+
+subjects:
+  - id: orders-api
+    path: ../orders-api
+    habitat: platform-harness   # omit ⇒ self-governed
+```
+
+| Field | Required | Meaning |
+|---|---|---|
+| `habitats[].id` | yes | Unique across `habitats` *and* `subjects`. |
+| `habitats[].kind` | yes | `repo` (a sibling repository), `submodule`, or `self` (the harness is in the repo holding the manifest). |
+| `habitats[].path` | yes | Path to the habitat, relative to the manifest. |
+| `habitats[].provides` | no | A hint about what it offers. **Never taken as proof** — a declared artefact still has to bind before it raises anything. |
+| `subjects[].habitat` | no | Which declared habitat governs this subject. Omit for self-governed. |
+
+A `habitat` reference naming no declared habitat is a **hard error**, and
+the message names the bad reference. Declaring a habitat that nothing
+binds to is *not* an error — that is a finding, reported per dimension as
+`inherited-unbound`. See
+[Provenance and binding](provenance-and-binding.md).
+
 ## Fields arriving later
 
-Later releases add `habitats:` (for a harness that governs a subject
-from outside it), `posture:` (so an archived repo cannot pin the
+Later releases add `posture:` (so an archived repo cannot pin the
 portfolio ceiling), `paths:` (one logical subject spanning several
-directories), and `justified_variance:` (divergence that is intentional
-and should not be reported as drift). Manifests written to the schema
-above will keep working when they do.
+directories), `justified_variance:` (divergence that is intentional and
+should not be reported as drift), and the `package`, `org` and
+`upstream` habitat kinds. Manifests written to the schema above will
+keep working when they do.

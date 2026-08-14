@@ -213,6 +213,7 @@ subject: level-3-habitat
 subject_path: .
 team: level-3-habitat
 habitat: self
+posture: active
 assessed_at: 2026-05-11
 tool_version: 0.4.1
 
@@ -235,6 +236,7 @@ dimensions:
 habitat_maturity_mean: 2.50
 habitat_maturity_level: 3
 cognitive_level: 3
+cognitive_source: subject
 gap: +0.50
 regime: ambition-outpaces-enablement
 ceiling_dimensions: [agent_input, humans_review, work_patterns, agent_composition, agents_do, testing, observability]

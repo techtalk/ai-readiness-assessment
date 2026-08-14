@@ -227,6 +227,7 @@ subject: level-5-sovereign
 subject_path: .
 team: level-5-sovereign
 habitat: self
+posture: active
 assessed_at: 2026-05-11
 tool_version: 0.4.1
 
@@ -249,6 +250,7 @@ dimensions:
 habitat_maturity_mean: 4.14
 habitat_maturity_level: 4
 cognitive_level: 5
+cognitive_source: subject
 gap: +0.86
 regime: ambition-outpaces-enablement
 ceiling_dimensions: [testing, observability]

@@ -110,11 +110,54 @@ binds to is *not* an error — that is a finding, reported per dimension as
 `inherited-unbound`. See
 [Provenance and binding](provenance-and-binding.md).
 
+## Posture
+
+`posture` changes how a subject feeds the portfolio, never whether it is
+assessed or shown:
+
+| Posture | In the matrix | Feeds the ceiling |
+|---|---|---|
+| `active` (default) | yes | yes |
+| `maintenance` | yes | excluded from common-weak detection |
+| `archived` | yes, marked as archived | excluded entirely |
+
+```yaml
+subjects:
+  - id: legacy-batch
+    path: ../legacy-batch
+    posture: maintenance
+```
+
+Without this a single dead repository pins the estate's ceiling
+permanently, and every portfolio report afterwards leads with a finding
+nobody intends to act on.
+
+Marking a subject is better than leaving it out of the manifest.
+Omitting it would overstate coverage — the report would claim to cover
+the estate while quietly skipping part of it.
+
+## Subjects spanning several paths
+
+Where one logical subject lives in more than one place, use `paths:`
+instead of `path:`:
+
+```yaml
+subjects:
+  - id: billing
+    paths:
+      - ../billing-contract
+      - ../billing-impl
+```
+
+The evidence from all paths merges into **one** placement. A contract
+repository and its implementation are one logical subject; assessing
+them separately reports two half-habitats that neither team recognises.
+
+A subject must have exactly one of `path` or `paths`.
+
 ## Fields arriving later
 
-Later releases add `posture:` (so an archived repo cannot pin the
-portfolio ceiling), `paths:` (one logical subject spanning several
-directories), `justified_variance:` (divergence that is intentional and
-should not be reported as drift), and the `package`, `org` and
+Later releases add `justified_variance:` (divergence that is intentional
+and should not be reported as drift) and the `package`, `org` and
 `upstream` habitat kinds. Manifests written to the schema above will
 keep working when they do.

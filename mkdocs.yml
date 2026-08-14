@@ -110,9 +110,11 @@ nav:
   - Multi-repo:
       - Tutorials:
           - Roll up existing assessments: tutorials/roll-up-existing-assessments.md
+          - Assess a team across repositories: tutorials/assess-a-team-across-repositories.md
       - How-to guides:
           - Write a scope manifest: how-to/write-a-scope-manifest.md
           - Assess repos with a shared harness: how-to/assess-repos-with-a-shared-harness.md
+          - Assess a monorepo with several habitats: how-to/assess-a-monorepo-with-several-habitats.md
       - Reference:
           - Scope manifest schema: reference/scope-manifest.md
           - Assessment summary block: reference/assessment-summary-block.md
@@ -121,6 +123,7 @@ nav:
       - Explanation:
           - Why there is no portfolio score: explanation/why-no-portfolio-score.md
           - Distribution is not federation: explanation/distribution-is-not-federation.md
+          - Subject, habitat, team: explanation/subject-habitat-team.md
       - Examples:
           - Parent repo with submodules: examples/parent-repo-submodules.md
           - Separate harness, partially bound: examples/separate-harness-partially-bound.md

@@ -13,3 +13,4 @@ every part of the result in detail.
 ## Multi-repo
 
 - **[Roll up existing assessments](roll-up-existing-assessments.md)** — three repositories to one portfolio report, about ten minutes.
+- **[Assess a team across repositories](assess-a-team-across-repositories.md)** — five repositories in one session, behavioural questions asked once.

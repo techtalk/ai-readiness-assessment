@@ -124,15 +124,20 @@ Runner: `tests/run.py` (structural assertions only).
 | R2 | PASS | both surfaces specify the assessment-summary block |
 | R3 | PASS | roll-up command and skill both present |
 | R4 | PASS | I4 stated; no unguarded portfolio-score language |
-| R5 | PASS | all 11 multi-repo docs pages present |
+| R5 | PASS | all 14 multi-repo docs pages present |
 | R6 | PASS | framework bodies identical from '## What a roll-up is' |
 | R7 | PASS | both surfaces specify the merge and all three provenance values |
 | R8 | PASS | all 6 binding signals in both surfaces |
 | R9 | PASS | silent-vs-negative mitigation stated in both surfaces |
 | R11 | PASS | every synthetic example carries the banner |
+| R12 | PASS | both surfaces specify the single-session scope run |
+| R13 | PASS | roll-up surfaces handle all three postures |
+| R14 | PASS | both surfaces require reuse to be declared in the body |
+| R15 | PASS | sequential context discipline stated in both surfaces |
+| R16 | PASS | every relative docs link resolves |
 
 ---
 
-**Total: 94 PASS, 0 FAIL.**
+**Total: 99 PASS, 0 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

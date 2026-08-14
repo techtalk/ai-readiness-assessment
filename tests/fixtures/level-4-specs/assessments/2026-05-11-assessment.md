@@ -217,6 +217,7 @@ subject: level-4-specs
 subject_path: .
 team: level-4-specs
 habitat: self
+posture: active
 assessed_at: 2026-05-11
 tool_version: 0.4.1
 
@@ -239,6 +240,7 @@ dimensions:
 habitat_maturity_mean: 3.64
 habitat_maturity_level: 4
 cognitive_level: 4
+cognitive_source: subject
 gap: +0.36
 regime: coherent
 ceiling_dimensions: [observability]

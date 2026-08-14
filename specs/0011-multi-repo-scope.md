@@ -279,10 +279,16 @@ Ticked per slice as each PR merges.
       Portfolio regime names are deliberately absent from both — they
       are Slice 4, and the examples describe the shape without
       claiming the label.*
-- [ ] **S3** (#65) — Behavioural questions asked once per team;
+- [x] **S3** (#65) — Behavioural questions asked once per team;
       per-subject difference question; reuse declared in the body;
       `posture` excluding archived subjects from the ceiling;
       sequential per-subject context discipline.
+      *Landed: 99 assertions green. One addition beyond the slice's
+      declared scope — an internal documentation link check — added
+      after a mistyped relative link was written and caught by hand.
+      mkdocs is not in strict mode here, so that class of bug ships
+      silently; the check was verified against the real broken link
+      before being kept.*
 - [ ] **S4** (#66) — Federated / Distributed / Fragmented / Islanded
       named with their evidence; near-duplicate detection reported as
       fragmented-with-lineage; `justified_variance` listed as declared,

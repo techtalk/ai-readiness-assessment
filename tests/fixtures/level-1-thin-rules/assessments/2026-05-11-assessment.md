@@ -193,6 +193,7 @@ subject: level-1-thin-rules
 subject_path: .
 team: level-1-thin-rules
 habitat: self
+posture: active
 assessed_at: 2026-05-11
 tool_version: 0.4.1
 
@@ -215,6 +216,7 @@ dimensions:
 habitat_maturity_mean: 1.36
 habitat_maturity_level: 1
 cognitive_level: 1
+cognitive_source: subject
 gap: -0.36
 regime: coherent
 ceiling_dimensions: [workflow, output_role, humans_review, work_patterns, agent_composition, agents_do, testing, observability, governance]

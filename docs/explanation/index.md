@@ -12,3 +12,4 @@ instrument. Read these when you want to know *why*, not *how*.
 
 - **[Why there is no portfolio score](why-no-portfolio-score.md)** — why the roll-up refuses to average, and what it offers instead.
 - **[Distribution is not federation](distribution-is-not-federation.md)** — a harness held centrally is not a harness that governs.
+- **[Subject, habitat, team](subject-habitat-team.md)** — why the assessment unit changed, and why a team is never a repository.

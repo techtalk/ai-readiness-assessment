@@ -43,6 +43,33 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Added
 
+- **Single-session scope run with a team-scoped cognitive read** (spec
+  [0011](specs/0011-multi-repo-scope.md), #65) — `/ai-readiness-assess --scope`
+  assesses every subject in a manifest in one session, asking the behavioural
+  questions **once for the team** rather than once per repository. Each subject
+  then gets exactly one cheap question — whether the way of working there is
+  materially different. No reuses the team read and records
+  `cognitive_source: team`; yes re-asks the six behavioural dimensions and
+  records `cognitive_source: subject`, with the portfolio showing that
+  subject's gap separately from the team pattern. A reused read is **always
+  declared in the report body**, never a footnote: a reader cannot otherwise
+  tell a placement gathered here from one carried in from a conversation about
+  a different repository.
+- **The run states its size before it starts** and recommends splitting rather
+  than degrading half-way through, processes subjects sequentially, and holds
+  no more than one subject's raw evidence at a time — the reports on disk are
+  the durable record.
+- **`posture` (`active` / `maintenance` / `archived`)** — stops a single dead
+  repository pinning the estate's ceiling permanently. `archived` subjects are
+  excluded from the ceiling and marked in the matrix; `maintenance` subjects
+  are reported but excluded from common-weak detection. Both are still shown:
+  hiding them would misstate coverage.
+- **Multi-path subjects (`paths:`)** — a contract repo and its implementation
+  merge into one placement rather than reporting two half-habitats.
+- **Internal documentation links are now checked.** mkdocs does not run in
+  strict mode, so a mistyped relative link built and deployed silently. A new
+  assertion resolves every relative link in `docs/` — added after exactly that
+  bug was introduced and caught by hand during this slice.
 - **Shared-habitat inheritance and binding** (spec
   [0011](specs/0011-multi-repo-scope.md), #64) — a subject governed by a harness
   that lives elsewhere is now placed against the **effective habitat**: the

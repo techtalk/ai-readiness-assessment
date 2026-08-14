@@ -18,7 +18,7 @@ subject: orders-api
 subject_path: .
 team: payments-tribe
 assessed_at: 2026-08-14
-tool_version: 0.5.0
+tool_version: 0.4.1
 
 dimensions:
   agent_behaviour:   { level: 3, confidence: inferred }

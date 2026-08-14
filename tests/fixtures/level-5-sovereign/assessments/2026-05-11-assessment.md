@@ -227,7 +227,7 @@ subject: level-5-sovereign
 subject_path: .
 team: level-5-sovereign
 assessed_at: 2026-05-11
-tool_version: 0.5.0
+tool_version: 0.4.1
 
 dimensions:
   agent_behaviour:   { level: 4, confidence: inferred }

@@ -256,12 +256,18 @@ must be implemented with the feature, not after it.
 
 Ticked per slice as each PR merges.
 
-- [ ] **S1** (#63) — Roll-up produces a portfolio report from existing
+- [x] **S1** (#63) — Roll-up produces a portfolio report from existing
       assessments. Summary block emitted by both surfaces. Parity
       assertion live in CI. Coverage ledger, dimension matrix, gap
       table, spread, split ceiling, confidence summary, one steer. No
       averaged gap, grade or percentage anywhere in the output.
       Docs: 1 tutorial, 1 how-to, 3 reference, 1 explanation, nav.
+      *Landed: 90 assertions green (72 before). Two spec assumptions
+      proved stale on contact and were dropped rather than worked
+      around — the terminology rename (already shipped in 0009) and
+      registering the new surfaces in `plugin.json` (Claude Code
+      auto-discovers `commands/` and `skills/`; there is nothing to
+      register). Example 1 deferred to #69.*
 - [ ] **S2** (#64) — Effective habitat merge with `local` /
       `inherited` / `inherited-unbound` provenance; binding checklist;
       `habitats:` support; `.gitmodules` autodetection that offers a

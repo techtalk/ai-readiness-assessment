@@ -199,7 +199,7 @@ subject: level-2-verified
 subject_path: .
 team: level-2-verified
 assessed_at: 2026-05-11
-tool_version: 0.5.0
+tool_version: 0.4.1
 
 dimensions:
   agent_behaviour:   { level: 2, confidence: inferred }

@@ -207,7 +207,7 @@ subject: level-0-blank
 subject_path: .
 team: level-0-blank
 assessed_at: 2026-05-11
-tool_version: 0.5.0
+tool_version: 0.4.1
 
 dimensions:
   agent_behaviour:   { level: 1, confidence: inferred }

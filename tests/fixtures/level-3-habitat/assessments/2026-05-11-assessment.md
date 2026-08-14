@@ -213,7 +213,7 @@ subject: level-3-habitat
 subject_path: .
 team: level-3-habitat
 assessed_at: 2026-05-11
-tool_version: 0.5.0
+tool_version: 0.4.1
 
 dimensions:
   agent_behaviour:   { level: 3, confidence: inferred }

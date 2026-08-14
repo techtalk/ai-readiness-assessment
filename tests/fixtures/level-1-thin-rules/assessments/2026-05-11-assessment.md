@@ -193,7 +193,7 @@ subject: level-1-thin-rules
 subject_path: .
 team: level-1-thin-rules
 assessed_at: 2026-05-11
-tool_version: 0.5.0
+tool_version: 0.4.1
 
 dimensions:
   agent_behaviour:   { level: 2, confidence: inferred }

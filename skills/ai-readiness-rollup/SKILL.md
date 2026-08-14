@@ -166,6 +166,18 @@ Build it first, deliberately. Analysis that starts before coverage is
 established tends to describe the readable subjects as if they were the
 estate.
 
+**Report coverage against the named subjects, never against the readable
+ones.** A manifest naming fourteen subjects of which six can be read is
+"assessed 6 of 14 named subjects" — not "assessed 6 subjects". The
+denominator is the claim.
+
+Subjects go unread for ordinary reasons: a client boundary, another
+business unit, a repository nobody here has access to. None of those is
+an error, and none of them is a reason to quietly shrink the scope.
+Under partial coverage, never describe the ceiling as estate-wide — it
+is the ceiling *of the subjects that were read*, and the report says
+which.
+
 ### 4. Write the report
 
 Write to `<manifest directory>/<report.output>/YYYY-MM-DD-portfolio.md`

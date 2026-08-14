@@ -773,6 +773,20 @@ REAL_EXAMPLE_MARKER = "Real assessment —"
 # read the same way — a regime, never a score.
 PORTFOLIO_REGIMES = ["Federated", "Distributed", "Fragmented", "Islanded"]
 
+SLICE5_DOCS = [
+    "docs/how-to/assess-with-an-org-level-habitat.md",
+    "docs/how-to/assess-across-a-client-boundary.md",
+]
+
+# Habitat that cannot be read from any subject checkout.
+HABITAT_KINDS_BEYOND_CHECKOUT = ["package", "org", "upstream"]
+
+# The exact phrasing an org habitat gets in a report. An org rule that
+# silently raised a dimension would be `inherited-unbound`'s failure
+# mode one layer up — and unlike a sibling repo, there is nothing to
+# read to catch it.
+ORG_HONESTY_MARKER = "declared, unverifiable from here"
+
 
 def parity_body(path: Path, anchor: str, variances: list) -> str | None:
     """The framework half of a surface file, normalised for comparison."""
@@ -1052,6 +1066,59 @@ def r19_justified_variance_handled() -> Result:
     return passing("R19", "justified_variance handled in both roll-up surfaces")
 
 
+def r20_habitat_kinds_beyond_checkout() -> Result:
+    """Both assessment surfaces must know the three kinds of habitat that
+    cannot be read from a subject checkout."""
+    problems = []
+    for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE)):
+        text = path.read_text() if path.is_file() else ""
+        missing = [k for k in HABITAT_KINDS_BEYOND_CHECKOUT if f"`{k}`" not in text]
+        if missing:
+            problems.append(f"{label}: {missing}")
+    if problems:
+        return failing("R20", f"habitat kinds missing — {problems}")
+    return passing("R20", "package, org and upstream kinds in both surfaces")
+
+
+def r21_org_habitat_never_raises() -> Result:
+    """The slice's central honesty requirement.
+
+    An org habitat cannot be read from any subject, so there is nothing
+    to check it against — which makes it the easiest thing in the whole
+    instrument to silently take credit for. It must be reported as
+    declared and unverifiable, with the action that would make it
+    verifiable named.
+    """
+    problems = []
+    for label, path in (("command", COMMAND_FILE), ("skill", SKILL_FILE)):
+        text = path.read_text() if path.is_file() else ""
+        missing = []
+        if ORG_HONESTY_MARKER not in text:
+            missing.append(f"{ORG_HONESTY_MARKER!r}")
+        if "never raise" not in text.lower():
+            missing.append("the never-raise rule")
+        if missing:
+            problems.append(f"{label}: {missing}")
+    if problems:
+        return failing("R21", f"org honesty rule incomplete — {problems}")
+    return passing("R21", "org habitats are declared-and-unverifiable in both surfaces")
+
+
+def r22_partial_scope_reported() -> Result:
+    """Never silently narrow the scope to whatever happened to be
+    readable. A client boundary is a normal condition; hiding it turns a
+    partial reading into a false claim about an estate."""
+    problems = [
+        label
+        for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL))
+        if not path.is_file()
+        or "named subjects" not in path.read_text()
+    ]
+    if problems:
+        return failing("R22", f"partial-scope reporting missing from roll-up: {problems}")
+    return passing("R22", "partial scope reported against named subjects, not readable ones")
+
+
 def r16_internal_doc_links_resolve() -> Result:
     """Every relative markdown link in docs/ points at a file that exists.
 
@@ -1075,7 +1142,7 @@ def r16_internal_doc_links_resolve() -> Result:
 
 
 def r5_multi_repo_docs_present() -> Result:
-    pages = MULTI_REPO_DOCS + SLICE2_DOCS + SLICE3_DOCS + SLICE4_DOCS
+    pages = MULTI_REPO_DOCS + SLICE2_DOCS + SLICE3_DOCS + SLICE4_DOCS + SLICE5_DOCS
     missing = [d for d in pages if not (ROOT / d).is_file()]
     if missing:
         return failing("R5", f"missing docs pages: {missing}")
@@ -1103,6 +1170,9 @@ REPO_CHECKS = [
     ("R17", r17_portfolio_regimes_named),
     ("R18", r18_regime_claims_carry_evidence),
     ("R19", r19_justified_variance_handled),
+    ("R20", r20_habitat_kinds_beyond_checkout),
+    ("R21", r21_org_habitat_never_raises),
+    ("R22", r22_partial_scope_reported),
 ]
 
 

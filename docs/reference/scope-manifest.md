@@ -99,10 +99,25 @@ subjects:
 | Field | Required | Meaning |
 |---|---|---|
 | `habitats[].id` | yes | Unique across `habitats` *and* `subjects`. |
-| `habitats[].kind` | yes | `repo` (a sibling repository), `submodule`, or `self` (the harness is in the repo holding the manifest). |
+| `habitats[].kind` | yes | `repo`, `submodule`, `self`, `package`, `org`, or `upstream` — see [below](#habitat-kinds). |
 | `habitats[].path` | yes | Path to the habitat, relative to the manifest. |
 | `habitats[].provides` | no | A hint about what it offers. **Never taken as proof** — a declared artefact still has to bind before it raises anything. |
 | `subjects[].habitat` | no | Which declared habitat governs this subject. Omit for self-governed. |
+
+### Habitat kinds
+
+| `kind` | Where it lives | Ceiling on what it can claim |
+|---|---|---|
+| `self` | The repo holding the manifest | Read directly. |
+| `repo` | A sibling repository | Read directly. |
+| `submodule` | Pinned inside the subject | The **pinned revision** governs, not the shared repo's tip. Pin age reported. |
+| `package` | An npm / NuGet / PyPI package, or a marketplace plugin | Pin verified, content not. Dimensions it supplies stay `inferred` unless local evidence corroborates. |
+| `org` | Org `.github` repo, org rulesets, org-wide instructions | **Never raises a dimension.** Reported as *declared, unverifiable from here*. |
+| `upstream` | An upstream this fork inherits from | Placed as `inherited`; divergence chooses the steer. |
+
+The last three cannot be read from any subject checkout. See
+[Assess with an org-level habitat](../how-to/assess-with-an-org-level-habitat.md)
+for what each reports and why.
 
 A `habitat` reference naming no declared habitat is a **hard error**, and
 the message names the bad reference. Declaring a habitat that nothing

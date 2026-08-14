@@ -302,10 +302,16 @@ Ticked per slice as each PR merges.
       check every example page declares itself synthetic or real,
       which also protects Example 1 (#69) from acquiring the synthetic
       banner.*
-- [ ] **S5** (#67) — `package`, `org` and `upstream` habitats; org
+- [x] **S5** (#67) — `package`, `org` and `upstream` habitats; org
       habitat never raises a dimension and is listed as declared and
       unverifiable with the action that would make it verifiable;
       partial scope reported as "n of m".
+      *Landed: 105 assertions green. The org rule is `inherited-unbound`
+      one layer up, with higher stakes: a sibling harness at least has
+      an artefact to read, so an unbound rule can be caught. An org
+      habitat has none, which is precisely why it must never raise a
+      dimension. Coverage is now reported against **named** subjects
+      rather than readable ones — the denominator is the claim.*
 - [ ] **S6** (#68) — Self-contained HTML portfolio, matrix as
       centrepiece, spread as a distribution, coverage ledger above the
       fold, no gauge or grade.

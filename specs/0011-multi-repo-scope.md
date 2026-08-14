@@ -289,10 +289,19 @@ Ticked per slice as each PR merges.
       mkdocs is not in strict mode here, so that class of bug ships
       silently; the check was verified against the real broken link
       before being kept.*
-- [ ] **S4** (#66) — Federated / Distributed / Fragmented / Islanded
+- [x] **S4** (#66) — Federated / Distributed / Fragmented / Islanded
       named with their evidence; near-duplicate detection reported as
       fragmented-with-lineage; `justified_variance` listed as declared,
       never as drift.
+      *Landed: 102 assertions green. Near-duplicate detection requires
+      all three signals together — name, overlap and divergence —
+      because any two without the third is a coincidence, and a
+      consolidation programme started against unrelated files is worse
+      than no finding. Where the four inputs disagree the report names
+      both regimes rather than forcing a label. R11 was generalised to
+      check every example page declares itself synthetic or real,
+      which also protects Example 1 (#69) from acquiring the synthetic
+      banner.*
 - [ ] **S5** (#67) — `package`, `org` and `upstream` habitats; org
       habitat never raises a dimension and is listed as declared and
       unverifiable with the action that would make it verifiable;

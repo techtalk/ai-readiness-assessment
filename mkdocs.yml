@@ -120,10 +120,13 @@ nav:
           - Assessment summary block: reference/assessment-summary-block.md
           - Portfolio report structure: reference/portfolio-report.md
           - Provenance and binding: reference/provenance-and-binding.md
+          - Portfolio regimes: reference/portfolio-regimes.md
       - Explanation:
           - Why there is no portfolio score: explanation/why-no-portfolio-score.md
           - Distribution is not federation: explanation/distribution-is-not-federation.md
           - Subject, habitat, team: explanation/subject-habitat-team.md
+          - Extract or bind: explanation/extract-or-bind.md
       - Examples:
           - Parent repo with submodules: examples/parent-repo-submodules.md
           - Separate harness, partially bound: examples/separate-harness-partially-bound.md
+          - Fragmented estate: examples/fragmented-estate.md

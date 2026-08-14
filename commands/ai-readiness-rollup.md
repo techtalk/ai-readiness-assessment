@@ -226,6 +226,17 @@ backlog; it belongs to whoever provides the habitat, not to any one team.
 **Locally weak** — dimensions weak in one or two subjects only. This is
 that team's own backlog.
 
+## Portfolio regime
+
+**<Federated | Distributed | Fragmented | Islanded>**
+
+<the evidence that produced it: provenance counts, spread, declared
+habitats, duplicated artefacts found. Then the structural move that fits
+— bind, extract, transfer, or hold.>
+
+<declared variance, where any: the dimension, the subject, and the
+stated reason. Listed as declared, never as drift.>
+
 ## Confidence
 
 <count of asked and inferred placements feeding the matrix. Name any
@@ -238,6 +249,95 @@ evidence and should be read as indicative, not measured.>
 never one per subject. A steer per row reads as a spreadsheet, not as
 advice.>
 ```
+
+## Portfolio regimes
+
+A second axis, parallel to the per-subject gap regimes and read the same
+way — a **regime, not a score**. It names what *kind* of multi-repo
+situation this is, and the one structural move that fits it.
+
+| Regime | Shape | Steer |
+|---|---|---|
+| **Federated** | Shared habitat, bound across subjects, narrow gap spread | Hold. Maintain the binding; watch the pin ages. |
+| **Distributed** | Shared habitat present, unbound or stale in several subjects | **Bind what already exists** — usually the cheapest uplift in the estate. |
+| **Fragmented** | Per-subject habitats, high near-duplication, diverged | **Extract the common layer.** |
+| **Islanded** | Per-subject habitats, little duplication, wide spread | **Transfer knowledge.** One team is materially ahead; move people, not files. |
+
+### Choosing one
+
+Four coarse inputs. Keep them legible — a regime a reader cannot check
+is worse than no regime at all.
+
+1. **Are shared habitats declared?** This picks the axis: declared →
+   Federated / Distributed; none → Fragmented / Islanded.
+2. **Provenance proportions** — `inherited` against `inherited-unbound`
+   across all assessed subjects.
+3. **Near-duplication across control surfaces** (below).
+4. **Gap spread** — the range already computed for the spread section.
+
+Then:
+
+- Shared habitat, mostly `inherited`, narrow spread → **Federated**.
+- Shared habitat, `inherited-unbound` or stale pins in several subjects
+  → **Distributed**. The steer is to bind the harness that exists, not
+  to extend it.
+- No shared habitat, several subjects carrying near-identical but
+  diverged control surfaces → **Fragmented**, reported as *fragmented
+  with lineage*.
+- No shared habitat, little duplication, wide spread → **Islanded**.
+
+### Never assert a regime without showing why
+
+State the evidence in the report: the provenance counts, the spread, how
+many habitats were declared, and which duplicated artefacts were found.
+
+A regime is a claim about somebody's estate. An unevidenced one is
+indistinguishable from a guess, and it will be argued with rather than
+acted on.
+
+Where the inputs disagree — a declared habitat that binds nowhere *and*
+heavy duplication — say so and name both, rather than forcing a single
+label onto an estate that is genuinely in two states at once.
+
+### Near-duplicate detection
+
+Coarse and legible. A duplicated control surface reads as all three of:
+
+- the **same artefact name** across subjects (`HARNESS.md`,
+  `.github/workflows/ci.yml`, `CLAUDE.md`);
+- **substantially overlapping content** — the same sections, rules and
+  structure; and
+- **divergent specifics** — the copies have drifted apart.
+
+All three together is *fragmented with lineage*: the artefacts share an
+ancestor and have been maintained separately since. Report **where** they
+diverged, because that is what an extraction would have to reconcile,
+and it is the part nobody remembers.
+
+Two subjects with the same filename and unrelated content are not
+duplication. Do not report it.
+
+### Declared variance is not drift
+
+A subject may declare `justified_variance` in the manifest:
+
+```yaml
+subjects:
+  - id: legacy-batch
+    path: ../legacy-batch
+    justified_variance:
+      - dimension: testing
+        reason: COBOL batch; harness test tooling does not apply
+```
+
+Named dimensions are **suppressed from drift findings and from
+extraction candidates**, and are **listed in the report as declared
+variance**, with their reason.
+
+Listed, not hidden — a reader must be able to see what was excluded and
+disagree with it. But an estate where testing or observability genuinely
+cannot be uniform must not be nagged toward a convergence that would
+make it worse.
 
 ## Rules that hold throughout
 

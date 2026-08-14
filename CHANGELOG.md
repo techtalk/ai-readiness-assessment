@@ -43,6 +43,39 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Added
 
+- **Portfolio regimes, duplication and drift** (spec
+  [0011](specs/0011-multi-repo-scope.md), #66) — the roll-up now names what
+  *kind* of multi-repo situation an estate is in, on a second axis parallel to
+  the gap regimes and read the same way: a regime, not a score. **Federated**
+  holds and watches the pin ages; **Distributed** binds the harness that
+  already exists rather than extending it; **Fragmented** extracts the common
+  layer; **Islanded** moves people rather than files. Selection runs on four
+  coarse, checkable inputs — whether habitats are declared, the `inherited` vs
+  `inherited-unbound` proportion, near-duplicate control surfaces, and the gap
+  spread. Where the inputs disagree the report names **both** regimes rather
+  than forcing one label onto an estate genuinely in two states at once.
+- **A regime never ships without its evidence** — the provenance counts, the
+  spread, the declared habitats and the duplicated artefacts that produced the
+  classification are stated in the report. An unevidenced claim about somebody's
+  estate gets argued with rather than acted on. Asserted by the suite.
+- **Near-duplicate detection**, reported as *fragmented with lineage*. Requires
+  all three of a shared artefact name, substantially overlapping content, and
+  divergent specifics — any two without the third is a coincidence, and acting
+  on a coincidence starts a consolidation programme against files that were
+  never related. The report names **where** the copies diverged, because that is
+  what an extraction has to reconcile.
+- **`justified_variance`** in the manifest suppresses drift findings and
+  extraction candidates for named dimensions while **listing them as declared**
+  with their reason. Listed so a reader can disagree; suppressed so a polyglot
+  estate is not nagged toward a convergence that would make it worse.
+- **Example 4** on the docs site — a fragmented estate of five services with a
+  `HARNESS.md` descended from a common ancestor and diverged, plus a legacy
+  repository at `posture: maintenance` that would otherwise set the ceiling on
+  eleven of fourteen dimensions.
+- **Every example page must now declare itself synthetic or real**, checked
+  across the whole examples directory rather than a fixed list — so a new
+  example cannot be added without saying which it is, and a real reading can
+  never end up wearing the synthetic banner.
 - **Single-session scope run with a team-scoped cognitive read** (spec
   [0011](specs/0011-multi-repo-scope.md), #65) — `/ai-readiness-assess --scope`
   assesses every subject in a manifest in one session, asking the behavioural

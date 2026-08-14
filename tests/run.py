@@ -755,9 +755,23 @@ SLICE3_DOCS = [
     "docs/explanation/subject-habitat-team.md",
 ]
 
+SLICE4_DOCS = [
+    "docs/reference/portfolio-regimes.md",
+    "docs/explanation/extract-or-bind.md",
+    "docs/examples/fragmented-estate.md",
+]
+
 SYNTHETIC_BANNER = (
     "Synthetic example — constructed to illustrate the report shape."
 )
+
+# A real example states which repositories were read and when. Example 1
+# (#69) will use this; it must never wear the synthetic banner.
+REAL_EXAMPLE_MARKER = "Real assessment —"
+
+# The four portfolio regimes: a second axis parallel to the gap regimes,
+# read the same way — a regime, never a score.
+PORTFOLIO_REGIMES = ["Federated", "Distributed", "Fragmented", "Islanded"]
 
 
 def parity_body(path: Path, anchor: str, variances: list) -> str | None:
@@ -914,20 +928,27 @@ def r9_silent_is_not_negative() -> Result:
     return passing("R9", "silent-vs-negative mitigation stated in both surfaces")
 
 
-def r11_synthetic_examples_labelled() -> Result:
+def r11_examples_declare_provenance() -> Result:
     """Nothing on the docs site should be ambiguous about whether it is a
-    real reading. A synthetic example that looks real is worse than no
-    example."""
-    unlabelled = [
-        d
-        for d in SLICE2_DOCS
-        if d.startswith("docs/examples/")
-        and (ROOT / d).is_file()
-        and SYNTHETIC_BANNER not in (ROOT / d).read_text()
+    real reading.
+
+    Checked over every example page rather than a fixed list, so a new
+    example cannot be added without declaring itself. Both directions
+    matter: a synthetic example that reads as real overstates the
+    instrument, and a real one wearing the synthetic banner throws away
+    the credibility that made it worth publishing.
+    """
+    examples = sorted((ROOT / "docs" / "examples").glob("*.md"))
+    if not examples:
+        return failing("R11", "no example pages found under docs/examples/")
+    undeclared = [
+        str(p.relative_to(ROOT))
+        for p in examples
+        if not any(m in p.read_text() for m in (SYNTHETIC_BANNER, REAL_EXAMPLE_MARKER))
     ]
-    if unlabelled:
-        return failing("R11", f"synthetic examples without the banner: {unlabelled}")
-    return passing("R11", "every synthetic example carries the banner")
+    if undeclared:
+        return failing("R11", f"example pages not declaring synthetic or real: {undeclared}")
+    return passing("R11", f"all {len(examples)} example pages declare their provenance")
 
 
 def r12_scope_run_specified() -> Result:
@@ -988,6 +1009,49 @@ def r15_context_discipline_stated() -> Result:
     return passing("R15", "sequential context discipline stated in both surfaces")
 
 
+def r17_portfolio_regimes_named() -> Result:
+    """All four regimes must be in both roll-up surfaces, or the two
+    entry points classify the same estate differently."""
+    problems = []
+    for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL)):
+        text = path.read_text() if path.is_file() else ""
+        missing = [r for r in PORTFOLIO_REGIMES if r not in text]
+        if missing:
+            problems.append(f"roll-up {label}: {missing}")
+    if problems:
+        return failing("R17", f"portfolio regimes missing — {problems}")
+    return passing("R17", f"all {len(PORTFOLIO_REGIMES)} portfolio regimes in both surfaces")
+
+
+def r18_regime_claims_carry_evidence() -> Result:
+    """A regime is a claim about an estate, and an unevidenced one is
+    indistinguishable from a guess. The report must state the provenance
+    counts and the spread that produced the classification."""
+    marker = "never assert a regime without"
+    problems = [
+        label
+        for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL))
+        if not path.is_file() or marker not in path.read_text().lower()
+    ]
+    if problems:
+        return failing("R18", f"regime evidence rule missing from roll-up: {problems}")
+    return passing("R18", "regime claims must carry their evidence in both surfaces")
+
+
+def r19_justified_variance_handled() -> Result:
+    """Declared variance is listed as declared — never as drift, and
+    never silently dropped. A polyglot estate where testing genuinely
+    cannot be uniform must not be nagged toward false convergence."""
+    problems = [
+        label
+        for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL))
+        if not path.is_file() or "justified_variance" not in path.read_text()
+    ]
+    if problems:
+        return failing("R19", f"justified_variance not handled in roll-up: {problems}")
+    return passing("R19", "justified_variance handled in both roll-up surfaces")
+
+
 def r16_internal_doc_links_resolve() -> Result:
     """Every relative markdown link in docs/ points at a file that exists.
 
@@ -1011,7 +1075,7 @@ def r16_internal_doc_links_resolve() -> Result:
 
 
 def r5_multi_repo_docs_present() -> Result:
-    pages = MULTI_REPO_DOCS + SLICE2_DOCS + SLICE3_DOCS
+    pages = MULTI_REPO_DOCS + SLICE2_DOCS + SLICE3_DOCS + SLICE4_DOCS
     missing = [d for d in pages if not (ROOT / d).is_file()]
     if missing:
         return failing("R5", f"missing docs pages: {missing}")
@@ -1030,12 +1094,15 @@ REPO_CHECKS = [
     ("R7", r7_effective_habitat_specified),
     ("R8", r8_binding_checklist_present),
     ("R9", r9_silent_is_not_negative),
-    ("R11", r11_synthetic_examples_labelled),
+    ("R11", r11_examples_declare_provenance),
     ("R12", r12_scope_run_specified),
     ("R13", r13_posture_handled),
     ("R14", r14_reuse_is_declared),
     ("R15", r15_context_discipline_stated),
     ("R16", r16_internal_doc_links_resolve),
+    ("R17", r17_portfolio_regimes_named),
+    ("R18", r18_regime_claims_carry_evidence),
+    ("R19", r19_justified_variance_handled),
 ]
 
 

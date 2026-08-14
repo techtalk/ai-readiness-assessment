@@ -46,3 +46,24 @@ and it stays honest (the repo is L4 in discipline, but the report says
 plainly that the habitat must catch up). See the
 [assessment output structure](reference/assessment-output.md) for a
 section-by-section guide.
+
+## Multi-repo portfolio examples
+
+These show what `/ai-readiness-rollup` produces across several
+repositories. All three are **synthetic** — constructed to illustrate the
+report shape, not readings of any real estate. Each is a single
+self-contained HTML file that works opened straight from disk.
+
+| Example | Shape | Report |
+| --- | --- | --- |
+| **Parent repo with submodules** | One harness at the root, three submodules, all bound. Narrow spread. | [HTML](examples/parent-repo-submodules.html) · [markdown](examples/parent-repo-submodules.md) |
+| **Separate harness, partially bound** | Four services on one platform harness — two bound, one stale-pinned, one not bound at all. Spread of 1.79. | [HTML](examples/separate-harness-partially-bound.html) · [markdown](examples/separate-harness-partially-bound.md) |
+| **Fragmented estate** | Five services carrying diverged copies of a common ancestor, plus a legacy repo at `posture: maintenance`. | [HTML](examples/fragmented-estate.html) · [markdown](examples/fragmented-estate.md) |
+
+None of them contains an overall score, grade or percentage. The
+portfolio headline is a distribution and a split ceiling — see
+[why there is no portfolio score](explanation/why-no-portfolio-score.md).
+
+A **real** multi-repo example, run across the Habitat-Thinking estate, is
+tracked as [issue #69](https://github.com/techtalk/ai-readiness-assessment/issues/69).
+

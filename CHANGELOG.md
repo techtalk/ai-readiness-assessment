@@ -43,6 +43,31 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Added
 
+- **Shareable HTML portfolio report** (spec
+  [0011](specs/0011-multi-repo-scope.md), #68) — the roll-up can now be rendered
+  the way the per-repo report already could: a single self-contained file, all
+  CSS inlined, **no network assets**, working opened straight from the
+  filesystem. The matrix is the artefact that travels, and it travels badly as
+  markdown. Same visual language as the per-repo report — navy header band, the
+  same level colours, no emoji, print-friendly. **Coverage renders above the
+  fold**, before the matrix: a matrix is persuasive whether or not the data
+  behind it is complete, so an incomplete assessment has to *look* incomplete.
+  The spread renders as a plotted distribution with the extremes named —
+  **never a dial, gauge, grade or percentage**, a rule held strictest here
+  because the render is where an estate gets reduced to one number if anywhere
+  does.
+- **Three portfolio examples published as HTML** alongside their markdown, all
+  banner-marked synthetic. Generated from the same figures as the markdown, so
+  the two cannot drift.
+- **Fixed: four occurrences of the retired "Habitat Build Gap" survived spec
+  [0009](specs/0009-habitat-workflow-gap-rename.md)'s rename** — including the
+  instrument's own definition of the metric ("The Habitat Build Gap measures
+  coherence between the two reads") in both surfaces. All four were **wrapped
+  across a line break**, and 0009's acceptance check matched the unwrapped
+  string, so it reported success. A new assertion matches the term across
+  whitespace in the live surfaces, so a wrap cannot hide it again. Specs, the
+  changelog and the reflection log keep the name deliberately — they record
+  what the instrument said at the time.
 - **Habitat beyond the checkout — org layer, packages and forks** (spec
   [0011](specs/0011-multi-repo-scope.md), #67) — three new habitat kinds for
   governance that exists but cannot be read from any subject.

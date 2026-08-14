@@ -385,6 +385,46 @@ make it worse.
   exists rather than to build anything new. Name the subjects and the
   artefact expected to bind.
 
+## Offer the rendered version
+
+Ask: "Would you like this portfolio rendered as a shareable HTML page?"
+
+The matrix is the artefact that travels, and it travels badly as
+markdown. It is also the artefact people screenshot, which is why the
+rules below are about what the render must *not* let a reader assume.
+
+**Self-contained.** A single HTML file, all CSS inlined in one `<style>`
+block, working when opened directly from the filesystem.
+**No network assets** — no external stylesheets, scripts, fonts or
+images. Hyperlinks
+out are fine; anything the page has to *fetch* is not. A portfolio
+report gets emailed, dropped in a shared drive, and opened on a laptop
+with no VPN.
+
+**Visual language matches the per-repo report** — the same navy header
+band (`#0b2b3c`), the same level colours (L0 grey, L1 `#7fb3d5`,
+L2 `#3f7cac`, L3 `#1f9e8f`, L4 `#2e8b57`, L5 `#caa14a`), the same system
+sans-serif stack, no emoji, no animation, print-friendly.
+
+**Coverage above the fold.** The coverage ledger renders in the first
+screen, before the matrix — an incomplete assessment must *look*
+incomplete. A matrix is persuasive whether or not the data behind it is
+complete; if the reader has to scroll to discover that four subjects
+were unreadable, the artefact is misleading by construction.
+
+**The matrix is the centrepiece.** Subjects as rows, the fourteen
+dimensions as columns, the level in the cell, coloured by level.
+Provenance marked in-cell (`local` / `inherited` / `inherited-unbound`)
+with a key beneath. Ceiling cells marked. Archived and maintenance rows
+visibly de-emphasised, not hidden.
+
+**The spread is a distribution, never a dial.** Render it as a plotted
+range across the subjects, with the extremes named. No gauge, no dial,
+no grade, no overall score, no percentage — anywhere on the page. A dial
+looks like design work, which is exactly why none belongs here: the
+render is where the estate gets reduced to one number if anywhere does,
+so this rule is stricter here than anywhere else.
+
 ## Report to the user
 
 Present in chat, briefly:

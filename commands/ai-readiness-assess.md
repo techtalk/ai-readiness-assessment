@@ -23,8 +23,8 @@ assessment: it describes what the team's habitat *actually delivers*.
 
 Folded in as a second, **cognitive read** is the six-level ladder and
 three disciplines from *The Sovereign Engineer* (Russ Miles,
-Habitat-Thinking) — what the team can *think and do*. The **Habitat
-Build Gap** measures coherence between the two reads.
+Habitat-Thinking) — what the team can *think and do*. The
+**Habitat/Workflow Gap** measures coherence between the two reads.
 
 Everything needed to score is below. This command is fully
 self-contained — it does **not** read from another repo, plugin, or
@@ -953,8 +953,8 @@ If yes, produce an HTML artifact with the following design rules:
   (solid white border, full opacity, `← you are here` tag) and the
   target level as a dashed white border (`→ target` tag). Inactive
   levels are low-opacity on the dark background.
-- The **badges** (Habitat Maturity level, cognitive level, Habitat Build
-  Gap) follow the header in the light body. Level colours: L0=grey,
+- The **badges** (Habitat Maturity level, cognitive level,
+  Habitat/Workflow Gap) follow the header in the light body. Level colours: L0=grey,
   L1=`#7fb3d5`, L2=`#3f7cac`, L3=`#1f9e8f`, L4=`#2e8b57`, L5=`#caa14a`.
   Gap regime badge: teal for Coherent; amber (`#c77d31`) for Ambition
   outpaces enablement or Inherited habitat.

@@ -206,3 +206,36 @@ Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 > mechanism — no parallel process, no second source of truth.
 >
 > Get in touch: <https://techtalk.ai>
+
+```yaml assessment-summary
+schema: 1
+subject: level-3-habitat
+subject_path: .
+team: level-3-habitat
+assessed_at: 2026-05-11
+tool_version: 0.5.0
+
+dimensions:
+  agent_behaviour:   { level: 3, confidence: inferred }
+  agent_input:       { level: 2, confidence: observed }
+  workflow:          { level: 3, confidence: observed }
+  operating_model:   { level: 3, confidence: inferred }
+  teams_provide:     { level: 3, confidence: observed }
+  output_role:       { level: 3, confidence: inferred }
+  output_artefact:   { level: 3, confidence: observed }
+  humans_review:     { level: 2, confidence: inferred }
+  work_patterns:     { level: 2, confidence: inferred }
+  agent_composition: { level: 2, confidence: observed }
+  agents_do:         { level: 2, confidence: inferred }
+  testing:           { level: 2, confidence: observed }
+  observability:     { level: 2, confidence: observed }
+  governance:        { level: 3, confidence: observed }
+
+habitat_maturity_mean: 2.50
+habitat_maturity_level: 3
+cognitive_level: 3
+gap: +0.50
+regime: ambition-outpaces-enablement
+ceiling_dimensions: [agent_input, humans_review, work_patterns, agent_composition, agents_do, testing, observability]
+weakest_discipline: architectural-constraints
+```

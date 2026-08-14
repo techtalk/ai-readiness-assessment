@@ -415,17 +415,20 @@ def a16_block_agrees_with_prose():
                 f"cognitive_level: prose L{prose_cog.group(1)} vs block {blk_cog}"
             )
 
+        # The regime may carry a qualifier — "Inherited habitat (floor
+        # baseline)" — so match on the regime prefix, not equality, or
+        # the check silently passes on the fixtures that use one.
         prose_regime = re.search(
-            r"\*\*Habitat/Workflow Gap\*\*:\s*[-+][\d.]+\s*\((.+?)\)", text
+            r"\*\*Habitat/Workflow Gap\*\*:\s*[-+][\d.]+\s*\((.+)\)", text
         )
         blk_regime = block_scalar(block, "regime")
         if prose_regime and blk_regime:
-            expected = REGIME_SLUGS.get(prose_regime.group(1))
-            if expected and expected != blk_regime:
-                problems.append(
-                    f"regime: prose {prose_regime.group(1)!r} "
-                    f"vs block {blk_regime!r}"
-                )
+            stated = prose_regime.group(1).strip()
+            named = next((r for r in REGIME_SLUGS if stated.startswith(r)), None)
+            if named is None:
+                problems.append(f"prose regime {stated!r} names no known regime")
+            elif REGIME_SLUGS[named] != blk_regime:
+                problems.append(f"regime: prose {stated!r} vs block {blk_regime!r}")
 
         if problems:
             return failing("A16", "; ".join(problems))
@@ -658,6 +661,11 @@ PARITY_VARIANCES = [
      "the standalone skill does not create files"),
 ]
 
+# The roll-up pair's shared body is written without self-reference, so
+# it needs no variance allowance — the stricter position, chosen while
+# the surfaces were new enough to make it free.
+ROLLUP_PARITY_ANCHOR = "## What a roll-up is"
+
 # Invariant I4: the roll-up never reduces the estate to one number.
 PORTFOLIO_SCORE_SMELLS = [
     "average gap", "averaged gap", "mean gap", "portfolio score",
@@ -675,43 +683,61 @@ MULTI_REPO_DOCS = [
 ]
 
 
-def parity_body(path: Path) -> str | None:
+def parity_body(path: Path, anchor: str, variances: list) -> str | None:
     """The framework half of a surface file, normalised for comparison."""
     if not path.is_file():
         return None
     text = path.read_text()
-    i = text.find(PARITY_ANCHOR)
+    i = text.find(anchor)
     if i == -1:
         return None
     body = text[i:]
-    for command_phrasing, skill_phrasing in PARITY_VARIANCES:
+    for command_phrasing, skill_phrasing in variances:
         body = body.replace(command_phrasing, "<surface>")
         body = body.replace(skill_phrasing, "<surface>")
     return body
 
 
-def r1_command_skill_parity() -> Result:
-    """I3 — both entry points must produce the same assessment."""
-    a, b = parity_body(COMMAND_FILE), parity_body(SKILL_FILE)
+def check_parity(
+    aid: str, command: Path, skill: Path, anchor: str, variances: list
+) -> Result:
+    """Compare a command/skill pair, reporting the first divergent line.
+
+    Naming the line matters more than reporting a boolean: the failure a
+    contributor sees should point at the edit that broke it.
+    """
+    a = parity_body(command, anchor, variances)
+    b = parity_body(skill, anchor, variances)
     if a is None or b is None:
-        which = [
-            p.name for p, v in ((COMMAND_FILE, a), (SKILL_FILE, b)) if v is None
-        ]
-        return failing("R1", f"parity anchor {PARITY_ANCHOR!r} missing from: {which}")
+        which = [p.name for p, v in ((command, a), (skill, b)) if v is None]
+        return failing(aid, f"parity anchor {anchor!r} missing from: {which}")
     if a == b:
-        return passing("R1", f"framework bodies identical from {PARITY_ANCHOR!r}")
+        return passing(aid, f"framework bodies identical from {anchor!r}")
     al, bl = a.splitlines(), b.splitlines()
     for n, (x, y) in enumerate(zip(al, bl), start=1):
         if x != y:
             return failing(
-                "R1",
+                aid,
                 f"surfaces diverge at framework line {n} — "
                 f"command: {x.strip()[:50]!r} / skill: {y.strip()[:50]!r}",
             )
     return failing(
-        "R1",
+        aid,
         f"framework bodies differ in length: "
         f"command {len(al)} lines, skill {len(bl)} lines",
+    )
+
+
+def r1_command_skill_parity() -> Result:
+    """I3 — both entry points must produce the same assessment."""
+    return check_parity("R1", COMMAND_FILE, SKILL_FILE, PARITY_ANCHOR, PARITY_VARIANCES)
+
+
+def r6_rollup_parity() -> Result:
+    """I3 applied to the roll-up pair. Its shared body carries no
+    self-reference at all, so unlike R1 it tolerates no variance."""
+    return check_parity(
+        "R6", ROLLUP_COMMAND, ROLLUP_SKILL, ROLLUP_PARITY_ANCHOR, []
     )
 
 
@@ -778,6 +804,7 @@ REPO_CHECKS = [
     ("R3", r3_rollup_surfaces_exist),
     ("R4", r4_no_portfolio_score),
     ("R5", r5_multi_repo_docs_present),
+    ("R6", r6_rollup_parity),
 ]
 
 

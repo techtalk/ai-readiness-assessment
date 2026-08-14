@@ -200,3 +200,36 @@ Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 > you out at L1 with a credible path to L2.
 >
 > Get in touch: <https://techtalk.ai>
+
+```yaml assessment-summary
+schema: 1
+subject: level-0-blank
+subject_path: .
+team: level-0-blank
+assessed_at: 2026-05-11
+tool_version: 0.5.0
+
+dimensions:
+  agent_behaviour:   { level: 1, confidence: inferred }
+  agent_input:       { level: 1, confidence: observed }
+  workflow:          { level: 1, confidence: observed }
+  operating_model:   { level: 1, confidence: inferred }
+  teams_provide:     { level: 1, confidence: observed }
+  output_role:       { level: 1, confidence: inferred }
+  output_artefact:   { level: 1, confidence: observed }
+  humans_review:     { level: 1, confidence: inferred }
+  work_patterns:     { level: 1, confidence: inferred }
+  agent_composition: { level: 1, confidence: observed }
+  agents_do:         { level: 1, confidence: inferred }
+  testing:           { level: 1, confidence: observed }
+  observability:     { level: 1, confidence: observed }
+  governance:        { level: 1, confidence: observed }
+
+habitat_maturity_mean: 1.00
+habitat_maturity_level: 1
+cognitive_level: 0
+gap: -1.00
+regime: inherited-habitat
+ceiling_dimensions: [agent_behaviour, agent_input, workflow, operating_model, teams_provide, output_role, output_artefact, humans_review, work_patterns, agent_composition, agents_do, testing, observability, governance]
+weakest_discipline: architectural-constraints
+```

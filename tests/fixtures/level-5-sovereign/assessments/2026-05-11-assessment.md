@@ -220,3 +220,36 @@ Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 > compounding the practice you already have.
 >
 > Get in touch: <https://techtalk.ai>
+
+```yaml assessment-summary
+schema: 1
+subject: level-5-sovereign
+subject_path: .
+team: level-5-sovereign
+assessed_at: 2026-05-11
+tool_version: 0.5.0
+
+dimensions:
+  agent_behaviour:   { level: 4, confidence: inferred }
+  agent_input:       { level: 4, confidence: observed }
+  workflow:          { level: 5, confidence: observed }
+  operating_model:   { level: 4, confidence: inferred }
+  teams_provide:     { level: 5, confidence: observed }
+  output_role:       { level: 4, confidence: inferred }
+  output_artefact:   { level: 5, confidence: observed }
+  humans_review:     { level: 4, confidence: inferred }
+  work_patterns:     { level: 4, confidence: inferred }
+  agent_composition: { level: 4, confidence: observed }
+  agents_do:         { level: 4, confidence: inferred }
+  testing:           { level: 3, confidence: observed }
+  observability:     { level: 3, confidence: observed }
+  governance:        { level: 5, confidence: observed }
+
+habitat_maturity_mean: 4.14
+habitat_maturity_level: 4
+cognitive_level: 5
+gap: +0.86
+regime: ambition-outpaces-enablement
+ceiling_dimensions: [testing, observability]
+weakest_discipline: architectural-constraints
+```

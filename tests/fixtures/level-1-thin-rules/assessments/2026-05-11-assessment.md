@@ -186,3 +186,36 @@ Get the book: <https://leanpub.com/thesovereignengineer/c/ai-readiness>
 > actually enforces.
 >
 > Get in touch: <https://techtalk.ai>
+
+```yaml assessment-summary
+schema: 1
+subject: level-1-thin-rules
+subject_path: .
+team: level-1-thin-rules
+assessed_at: 2026-05-11
+tool_version: 0.5.0
+
+dimensions:
+  agent_behaviour:   { level: 2, confidence: inferred }
+  agent_input:       { level: 2, confidence: observed }
+  workflow:          { level: 1, confidence: observed }
+  operating_model:   { level: 2, confidence: inferred }
+  teams_provide:     { level: 2, confidence: observed }
+  output_role:       { level: 1, confidence: inferred }
+  output_artefact:   { level: 2, confidence: observed }
+  humans_review:     { level: 1, confidence: inferred }
+  work_patterns:     { level: 1, confidence: inferred }
+  agent_composition: { level: 1, confidence: observed }
+  agents_do:         { level: 1, confidence: inferred }
+  testing:           { level: 1, confidence: observed }
+  observability:     { level: 1, confidence: observed }
+  governance:        { level: 1, confidence: observed }
+
+habitat_maturity_mean: 1.36
+habitat_maturity_level: 1
+cognitive_level: 1
+gap: -0.36
+regime: coherent
+ceiling_dimensions: [workflow, output_role, humans_review, work_patterns, agent_composition, agents_do, testing, observability, governance]
+weakest_discipline: architectural-constraints
+```

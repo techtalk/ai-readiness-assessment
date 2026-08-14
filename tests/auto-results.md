@@ -124,7 +124,7 @@ Runner: `tests/run.py` (structural assertions only).
 | R2 | PASS | both surfaces specify the assessment-summary block |
 | R3 | PASS | roll-up command and skill both present |
 | R4 | PASS | I4 stated; no unguarded portfolio-score language |
-| R5 | FAIL | missing docs pages: ['docs/how-to/assess-with-an-org-level-habitat.md', 'docs/how-to/assess-across-a-client-boundary.md'] |
+| R5 | PASS | all 19 multi-repo docs pages present |
 | R6 | PASS | framework bodies identical from '## What a roll-up is' |
 | R7 | PASS | both surfaces specify the merge and all three provenance values |
 | R8 | PASS | all 6 binding signals in both surfaces |
@@ -144,6 +144,6 @@ Runner: `tests/run.py` (structural assertions only).
 
 ---
 
-**Total: 104 PASS, 1 FAIL.**
+**Total: 105 PASS, 0 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

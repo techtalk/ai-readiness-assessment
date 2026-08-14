@@ -43,6 +43,32 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Added
 
+- **Habitat beyond the checkout — org layer, packages and forks** (spec
+  [0011](specs/0011-multi-repo-scope.md), #67) — three new habitat kinds for
+  governance that exists but cannot be read from any subject.
+  **`package`**: the lockfile or plugin manifest gives a resolved version and
+  pin age, so the pin is verified but the content is not — dimensions the
+  package supplies stay `inferred` unless local evidence corroborates them, and
+  the pinned version governs rather than the latest release.
+  **`org`** (org `.github` repo, org rulesets, org-wide instructions): **never
+  raises a dimension**, and is reported as *declared, unverifiable from here*
+  with the action that would make it verifiable — reference it from the subject,
+  so it becomes bindable and therefore observable. With a sibling repo there is
+  at least an artefact to read; an org habitat has none, which makes it the
+  easiest thing in the instrument to take silent credit for.
+  **`upstream`**: placed as `inherited`, with divergence choosing the steer —
+  contribute back when close to upstream, overlay locally and stop claiming to
+  track when heavily diverged.
+- **Partial scope is reported against named subjects, not readable ones.** A
+  manifest naming fourteen subjects of which six can be read now reports
+  "assessed 6 of 14 named subjects" — the denominator is the claim. A client
+  boundary, another business unit or a repository nobody has access to is an
+  ordinary condition, not a reason to shrink the scope silently, and under
+  partial coverage the ceiling is never described as estate-wide.
+- **Two new how-to guides** for the consultancy and cross-business-unit cases,
+  including the engagement pattern where each team runs its own assessment,
+  keeps its own report, and shares only the summary — so a roll-up never needs
+  access to anyone's code.
 - **Portfolio regimes, duplication and drift** (spec
   [0011](specs/0011-multi-repo-scope.md), #66) — the roll-up now names what
   *kind* of multi-repo situation an estate is in, on a second axis parallel to

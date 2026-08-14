@@ -24,3 +24,5 @@ walks the whole flow once, end to end.
 - **[Write a scope manifest](write-a-scope-manifest.md)** — declare the subjects a roll-up covers.
 - **[Assess repos with a shared harness](assess-repos-with-a-shared-harness.md)** — a harness that lives outside the subject, and whether it binds.
 - **[Assess a monorepo with several habitats](assess-a-monorepo-with-several-habitats.md)** — one repository, several subjects, the inverse case.
+- **[Assess with an org-level habitat](assess-with-an-org-level-habitat.md)** — org rulesets, packaged harnesses and forks, and why an org habitat never raises a dimension.
+- **[Assess across a client boundary](assess-across-a-client-boundary.md)** — subjects you cannot read, reported honestly.

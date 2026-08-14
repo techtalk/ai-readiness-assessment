@@ -115,6 +115,8 @@ nav:
           - Write a scope manifest: how-to/write-a-scope-manifest.md
           - Assess repos with a shared harness: how-to/assess-repos-with-a-shared-harness.md
           - Assess a monorepo with several habitats: how-to/assess-a-monorepo-with-several-habitats.md
+          - Assess with an org-level habitat: how-to/assess-with-an-org-level-habitat.md
+          - Assess across a client boundary: how-to/assess-across-a-client-boundary.md
       - Reference:
           - Scope manifest schema: reference/scope-manifest.md
           - Assessment summary block: reference/assessment-summary-block.md

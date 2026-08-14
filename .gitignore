@@ -4,3 +4,7 @@
 .idea/
 .vscode/
 .claude/
+
+# Local agent telemetry, written by the affordance-invocation recorder hook.
+# Machine-generated per-session NDJSON — no value in version control.
+observability/

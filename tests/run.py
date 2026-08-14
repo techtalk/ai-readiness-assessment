@@ -988,6 +988,28 @@ def r15_context_discipline_stated() -> Result:
     return passing("R15", "sequential context discipline stated in both surfaces")
 
 
+def r16_internal_doc_links_resolve() -> Result:
+    """Every relative markdown link in docs/ points at a file that exists.
+
+    mkdocs is not run in strict mode, so a mistyped internal link builds
+    and deploys silently — the page renders, the link 404s, and nobody
+    notices until a reader does. Cheap to check, so checked.
+    """
+    docs = ROOT / "docs"
+    link_re = re.compile(r"\[[^\]]*\]\(([^)#?]+?)(?:#[^)]*)?\)")
+    broken: list[str] = []
+    for page in sorted(docs.rglob("*.md")):
+        for target in link_re.findall(page.read_text()):
+            target = target.strip()
+            if not target or "://" in target or target.startswith(("mailto:", "/")):
+                continue
+            if not (page.parent / target).resolve().exists():
+                broken.append(f"{page.relative_to(ROOT)} -> {target}")
+    if broken:
+        return failing("R16", f"broken internal links: {broken[:4]}")
+    return passing("R16", "every relative docs link resolves")
+
+
 def r5_multi_repo_docs_present() -> Result:
     pages = MULTI_REPO_DOCS + SLICE2_DOCS + SLICE3_DOCS
     missing = [d for d in pages if not (ROOT / d).is_file()]
@@ -1013,6 +1035,7 @@ REPO_CHECKS = [
     ("R13", r13_posture_handled),
     ("R14", r14_reuse_is_declared),
     ("R15", r15_context_discipline_stated),
+    ("R16", r16_internal_doc_links_resolve),
 ]
 
 

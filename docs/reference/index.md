@@ -20,3 +20,4 @@ in the command and skill files in full, so the instrument stays
 - **[Assessment summary block](assessment-summary-block.md)** — the machine-readable block that closes every report.
 - **[Portfolio report structure](portfolio-report.md)** — the roll-up, section by section.
 - **[Provenance and binding](provenance-and-binding.md)** — local, inherited, inherited-unbound, and the six signals that tell them apart.
+- **[Portfolio regimes](portfolio-regimes.md)** — Federated, Distributed, Fragmented, Islanded, and the evidence each claim must carry.

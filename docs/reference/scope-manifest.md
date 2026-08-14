@@ -155,9 +155,31 @@ them separately reports two half-habitats that neither team recognises.
 
 A subject must have exactly one of `path` or `paths`.
 
+## Declared variance
+
+Some divergence is correct and should stay. Declare it and it is
+reported as **declared** rather than as drift:
+
+```yaml
+subjects:
+  - id: legacy-batch
+    path: ../legacy-batch
+    justified_variance:
+      - dimension: testing
+        reason: COBOL batch; harness test tooling does not apply
+```
+
+Named dimensions are suppressed from drift findings and from extraction
+candidates, and listed in the
+[portfolio report](portfolio-regimes.md#declared-variance) with their
+reason.
+
+Listed, not hidden — a reader must be able to see what was excluded and
+disagree with it. Suppressed, because an estate where testing or
+observability genuinely cannot be uniform should not be nagged toward a
+convergence that would make it worse.
+
 ## Fields arriving later
 
-Later releases add `justified_variance:` (divergence that is intentional
-and should not be reported as drift) and the `package`, `org` and
-`upstream` habitat kinds. Manifests written to the schema above will
-keep working when they do.
+Later releases add the `package`, `org` and `upstream` habitat kinds.
+Manifests written to the schema above will keep working when they do.

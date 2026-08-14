@@ -207,6 +207,7 @@ subject: level-0-blank
 subject_path: .
 team: level-0-blank
 habitat: self
+posture: active
 assessed_at: 2026-05-11
 tool_version: 0.4.1
 
@@ -229,6 +230,7 @@ dimensions:
 habitat_maturity_mean: 1.00
 habitat_maturity_level: 1
 cognitive_level: 0
+cognitive_source: subject
 gap: -1.00
 regime: inherited-habitat
 ceiling_dimensions: [agent_behaviour, agent_input, workflow, operating_model, teams_provide, output_role, output_artefact, humans_review, work_patterns, agent_composition, agents_do, testing, observability, governance]

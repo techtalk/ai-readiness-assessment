@@ -199,6 +199,7 @@ subject: level-2-verified
 subject_path: .
 team: level-2-verified
 habitat: self
+posture: active
 assessed_at: 2026-05-11
 tool_version: 0.4.1
 
@@ -221,6 +222,7 @@ dimensions:
 habitat_maturity_mean: 1.86
 habitat_maturity_level: 2
 cognitive_level: 2
+cognitive_source: subject
 gap: +0.14
 regime: coherent
 ceiling_dimensions: [agent_composition, observability]

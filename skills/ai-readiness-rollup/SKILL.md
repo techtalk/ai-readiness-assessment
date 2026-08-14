@@ -91,11 +91,15 @@ subjects:
   - id: orders-api
     path: ../orders-api       # repo, submodule, or directory
     habitat: platform-harness # omit ⇒ self-governed
+    posture: active           # active | maintenance | archived
   - id: billing
-    path: ../billing
+    paths:                    # one logical subject, several paths
+      - ../billing-contract
+      - ../billing-impl
     habitat: platform-harness
   - id: legacy-batch
     path: ../legacy-batch
+    posture: maintenance
 
 report:
   output: assessments/        # roll-up destination, relative to the manifest
@@ -105,9 +109,23 @@ report:
 taken as proof — a declared artefact still has to bind to a subject
 before it raises anything there.
 
+**Posture.** `posture` changes how a subject feeds the portfolio, never
+whether it is reported:
+
+| Posture | In the matrix | Feeds the ceiling |
+|---|---|---|
+| `active` (default) | yes | yes |
+| `maintenance` | yes | excluded from common-weak detection |
+| `archived` | yes, marked as archived | excluded entirely |
+
+Without this a single dead repository pins the estate's ceiling
+permanently, and every report afterwards leads with a finding nobody
+intends to act on. An archived subject is still shown — hiding it would
+misstate the coverage — but it does not set the agenda.
+
 **Validation.** `subjects` must be non-empty, and each subject needs an
-`id` and a `path`. Every `id` must be unique across both `subjects` and
-`habitats`. A path that cannot be read is **not** an error — record it in
+`id` and exactly one of `path` or `paths`. Every `id` must be unique
+across both `subjects` and `habitats`. A path that cannot be read is **not** an error — record it in
 the coverage ledger as `unreachable` and carry on. Keys not described
 here produce a warning and are then ignored: the schema grows over later
 releases, and a manifest written today must keep working.
@@ -204,8 +222,10 @@ lead the reader to it, do not bury it under the matrix.>
 ## Split ceiling
 
 **Common weak** — dimensions weak in two-thirds or more of the assessed
-subjects. This is the enablement backlog; it belongs to whoever provides
-the habitat, not to any one team.
+subjects, counting `active` subjects only. This is the enablement
+backlog; it belongs to whoever provides the habitat, not to any one team.
+`maintenance` subjects are reported but excluded from this count, and
+`archived` subjects are excluded from the ceiling entirely.
 
 **Locally weak** — dimensions weak in one or two subjects only. This is
 that team's own backlog.
@@ -229,10 +249,15 @@ advice.>
   `confidence` its report recorded. An `inferred` placement stays
   visibly inferred in the matrix and in the confidence section; it is
   never presented as a measured fact because it was aggregated.
-- **Reused cognitive reads are declared.** Where a subject's report says
-  its cognitive placement was gathered against the team's general
-  practice rather than that subject, say so in the body of the portfolio
-  report. Silent reuse is a lie about evidence.
+- **Reused cognitive reads are declared.** Where a subject's report
+  records `cognitive_source: team`, its cognitive placement was gathered
+  against the team's general practice rather than that subject. Say so in
+  the body of the portfolio report. Silent reuse is a lie about evidence.
+- **A subject that was asked separately is shown separately.** Where a
+  subject records `cognitive_source: subject` inside a scope run, the
+  team said their way of working there is materially different. Its gap
+  is not evidence about the team's general pattern, and the spread
+  section should say which subjects carry their own read.
 - **Never claim an estate-wide ceiling under partial coverage.** With
   six of fourteen subjects readable, the ceiling is the ceiling *of the
   six*. Say which.

@@ -346,6 +346,87 @@ not a genuine inherited habitat.
 
 ## Process
 
+### 0. Choose the run mode
+
+**Single subject (default).** No `.habitat/scope.yml`, or invoked
+without `--scope`: assess the current repository and follow steps 1–9
+once. Everything below is unchanged from a single-repo run.
+
+**Scope run (`--scope`).** A manifest is present and the user wants the
+whole estate in one session. The behavioural questions are asked **once
+for the team**, not once per repository — twelve repositories at ten
+minutes each, with the same questions asked twelve times, is not a
+session anyone sits through, and it produces twelve copies of one
+answer.
+
+#### The scope run
+
+1. **Say how many subjects will be processed, before starting.** Read
+   the manifest and state the count and the subject names. If the scope
+   is larger than can be worked through in one session, say so plainly
+   and recommend splitting the run or using `/ai-readiness-rollup` over
+   separately-produced reports instead. Never start a run that will
+   degrade silently part-way through.
+2. **Gather the team read once.** Ask the 3–5 clarifying questions, one
+   at a time, against how the team *normally* works — not against any
+   one repository. This places the six behavioural dimensions and the
+   cognitive level.
+3. **Then, for each subject in turn:**
+   - Sense the habitat and place the eight repo-observable dimensions
+     from that subject's evidence.
+   - Ask exactly one cheap question: *"Is your way of working in this
+     subject materially different from what you described?"*
+     - **No** → apply the team read. Set `cognitive_source: team`, and
+       **state in the report body** that the cognitive placement was
+       gathered against the team's general practice rather than this
+       subject specifically.
+     - **Yes** → ask the six behavioural dimensions again for this
+       subject. Set `cognitive_source: subject`.
+   - Write the report to that subject's own `assessments/` directory.
+4. **Then produce the portfolio report** by following
+   `/ai-readiness-rollup` over the reports just written.
+
+##### Context discipline
+
+Process subjects **sequentially**, and hold no more than
+one subject's raw evidence at a time — release each subject's scan
+before starting the next. The reports on disk are the durable record;
+nothing needs to stay in context once a report is written.
+
+This is why the run states its size up front. An estate too large for
+one session should be split deliberately, not discovered half-way
+through when the evidence for subject seven no longer fits.
+
+##### Declaring a reused read
+
+A reused cognitive read is **always** declared, in the body of the
+report and not in a footnote. Silent reuse is a lie about evidence: a
+reader has no way to tell a placement gathered here from one carried in
+from a conversation about a different repository.
+
+##### Posture
+
+A subject's `posture` in the manifest changes how it feeds the
+portfolio, never how it is assessed:
+
+| Posture | Assessed | Feeds the portfolio ceiling |
+|---|---|---|
+| `active` (default) | yes | yes |
+| `maintenance` | yes | excluded from common-weak detection |
+| `archived` | yes | excluded entirely; shown marked in the matrix |
+
+Without this a single dead repository pins the estate's ceiling
+permanently, and every portfolio report afterwards leads with a finding
+nobody intends to act on.
+
+##### Subjects spanning several paths
+
+Where a manifest subject declares `paths:` rather than `path:`, scan all
+of them and merge the evidence into **one** placement. A contract
+repository and its implementation are one logical subject; assessing
+them separately would report two half-habitats that neither team
+recognises.
+
 ### 1. Scan
 
 #### 1a. Habitat document discovery
@@ -620,6 +701,13 @@ Every dimension also carries its `provenance` — `local`, `inherited`, or
 `inherited-unbound`, as placed above. A self-governed subject records
 `local` throughout; that is a real reading, not a placeholder.
 
+`cognitive_source` records where the cognitive read came from: `subject`
+when the behavioural questions were asked about this subject, `team`
+when the read was gathered against the team's general practice and
+applied here. A standalone single-repository run records `subject` — the
+questions were asked here. `posture` is `active` unless the manifest
+says otherwise.
+
 ````markdown
 ```yaml assessment-summary
 schema: 1
@@ -627,6 +715,7 @@ subject: <repo or directory name>
 subject_path: .
 team: <team name, or the project name where no team is named>
 habitat: <habitat id from the manifest, or "self">
+posture: <active | maintenance | archived>
 assessed_at: YYYY-MM-DD
 tool_version: <plugin version>
 
@@ -649,6 +738,7 @@ dimensions:
 habitat_maturity_mean: N.NN
 habitat_maturity_level: N
 cognitive_level: N
+cognitive_source: <team | subject>
 gap: <signed — cognitive_level minus habitat_maturity_mean>
 regime: <coherent | ambition-outpaces-enablement | inherited-habitat>
 ceiling_dimensions: [<the weakest dimensions, as named in the profile>]

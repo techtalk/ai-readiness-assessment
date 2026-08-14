@@ -163,6 +163,38 @@ Two rules keep this honest:
   artefact expected to bind and where it was looked for, so the team can
   correct it.
 
+##### Habitat beyond the checkout
+
+Three habitat kinds cannot be read from any subject. Each is sensed
+differently, and each has a different honest ceiling.
+
+| `kind` | Example | What can be sensed | Confidence treatment |
+|---|---|---|---|
+| `package` | A harness shipped as an npm / NuGet / PyPI package, or a plugin from a marketplace | The lockfile or plugin manifest: resolved version and pin age | The pin is verified; the content is not. Dimensions the package claims stay `inferred` unless local evidence corroborates them. |
+| `org` | An org `.github` repository, org-wide Copilot instructions, org rulesets, shared reusable workflows | Only what a subject actually references | **`declared, unverifiable from here`** — never raise a dimension on the strength of it. |
+| `upstream` | An internal fork inheriting a habitat from an upstream nobody here controls | The fork relationship and how far it has diverged | Placed as `inherited`; the steer distinguishes contributing upstream from overlaying locally. |
+
+**The org rule.** An org habitat must **never raise** a dimension above
+the level the subject's own evidence supports. List it separately in the
+report as *declared, unverifiable from here*, and name the action that
+would make it verifiable: **reference it from the subject**, so it
+becomes bindable and therefore observable.
+
+This is the `inherited-unbound` argument one layer up, and the stakes are
+higher. With a sibling repository there is at least something to read.
+With an org habitat there is nothing to check against at all, which makes
+it the easiest thing in the instrument to take silent credit for — and a
+report that quietly credits an org policy nobody has wired up is exactly
+the false comfort the whole instrument exists to remove.
+
+**Packages.** State the resolved version and its age. A pin proves the
+package is *present*, not that its rules *run*.
+
+**Forks.** Report how far the fork has diverged from upstream, and let
+that choose the steer. A fork close to upstream should contribute
+changes back; one that has diverged heavily should overlay locally and
+stop describing itself as tracking.
+
 ##### When a scope is not declared
 
 If the repository has a `.gitmodules` file and no `.habitat/scope.yml`,

@@ -43,6 +43,24 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ### Added
 
+- **The real Habitat-Thinking estate example** (#69) — an actual
+  `/ai-readiness-rollup` across the repositories that build this instrument,
+  published as it came out. It does **not** produce a spread: one subject is
+  comparable, one was measured by a different instrument, and one could not be
+  found. Every absent number in it is the machinery declining to invent one.
+- **Fixed: the roll-up had no coverage status for a report produced by a
+  different instrument.** `Habitat-Thinking/ai-literacy-superpowers` carries a
+  well-formed assessment with a cognitive read and discipline scores, but no
+  Habitat Maturity Profile and no gap — it is neither `degraded` (which means
+  "measured the right things, predates the summary block") nor `unparseable`.
+  New status **`incompatible`**, kept deliberately distinct from `degraded`:
+  collapsing them would report a subject as nearly-there when it has not been
+  assessed against this model at all.
+- **Fixed: a single-subject estate could have its one gap reported as a
+  spread.** A spread is a range and needs **at least two comparable subjects**;
+  with fewer the roll-up now says so and names what would produce one. Reporting
+  one gap as a range would manufacture exactly the finding a portfolio view
+  exists to produce.
 - **Shareable HTML portfolio report** (spec
   [0011](specs/0011-multi-repo-scope.md), #68) — the roll-up can now be rendered
   the way the per-repo report already could: a single self-contained file, all

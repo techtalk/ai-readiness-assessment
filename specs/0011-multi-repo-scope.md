@@ -326,7 +326,24 @@ Ticked per slice as each PR merges.
       reworded rather than the guard loosened. Structural validation
       only — the pages were parsed and confirmed well-formed and
       asset-free, but not visually rendered.*
-- [ ] **Example 1** (#69) — the real Habitat-Thinking estate roll-up,
+- [x] **Example 1** (#69) — the real Habitat-Thinking estate roll-up,
       published whatever it says.
+      *Landed: 111 assertions green. What it says is that the estate
+      cannot currently produce a spread — one subject comparable, one
+      measured by a different instrument, one not found. Published as
+      it came out.*
+
+      *This example earned its place by breaking two things. The
+      three-tier fallback (block / prose / unparseable) had no status
+      for a report that parses but measures something else, so
+      `incompatible` was added and kept distinct from `degraded`. And
+      nothing prevented a one-subject estate from having its single gap
+      reported as a spread, so the spread now requires at least two
+      comparable subjects. Both defects were in shipped, green,
+      thoroughly-tested code; neither synthetic example could have
+      surfaced them, because both were built from data that already
+      fitted the model. The risk table anticipated "Slice 1's value
+      depends on report parseability" and proposed the three tiers as
+      the mitigation — the tiers were the right shape and one short.*
 
 `python3 tests/run.py` passes at the end of every slice.

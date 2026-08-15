@@ -129,6 +129,7 @@ nav:
           - Subject, habitat, team: explanation/subject-habitat-team.md
           - Extract or bind: explanation/extract-or-bind.md
       - Examples:
+          - Habitat-Thinking estate (real): examples/habitat-thinking-estate.md
           - Parent repo with submodules: examples/parent-repo-submodules.md
           - Separate harness, partially bound: examples/separate-harness-partially-bound.md
           - Fragmented estate: examples/fragmented-estate.md

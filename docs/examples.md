@@ -64,6 +64,13 @@ None of them contains an overall score, grade or percentage. The
 portfolio headline is a distribution and a split ceiling — see
 [why there is no portfolio score](explanation/why-no-portfolio-score.md).
 
-A **real** multi-repo example, run across the Habitat-Thinking estate, is
-tracked as [issue #69](https://github.com/techtalk/ai-readiness-assessment/issues/69).
+### The real one
+
+**[The Habitat-Thinking estate](examples/habitat-thinking-estate.md)** is
+an actual roll-up across the repositories that build this instrument. It
+does not produce a spread — one subject is comparable, one was measured
+by a different instrument, and one could not be found. It is published as
+it came out, and running it changed the tool: the `incompatible` coverage
+status and the two-comparable-subjects rule for the spread both exist
+because of it.
 

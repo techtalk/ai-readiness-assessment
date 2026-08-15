@@ -14,6 +14,28 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-08-15
+
+First stable release.
+
+The instrument has been single-repository since 0.1.0. This release adds
+**multi-repo scope**: the assessment unit becomes *subject × governing
+habitat*, with the cognitive read scoped to the **team** rather than to a
+repository, and the **spread** of gaps across an estate as the headline
+finding a single-repository assessment structurally cannot produce.
+
+With no `.habitat/scope.yml` present, `/ai-readiness-assess` behaves as
+it did before — the one difference in a single-repo run is the
+machine-readable `assessment-summary` block appended to every report.
+
+Deliberately absent: any portfolio score, grade, percentage or averaged
+gap. Averaging destroys the spread, which is the only thing a portfolio
+view adds.
+
+This release also accumulates specs 0008–0010, which had not been cut
+into a version: the Assessment Review section, the Habitat/Workflow Gap
+rename, and book links in reports.
+
 ### Changed
 
 - **Every mention of *The Sovereign Engineer* in a report is now a link** (spec
@@ -444,7 +466,8 @@ and fails the release if the entry is missing. Record day-to-day changes under
 - `techtalkai` marketplace manifest.
 - Harness and TDAB scaffolding.
 
-[Unreleased]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/techtalk/ai-readiness-assessment/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.4.1...v1.0.0
 [0.4.1]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/techtalk/ai-readiness-assessment/compare/v0.2.0...v0.3.0

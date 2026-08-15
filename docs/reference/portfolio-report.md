@@ -17,8 +17,16 @@ Every subject named in the manifest, with its status:
 | `assessed` | Report found and its summary block parsed. |
 | `stale` | Assessed, but the report is more than 90 days old. |
 | `degraded` | No summary block; values recovered from prose. |
+| `incompatible` | Report parses, but was produced by a different instrument — no Habitat Maturity Profile and no gap, so it cannot enter the matrix. |
 | `unparseable` | Report found but nothing could be read from it. |
 | `unreachable` | Path unreadable, or no assessment exists there. |
+
+`incompatible` is **not** a lesser `degraded`. A degraded report measured
+the right things and merely predates the summary block; an incompatible
+one measured different things. Collapsing them would report a subject as
+nearly-there when it has not been assessed against this model at all —
+see the [real estate example](../examples/habitat-thinking-estate.md),
+which is where the distinction came from.
 
 It comes first, and it is built before any analysis. Analysis that
 starts before coverage is established has a habit of describing the
@@ -48,6 +56,12 @@ at the extremes named with a line each on what differs.
 **This is the headline finding.** One cognitive read against several
 habitats produces several gaps, and their spread is the thing a
 single-repo assessment structurally cannot show.
+
+A spread needs **at least two comparable subjects** — two that each yield
+a gap. With fewer, the report says the spread is not computable and names
+what would produce one. Presenting a single subject's gap as a range
+would manufacture exactly the finding the portfolio view exists to
+produce.
 
 ### 5. Split ceiling
 

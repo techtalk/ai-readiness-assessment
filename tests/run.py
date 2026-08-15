@@ -781,6 +781,17 @@ SLICE5_DOCS = [
 # Habitat that cannot be read from any subject checkout.
 HABITAT_KINDS_BEYOND_CHECKOUT = ["package", "org", "upstream"]
 
+EXAMPLE1_DOC = "docs/examples/habitat-thinking-estate.md"
+
+# Statuses a subject can carry in the coverage ledger. `incompatible`
+# was added after the real estate roll-up found a report that parses
+# perfectly but comes from a different instrument — one that does not
+# measure the fourteen dimensions, so it cannot enter the matrix.
+LEDGER_STATUSES = [
+    "assessed", "stale", "degraded", "unparseable", "unreachable",
+    "incompatible",
+]
+
 SLICE6_EXAMPLES = [
     "docs/examples/parent-repo-submodules.html",
     "docs/examples/separate-harness-partially-bound.html",
@@ -1236,6 +1247,36 @@ def r26_html_leads_with_coverage() -> Result:
     return passing("R26", "coverage leads; no gauge or grade in any rendered portfolio")
 
 
+def r27_ledger_statuses_defined() -> Result:
+    """Every coverage-ledger status must be defined in both roll-up
+    surfaces, or a subject lands in a state one entry point can name and
+    the other cannot."""
+    problems = []
+    for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL)):
+        text = path.read_text() if path.is_file() else ""
+        missing = [s for s in LEDGER_STATUSES if f"`{s}`" not in text]
+        if missing:
+            problems.append(f"roll-up {label}: {missing}")
+    if problems:
+        return failing("R27", f"ledger statuses missing — {problems}")
+    return passing("R27", f"all {len(LEDGER_STATUSES)} ledger statuses defined in both surfaces")
+
+
+def r28_spread_needs_two_subjects() -> Result:
+    """A spread is a range across subjects. With one comparable subject
+    there is no range, and presenting a single gap as one would invent
+    the finding the whole portfolio view exists to produce."""
+    marker = "at least two comparable subjects"
+    problems = [
+        label
+        for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL))
+        if not path.is_file() or marker not in path.read_text()
+    ]
+    if problems:
+        return failing("R28", f"spread precondition not stated in roll-up: {problems}")
+    return passing("R28", "spread requires at least two comparable subjects")
+
+
 def r16_internal_doc_links_resolve() -> Result:
     """Every relative markdown link in docs/ points at a file that exists.
 
@@ -1259,7 +1300,8 @@ def r16_internal_doc_links_resolve() -> Result:
 
 
 def r5_multi_repo_docs_present() -> Result:
-    pages = MULTI_REPO_DOCS + SLICE2_DOCS + SLICE3_DOCS + SLICE4_DOCS + SLICE5_DOCS
+    pages = (MULTI_REPO_DOCS + SLICE2_DOCS + SLICE3_DOCS + SLICE4_DOCS
+             + SLICE5_DOCS + [EXAMPLE1_DOC])
     missing = [d for d in pages if not (ROOT / d).is_file()]
     if missing:
         return failing("R5", f"missing docs pages: {missing}")
@@ -1294,6 +1336,8 @@ REPO_CHECKS = [
     ("R24", r24_html_portfolio_specified),
     ("R25", r25_html_examples_self_contained),
     ("R26", r26_html_leads_with_coverage),
+    ("R27", r27_ledger_statuses_defined),
+    ("R28", r28_spread_needs_two_subjects),
 ]
 
 

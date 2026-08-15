@@ -155,7 +155,20 @@ the most recent date in its filename. Then parse it, in this order:
    Habitat Maturity Level, the cognitive read, the gap and its regime,
    and any dimension levels stated in the Habitat Maturity Profile
    table. Status `degraded`.
-3. **Neither** — status `unparseable`.
+3. **Parses, but measures something else** — the report is well-formed
+   and readable, but was produced by a different instrument and carries
+   no Habitat Maturity Profile and no Habitat/Workflow Gap. Status
+   `incompatible`. Keep whatever *is* comparable — a cognitive read and
+   discipline scores are still findings — and say plainly that the
+   subject cannot enter the dimension matrix, naming the instrument that
+   produced the report. Recommend running `/ai-readiness-assess` there
+   to make it comparable.
+4. **Neither** — status `unparseable`.
+
+`incompatible` is not a lesser `degraded`. A degraded report measured the
+right things and merely predates the summary block; an incompatible one
+measured different things. Collapsing the two would report a subject as
+nearly-there when it has not been assessed against this model at all.
 
 A report whose most recent assessment is older than 90 days is `stale`
 as well as `assessed`; report the age and keep its data.
@@ -230,6 +243,13 @@ Use a consistent notation and give it a key beneath the matrix.
 <min gap, max gap, range. Name the two subjects at the extremes, one
 line each on what differs between them. This is the headline finding —
 lead the reader to it, do not bury it under the matrix.>
+
+<A spread needs at least two comparable subjects — two subjects that
+each yield a gap. With fewer, there is no range: say so, say why, and
+name what would produce one. Presenting a single subject's gap as a
+spread would manufacture the one finding a portfolio view exists to
+produce, which is worse than reporting that the estate cannot yet
+produce it.>
 
 ## Split ceiling
 

@@ -102,6 +102,19 @@ report is 73 days old and predates a substantial amount of work on the
 testing dimension, so a re-run would likely read differently — which is
 itself the point: **a 73-day-old report is evidence about 73 days ago.**
 
+!!! note "Superseded the next day — and the prediction held"
+    This roll-up was run on 2026-08-15 against the reports that existed
+    then. On **2026-08-16** the repository was re-assessed, and the gap
+    had closed from **+1.07 (Ambition outpaces enablement)** to
+    **+0.36 (Coherent)**, with the habitat maturity mean rising L2.93 →
+    L3.64.
+
+    The roll-up above is left exactly as it ran. It is a dated reading,
+    and rewriting it would destroy the thing it demonstrates. The point
+    stands more sharply now than when it was written: the estate was
+    being summarised from a report that was already out of date, and
+    the coverage ledger said so.
+
 ## Portfolio regime
 
 **Not asserted.**

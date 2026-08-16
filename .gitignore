@@ -8,3 +8,8 @@
 # Local agent telemetry, written by the affordance-invocation recorder hook.
 # Machine-generated per-session NDJSON — no value in version control.
 observability/
+
+# Python bytecode. tests/run.py is stdlib-only and normally executed, not
+# imported — but importing it (to reuse its assertions) leaves this behind.
+__pycache__/
+*.py[cod]

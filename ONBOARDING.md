@@ -85,6 +85,11 @@ that prose matter more than anything mechanical.
 - **Consistent formatting** — all source files should pass the project's
   configured formatter. *(Declared but currently `unverified` — no
   formatter is wired up yet, so this is an aspiration, not a gate.)*
+- **No secrets in source** — no API keys, tokens, passwords or private
+  keys in committed files. Machine-checked with
+  `gitleaks detect --source . --no-banner --exit-code 1`. Adopted from
+  the harness template at 0.64.0; gitleaks 8.30.1 is installed and the
+  repository is clean across all 139 commits.
 
 ### At PR time
 
@@ -115,6 +120,33 @@ These block merges into `main` (which is branch-protected):
 - **Template currency** (weekly) — checks that the `HARNESS.md`
   `template-version` marker matches the installed plugin, so new harness
   template content gets reviewed.
+- **Onboarding document staleness** (monthly) — the periodic backstop to
+  the PR-time Onboarding gate above.
+- **Secret scanner operational** (weekly) — checks gitleaks is still
+  installed and that "No secrets in source" hasn't regressed from
+  `deterministic` to `unverified`. A guard on the guard.
+- **Convention file sync** (weekly) — checks `.cursor/rules/`,
+  `.github/copilot-instructions.md` and `.windsurf/rules/` still reflect
+  the HARNESS conventions. This repo maintains three convention surfaces
+  by hand, so they drift silently.
+- **Documentation freshness** (weekly) — checks the README, HARNESS.md
+  and doc comments don't reference files or conventions that no longer
+  exist.
+- **Dependency currency** (weekly) — checks `requirements.txt` for known
+  vulnerabilities or majors more than one behind.
+- **Reflection-driven regression detection** (weekly) — looks for the
+  same kind of surprise recurring across two or more
+  `REFLECTION_LOG.md` entries with no constraint covering it yet. That
+  pattern is how a constraint gets proposed here.
+- **Reflection log aged-out review** (monthly, 180-day threshold) —
+  surfaces entries older than the threshold that carry no `Promoted`
+  line, with evidence for a curator to interpret.
+
+The last six rules in that list were adopted from the harness template at
+0.64.0. Every one names a tool that exists here — template rules whose
+enforcement pointed at absent scripts, missing directories or the sibling
+`ai-literacy-superpowers` repository were deliberately **not** adopted, so
+that nothing in this file describes a check that cannot run.
 
 ---
 
@@ -206,8 +238,15 @@ Three loops protect the codebase:
   GitHub Release on every version bump, and the **Pages** workflow that
   rebuilds the docs.
 - **Investigative loop** — scheduled GC rules that catch slow drift.
-  Currently: **Template currency** (weekly) and **Onboarding document
-  staleness** (monthly).
+  Eight of them, listed under *What's Enforced → On schedule*: two
+  deterministic (Template currency, Secret scanner operational), one
+  file-date (Onboarding document staleness) and five agent-run
+  (Convention file sync, Documentation freshness, Dependency currency,
+  Reflection-driven regression detection, Reflection log aged-out
+  review). Note that nothing **schedules** them yet — this repo has no
+  `gc.yml` workflow, so the cadences are declared and run on demand via
+  `/harness-gc`. That is the honest state, and closing it is the next
+  harness move.
 
 Observability cadences (snapshots, audits, cost capture) are **not
 configured** for this repo — it's a small, prose-only plugin, so the

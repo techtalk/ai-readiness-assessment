@@ -10,7 +10,7 @@
 
      Inspired by Birgitta Boeckeler's "Harness Engineering":
      https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html -->
-<!-- template-version: 0.40.0 -->
+<!-- template-version: 0.64.0 -->
 
 ## Context
 
@@ -145,6 +145,14 @@
   repository Settings → Branches
 - **Scope**: pr
 
+### No secrets in source
+
+- **Rule**: No API keys, tokens, passwords, or private keys may appear
+  in committed source files
+- **Enforcement**: deterministic
+- **Tool**: gitleaks detect --source . --no-banner --exit-code 1
+- **Scope**: commit
+
 ---
 
 ## Garbage Collection
@@ -171,6 +179,69 @@
   PR that changes the HARNESS body or AGENTS.md without refreshing
   ONBOARDING.md); file-date comparison as the periodic backstop
 - **Auto-fix**: false (run `/harness-onboarding` to regenerate)
+
+### Secret scanner operational
+
+- **What it checks**: Whether gitleaks is installed and the "No secrets
+  in source" constraint is still enforced as deterministic (not regressed
+  to unverified)
+- **Frequency**: weekly
+- **Enforcement**: deterministic
+- **Tool**: gitleaks --version && gitleaks detect --source . --no-banner --exit-code 1
+- **Auto-fix**: false
+
+### Convention file sync
+
+- **What it checks**: Whether .cursor/rules/, .github/copilot-instructions.md,
+  and .windsurf/rules/ exist and reflect the current HARNESS.md conventions
+- **Frequency**: weekly
+- **Enforcement**: agent
+- **Tool**: harness-gc agent
+- **Auto-fix**: false
+
+### Documentation freshness
+
+- **What it checks**: Whether README, HARNESS.md, and inline doc
+  comments reference files, functions, or conventions that no longer
+  exist
+- **Frequency**: weekly
+- **Enforcement**: agent
+- **Tool**: harness-gc agent
+- **Auto-fix**: false
+
+### Dependency currency
+
+- **What it checks**: Whether project dependencies have known
+  vulnerabilities or are more than one major version behind latest
+- **Frequency**: weekly
+- **Enforcement**: agent
+- **Tool**: harness-gc agent
+- **Auto-fix**: false
+
+### Reflection-driven regression detection
+
+- **What it checks**: Whether REFLECTION_LOG.md contains recurring
+  failure patterns (same type of surprise across 2+ entries) that
+  are not yet covered by a HARNESS.md constraint
+- **Frequency**: weekly
+- **Enforcement**: agent
+- **Tool**: harness-gc agent
+- **Auto-fix**: false
+
+### Reflection log aged-out review
+
+- **What it checks**: Entries older than the configured age threshold
+  (default 6 months) that lack a `Promoted` line; emits per-entry evidence
+  (recurrence count, AGENTS.md/HARNESS.md text-overlap matches, single-
+  instance signal) for the curator to interpret.
+- **Frequency**: monthly
+- **Enforcement**: agent
+- **Tool**: harness-gc agent
+- **Auto-fix**: false
+- **Threshold**: 180 days (configurable; reduce to surface candidates sooner,
+  increase to defer)
+- **Opt-in**: declare this rule to enable. If absent, no monthly report is
+  generated and the system reverts to today's behaviour for this project.
 
 ---
 

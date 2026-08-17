@@ -71,3 +71,19 @@ and add a `Promoted` line in the same commit.
   - Model tiers used: unknown
   - Pipeline stages completed: manual (single-agent, no orchestrator)
   - Agent delegation: manual
+
+---
+
+- **Date**: 2026-08-16
+- **Agent**: Claude Code (Opus 5)
+- **Task**: Built the six-slice multi-repo scope (spec 0011, PRs #70–#77), released v1.0.0, then re-assessed the repo against its own instrument. The gap closed from **+1.07 (Ambition outpaces enablement)** to **+0.36 (Coherent)**, habitat maturity L2.93 → L3.64.
+- **Surprise**: Three, in ascending order of how much they should change future work. **(1)** The gap closed, but **not the way the previous report prescribed**. Of the three dimensions June named as the ceiling — Agent composition, Testing, Observability — only Testing moved. Coherence was restored by *everything else* rising, chiefly a six-level climb across the behavioural dimensions as practice shifted to supervising whole slices. "The gap closed" and "we fixed what was named" are different claims, and only the first was true. **(2)** Spec 0009's rename left **four** occurrences of "Habitat Build Gap" live for three months — including the instrument's own definition of the metric — because the term was line-wrapped as `Habitat Build\n  Gap` and 0009's acceptance check grepped for the unwrapped string. The same hazard then bit twice more in one session: two new assertion marker phrases wrapped and produced false passes. This repo hard-wraps prose at ~70 columns while every assertion matches contiguous substrings; that mismatch produces *false passes*, which is the worst failure mode a check can have. **(3)** The real portfolio example (#69) broke two things in shipped, green, 109-assertion code — there was no coverage status for a report produced by a *different* instrument, and nothing stopped a one-subject estate reporting its single gap as a "spread". Neither synthetic example could have found either, because both were built from data that already fitted the model.
+- **Proposal**: Add to AGENTS.md GOTCHAS: "Prose is hard-wrapped at ~70 columns. Any assertion matching a phrase in `commands/**` or `skills/**` must either match whitespace-flexibly (`re.compile(r'Habitat\s+Build\s+Gap')`) or use a phrase short enough that it cannot wrap. A substring check against wrapped prose fails *open*." Also: "A rename is not complete until a whitespace-insensitive grep is clean — `R23` now enforces this for the retired gap term."
+- **Improvement**: Synthetic fixtures test the code against the author's assumptions; only real data tests the assumptions themselves. The instrument had six slices of green machinery before a single real multi-repo run touched it, and that run found defects immediately. Real dogfooding should come *earlier* in a slice sequence, not as the closing item — the argument for deferring it (two repos weren't checked out) was true but cost four slices of unvalidated design.
+- **Signal**: workflow
+- **Constraint**: Retired-terminology check — no `Habitat Build Gap` in the live surfaces, matched across whitespace (deterministic, `R23` in `tests/run.py`)
+- **Session metadata**:
+  - Duration: multi-day (2026-08-14 → 2026-08-16)
+  - Model tiers used: Opus 5 throughout
+  - Pipeline stages completed: manual (single-agent; no orchestrator)
+  - Agent delegation: none — all slices executed in-session, red-first

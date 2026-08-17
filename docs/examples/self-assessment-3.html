@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Readiness Assessment (2026-08-16) — ai-readiness-assessment</title>
+<style>
+  :root{
+    --l1:#7fb3d5;--l2:#3f7cac;--l3:#1f9e8f;--l4:#2e8b57;--l5:#caa14a;
+    --amber:#c77d31;--ink:#1c1c1c;--muted:#5b5b5b;--line:#e3e3e3;
+    --bg:#fdfdfc;--techtalk:#0b2b3c;--tt-light:#eaf2f6;
+    --review-bg:#162e40;--outcomes-bg:#dcdbdd;--teal:#00b2a2;--nextsteps-bg:#f0eeeb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.6}
+  /* Dark header band */
+  .tt-header{background:var(--techtalk);color:var(--tt-light);
+    padding:2rem 1.5rem 1.75rem}
+  .tt-wordmark{font-size:.68rem;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;opacity:.55;margin-bottom:1rem}
+  .tt-header h1{font-size:1.55rem;font-weight:700;margin:0 0 .2rem;
+    color:#fff;font-family:inherit}
+  .tt-meta{font-size:.85rem;opacity:.65;margin-bottom:1.25rem}
+  .tt-headline{background:rgba(255,255,255,.09);border-radius:8px;
+    padding:.9rem 1.1rem;font-size:1.05rem;font-weight:700;line-height:1.55}
+  .hl-now{color:#fff}
+  .hl-now span{color:var(--l3)}
+  .hl-next{color:rgba(255,255,255,.85);margin-top:.15rem}
+  .hl-next span{color:var(--l5)}
+  /* Five-level progress strip */
+  .level-strip{display:flex;gap:3px;margin:1.1rem 0 0}
+  .lpip{flex:1;text-align:center;padding:.4rem .25rem;border-radius:6px;
+    background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);
+    font-size:.68rem;font-weight:600;border:2px solid transparent;line-height:1.3}
+  .lpip .lpip-n{display:block;font-size:.95rem;font-weight:800;
+    line-height:1;margin-bottom:.1rem}
+  .lpip.active{background:rgba(255,255,255,.17);color:#fff;
+    border-color:rgba(255,255,255,.45)}
+  .lpip.active .lpip-n{color:#fff}
+  .lpip.target{background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);
+    border-color:rgba(255,255,255,.25);border-style:dashed}
+  .lpip-tag{display:block;font-size:.58rem;font-weight:500;margin-top:.1rem;opacity:.8}
+  /* Body */
+  .wrap{max-width:720px;margin:0 auto;padding:2rem 1.25rem 4rem}
+  h2{font-size:1.15rem;font-weight:700;margin:2.2rem 0 .6rem;
+    border-bottom:2px solid var(--techtalk);padding-bottom:.3rem;color:var(--techtalk)}
+  h3{font-size:1rem;margin:1rem 0 .4rem}
+  .reading h2,.nextsteps h2,.review h2{border-bottom:none;margin-top:0}
+  .review h2{color:#fff}
+  .reading h2,.nextsteps h2{color:var(--techtalk)}
+  .sub{color:var(--muted);margin:.1rem 0 1rem}
+  .badges{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0;align-items:stretch}
+  .badge{display:inline-flex;flex-direction:column;color:#fff;border-radius:8px;
+    padding:.45rem .7rem;font-size:.8rem;font-weight:600}
+  .badge .big{font-size:1.15rem;line-height:1.1}
+  .badge small{font-weight:500;opacity:.92}
+  .gapbadge{display:inline-flex;align-items:center;background:var(--amber);color:#fff;
+    /* Coherent reads teal; amber is for the two incoherent regimes. */
+    border-radius:8px;padding:.45rem .8rem;font-weight:600;font-size:.85rem}
+  .rationale{font-style:italic;color:var(--muted)}
+  .note{background:#f4f7f6;border-left:3px solid var(--l3);padding:.6rem .9rem;
+    border-radius:4px;color:var(--muted);font-size:.95rem}
+  .gapbadge.coherent{background:var(--l3)}
+  .prog.coherent{background:#eef7f5;border-left-color:var(--l3)}
+  .prog{background:#fbf3ea;border-left:3px solid var(--amber);padding:.6rem .9rem;
+    border-radius:4px;font-size:.95rem}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;margin:.4rem 0}
+  th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+  .profile-row{display:grid;grid-template-columns:9.5rem 1fr;gap:.6rem;
+    align-items:center;margin:.28rem 0}
+  .dim{font-size:.86rem}
+  .bar{display:flex;gap:3px}
+  .seg{flex:1;height:14px;border-radius:3px;background:#ececec}
+  .verb{font-size:.78rem;color:var(--muted)}
+  .cards{display:flex;gap:.7rem;flex-wrap:wrap}
+  .card{flex:1 1 30%;min-width:170px;border:1px solid var(--line);
+    border-radius:8px;padding:.7rem .8rem}
+  .cardlabel{font-size:.82rem;font-weight:600}
+  .dots{margin-top:.35rem}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;
+    margin-right:3px;background:#e6e6e6}
+  .dot.on{background:var(--l4)}
+  .axes{display:flex;gap:.7rem;flex-wrap:wrap;margin:.5rem 0}
+  .axis{flex:1 1 22%;min-width:120px;border:1px solid var(--line);
+    border-radius:8px;padding:.55rem .65rem}
+  .twocol{display:flex;gap:1.2rem;flex-wrap:wrap}
+  .twocol>div{flex:1 1 45%;min-width:230px}
+  ol,ul{padding-left:1.2rem}
+  .reading,.nextsteps,.review{border-radius:10px;padding:1rem 1.1rem;margin-top:1rem}
+  .reading{background:#f4f7f6}
+  .btn{display:inline-block;margin-top:.5rem;background:var(--l4);color:#fff;
+    text-decoration:none;border-radius:6px;padding:.5rem .9rem;
+    font-weight:600;font-size:.9rem}
+  /* Next steps — the generated explanation, quarantined from the invitation */
+  .nextsteps{background:var(--nextsteps-bg);padding:1.4rem 1.5rem}
+  .nextsteps p{margin:.7rem 0 0}
+  /* Assessment Review — the one call to action */
+  .review{background:var(--review-bg);color:var(--outcomes-bg);
+    padding:1.75rem 1.6rem 1.5rem;margin-top:1.4rem}
+  .review h2{font-size:1.5rem;margin-bottom:.9rem}
+  .review p{margin:.7rem 0 0}
+  .review strong{color:#fff}
+  .review-who{margin-top:1.5rem !important;font-weight:700;color:#fff}
+  .review-credit{margin-top:.1rem !important;color:var(--teal);
+    font-style:italic;font-size:.9rem}
+  .review p a{color:inherit;text-decoration:underline}
+  .outcomes{background:var(--outcomes-bg);color:var(--techtalk);
+    border-radius:8px;padding:1rem 1.2rem;margin:1.4rem 0 0}
+  .outcomes-title{font-weight:700;margin-bottom:.5rem}
+  .outcomes ul{list-style:none;padding:0;margin:0}
+  .outcomes li{position:relative;padding-left:1.6rem;margin:.3rem 0}
+  .outcomes li::before{content:"\2713";position:absolute;left:0;
+    color:var(--teal);font-weight:700}
+  .review-cta{text-align:center;margin:1.7rem 0 .3rem}
+  .review .btn{background:var(--teal);color:#fff;font-size:1.05rem;
+    font-weight:700;padding:.85rem 1.7rem;border-radius:8px;margin-top:0}
+  .review-secondary{margin-top:1.4rem;font-size:.78rem;color:var(--teal)}
+  .review-secondary a{color:var(--teal)}
+  .reading-lead{font-size:.82rem;color:var(--muted);font-weight:600;
+    text-transform:uppercase;letter-spacing:.03em;margin:0 0 .3rem}
+  a{color:var(--l2)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
+    background:#f0f0ef;padding:.05rem .3rem;border-radius:3px}
+  pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
+    background:#f0f0ef;padding:.8rem;border-radius:6px;white-space:pre-wrap}
+  footer{margin-top:2.5rem;color:var(--muted);font-size:.8rem;
+    border-top:1px solid var(--line);padding-top:.8rem;line-height:1.7}
+  @media print{
+    body{background:#fff}
+    .tt-header{background:var(--techtalk);-webkit-print-color-adjust:exact;
+      print-color-adjust:exact}
+    .wrap{max-width:none}
+    .nextsteps,.review,.outcomes{-webkit-print-color-adjust:exact;
+      print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<div class="tt-header">
+  <div class="tt-wordmark">TechTalk &middot; AI Readiness Assessment</div>
+  <h1>AI Readiness Assessment &mdash; re-assessment</h1>
+  <div class="tt-meta">Project: <strong>ai-readiness-assessment</strong> &middot; 2026-08-16</div>
+  <div class="tt-headline">
+    <div class="hl-now">AI Readiness &mdash; Habitat Maturity: <span>Level 4 (Orchestrating)</span></div>
+    <div class="hl-next">Next Step / Gap: <span>+1.4 to Level 5 (Supervising)</span></div>
+  </div>
+  <div class="level-strip">
+    <div class="lpip"><span class="lpip-n">1</span>Dictating</div>
+    <div class="lpip"><span class="lpip-n">2</span>Commanding</div>
+    <div class="lpip"><span class="lpip-n">3</span>Regulating</div>
+    <div class="lpip active"><span class="lpip-n">4</span>Orchestrating<span class="lpip-tag">&larr; you are here</span></div>
+    <div class="lpip target"><span class="lpip-n">5</span>Supervising<span class="lpip-tag">&rarr; target</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="badges">
+    <span class="badge" style="background:var(--l4)"><small>Habitat Maturity (model)</small><span class="big">Level 4</span></span>
+    <span class="badge" style="background:var(--l4)"><small>Cognitive read</small><span class="big">Level 4 &mdash; Specification-led</span></span>
+    <span class="gapbadge coherent" title="cognitive &minus; 14-dim mean">Habitat/Workflow Gap +0.36 &middot; Coherent</span>
+  </div>
+
+  <p class="prog coherent"><strong>Progression.</strong> The baseline
+  (<a href="self-assessment.html">view</a>) read a coherent L3 (gap +0.2); the
+  <a href="self-assessment-2.html">second reading</a> flipped to
+  <strong>+1.07 &mdash; ambition outpaces enablement</strong> when spec-first lifted
+  the cognitive read and the habitat did not follow. It has now followed:
+  the mean rose <strong>L2.93 &rarr; L3.64</strong> and the gap closed to
+  <strong>+0.36 &mdash; Coherent</strong>. Both reads sit at L4.</p>
+
+  <p class="note">A re-assessment of the plugin against <strong>its own
+  repository</strong>, 74 days after the previous reading and immediately after
+  the v1.0.0 release. <strong>Read how it closed:</strong> of the three dimensions
+  the last report named as the ceiling, only Testing moved. Agent composition and
+  Observability are still L2 and are still the ceiling &mdash; coherence was
+  restored by everything else rising.</p>
+
+  <h2>Habitat Maturity Profile</h2>
+  <div id="profile"></div>
+  <p class="verb" style="margin-top:.6rem"><strong>Habitat Maturity Level:</strong> L4 (mean L3.64) &mdash; held back by L2 Agent composition and L2 Observability.</p>
+
+  <h2>Discipline Maturity</h2>
+  <div class="cards">
+    <div class="card"><div class="cardlabel">Context Engineering</div><div class="dots" data-n="4"></div><div class="verb">4 / 5</div></div>
+    <div class="card"><div class="cardlabel">Architectural Constraints</div><div class="dots" data-n="5"></div><div class="verb">5 / 5 &middot; was 4</div></div>
+    <div class="card"><div class="cardlabel">Guardrail Design</div><div class="dots" data-n="4"></div><div class="verb">4 / 5</div></div>
+  </div>
+
+  <h2>AI Readiness Score &mdash; five readiness dimensions</h2>
+  <p class="verb">A view over the same evidence; the headline level is the 14-dimension Habitat Maturity.</p>
+  <div class="axes">
+    <div class="axis"><div class="cardlabel">Context</div><div class="verb">L4</div></div>
+    <div class="axis"><div class="cardlabel">Conventions</div><div class="verb">L4</div></div>
+    <div class="axis"><div class="cardlabel">Architectural guidance</div><div class="verb">L4</div></div>
+    <div class="axis"><div class="cardlabel">Guardrails</div><div class="verb">L3</div></div>
+    <div class="axis"><div class="cardlabel">Agent readiness</div><div class="verb">L3 &middot; was L2</div></div>
+  </div>
+
+  <h2>Operational Axes (Part D)</h2>
+  <div class="axes">
+    <div class="axis"><div class="cardlabel">Composition</div><div class="verb">L2 &middot; unmoved</div></div>
+    <div class="axis"><div class="cardlabel">Testing</div><div class="verb">L3 &middot; was L2</div></div>
+    <div class="axis"><div class="cardlabel">Observability</div><div class="verb">L2 &middot; unmoved</div></div>
+    <div class="axis"><div class="cardlabel">Governance</div><div class="verb">L4</div></div>
+  </div>
+
+  <h2>Habitat/Workflow Gap</h2>
+  <pre>Habitat Maturity Level (model):  L4  (14-dim mean L3.64)
+Cognitive read (Parts A&ndash;C):      L4
+Habitat/Workflow Gap:            +0.36   (cognitive &minus; 14-dim mean)
+Interpretation:                  Coherent</pre>
+  <p>The gap has closed from <strong>+1.07 to +0.36</strong> &mdash; back to coherent,
+  and at a higher level on both reads. But of the three dimensions the last report
+  named as the ceiling, only <strong>Testing</strong> moved (L2 &rarr; L3). Agent
+  composition and Observability are unchanged. Coherence was restored by everything
+  <em>else</em> rising: the behavioural read climbed six levels across five dimensions
+  as practice shifted to supervising whole slices, and Agent input and Output artefact
+  each gained a level from the specs work. A real result &mdash; but not the same as
+  fixing what was named.</p>
+
+  <h2>Strengths &amp; Gaps</h2>
+  <div class="twocol">
+    <div><h3>Strengths</h3><ol>
+      <li>Specs genuinely drive the work &mdash; 11 specs, adversarial review in every one, and spec 0011 refined across six slices with its acceptance ticked as each landed.</li>
+      <li>The suite grew 54% (72 &rarr; 111 assertions), every one written red-first &mdash; and caught real defects, including surface drift and a broken link before it deployed.</li>
+      <li>Multi-repo scope shipped at v1.0.0, with a real portfolio example published exactly as it came out.</li>
+    </ol></div>
+    <div><h3>Gaps</h3><ol>
+      <li><strong>Agent composition is L2 and has not moved since the baseline</strong> &mdash; no critic, no orchestrator. Every check here is a script or a human.</li>
+      <li><strong>Observability is L2 and is the least-evidenced placement in the report.</strong> Nothing captures agent activity, tokens or cost; the HARNESS Observability section is four &ldquo;Not yet configured&rdquo; placeholders.</li>
+      <li><strong>The governance loop has stopped closing</strong> &mdash; the audit is 74 days stale, and the harness drifted twice in its own favour without either document being updated.</li>
+    </ol></div>
+  </div>
+
+  <h2>Prioritised Improvement Plan</h2>
+  <p class="verb"><em>Team develops</em> = practice the team builds; <em>Org provides</em> = enablement the organisation supplies.</p>
+  <p>The gap has closed, so the constraint is no longer coherence but <strong>altitude</strong> &mdash; the L4&rarr;L5 platform layer:</p>
+  <ol>
+    <li><strong>Install a governance audit cadence</strong> <em>(org provides)</em> &mdash; the cheapest L5 marker. The machinery exists; the Status block is 74 days old.</li>
+    <li><strong>Add a read-only critic agent</strong> <em>(team develops)</em> &mdash; the one move that lifts Agent composition off L2, where it has sat across two assessments.</li>
+    <li><strong>Capture agent activity</strong> <em>(team develops)</em> &mdash; token, latency and cost per session, and an observability snapshot at a cadence.</li>
+  </ol>
+
+  <div class="nextsteps">
+    <h2>Next steps</h2>
+    <p>The gap is now <strong>+0.36 &mdash; Coherent</strong>: the habitat has caught up with the thinking, and both reads sit at L4, so nothing here is out of step with itself. The constraint is no longer coherence but <strong>altitude</strong> &mdash; the L4&rarr;L5 platform layer, where three of six markers are present (a published plugin, fitness functions, portfolio artefacts) and three are missing (governance audit cadence, decision archaeology, cost and model-routing discipline). TechTalk can support a <strong>platform-engineering engagement</strong> on those three, together with the two dimensions that have now been the ceiling across two consecutive assessments &mdash; Agent composition and Observability &mdash; so the next level is reached by lifting what was named rather than by everything else rising around it.</p>
+    <p>Your assessment shows where your repository is today. A review helps you understand why these findings matter, which improvements will have the biggest impact, and what should come next.</p>
+  </div>
+
+  <div class="review">
+    <h2>Not sure what these results mean?</h2>
+    <p>Your assessment tells you <strong>where</strong> you are.<br>
+      A review helps you understand why you received these scores and <strong>what to do next.</strong></p>
+    <p class="review-who">Review your results with Russ Miles</p>
+    <p class="review-credit">Creator of the AI Readiness Assessment | Author of <a href="https://leanpub.com/thesovereignengineer/c/ai-readiness">The Sovereign Engineer</a></p>
+    <p>For one hour, you&rsquo;ll review your report together, discuss the reasoning behind the findings, and identify the highest-leverage improvements for your organisation.</p>
+    <div class="outcomes">
+      <div class="outcomes-title">After 60 minutes you&rsquo;ll leave knowing</div>
+      <ul>
+        <li>which findings actually matter</li>
+        <li>where to invest first</li>
+        <li>what can wait</li>
+        <li>how to explain the results internally</li>
+      </ul>
+    </div>
+    <div class="review-cta">
+      <a class="btn" href="https://outlook.office.com/bookwithme/user/f16fa59374724894aebc49506ac9bc20@techtalk.at?anonymous&amp;ismsaljsauthenabled">Book your AI Readiness Review</a>
+    </div>
+    <div class="review-secondary">
+      Prefer exploring on your own first? Read the chapter matched to your assessment<br>
+      &rarr; <a href="https://leanpub.com/thesovereignengineer/c/ai-readiness">Level 5 (systems and orchestration)</a>
+    </div>
+  </div>
+
+  <div class="reading">
+    <h2>Reading Path</h2>
+    <p class="reading-lead">Prefer to go deeper on your own first? Here is your matched read.</p>
+    <p>Assessed at <strong>L4 &mdash; Specification-led</strong>. Your weakest disciplines are <strong>Guardrail Design</strong> and <strong>Context Engineering</strong>, tied at 4 &mdash; but the binding constraint is altitude, not a single discipline. Next read: the <strong>Level 5 (systems and orchestration)</strong> chapter, alongside the Level 3 chapter on harness engineering for the observability and critic-agent work.</p>
+    <a class="btn" href="https://leanpub.com/thesovereignengineer/c/ai-readiness">Read on Leanpub</a>
+  </div>
+
+  <footer>
+    Generated by the <a href="https://techtalk.at" style="color:inherit">TechTalk</a> AI Readiness Assessment &middot; re-assessment, 2026-08-16<br>
+    &copy; TechTalk GmbH &middot; Vienna, Austria<br>
+    Source: <code>assessments/2026-08-16-assessment.md</code> &middot; previous: <a href="self-assessment-2.html">self-assessment-2.html</a>
+  </footer>
+
+</div>
+
+<script>
+  var dims=[["Agent behaviour",5,"Supervising (asked)"],["Agent input",4,"iteratively refined specs"],
+    ["Workflow",4,"workflow defined"],["Operating model",4,"in the loop (inferred)"],
+    ["Teams provide",3,"comprehensive"],["Output role",4,"Specifying (asked)"],
+    ["Output artefact",4,"clear criteria"],["Humans review",4,"specs (asked)"],
+    ["Work patterns",4,"semi-autonomous (asked)"],["Agent composition",2,"single + saved"],
+    ["Agents…",4,"Implement (epics, inferred)"],["Testing",3,"Verifying"],
+    ["Observability",2,"Captured"],["Governance",4,"Policy-as-code"]];
+  var lvl=["","#7fb3d5","#3f7cac","#1f9e8f","#2e8b57","#caa14a"];
+  var p=document.getElementById("profile");
+  dims.forEach(function(d){var r=document.createElement("div");r.className="profile-row";
+    var n=document.createElement("div");n.className="dim";
+    n.innerHTML="<strong>"+d[0]+"</strong> <span class='verb'>L"+d[1]+" &middot; "+d[2]+"</span>";
+    var b=document.createElement("div");b.className="bar";
+    for(var i=1;i<=5;i++){var s=document.createElement("div");s.className="seg";
+      if(i<=d[1])s.style.background=lvl[d[1]];b.appendChild(s);}
+    r.appendChild(n);r.appendChild(b);p.appendChild(r);});
+  document.querySelectorAll(".dots").forEach(function(el){var n=parseInt(el.getAttribute("data-n"),10);
+    for(var i=1;i<=5;i++){var d=document.createElement("span");
+      d.className="dot"+(i<=n?" on":"");el.appendChild(d);}});
+</script>
+</body>
+</html>

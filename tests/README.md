@@ -78,6 +78,13 @@ to catch regressions.
   files, no CI, no constraints, no specs. Expected outcome: L0
   assessment, gap in all three disciplines, CTA pointing to a
   habitat-document bootcamp.
+- `fixtures/scope-two-subjects/` — not a repository but a toy *estate*:
+  a scope root holding `.habitat/scope.yml`, two subjects with committed
+  assessments, and the portfolio report over them. It pins the spec 0012
+  path anchor (the scope root is the directory containing `.habitat/`),
+  and is laid out so the discarded `.habitat/`-relative reading fails —
+  see its `expected.md`. Its assertions are **repo-level** (R30–R34), so
+  they run on a full sweep rather than under `--fixture`.
 
 Future fixtures should cover L1 (thin AI-instruction file only), L2
 (verification discipline but no habitat), L3 (rich habitat), L4

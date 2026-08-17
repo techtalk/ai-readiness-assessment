@@ -148,9 +148,14 @@ Runner: `tests/run.py` (structural assertions only).
 | R27 | PASS | all 6 ledger statuses defined in both surfaces |
 | R28 | PASS | spread requires at least two comparable subjects |
 | R29 | PASS | all 4 entry points route to multi-repo |
+| R30 | PASS | 2 subjects and assessments/ resolve from the scope root, and none resolves from .habitat/ |
+| R31 | PASS | scope root defined in both roll-up surfaces and the reference |
+| R32 | PASS | both roll-up surfaces state the four-directory lookup |
+| R33 | PASS | both roll-up surfaces stop rather than report zero coverage |
+| R34 | PASS | no example manifest anchors a path on ../ |
 
 ---
 
-**Total: 112 PASS, 0 FAIL.**
+**Total: 117 PASS, 0 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

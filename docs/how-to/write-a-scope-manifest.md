@@ -7,10 +7,11 @@ single-repo assessment.
 ## 1. Pick where it lives
 
 Put `.habitat/scope.yml` in a directory *above* the repositories it
-names — usually the directory you clone into:
+names — usually the directory you clone into. That directory is the
+**scope root**, and every path in the manifest resolves from it:
 
 ```text
-estate/
+estate/                  ← the scope root
 ├── .habitat/
 │   └── scope.yml
 ├── orders-api/
@@ -18,9 +19,11 @@ estate/
 └── legacy-batch/
 ```
 
-The roll-up searches upward from the working directory, at most three
-levels, so running it from inside `orders-api/` finds a manifest in
-`estate/`.
+The roll-up checks the working directory and then its first three parent
+directories — four in total — and stops at the first
+`.habitat/scope.yml` it finds. The scope root is the directory that
+produced the hit, so running the roll-up from inside `orders-api/` still
+resolves every path from `estate/`.
 
 ## 2. Name the team and the subjects
 
@@ -30,18 +33,22 @@ team: payments-tribe
 
 subjects:
   - id: orders-api
-    path: ../orders-api
+    path: ./orders-api
   - id: billing
-    path: ../billing
+    path: ./billing
   - id: legacy-batch
-    path: ../legacy-batch
+    path: ./legacy-batch
 
 report:
   output: assessments/
 ```
 
-Paths are relative to the manifest. `team` is free text and should name
-*people* — a tribe, a squad, a department. It is not a repository name.
+Paths resolve from the scope root — the directory containing
+`.habitat/`, so `./orders-api` here means `estate/orders-api`. See
+[path resolution](../reference/scope-manifest.md#path-resolution).
+
+`team` is free text and should name *people* — a tribe, a squad, a
+department. It is not a repository name.
 
 ## 3. Check each subject has an assessment
 
@@ -62,7 +69,9 @@ matrix.
 /ai-readiness-rollup
 ```
 
-The report lands in `estate/assessments/YYYY-MM-DD-portfolio.md`.
+The report lands in `estate/assessments/YYYY-MM-DD-portfolio.md` —
+`report.output` resolves from the scope root, so `assessments/` means
+`estate/assessments/`.
 
 ## Common cases
 
@@ -71,7 +80,9 @@ reported as `unreachable` and counted in the coverage ledger — which is
 better than quietly dropping it, because the report will then say "5 of
 6" rather than implying it covered everything.
 
-**A monorepo.** Point several subjects at directories inside it:
+**A monorepo.** Put `.habitat/scope.yml` at the repository root — that
+root is then the scope root — and point several subjects at directories
+inside it:
 
 ```yaml
 subjects:

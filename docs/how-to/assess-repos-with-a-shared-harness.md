@@ -20,18 +20,18 @@ team: payments-tribe
 habitats:
   - id: platform-harness
     kind: repo
-    path: ../platform-harness
+    path: ./platform-harness
     provides: [HARNESS.md, AGENTS.md, ci]
 
 subjects:
   - id: orders-api
-    path: ../orders-api
+    path: ./orders-api
     habitat: platform-harness
   - id: billing
-    path: ../billing
+    path: ./billing
     habitat: platform-harness
   - id: internal-tools
-    path: ../internal-tools     # no habitat: — self-governed
+    path: ./internal-tools     # no habitat: — self-governed
 ```
 
 Then assess each subject as usual. Where a dimension is satisfied only by

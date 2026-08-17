@@ -14,6 +14,61 @@ and fails the release if the entry is missing. Record day-to-day changes under
 
 ## [Unreleased]
 
+### Fixed
+
+- **One path anchor in the scope manifest, and it is named** (spec
+  [0012](specs/0012-scope-manifest-path-resolution.md)) — every path in
+  `.habitat/scope.yml` now resolves from the **scope root**: the directory
+  *containing* `.habitat/`, not `.habitat/` itself. That covers
+  `subjects[].path`, `subjects[].paths[]`, `habitats[].path`,
+  `report.output`, and the summary block's `subject_path`.
+
+  Three fields used to be documented with the identical phrase "relative
+  to the manifest" while resolving from **different** directories, and the
+  write destination was specified with a fourth phrase,
+  `<manifest directory>`. The published examples only worked because an
+  operator inferred the split from them: the how-to wrote
+  `path: ../orders-api` (correct only if paths anchor on `.habitat/`)
+  while claiming the report lands in `estate/assessments/` (correct only
+  if `report.output` anchors on the parent), and the tutorial wrote
+  `path: ./orders-api` for the same layout. An agent applying the
+  reference table uniformly would have got a wrong answer either way.
+
+  The visible cost, and the whole cost, is that published subject paths
+  change from `../orders-api` to `./orders-api`. The anchor decision was
+  adjudicated by the repo owner, accepting two things: that example fix,
+  and a departure from the self-relative convention of `.gitmodules` or
+  `docker-compose.yml`. Bought with it: the `report.output: assessments/`
+  default is correct as written rather than burying portfolio reports in
+  a dot-directory, and the manifest stays movable.
+
+- **The manifest lookup states what it searches** — the roll-up checks
+  `<dir>/.habitat/scope.yml` for the working directory and each of its
+  first three parents, four directories in total, and the scope root is
+  the directory that produced the hit, never the working directory. A
+  roll-up run from inside `estate/orders-api/` therefore resolves paths
+  from `estate/` — the case that was wrong under either uniform reading
+  of the old text.
+
+- **A roll-up where nothing resolves now stops** instead of emitting a
+  zero-coverage portfolio report, and names a path-anchor mismatch as the
+  likely cause. One unreachable subject is still a finding; every subject
+  unreachable is a broken manifest, and reporting "0 of 2" reads as a
+  finding about the estate when it is a finding about the manifest.
+
+### Added
+
+- **`tests/fixtures/scope-two-subjects/`** — the suite's first *estate*
+  fixture: a scope root, a two-subject manifest, two committed subject
+  assessments, and the portfolio report over them. Five new repo-level
+  assertions (R30–R34) hold the anchor: the manifest's paths resolve from
+  the scope root and demonstrably **fail** to resolve from `.habitat/`,
+  no surface says "manifest directory" or leaves "relative to the
+  manifest" unanchored, both roll-up surfaces state the lookup rule and
+  the zero-coverage stop, and no example manifest anywhere anchors a path
+  on `../`. Prose could not stop this drift the first time; the fixture
+  is what turns a regression red.
+
 ## [1.0.0] - 2026-08-15
 
 First stable release.

@@ -73,6 +73,28 @@ standing in for.
 
 The roll-up is driven by `.habitat/scope.yml`.
 
+### The scope root
+
+**The scope root is the directory containing `.habitat/`** — not
+`.habitat/` itself. Every path in the manifest resolves from it:
+`subjects[].path`, `subjects[].paths[]`, `habitats[].path`, and
+`report.output`. There is no second anchor.
+
+So in this layout the manifest at `estate/.habitat/scope.yml` has a scope
+root of `estate/`, `path: ./orders-api` means `estate/orders-api`, and
+`report.output: assessments/` means `estate/assessments/`:
+
+```text
+estate/
+├── .habitat/scope.yml     ← scope root is estate/, not estate/.habitat/
+├── orders-api/
+├── billing/
+└── assessments/           ← where report.output lands
+```
+
+`.habitat/` holds scope configuration; it is not a base for path
+arithmetic.
+
 ```yaml
 version: 1
 team: payments-tribe          # the cognitive read is scoped to this
@@ -80,25 +102,25 @@ team: payments-tribe          # the cognitive read is scoped to this
 habitats:                     # optional — omit when every subject governs itself
   - id: platform-harness
     kind: repo                # repo | submodule | self
-    path: ../platform-harness
+    path: ./platform-harness
     provides: [HARNESS.md, AGENTS.md, hooks, skills, agents, ci]
 
 subjects:
   - id: orders-api
-    path: ../orders-api       # repo, submodule, or directory
+    path: ./orders-api        # repo, submodule, or directory
     habitat: platform-harness # omit ⇒ self-governed
     posture: active           # active | maintenance | archived
   - id: billing
     paths:                    # one logical subject, several paths
-      - ../billing-contract
-      - ../billing-impl
+      - ./billing-contract
+      - ./billing-impl
     habitat: platform-harness
   - id: legacy-batch
-    path: ../legacy-batch
+    path: ./legacy-batch
     posture: maintenance
 
 report:
-  output: assessments/        # roll-up destination, relative to the manifest
+  output: assessments/        # destination, relative to the scope root
 ```
 
 `provides` is a hint about what the shared habitat offers. It is never
@@ -130,13 +152,32 @@ Stop with a clear message naming the problem when the manifest is
 absent, has no `subjects`, has a duplicate `id`, or when a subject's
 `habitat` names no declared habitat — name the bad reference.
 
+**When nothing resolves at all, stop.** One unreachable subject is a
+finding. *Every* subject unreachable is a broken manifest, so do not
+write a portfolio report: stop, say that no subject path resolved, and
+name a **path-anchor mismatch** as the likely cause — paths resolve from
+the scope root, the directory containing `.habitat/`, and a manifest
+written against `.habitat/` itself will miss every subject by one level.
+Show the scope root and one manifest path beside the absolute path it
+resolved to, so the reader can see the miss. A zero-coverage portfolio
+report is worse than no report: it reads as a finding about the estate
+when it is a finding about the manifest.
+
 ## Procedure
 
 ### 1. Locate the manifest
 
-Look for `.habitat/scope.yml` in the working directory, then upward at
-most three levels. If none is found, say so, show the minimal manifest
-above, name the directory where it should be written, and stop.
+Check `<dir>/.habitat/scope.yml` for `dir` = the working directory, then
+each of its first three parent directories, stopping at the first hit.
+**Four directories are tested in total.**
+
+**The scope root is the `dir` that produced the hit** — never the working
+directory. Run from inside `estate/orders-api/`, the hit is at
+`estate/.habitat/scope.yml`, so every path resolves from `estate/` and
+the report is written to `estate/<report.output>/`.
+
+If none of the four is found, say so, show the minimal manifest above,
+name the directory where it should be written, and stop.
 
 Do not guess a scope. Inferring the estate from sibling directories
 produces a portfolio report whose coverage nobody can check.
@@ -189,8 +230,8 @@ which.
 
 ### 4. Write the report
 
-Write to `<manifest directory>/<report.output>/YYYY-MM-DD-portfolio.md`
-using the structure below. Per-subject reports are never rewritten or
+Write to `<scope root>/<report.output>/YYYY-MM-DD-portfolio.md` using the
+structure below. Per-subject reports are never rewritten or
 moved — they belong to their subjects.
 
 ## Report structure
@@ -356,7 +397,7 @@ A subject may declare `justified_variance` in the manifest:
 ```yaml
 subjects:
   - id: legacy-batch
-    path: ../legacy-batch
+    path: ./legacy-batch
     justified_variance:
       - dimension: testing
         reason: COBOL batch; harness test tooling does not apply

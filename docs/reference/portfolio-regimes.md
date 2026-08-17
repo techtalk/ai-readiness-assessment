@@ -72,7 +72,7 @@ Divergence is not always drift. A manifest can declare it:
 ```yaml
 subjects:
   - id: legacy-batch
-    path: ../legacy-batch
+    path: ./legacy-batch
     justified_variance:
       - dimension: testing
         reason: COBOL batch; harness test tooling does not apply

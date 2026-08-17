@@ -16,14 +16,14 @@ team: client-payments-tribe
 
 subjects:
   - id: orders-api
-    path: ../orders-api
+    path: ./orders-api
   - id: billing
-    path: ../billing
+    path: ./billing
   # ... four more you can read ...
   - id: settlement
-    path: ../settlement          # no access
+    path: ./settlement          # no access
   - id: partner-gateway
-    path: ../partner-gateway     # different business unit
+    path: ./partner-gateway     # different business unit
   # ... six more you cannot ...
 ```
 

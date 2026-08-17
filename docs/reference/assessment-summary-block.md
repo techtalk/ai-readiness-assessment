@@ -15,7 +15,7 @@ different people at different times.
 ```yaml assessment-summary
 schema: 1
 subject: orders-api
-subject_path: .
+subject_path: ./orders-api
 team: payments-tribe
 assessed_at: 2026-08-14
 tool_version: 1.0.0
@@ -52,7 +52,7 @@ weakest_discipline: guardrail-design
 |---|---|
 | `schema` | Block schema version. Currently `1`. |
 | `subject` | The subject's identifier — matches `id` in the [scope manifest](scope-manifest.md) where one exists. |
-| `subject_path` | Path to the subject, relative to the report. |
+| `subject_path` | Path to the subject, resolved from the [scope root](scope-manifest.md#path-resolution) — the same string the manifest used, e.g. `./orders-api`. A standalone single-repository run has no scope root and records `.`. |
 | `team` | Whose cognitive read this is. |
 | `assessed_at` | Date of the assessment. |
 | `tool_version` | Plugin version that produced it. |

@@ -22,7 +22,7 @@ team: platform-group
 habitats:
   - id: org-standards
     kind: org
-    path: ../.github          # may not be readable at all — that is fine
+    path: ./.github          # may not be readable at all — that is fine
     provides: [copilot-instructions, rulesets, reusable-workflows]
   - id: harness-pkg
     kind: package
@@ -31,10 +31,10 @@ habitats:
 
 subjects:
   - id: orders-api
-    path: ../orders-api
+    path: ./orders-api
     habitat: org-standards
   - id: billing
-    path: ../billing
+    path: ./billing
     habitat: harness-pkg
 ```
 

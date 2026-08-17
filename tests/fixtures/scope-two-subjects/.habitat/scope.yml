@@ -1,0 +1,21 @@
+version: 1
+team: payments-tribe
+
+# Every path below resolves from the SCOPE ROOT — the directory
+# containing `.habitat/`, which is this fixture's root. Not from
+# `.habitat/` itself. See specs/0012-scope-manifest-path-resolution.md.
+#
+# The fixture is deliberately laid out so the two readings cannot both
+# work: `./orders-api` exists at the scope root and does NOT exist under
+# `.habitat/`. Re-anchor the rule on `.habitat/` and R30 goes red.
+
+subjects:
+  - id: orders-api
+    path: ./orders-api
+    posture: active
+  - id: billing
+    path: ./billing
+    posture: active
+
+report:
+  output: assessments/

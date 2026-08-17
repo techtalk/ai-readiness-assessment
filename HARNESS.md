@@ -267,7 +267,60 @@
 
 <!-- Auto-updated by /harness-audit — do not edit manually -->
 
-Last audit: 2026-06-03 (Status reconciled via /harness-sync)
-Constraints enforced: 4/5
-Garbage collection active: 2/2
-Drift detected: no
+Last audit: 2026-08-17
+Constraints enforced: 5/6 (4 deterministic incl. Spec-first's deterministic
+half, 1 agent, 1 unverified — "Consistent formatting", honestly declared: no
+formatter config exists on disk)
+Garbage collection active: 7/8 (1 non-operational: Template currency — its
+Tool compares two incompatible version schemes, see below)
+Drift detected: yes (7 items; none is a live enforcement failure — every
+constraint that names a tool passed when run)
+  - Convention surfaces 75 days stale — `.cursor/rules/`, `.windsurf/rules/`
+    and `.github/copilot-instructions.md` were last synced by 834ea87
+    (2026-06-03) and list 4 constraints; HARNESS.md declares 6. "No direct
+    pushes to main" and "No secrets in source" are absent from all three.
+    Fix: `/convention-sync` (auto).
+  - Template currency is defective as worded — its Tool says compare the
+    HARNESS.md template-version marker against "plugin.json version". The
+    marker (0.64.0) tracks the ai-literacy-superpowers plugin, but this
+    repo's `.claude-plugin/plugin.json` is 1.0.0, its own product version.
+    As written the rule reports permanent false drift. Fix: name the harness
+    plugin's manifest as the comparison source (human edit to the rule).
+  - Dual-surface sync is under-declared — HARNESS.md says `agent`, but R1
+    and R6 in `tests/run.py` also enforce it deterministically under the
+    required check "A-tier structural assertions" (`check_parity`,
+    tests/run.py:857, compares full normalised bodies). Truthful
+    declaration: deterministic + agent. Promotion is `/harness-constrain`'s
+    job and needs a human.
+  - No secrets in source has a tool but no automatic trigger — scope is
+    `commit`, yet gitleaks appears in no workflow and there are no
+    non-sample git hooks, so it fires only when someone runs an audit. The
+    declared `--source .` also scans git history, not the working tree, so
+    the command alone would miss a secret in an uncommitted file. Both
+    scans clean today (140 commits, no leaks; `--no-git` also clean).
+  - No GC rule has a scheduled executor — all six workflows trigger on
+    pull_request / push / workflow_dispatch only; a cron/schedule grep over
+    `.github/` returns nothing. Every "weekly" and "monthly" cadence above
+    is invocation-driven, not automatic.
+  - Reflection log archival of promoted entries (Path 1) is not declared,
+    yet 3 entries carry `Promoted` lines (REFLECTION_LOG.md:18, 35, 52)
+    with no archival path. Path 2 (aged-out review) is declared and
+    operating. Curation debt is 0: 6 active entries, 0 archived, oldest
+    2026-06-02 (76 days), none past the 180-day threshold. Entries are
+    delimited by `- **Date**:` bullets rather than `##` headings — a parser
+    expecting headings finds 0 entries here.
+  - README badges are stale — line 12 reads `harness-3/4-enforced` (actual
+    5/6) and is green where 83% should be steel blue; lines 10 and 11 read
+    `commands-1` and `skills-1` while the repo ships two of each; line 13's
+    AI Literacy badge still links to `assessments/2026-06-03-assessment-2.md`
+    though `assessments/2026-08-16-assessment.md` exists. Left unchanged
+    deliberately — badge edits are the human's call. The newly-adopted
+    Documentation freshness rule covers this class of finding.
+
+In sync: ONBOARDING.md (regenerated 2026-08-17 alongside HARNESS.md; covers
+all 6 constraints and all 8 GC rules) · branch protection on `main` (API
+verified: enforce_admins true, force pushes and deletions disabled, 4
+required contexts) · TDAB A-tier suite (117 PASS, 0 FAIL) · gitleaks (clean).
+Observability: the four Observability subsections above are still
+placeholders and `observability/snapshots/` does not exist, so snapshot
+staleness is not a claim this project makes — not counted as drift.

@@ -2,7 +2,7 @@
 
 - **Status**: accepted
 - **Date**: 2026-08-17
-- **PR**: _(not yet opened)_
+- **PR**: [#84](https://github.com/techtalk/ai-readiness-assessment/pull/84)
 
 ## Intent
 

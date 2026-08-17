@@ -38,9 +38,13 @@
   an interactive Claude session or an LLM judge and are run manually —
   see `tests/README.md`.
 - **CI/CD**: GitHub Actions (`.github/workflows/`). On every PR to a
-  branch-protected `main`, two **required status checks** run: the TDAB
-  suite (`agentic-behaviours.yml`) and the changelog gate
-  (`changelog-gate.yml`). On a version bump, `release.yml` tags
+  branch-protected `main`, four **required status checks** run:
+  `A-tier structural assertions` (the TDAB suite,
+  `agentic-behaviours.yml`), `Changelog gate` (`changelog-gate.yml`),
+  `Spec-first gate` (`spec-first-gate.yml`), and `Onboarding gate`
+  (`onboarding-gate.yml`). The context names are the authority — they are
+  what branch protection actually requires. On a version bump,
+  `release.yml` tags
   `vX.Y.Z` and publishes a GitHub Release whose notes are the matching
   `CHANGELOG.md` section. On docs changes, `pages.yml` builds the MkDocs
   Material site and deploys it to GitHub Pages.

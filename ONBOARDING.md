@@ -35,7 +35,8 @@ test suite and a documentation site.
   (structural) assertions live in `tests/run.py` — stdlib-only Python,
   no dependencies — and run in CI on every PR.
 - **CI/CD: GitHub Actions** — on every PR to a branch-protected `main`,
-  two required checks run (the TDAB suite and the changelog gate); a
+  four required checks run: `A-tier structural assertions` (the TDAB
+  suite), `Changelog gate`, `Spec-first gate` and `Onboarding gate`. A
   version bump publishes a GitHub Release from `CHANGELOG.md`, and docs
   changes build and deploy the site.
 - **Docs: MkDocs Material** — the site under `docs/` (build deps in

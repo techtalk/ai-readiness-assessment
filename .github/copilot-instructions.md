@@ -20,8 +20,10 @@ directly — run `/convention-sync` to regenerate.
   C-tier (semantic) assertions in each fixture's `expected.md` are run
   manually — see `tests/README.md`.
 - **CI/CD**: GitHub Actions. On every PR to a branch-protected `main`,
-  two required checks run — the TDAB suite (`agentic-behaviours.yml`) and
-  the changelog gate (`changelog-gate.yml`). On a version bump,
+  four required checks run — `A-tier structural assertions` (the TDAB
+  suite, `agentic-behaviours.yml`), `Changelog gate`
+  (`changelog-gate.yml`), `Spec-first gate` (`spec-first-gate.yml`) and
+  `Onboarding gate` (`onboarding-gate.yml`). On a version bump,
   `release.yml` publishes a GitHub Release from `CHANGELOG.md`; on docs
   changes, `pages.yml` builds and deploys the MkDocs site.
 - **Container strategy**: N/A. No runtime, no container.

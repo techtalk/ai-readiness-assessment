@@ -119,8 +119,12 @@ These block merges into `main` (which is branch-protected):
 ### On schedule
 
 - **Template currency** (weekly) — checks that the `HARNESS.md`
-  `template-version` marker matches the installed plugin, so new harness
-  template content gets reviewed.
+  `template-version` marker matches the locally installed
+  **ai-literacy-superpowers** plugin, which is where this harness
+  template comes from, so new template content gets reviewed. Note it is
+  *not* compared against this repo's own `.claude-plugin/plugin.json` —
+  that is the assessment plugin's product version and unrelated. The
+  check reads your local plugin cache, so its answer is per-machine.
 - **Onboarding document staleness** (monthly) — the periodic backstop to
   the PR-time Onboarding gate above.
 - **Secret scanner operational** (weekly) — checks gitleaks is still

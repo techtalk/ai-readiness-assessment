@@ -54,3 +54,9 @@ for a section-by-section breakdown.
 - [Read the Habitat/Workflow Gap](read-the-habitat-workflow-gap.md) to act on the result.
 - [Render the HTML report](render-the-html-report.md) to share it.
 - Want rigorous per-dimension scoring? [Run the precise survey](run-the-precise-survey.md).
+- More than one repository? Run `/ai-readiness-assess --scope` to assess
+  a whole estate in one session
+  ([tutorial](../tutorials/assess-a-team-across-repositories.md)), or
+  `/ai-readiness-rollup` to summarise reports that already exist
+  ([tutorial](../tutorials/roll-up-existing-assessments.md)). Both need a
+  [scope manifest](write-a-scope-manifest.md).

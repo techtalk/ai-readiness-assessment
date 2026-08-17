@@ -120,19 +120,30 @@
   updating the other is forbidden. Intentional command-vs-skill wording
   differences in the preamble are allowed; the model and process
   substance must agree.
-- **Enforcement**: agent
-- **Tool**: agent review at PR — a reviewer (or review agent) diffs the
-  embedded model and process sections of the two files and confirms they
-  agree
+- **Enforcement**: deterministic
+- **Tool**: `python3 tests/run.py` — assertions **R1** and **R6**
+  (`check_parity`, `tests/run.py:858`) compare the full normalised
+  framework bodies of each pair. R1 covers the assess pair and permits
+  only the two sanctioned preamble variances enumerated in
+  `PARITY_VARIANCES` (`tests/run.py:705`); R6 covers the roll-up pair and
+  permits none. Runs in CI under the required check
+  `A-tier structural assertions`.
 - **Scope**: pr
+- **Note**: a reviewer also reads the two files at PR, but that is
+  documented practice, not enforcement — no agent is invoked anywhere in
+  CI. This was declared `agent` until 2026-08-17; the 2026-08-17 audit
+  found the deterministic check had existed all along and the agent half
+  had no mechanism, so the declaration understated real enforcement.
 
 ### Spec-first
 
 - **Rule**: A PR that changes the instrument (`commands/**` or
   `skills/**`) or the model / scoring must reference a spec under
   `specs/` (a changed `specs/NNNN-*.md`), unless it carries an exempt
-  label (`chore`, `fix`, or `docs`). Each substantive spec carries an
-  adjudicated **Adversarial review** disposition before merge.
+  label (`chore`, `fix`, or `documentation` — all three exist as labels;
+  the gate previously listed `docs`, which was never created). Each
+  substantive spec carries an adjudicated **Adversarial review**
+  disposition before merge.
 - **Enforcement**: deterministic (ordering) + agent (review adjudication)
 - **Tool**: `.github/workflows/spec-first-gate.yml`; reviewer adjudication
   of the spec's Risks at PR
@@ -154,12 +165,52 @@
 - **Rule**: No API keys, tokens, passwords, or private keys may appear
   in committed source files
 - **Enforcement**: deterministic
-- **Tool**: gitleaks detect --source . --no-banner --exit-code 1
-- **Scope**: commit
+- **Tool**: `gitleaks detect --source . --no-banner --exit-code 1` (scans
+  git history) **and** `gitleaks detect --source . --no-git --no-banner
+  --exit-code 1` (scans the working tree). Both run in CI from
+  `.github/workflows/agentic-behaviours.yml`, under the required check
+  `A-tier structural assertions`, on a full-history checkout
+  (`fetch-depth: 0` — the history scan is meaningless on a shallow clone).
+- **Scope**: pr
+- **Note**: declared `scope: commit` when adopted at template 0.64.0, but
+  nothing in this repo runs at commit time — there are no git hooks and no
+  pre-commit framework, so the scope was a claim no mechanism backed. It
+  is `pr` because that is where the check actually blocks. Both scan modes
+  are named because `--source .` alone would not catch a secret in an
+  uncommitted file.
 
 ---
 
 ## Garbage Collection
+
+<!-- Read this before trusting a Frequency field below. -->
+
+**What actually runs, and what a Frequency means here.** Eight rules are
+declared. Two are **automated** on a schedule by
+`.github/workflows/gc.yml` (Mondays 09:00 UTC). The other six are
+**review cadences** — a target interval for a human to run `/harness-gc`,
+not a promise the repository keeps by itself. Nothing fires them.
+
+| Rule | Frequency | Mechanism |
+|---|---|---|
+| Secret scanner operational | weekly | **automated** — `gc.yml` |
+| Onboarding document staleness | monthly | **automated** — `gc.yml` backstop; primary enforcement is the PR-time `onboarding-gate.yml` |
+| Template currency | weekly | **review cadence** — reads the local plugin cache, which no CI runner has; per-machine by design (see its Caveat) |
+| Convention file sync | weekly | **review cadence** — `Enforcement: agent` |
+| Documentation freshness | weekly | **review cadence** — `Enforcement: agent` |
+| Dependency currency | weekly | **review cadence** — `Enforcement: agent` |
+| Reflection-driven regression detection | weekly | **review cadence** — `Enforcement: agent` |
+| Reflection log aged-out review | monthly | **review cadence** — `Enforcement: agent` |
+
+The five `agent` rules need an agent runtime, and no agent is invoked
+anywhere in this repo's CI. Do not add them to `gc.yml` without one: a
+step that cannot do its job is worse than an absent one, because a green
+workflow reads as coverage.
+
+The 2026-08-17 audit recorded that no GC cadence had any scheduled
+executor. This table and `gc.yml` are the response — the two that could be
+automated were, and the six that could not are now labelled as what they
+are rather than implying a sweep nobody performs.
 
 ### Template currency
 

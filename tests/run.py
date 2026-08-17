@@ -783,6 +783,17 @@ HABITAT_KINDS_BEYOND_CHECKOUT = ["package", "org", "upstream"]
 
 EXAMPLE1_DOC = "docs/examples/habitat-thinking-estate.md"
 
+# The surfaces a reader actually arrives at. R5 checks the multi-repo
+# pages exist; these check somebody can find them. A page nobody is
+# routed to is not documentation, and the difference is invisible to a
+# presence check.
+ENTRY_POINT_DOCS = [
+    "docs/index.md",
+    "docs/how-to/run-an-assessment.md",
+    "docs/reference/command-and-skill.md",
+    "README.md",
+]
+
 # Statuses a subject can carry in the coverage ledger. `incompatible`
 # was added after the real estate roll-up found a report that parses
 # perfectly but comes from a different instrument — one that does not
@@ -1277,6 +1288,28 @@ def r28_spread_needs_two_subjects() -> Result:
     return passing("R28", "spread requires at least two comparable subjects")
 
 
+def r29_entry_points_route_to_multi_repo() -> Result:
+    """Every surface a reader starts from must name a multi-repo entry
+    point — `/ai-readiness-rollup` or `--scope`.
+
+    Both invocations must appear somewhere across the set, so neither
+    half of the story can go missing while the other carries the check.
+    """
+    missing = [
+        d for d in ENTRY_POINT_DOCS
+        if not (ROOT / d).is_file()
+        or not any(m in (ROOT / d).read_text()
+                   for m in ("/ai-readiness-rollup", "--scope"))
+    ]
+    if missing:
+        return failing("R29", f"entry points with no multi-repo route: {missing}")
+    corpus = "".join((ROOT / d).read_text() for d in ENTRY_POINT_DOCS)
+    absent = [m for m in ("/ai-readiness-rollup", "--scope") if m not in corpus]
+    if absent:
+        return failing("R29", f"never mentioned across the entry points: {absent}")
+    return passing("R29", f"all {len(ENTRY_POINT_DOCS)} entry points route to multi-repo")
+
+
 def r16_internal_doc_links_resolve() -> Result:
     """Every relative markdown link in docs/ points at a file that exists.
 
@@ -1338,6 +1371,7 @@ REPO_CHECKS = [
     ("R26", r26_html_leads_with_coverage),
     ("R27", r27_ledger_statuses_defined),
     ("R28", r28_spread_needs_two_subjects),
+    ("R29", r29_entry_points_route_to_multi_repo),
 ]
 
 

@@ -198,7 +198,17 @@ several habitats produces several gaps, and their range is a finding a
 single-repository assessment cannot produce. There is deliberately no
 portfolio score: averaging the gaps erases exactly that signal.
 
-Needs a [scope manifest](https://techtalk.github.io/ai-readiness-assessment/how-to/write-a-scope-manifest/);
+Or assess a whole estate in **one session**, asking the behavioural
+questions once for the team rather than once per repository:
+
+```
+/ai-readiness-assess --scope
+```
+
+Each subject gets its own report in its own `assessments/` directory, and
+a portfolio report is produced at the end.
+
+Both need a [scope manifest](https://techtalk.github.io/ai-readiness-assessment/how-to/write-a-scope-manifest/);
 with none present, `/ai-readiness-assess` behaves exactly as before.
 
 ## What you get

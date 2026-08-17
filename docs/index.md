@@ -53,3 +53,25 @@ four kinds of documentation for four kinds of need.
 The assessment is **fully self-contained** — it depends on no other
 plugin, agent, or service. See
 [Why it is self-contained](explanation/self-contained.md).
+
+---
+
+## More than one repository?
+
+A team that owns several repositories carries the same habits into all
+of them — what changes is the *environment* those habits meet. The
+**spread** of that difference is a finding a single-repository
+assessment cannot produce.
+
+| I want to… | Invoke | Start here |
+|---|---|---|
+| Summarise assessments that already exist across repos | `/ai-readiness-rollup` | [Roll up existing assessments](tutorials/roll-up-existing-assessments.md) |
+| Assess a whole estate in one session | `/ai-readiness-assess --scope` | [Assess a team across repositories](tutorials/assess-a-team-across-repositories.md) |
+
+Both need a [scope manifest](reference/scope-manifest.md). With none
+present, `/ai-readiness-assess` behaves exactly as described above — the
+multi-repo layer is entirely opt-in.
+
+There is deliberately **no portfolio score**: averaging the gaps erases
+the spread, which is the only thing a portfolio view adds. See
+[why](explanation/why-no-portfolio-score.md).

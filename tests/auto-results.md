@@ -147,9 +147,10 @@ Runner: `tests/run.py` (structural assertions only).
 | R26 | PASS | coverage leads; no gauge or grade in any rendered portfolio |
 | R27 | PASS | all 6 ledger statuses defined in both surfaces |
 | R28 | PASS | spread requires at least two comparable subjects |
+| R29 | PASS | all 4 entry points route to multi-repo |
 
 ---
 
-**Total: 111 PASS, 0 FAIL.**
+**Total: 112 PASS, 0 FAIL.**
 
 B-tier (behavioural) and C-tier (semantic) assertions are not run by this script. See each fixture's `expected.md` and the manual test-run summary at `tests/test-run-<date>.md`.

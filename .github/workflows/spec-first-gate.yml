@@ -34,9 +34,13 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Exempt labels.
+          # Exempt labels. These must be labels that EXIST in the repo —
+          # this gate previously listed `docs`, which was never created, so
+          # one of three documented exemption paths was silently unusable.
+          # GitHub's default label is `documentation`; use that rather than
+          # creating a near-duplicate `docs`.
           case ",$LABELS," in
-            *,chore,*|*,fix,*|*,docs,*)
+            *,chore,*|*,fix,*|*,documentation,*)
               echo "Exempt label present ($LABELS) — spec-first gate skipped."; exit 0 ;;
           esac
 
@@ -49,7 +53,7 @@ jobs:
           echo "instrument_changed=$instrument_changed · spec_changed=$spec_changed · labels=[$LABELS]"
 
           if [ "$instrument_changed" = yes ] && [ "$spec_changed" = no ]; then
-            echo "::error::This PR changes the instrument (commands/ or skills/) but adds no spec under specs/. Write a spec (see specs/TEMPLATE.md) and reference it, or label the PR chore/fix/docs if it is genuinely exempt."
+            echo "::error::This PR changes the instrument (commands/ or skills/) but adds no spec under specs/. Write a spec (see specs/TEMPLATE.md) and reference it, or label the PR chore/fix/documentation if it is genuinely exempt."
             exit 1
           fi
           echo "Spec-first satisfied."

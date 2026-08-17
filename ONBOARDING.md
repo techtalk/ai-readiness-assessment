@@ -86,11 +86,12 @@ that prose matter more than anything mechanical.
 - **Consistent formatting** — all source files should pass the project's
   configured formatter. *(Declared but currently `unverified` — no
   formatter is wired up yet, so this is an aspiration, not a gate.)*
-- **No secrets in source** — no API keys, tokens, passwords or private
-  keys in committed files. Machine-checked with
-  `gitleaks detect --source . --no-banner --exit-code 1`. Adopted from
-  the harness template at 0.64.0; gitleaks 8.30.1 is installed and the
-  repository is clean across all 139 commits.
+
+There is nothing else here, and that is worth knowing: this repo has **no
+git hooks and no pre-commit framework**, so nothing runs automatically
+when you commit. `No secrets in source` was declared `commit`-scoped when
+it was adopted, but it now sits under *At PR time* below, because that is
+where a check actually exists.
 
 ### At PR time
 
@@ -98,15 +99,24 @@ These block merges into `main` (which is branch-protected):
 
 - **Tests must pass** — `python3 tests/run.py` must be green. This is the
   required CI check **`A-tier structural assertions`**.
-- **Dual-surface sync** — a reviewer (or review agent) confirms the
-  command and skill carry the same embedded framework content.
+- **Dual-surface sync** — the command and skill must carry the same
+  embedded framework content. Machine-checked: assertions **R1** and
+  **R6** in `tests/run.py` compare the full normalised bodies of each
+  pair, so this rides the same required check as the suite. A reviewer
+  reads them too, but the check is what blocks. *(Declared `agent` until
+  2026-08-17, when the audit found the deterministic check had existed all
+  along.)*
+- **No secrets in source** — no API keys, tokens, passwords or private
+  keys. Machine-checked by `gitleaks` **8.30.1** in
+  `agentic-behaviours.yml`, scanning both git history and the working
+  tree on a full-history checkout, under the same required check.
 - **Changelog gate** (CI) — if a PR bumps the plugin version, it must add
   a matching `## [x.y.z]` section to `CHANGELOG.md`. The required check
   **`Changelog gate`** enforces this; it's a no-op on PRs that don't
   change the version.
 - **Spec-first** — a PR that changes the instrument (`commands/` or
   `skills/`) must add or update a spec under `specs/`, unless labelled
-  `chore`/`fix`/`docs`. The required check **`Spec-first gate`** enforces
+  `chore`/`fix`/`documentation`. The required check **`Spec-first gate`** enforces
   the ordering; each substantive spec carries an adjudicated Adversarial
   review.
 - **Onboarding gate** — a PR that changes the HARNESS body or AGENTS.md
@@ -248,10 +258,18 @@ Three loops protect the codebase:
   file-date (Onboarding document staleness) and five agent-run
   (Convention file sync, Documentation freshness, Dependency currency,
   Reflection-driven regression detection, Reflection log aged-out
-  review). Note that nothing **schedules** them yet — this repo has no
-  `gc.yml` workflow, so the cadences are declared and run on demand via
-  `/harness-gc`. That is the honest state, and closing it is the next
-  harness move.
+  review). **Two of the eight are actually scheduled** —
+  `.github/workflows/gc.yml` runs *Secret scanner operational* and
+  *Onboarding document staleness* every Monday at 09:00 UTC. It is not a
+  required check; it reports rather than gates.
+
+  The other **six are review cadences, not automation**. Run
+  `/harness-gc` for them. Five are `Enforcement: agent` and need an agent
+  runtime, which this repo's CI does not have. *Template currency* is
+  deterministic but reads your local plugin cache, which no CI runner has,
+  so its answer is per-machine by design. The table at the top of
+  HARNESS.md § Garbage Collection says which is which — read it before
+  trusting a `Frequency` field.
 
 Observability cadences (snapshots, audits, cost capture) are **not
 configured** for this repo — it's a small, prose-only plugin, so the

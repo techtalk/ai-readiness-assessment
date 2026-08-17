@@ -11,6 +11,13 @@
 # The B-tier (behavioural) and C-tier (semantic) assertions in each
 # fixture's expected.md need an interactive Claude session or an LLM
 # judge and are NOT run here — see tests/README.md.
+#
+# This job also enforces the "No secrets in source" constraint. That is
+# deliberate rather than tidy: the job name "A-tier structural assertions"
+# is a REQUIRED status check in branch protection, so a check added as a
+# step here blocks a merge immediately, whereas a new job or workflow
+# would report a context branch protection does not require and would be
+# advisory only. Do NOT rename this job — the name is the contract.
 name: Agentic behaviours (TDAB)
 
 on:
@@ -26,6 +33,10 @@ jobs:
     steps:
       - name: Check out the PR branch
         uses: actions/checkout@v4
+        with:
+          # Full history — the gitleaks history scan below is meaningless
+          # on a shallow clone.
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,3 +45,18 @@ jobs:
 
       - name: Run the TDAB structural suite
         run: python3 tests/run.py
+
+      # HARNESS.md constraint: "No secrets in source". Pinned tarball rather
+      # than a third-party action, to avoid taking a supply-chain dependency
+      # on one — the same approach the sibling ai-literacy-superpowers repo
+      # uses in its gc.yml.
+      - name: Scan for secrets (gitleaks)
+        run: |
+          set -euo pipefail
+          VERSION=8.30.1
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" | tar xz gitleaks
+          ./gitleaks version
+          echo "--- history scan ---"
+          ./gitleaks detect --source . --no-banner --exit-code 1
+          echo "--- working-tree scan ---"
+          ./gitleaks detect --source . --no-git --no-banner --exit-code 1

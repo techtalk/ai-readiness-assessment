@@ -1,0 +1,100 @@
+# Scheduled garbage collection — the investigative loop.
+#
+# HARNESS.md declares eight GC rules. This workflow runs the TWO that can
+# honestly be automated here, and no more:
+#
+#   - Secret scanner operational      (weekly, deterministic)
+#   - Onboarding document staleness   (monthly, deterministic — backstop)
+#
+# The other six deliberately do NOT run here:
+#
+#   - Template currency reads the LOCAL plugin cache
+#     (~/.claude/plugins/cache/ai-literacy-superpowers/...), which does not
+#     exist on a CI runner. Its answer is per-machine by design — see the
+#     Caveat field on that rule. It stays a /harness-gc rule.
+#   - Convention file sync, Documentation freshness, Dependency currency,
+#     Reflection-driven regression detection and Reflection log aged-out
+#     review are all `Enforcement: agent` and need an agent runtime. No
+#     agent is invoked anywhere in this repo's CI.
+#
+# Those six are declared with a REVIEW cadence, not an automation claim —
+# HARNESS.md says so per rule. Do not add them here without an agent
+# runtime; a step that cannot run is worse than an absent one, because a
+# green workflow reads as coverage.
+#
+# This job is NOT a required status check. It reports; it does not gate.
+name: Garbage collection
+
+on:
+  schedule:
+    # Mondays at 09:00 UTC.
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gc:
+    name: Scheduled GC rules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          # Full history — the gitleaks history scan needs it, and the
+          # onboarding staleness check compares commit dates.
+          fetch-depth: 0
+
+      - name: Confirm HARNESS.md exists
+        run: |
+          set -euo pipefail
+          test -f HARNESS.md || { echo "::error::HARNESS.md not found — nothing to garbage-collect against."; exit 1; }
+          echo "HARNESS.md present."
+
+      # GC rule: Secret scanner operational (weekly)
+      # Checks gitleaks still installs and runs, and that the constraint has
+      # not regressed to unverified.
+      - name: "GC: Secret scanner operational"
+        run: |
+          set -euo pipefail
+          VERSION=8.30.1
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" | tar xz gitleaks
+          ./gitleaks version
+          ./gitleaks detect --source . --no-banner --exit-code 1
+          ./gitleaks detect --source . --no-git --no-banner --exit-code 1
+
+          # The constraint must still declare deterministic enforcement.
+          block=$(awk '/^### No secrets in source/{f=1} f&&/^- \*\*Enforcement\*\*/{print; exit}' HARNESS.md)
+          echo "declared: $block"
+          case "$block" in
+            *deterministic*) echo "Enforcement still deterministic." ;;
+            *) echo "::error::\"No secrets in source\" has regressed from deterministic — $block"; exit 1 ;;
+          esac
+
+      # GC rule: Onboarding document staleness (monthly)
+      # The PR-time onboarding-gate.yml is the primary enforcement; this is
+      # the periodic backstop it names, catching drift that arrived by any
+      # route the gate did not see.
+      - name: "GC: Onboarding document staleness"
+        run: |
+          set -euo pipefail
+          onboarding=$(git log -1 --format=%ct -- ONBOARDING.md)
+          harness=$(git log -1 --format=%ct -- HARNESS.md)
+          agents=$(git log -1 --format=%ct -- AGENTS.md)
+          newest_source=$(( harness > agents ? harness : agents ))
+
+          printf 'ONBOARDING.md  %s\n' "$(date -u -d "@$onboarding" '+%Y-%m-%d')"
+          printf 'newest source  %s\n' "$(date -u -d "@$newest_source" '+%Y-%m-%d')"
+
+          if [ "$onboarding" -lt "$newest_source" ]; then
+            days=$(( ( newest_source - onboarding ) / 86400 ))
+            echo "::warning::ONBOARDING.md is ${days} day(s) behind HARNESS.md or AGENTS.md. Run /harness-onboarding."
+          else
+            echo "Onboarding is in step with its sources."
+          fi
+
+      - name: Summary
+        run: |
+          echo "Ran 2 of 8 declared GC rules — the two that can be automated here."
+          echo "The remaining 6 are review cadences: run /harness-gc for them."

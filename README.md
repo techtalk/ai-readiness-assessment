@@ -7,10 +7,10 @@
 [![Marketplace](https://img.shields.io/badge/marketplace-techtalkai-1f6feb)](#install)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-d97757)](#install)
 [![Copilot CLI](https://img.shields.io/badge/Copilot%20CLI-plugin-6e40c9)](#install)
-![Commands](https://img.shields.io/badge/commands-1-blue)
-![Skills](https://img.shields.io/badge/skills-1-blue)
-![Harness](https://img.shields.io/badge/harness-3%2F4%20enforced-2ea44f)
-[![AI Literacy](https://img.shields.io/badge/AI_Literacy-Level_4-2E8B57)](assessments/2026-06-03-assessment-2.md)
+![Commands](https://img.shields.io/badge/commands-2-blue)
+![Skills](https://img.shields.io/badge/skills-2-blue)
+![Harness](https://img.shields.io/badge/harness-5%2F6%20enforced-4682B4)
+[![AI Literacy](https://img.shields.io/badge/AI_Literacy-Level_4-2E8B57)](assessments/2026-08-16-assessment.md)
 [![Agent Harness Enabled](https://img.shields.io/badge/Agent_Harness-Enabled-000000)](HARNESS.md)
 
 **Product page:** [techtalk.at/ai-readiness-assessment](https://techtalk.at/ai-readiness-assessment/)
@@ -257,13 +257,18 @@ We ran the assessment against **this plugin's own repo**, then again
 after acting on its own top recommendation (enforcing spec-first). The
 two reports show real progression — and an honest twist:
 
-| | Baseline | After enforcing spec-first |
-|---|---|---|
-| **AI Readiness — Habitat Maturity** | Level 3 (Regulating) | Level 3 (Regulating) |
-| **Next Step / Gap** | +1.2 to Level 4 (Orchestrating) | +1.1 to Level 4 (Orchestrating) |
-| Cognitive read | L3 — Habitat design | **L4 — Specification-led** |
-| Habitat/Workflow Gap (coherence) | +0.2 — Coherent | **+1.1 — Ambition outpaces enablement** |
-| Report | [md](assessments/2026-06-03-assessment.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment.html) | [md](assessments/2026-06-03-assessment-2.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment-2.html) |
+| | Baseline | After enforcing spec-first | Re-assessed 2026-08-16 |
+|---|---|---|---|
+| **AI Readiness — Habitat Maturity** | Level 3 (Regulating) | Level 3 (Regulating) | **Level 4 (Orchestrating)** |
+| **Next Step / Gap** | +1.2 to Level 4 (Orchestrating) | +1.1 to Level 4 (Orchestrating) | +1.4 to Level 5 (Supervising) |
+| Cognitive read | L3 — Habitat design | **L4 — Specification-led** | L4 — Specification-led |
+| Habitat/Workflow Gap (coherence) | +0.2 — Coherent | **+1.1 — Ambition outpaces enablement** | **+0.36 — Coherent** |
+| Report | [md](assessments/2026-06-03-assessment.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment.html) | [md](assessments/2026-06-03-assessment-2.md) · [HTML](https://techtalk.github.io/ai-readiness-assessment/examples/self-assessment-2.html) | [md](assessments/2026-08-16-assessment.md) |
+
+The third column is the point of the whole instrument: the +1.1 ambition
+overhang in the middle column was closed not by thinking harder but by
+building the habitat the thinking already implied — which is what moved
+the maturity level and returned the gap to Coherent.
 
 Each report leads with those two lines, then an **AI Readiness Score**
 across five readiness dimensions and a **Prioritised Improvement Plan**.

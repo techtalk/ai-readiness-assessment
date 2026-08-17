@@ -24,14 +24,14 @@ directly — run `/convention-sync` to regenerate.
   `commands/ai-readiness-assess.md` must match the same content in
   `skills/ai-readiness-assessment/SKILL.md`. Editing one without
   updating the other is forbidden.
-- Enforcement: agent
+- Enforcement: deterministic
 - Scope: pr
 
 ## Spec-first
 
 - Rule: A PR that changes the instrument (commands/ or skills/) or the
   model/scoring must reference a spec under `specs/` (a changed
-  `specs/NNNN-*.md`), unless labelled chore/fix/docs. Each substantive
+  `specs/NNNN-*.md`), unless labelled chore/fix/documentation. Each substantive
   spec carries an adjudicated Adversarial review.
 - Enforcement: deterministic (ordering) + agent (review adjudication)
 - Scope: pr
@@ -49,4 +49,4 @@ directly — run `/convention-sync` to regenerate.
 - Rule: No API keys, tokens, passwords, or private keys may appear in
   committed source files
 - Enforcement: deterministic
-- Scope: commit
+- Scope: pr

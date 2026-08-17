@@ -12,14 +12,16 @@ readiness) and a **Prioritised Improvement Plan**.
 
 ## The progression at a glance
 
-| | Baseline | After enforcing spec-first |
-| --- | --- | --- |
-| **AI Readiness — Habitat Maturity** | Level 3 (Regulating) | Level 3 (Regulating) |
-| **Next Step / Gap** | +1.2 to Level 4 (Orchestrating) | +1.1 to Level 4 (Orchestrating) |
-| Architectural guidance (readiness dim.) | L3 | **L4** |
-| Cognitive read | L3 — Habitat design | **L4 — Specification-led** |
-| Habitat/Workflow Gap (coherence, secondary) | +0.2 — **Coherent** | +1.1 — **Ambition outpaces enablement** |
-| Report | [HTML](examples/self-assessment.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-06-03-assessment.md) | [HTML](examples/self-assessment-2.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-06-03-assessment-2.md) |
+| | Baseline | After enforcing spec-first | After multi-repo + v1.0.0 |
+| --- | --- | --- | --- |
+| **AI Readiness — Habitat Maturity** | Level 3 (Regulating) | Level 3 (Regulating) | **Level 4 (Orchestrating)** |
+| **Next Step / Gap** | +1.2 to Level 4 (Orchestrating) | +1.1 to Level 4 (Orchestrating) | +1.4 to Level 5 (Supervising) |
+| 14-dimension mean | L2.7 | L2.93 | **L3.64** |
+| Architectural guidance (readiness dim.) | L3 | **L4** | L4 |
+| Cognitive read | L3 — Habitat design | **L4 — Specification-led** | L4 — Specification-led |
+| Habitat/Workflow Gap (coherence, secondary) | +0.2 — **Coherent** | +1.07 — **Ambition outpaces enablement** | **+0.36 — Coherent** |
+| Date | 2026-06-03 | 2026-06-03 | 2026-08-16 |
+| Report | [HTML](examples/self-assessment.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-06-03-assessment.md) | [HTML](examples/self-assessment-2.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-06-03-assessment-2.md) | [HTML](examples/self-assessment-3.html) · [markdown](https://github.com/techtalk/ai-readiness-assessment/blob/main/assessments/2026-08-16-assessment.md) |
 
 ## The story
 
@@ -39,11 +41,29 @@ still L2) behind. That's not a regression; it's the honest, instructive
 consequence of a deliberate jump, and it names the next work: **build the
 habitat the L4 thinking now implies**.
 
-That arc — *coherent L3 → L4 with a new positive gap* — is the whole
-point of the instrument working as designed: it tracks not just the level
-but the [coherence between thinking and habitat](explanation/coherence-not-level.md),
-and it stays honest (the repo is L4 in discipline, but the report says
-plainly that the habitat must catch up). See the
+### The third reading — and the uncomfortable part
+
+Seventy-four days later the habitat did catch up. The mean rose **L2.93 →
+L3.64**, the headline crossed to **Level 4 (Orchestrating)**, and the gap
+closed to **+0.36 — Coherent**.
+
+But read *how* it closed. Of the three dimensions the second report named
+as the ceiling — Testing, Observability, Agent composition — **only
+Testing moved.** Coherence was restored by everything *else* rising: the
+behavioural read climbed six levels across five dimensions as the way of
+working shifted to supervising whole slices, and two more dimensions
+gained a level from the specifications work.
+
+Agent composition and Observability are still L2. They were the ceiling
+in June and they are the ceiling now, and the third report says so rather
+than leading with the number that improved.
+
+That arc — *coherent L3 → L4 with a new positive gap → coherent L4* — is
+the instrument working as designed: it tracks not just the level but the
+[coherence between thinking and habitat](explanation/coherence-not-level.md),
+and it stays honest in both directions — naming the habitat debt when the
+discipline jumped ahead, and naming the unmoved dimensions when the
+number recovered. See the
 [assessment output structure](reference/assessment-output.md) for a
 section-by-section guide.
 

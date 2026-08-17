@@ -163,14 +163,24 @@
 
 ### Template currency
 
-- **What it checks**: Whether the HARNESS.md template-version marker
-  matches the installed plugin version, indicating new template content
-  is available that hasn't been reviewed
+- **What it checks**: Whether the `template-version` marker in HARNESS.md
+  matches the version of the **ai-literacy-superpowers** plugin installed
+  locally — the plugin that provides this harness template. A mismatch
+  means new template content exists that has not been reviewed.
 - **Frequency**: weekly
 - **Enforcement**: deterministic
-- **Tool**: compare template-version comment in HARNESS.md against
-  plugin.json version
-- **Auto-fix**: false
+- **Tool**: compare the marker against the template provider's manifest:
+  `jq -r .version ~/.claude/plugins/cache/ai-literacy-superpowers/ai-literacy-superpowers/*/.claude-plugin/plugin.json`
+  against `grep -o 'template-version: [0-9.]*' HARNESS.md`.
+  **Not** this repo's `.claude-plugin/plugin.json` — that is the
+  assessment plugin's own product version (currently `1.0.0`) and has no
+  relationship to the template. Comparing against it reports permanent
+  false drift, which is how this rule was originally worded.
+- **Caveat**: reads the local plugin cache, so the result is per-machine.
+  A maintainer with an older plugin installed sees no drift where a
+  colleague does. The marker in HARNESS.md is the shared fact; the
+  installed version is not.
+- **Auto-fix**: false (run `/harness-upgrade` to review and adopt)
 
 ### Onboarding document staleness
 

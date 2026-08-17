@@ -87,3 +87,19 @@ and add a `Promoted` line in the same commit.
   - Model tiers used: Opus 5 throughout
   - Pipeline stages completed: manual (single-agent; no orchestrator)
   - Agent delegation: none — all slices executed in-session, red-first
+
+---
+
+- **Date**: 2026-08-17
+- **Agent**: Claude Code (Opus 5)
+- **Task**: Rendered the 2026-08-16 assessment as HTML and logged the previous reflection (PR #81), then — prompted by the question "are the docs updated for multi-repo?" — found and closed a routing gap in the documentation (PR #82).
+- **Surprise**: Every multi-repo page existed, was in the nav, and was cross-linked. **None of the four surfaces a reader arrives at pointed at any of them.** `docs/index.md` and the primary how-to did not mention multi-repo at all; `docs/reference/command-and-skill.md` — the canonical "how do I invoke this" page — still described one command and one skill with a layout diagram predating the roll-up pair; and the README covered `/ai-readiness-rollup` but never `--scope`. The `--scope` invocation appeared on exactly **two pages in the whole site**, neither of them an entry point. `R5` had been green since Slice 1 and was telling the truth the entire time: it asserts the multi-repo pages *exist*. Nothing asserted they were *reachable*. This is the fourth instance of one failure mode in this codebase — spec 0009's rename grep passed because the term was line-wrapped; `A15` originally accepted blocks with no `provenance`; `R11` would have demanded the *synthetic* banner on the one real example; and now `R5`. Each time the suite was accurate and the mental model attached to it was wider than the predicate.
+- **Proposal**: Add to AGENTS.md GOTCHAS: "A green assertion covers its predicate, not its name. Before trusting a check, read what it actually matches — this repo has shipped four checks whose names implied more than they tested (`R5` presence vs reachability; `A15` before provenance was required; `R11` before it distinguished real from synthetic; spec 0009's rename grep vs wrapped prose). When adding a check, write down the property you care about, then confirm the predicate covers *that* rather than the convenient proxy."
+- **Improvement**: The gap was invisible from inside the work and took one outside question to expose. Every slice added pages and asserted they existed; nobody walked the reader's path. A cheap habit would close it: after any documentation slice, read the docs the way a new reader would — home page, primary how-to, entry-point reference — and check the new capability is reachable in three clicks. That is a five-minute check that no presence assertion can replace.
+- **Signal**: failure
+- **Constraint**: Entry-point docs must route to multi-repo — `docs/index.md`, `docs/how-to/run-an-assessment.md`, `docs/reference/command-and-skill.md` and `README.md` each name a multi-repo invocation, and both `/ai-readiness-rollup` and `--scope` appear across the set (deterministic, `R29` in `tests/run.py`, PR #82)
+- **Session metadata**:
+  - Duration: multi-day session (2026-08-14 → 2026-08-17); this entry covers the 2026-08-17 segment, ~1 h
+  - Model tiers used: Opus 5 throughout; no `MODEL_ROUTING.md` configured in this repo, so no routing distribution to report
+  - Pipeline stages completed: manual (single-agent; no orchestrator pipeline)
+  - Agent delegation: manual

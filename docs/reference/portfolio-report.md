@@ -1,7 +1,9 @@
 # Portfolio report structure
 
 The output of `/ai-readiness-rollup`, written to
-`<manifest directory>/<report.output>/YYYY-MM-DD-portfolio.md`.
+`<scope root>/<report.output>/YYYY-MM-DD-portfolio.md` — the scope root
+being the directory containing `.habitat/`, as set out under
+[path resolution](scope-manifest.md#path-resolution).
 
 Per-subject reports stay where they are. Each team keeps and owns its
 own report; only the roll-up is written to the scope root.

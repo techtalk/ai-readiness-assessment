@@ -1310,6 +1310,196 @@ def r29_entry_points_route_to_multi_repo() -> Result:
     return passing("R29", f"all {len(ENTRY_POINT_DOCS)} entry points route to multi-repo")
 
 
+# ---------------------------------------------------------------------------
+# Path resolution — spec 0012
+#
+# One anchor, named: the **scope root** is the directory *containing*
+# `.habitat/`, and every path in the manifest resolves from it. Four
+# surfaces used to describe that anchor three different ways, and two of
+# them were only correct under *different* readings — so the estate that
+# happened to work did so because an operator inferred the split from the
+# examples, not because anything specified it.
+#
+# The failure mode is silent: a subject whose path no longer resolves is
+# recorded `unreachable` and the run continues, so a mis-anchored manifest
+# yields a portfolio report that covers nothing and says so quietly. That
+# is why the anchor is asserted rather than trusted to prose.
+# ---------------------------------------------------------------------------
+
+SCOPE_FIXTURE = FIXTURES / "scope-two-subjects"
+
+# Enough of a YAML reader for a manifest of this shape. The fixture
+# manifest is committed and small, so a real parser (and the dependency
+# it would cost a stdlib-only runner) would be answering a question
+# nobody is asking.
+MANIFEST_PATH_RE = re.compile(r"^\s*(?:-\s+)?path:\s*(\S+)\s*$", re.M)
+MANIFEST_OUTPUT_RE = re.compile(r"^\s*output:\s*(\S+)\s*$", re.M)
+
+# Surfaces that carry path semantics to a reader — human or agent.
+ANCHOR_SURFACE_DIRS = ["commands", "skills", "docs"]
+
+# The phrase the spec removes. "The manifest directory" most naturally
+# reads as `.habitat/` — the anchor that buries portfolio reports in a
+# dot-directory.
+BANNED_ANCHOR_PHRASE = "manifest directory"
+
+# Matched across whitespace, because a line wrap is exactly how the
+# retired gap terminology survived two acceptance checks before (R23).
+ANCHOR_DEFINITION_RE = re.compile(r"scope\s+root\s+is\s+the\s+directory\s+containing")
+UNANCHORED_PHRASE_RE = re.compile(r"relative\s+to\s+the\s+manifest")
+LOOKUP_COUNT_RE = re.compile(r"[Ff]our\s+directories\s+are\s+tested")
+LOOKUP_ROOT_RE = re.compile(r"produced\s+the\s+hit")
+ANCHOR_MISMATCH_RE = re.compile(r"path-anchor\s+mismatch")
+
+# What a `.habitat/`-relative manifest looks like: subjects one level up
+# from where they actually are.
+MISANCHORED_EXAMPLE_RE = re.compile(r"^\s*(?:-\s+)?(?:paths?:\s*)?\.\./", re.M)
+
+
+def anchor_surface_files() -> list[Path]:
+    files: list[Path] = []
+    for d in ANCHOR_SURFACE_DIRS:
+        files.extend(sorted((ROOT / d).rglob("*.md")))
+    return files
+
+
+def r30_scope_fixture_anchors_at_scope_root() -> Result:
+    """The fixture estate resolves from the scope root, and *only* from
+    there.
+
+    Both halves matter. Checking that `./orders-api` resolves from the
+    scope root would pass just as happily if it also resolved from
+    `.habitat/` — so the fixture is laid out to make the discarded
+    reading fail, and that failure is asserted too. Otherwise the check
+    cannot tell the two anchors apart, which is the whole defect.
+    """
+    manifest = SCOPE_FIXTURE / ".habitat" / "scope.yml"
+    if not manifest.is_file():
+        return failing("R30", f"no scope fixture manifest at {manifest.relative_to(ROOT)}")
+    text = manifest.read_text()
+    paths = MANIFEST_PATH_RE.findall(text)
+    if len(paths) < 2:
+        return failing("R30", f"fixture must name at least two subjects, found {paths}")
+
+    problems: list[str] = []
+    for rel in paths:
+        subject = SCOPE_FIXTURE / rel
+        if not subject.is_dir():
+            problems.append(f"{rel} does not resolve from the scope root")
+        else:
+            report = latest_assessment(subject)
+            if report is None:
+                problems.append(f"{rel} holds no assessment")
+            elif summary_block(report.read_text()) is None:
+                problems.append(f"{rel}'s report carries no assessment-summary block")
+        if (SCOPE_FIXTURE / ".habitat" / rel).exists():
+            problems.append(f"{rel} also resolves from .habitat/ — fixture no longer discriminates")
+
+    outputs = MANIFEST_OUTPUT_RE.findall(text)
+    if len(outputs) != 1:
+        problems.append(f"expected exactly one report.output, found {outputs}")
+    else:
+        out = outputs[0]
+        if not sorted((SCOPE_FIXTURE / out).glob("*-portfolio.md")):
+            problems.append(f"no portfolio report under the scope root's {out}")
+        if (SCOPE_FIXTURE / ".habitat" / out).exists():
+            problems.append(f".habitat/{out} exists — report.output must anchor at the scope root")
+
+    if problems:
+        return failing("R30", f"scope fixture anchor: {problems}")
+    return passing(
+        "R30",
+        f"{len(paths)} subjects and {outputs[0]} resolve from the scope root, "
+        "and none resolves from .habitat/",
+    )
+
+
+def r31_anchor_is_named() -> Result:
+    """No surface may describe a path anchor without naming the directory.
+
+    "Relative to the manifest" identifies a *file*, and the two fields
+    documented with that identical phrase used to resolve from different
+    directories. Naming the anchor is the fix; this check is what keeps it
+    named.
+    """
+    offenders: list[str] = []
+    for path in anchor_surface_files():
+        text = path.read_text()
+        rel = path.relative_to(ROOT)
+        if BANNED_ANCHOR_PHRASE in text:
+            offenders.append(f"{rel}: {BANNED_ANCHOR_PHRASE!r}")
+        for m in UNANCHORED_PHRASE_RE.finditer(text):
+            line = text[: m.start()].count("\n") + 1
+            offenders.append(f"{rel}:{line}: unanchored 'relative to the manifest'")
+    if offenders:
+        return failing("R31", f"path anchor not named: {offenders[:4]}")
+
+    reference = ROOT / "docs" / "reference" / "scope-manifest.md"
+    undefined = [
+        str(p.relative_to(ROOT))
+        for p in (ROLLUP_COMMAND, ROLLUP_SKILL, reference)
+        if not p.is_file() or not ANCHOR_DEFINITION_RE.search(p.read_text())
+    ]
+    if undefined:
+        return failing("R31", f"scope root never defined in: {undefined}")
+    if "## Path resolution" not in reference.read_text():
+        return failing("R31", "scope-manifest.md has no 'Path resolution' section")
+    return passing("R31", "scope root defined in both roll-up surfaces and the reference")
+
+
+def r32_rollup_states_the_lookup() -> Result:
+    """Upward at most three levels *of what* was never stated, and it
+    matters more once the anchor is fixed — the located manifest is what
+    decides the scope root."""
+    problems = []
+    for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL)):
+        text = path.read_text() if path.is_file() else ""
+        if not LOOKUP_COUNT_RE.search(text):
+            problems.append(f"{label}: four-directory lookup not stated")
+        if not LOOKUP_ROOT_RE.search(text):
+            problems.append(f"{label}: scope root not tied to the directory that hit")
+    if problems:
+        return failing("R32", f"manifest lookup underspecified: {problems}")
+    return passing("R32", "both roll-up surfaces state the four-directory lookup")
+
+
+def r33_zero_coverage_stops() -> Result:
+    """A manifest written under the old reading misses every subject by one
+    level, and each miss is recorded `unreachable` — a status that does not
+    stop the run. Emitting a 0-of-N portfolio report would present a
+    finding about the manifest as a finding about the estate."""
+    problems = []
+    for label, path in (("command", ROLLUP_COMMAND), ("skill", ROLLUP_SKILL)):
+        text = path.read_text() if path.is_file() else ""
+        if not ANCHOR_MISMATCH_RE.search(text):
+            problems.append(f"{label}: path-anchor mismatch never named as a cause")
+        if "zero-coverage" not in text:
+            problems.append(f"{label}: no instruction to stop instead of writing an empty report")
+    if problems:
+        return failing("R33", f"zero-coverage run not handled: {problems}")
+    return passing("R33", "both roll-up surfaces stop rather than report zero coverage")
+
+
+def r34_example_manifests_share_the_anchor() -> Result:
+    """Every published example must work under the one rule.
+
+    Before spec 0012 the how-to wrote `../orders-api` and the tutorial
+    wrote `./orders-api` for the same layout — the clearest evidence that
+    the anchor had never been fixed. A `../` subject path is what a
+    `.habitat/`-relative manifest looks like, so it is the shape to
+    refuse.
+    """
+    offenders: list[str] = []
+    for path in anchor_surface_files():
+        text = path.read_text()
+        for m in MISANCHORED_EXAMPLE_RE.finditer(text):
+            line = text[: m.start()].count("\n") + 1
+            offenders.append(f"{path.relative_to(ROOT)}:{line}")
+    if offenders:
+        return failing("R34", f"example manifests anchored on ../ : {offenders[:6]}")
+    return passing("R34", "no example manifest anchors a path on ../")
+
+
 def r16_internal_doc_links_resolve() -> Result:
     """Every relative markdown link in docs/ points at a file that exists.
 
@@ -1372,6 +1562,11 @@ REPO_CHECKS = [
     ("R27", r27_ledger_statuses_defined),
     ("R28", r28_spread_needs_two_subjects),
     ("R29", r29_entry_points_route_to_multi_repo),
+    ("R30", r30_scope_fixture_anchors_at_scope_root),
+    ("R31", r31_anchor_is_named),
+    ("R32", r32_rollup_states_the_lookup),
+    ("R33", r33_zero_coverage_stops),
+    ("R34", r34_example_manifests_share_the_anchor),
 ]
 
 

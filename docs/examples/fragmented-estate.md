@@ -18,17 +18,17 @@ team: commerce-platform
 
 subjects:
   - id: checkout
-    path: ../checkout
+    path: ./checkout
   - id: search
-    path: ../search
+    path: ./search
   - id: inventory
-    path: ../inventory
+    path: ./inventory
   - id: pricing
-    path: ../pricing
+    path: ./pricing
   - id: fulfilment
-    path: ../fulfilment
+    path: ./fulfilment
   - id: legacy-batch
-    path: ../legacy-batch
+    path: ./legacy-batch
     posture: maintenance
     justified_variance:
       - dimension: testing

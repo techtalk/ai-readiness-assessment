@@ -22,21 +22,21 @@ team: payments-tribe
 habitats:
   - id: platform-harness
     kind: repo
-    path: ../platform-harness
+    path: ./platform-harness
     provides: [HARNESS.md, AGENTS.md, ci, hooks]
 
 subjects:
   - id: orders-api
-    path: ../orders-api
+    path: ./orders-api
     habitat: platform-harness
   - id: billing
-    path: ../billing
+    path: ./billing
     habitat: platform-harness
   - id: reporting
-    path: ../reporting
+    path: ./reporting
     habitat: platform-harness
   - id: legacy-batch
-    path: ../legacy-batch
+    path: ./legacy-batch
     habitat: platform-harness
 ```
 

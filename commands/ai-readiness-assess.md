@@ -371,7 +371,9 @@ answer.
 #### The scope run
 
 1. **Say how many subjects will be processed, before starting.** Read
-   the manifest and state the count and the subject names. If the scope
+   the manifest and state the count and the subject names. Every path in
+   it — subjects and habitats alike — resolves from the **scope root**,
+   the directory containing `.habitat/` and not `.habitat/` itself. If the scope
    is larger than can be worked through in one session, say so plainly
    and recommend splitting the run or using `/ai-readiness-rollup` over
    separately-produced reports instead. Never start a run that will
@@ -717,11 +719,16 @@ applied here. A standalone single-repository run records `subject` — the
 questions were asked here. `posture` is `active` unless the manifest
 says otherwise.
 
+`subject_path` locates the subject **from the scope root** — the
+directory containing `.habitat/` — so in a scope run it is the same
+string the manifest used (`./orders-api`). A standalone run has no scope
+root and records `.`.
+
 ````markdown
 ```yaml assessment-summary
 schema: 1
 subject: <repo or directory name>
-subject_path: .
+subject_path: <the manifest's path for this subject, or "." standalone>
 team: <team name, or the project name where no team is named>
 habitat: <habitat id from the manifest, or "self">
 posture: <active | maintenance | archived>

@@ -21,15 +21,23 @@ team: habitat-thinking
 
 subjects:
   - id: ai-readiness-assessment
-    path: ../ai-readiness-assessment
+    path: ./ai-readiness-assessment
   - id: ai-literacy-superpowers
-    path: ../ai-literacy-superpowers
+    path: ./ai-literacy-superpowers
   - id: leap-companion
-    path: ../leap-companion
+    path: ./leap-companion
 
 report:
   output: assessments/
 ```
+
+Paths are shown resolved from the
+[scope root](../reference/scope-manifest.md#path-resolution) — the
+directory containing `.habitat/`, which held all three clones. The run
+itself predated that rule being written down, and the ambiguity it
+exposed is what
+[spec 0012](https://github.com/techtalk/ai-readiness-assessment/blob/main/specs/0012-scope-manifest-path-resolution.md)
+closed.
 
 ## Coverage ledger
 

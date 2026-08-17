@@ -68,18 +68,44 @@ live at `<subject>/assessments/<date>-assessment.md`. Every emitted
 report today writes `.` meaning the subject root, which is the useful
 value and not the documented one.
 
-### Observed
+### The evidence is the text
 
-The 2026-08-17 two-subject scope run over `ai-readiness-assessment` and
-`ai-literacy-superpowers` completed cleanly with subject paths resolved
-from `.habitat/` and `report.output` resolved from its parent — the
-split reading. It produced correct output. It did so because the
-operator inferred the split from the worked examples, not because any
-surface specifies it. An agent applying the reference table uniformly
-would have failed, and the failure mode is quiet: an unresolvable
-subject is recorded as `unreachable` in the coverage ledger and the run
-continues, so a portfolio report can be produced that silently covers
-half the estate for no reason other than a path-anchor disagreement.
+The defect needs no run to demonstrate it. The four quotations above are
+the evidence, they are all on `main`, and they contradict each other on
+the page: the same phrase anchors two fields at two directories, and the
+worked example in `write-a-scope-manifest.md` only functions if a reader
+splits them. Any reviewer can check that in a minute, and it stays
+checkable after this spec ships, because the quotations carry file and
+line.
+
+### Why it matters more than a wording defect
+
+The failure mode is quiet. A subject whose path does not resolve is
+recorded as `unreachable` in the coverage ledger and **the run
+continues** — by design, because an unreadable repository across a client
+boundary is an ordinary fact and not an error. So a path-anchor
+disagreement is indistinguishable, in the output, from a repository
+nobody has access to. The instrument will produce a well-formed portfolio
+report covering half the named estate, and its coverage ledger will
+correctly say "assessed 1 of 2" while attributing the miss to the wrong
+cause. Acceptance criterion 7 exists to close exactly this.
+
+### Corroborating run
+
+A two-subject scope run on 2026-08-17 over `ai-readiness-assessment` and
+`ai-literacy-superpowers` completed cleanly, with subject paths resolved
+from `.habitat/` and `report.output` from its parent — the split reading.
+It produced correct output, but only because the operator inferred the
+split from the worked examples rather than from any statement of the
+rule; an agent applying the reference table uniformly would have missed
+every subject by one level.
+
+**That run's artefacts were deliberately discarded** — it was a trial of
+the multi-repo entry point, and its branches and reports were abandoned
+without committing. It is recorded here as corroboration only, and
+nothing in this spec rests on it. The published three-subject roll-up in
+`docs/examples/habitat-thinking-estate.md` (2026-08-15) is a **different,
+earlier run** and is not evidence for this defect either way.
 
 ## Design
 
@@ -105,7 +131,24 @@ the existing `report.output: assessments/` default correct as written.
 | `subject_path` (summary block) | scope root, or `.` in a standalone run | `./orders-api` |
 
 The published examples change from `../orders-api` to `./orders-api`.
-This is the visible cost, and it is the whole cost.
+That is the *visible* cost. It is not the whole cost, and an earlier
+draft of this spec claimed it was:
+
+**`subject_path` forces an instrument edit, not only a documentation
+one.** Both assess surfaces hardcode `subject_path: .` in the
+summary-block template. Under a scope-root anchor that literal is wrong
+for every subject in a scope run — only a standalone run, where the
+subject *is* the working directory, can honestly emit `.`. Left alone,
+the instrument would keep writing a value that the reference page this
+spec fixes says is invalid. So the template becomes a placeholder
+naming the manifest path, and the change reaches `commands/` and
+`skills/`, which brings the *Dual-surface sync* constraint into play.
+
+The Risks row below is right that nothing *consumes* `subject_path`, and
+that remains verified. It was wrong to infer from that that the field has
+no reach into the instrument: the emitting template is instrument text.
+"Nothing reads it" bounds the blast radius downstream; it says nothing
+about what has to be edited upstream.
 
 ### Manifest lookup, also underspecified
 
@@ -130,21 +173,48 @@ The last clause is the load-bearing one: running the roll-up from inside
 Command/skill parity (I3 of spec 0011) applies — the framework content
 must stay identical across both pairs:
 
+**Fifteen surfaces, not the nine an earlier draft of this table listed.**
+Anchor wording lives in four places; `../` example manifests are
+scattered across eleven more. Acceptance criterion 4 says *every* example
+manifest across `docs/`, and that criterion — not this table — is the
+authority where the two disagree.
+
+**Instrument** — *Dual-surface sync* applies (I3 of spec 0011); every
+edit is mirrored in the paired file:
+
 | Surface | Change |
 |---|---|
-| `commands/ai-readiness-rollup.md` | Define the scope root; replace `<manifest directory>` at :192; specify lookup at :137; fix the example manifest at :101 |
-| `skills/ai-readiness-rollup/SKILL.md` | Identical edits (:105, :196) |
-| `commands/ai-readiness-assess.md` | The scope-run section reads the manifest — add the scope-root reference; no restatement of the rule |
-| `skills/ai-readiness-assessment/SKILL.md` | Identical edit |
-| `docs/reference/scope-manifest.md` | Replace all three "relative to the manifest" cells; add a resolution section with the worked example |
-| `docs/reference/assessment-summary-block.md` | Fix `subject_path` (:55) |
-| `docs/reference/portfolio-report.md` | Replace `<manifest directory>` (:4) |
-| `docs/how-to/write-a-scope-manifest.md` | Fix the example paths; the "report lands in `estate/assessments/`" claim becomes true rather than accidentally true |
-| `docs/tutorials/assess-a-team-across-repositories.md` | Example manifest already uses `./orders-api` — verify only |
+| `commands/ai-readiness-rollup.md` ≡ `skills/ai-readiness-rollup/SKILL.md` | Define the scope root with a worked tree; re-anchor the example manifest; `<manifest directory>` → `<scope root>`; rewrite the lookup rule; add the stop-when-nothing-resolves paragraph (criterion 7) |
+| `commands/ai-readiness-assess.md` ≡ `skills/ai-readiness-assessment/SKILL.md` | Scope-root reference in scope-run step 1; `subject_path` paragraph; replace the hardcoded `subject_path: .` in the summary-block template |
 
-The tutorial already writes `./orders-api` while the how-to writes
-`../orders-api` for the same shape. That the two disagree today is
-further evidence the anchor was never fixed.
+**Reference** — where the anchor is defined:
+
+| Surface | Change |
+|---|---|
+| `docs/reference/scope-manifest.md` | New **Path resolution** section: anchor table for all five fields, worked layout, the run-from-inside-a-subject case, the recorded trade-off; three field cells rewritten; lookup rewritten |
+| `docs/reference/assessment-summary-block.md` | `subject_path` no longer "relative to the report" |
+| `docs/reference/portfolio-report.md` | `<manifest directory>` → `<scope root>` |
+| `docs/reference/portfolio-regimes.md` | Example path re-anchored |
+
+**How-to and examples** — where the `../` manifests actually live. These
+are the seven the earlier table missed:
+
+| Surface | Change |
+|---|---|
+| `docs/how-to/write-a-scope-manifest.md` | Example paths, anchor sentence, lookup wording, monorepo case; its `estate/assessments/` claim becomes true rather than accidentally true |
+| `docs/how-to/assess-with-an-org-level-habitat.md` | Example paths |
+| `docs/how-to/assess-repos-with-a-shared-harness.md` | Example paths |
+| `docs/how-to/assess-across-a-client-boundary.md` | Example paths |
+| `docs/examples/fragmented-estate.md` | Example paths |
+| `docs/examples/separate-harness-partially-bound.md` | Example paths |
+| `docs/examples/habitat-thinking-estate.md` | Example paths, plus a note that the manifest is shown re-anchored — the page records a real run and must not appear to have been re-run |
+| `docs/tutorials/assess-a-team-across-repositories.md` | **No change** — already uses `./orders-api`; verify only |
+
+38 example paths were re-anchored across `docs/` alone.
+
+The tutorial already wrote `./orders-api` while the how-to wrote
+`../orders-api` for the same shape. That the two disagreed before this
+change is further evidence the anchor was never fixed.
 
 ## Alternatives considered
 
@@ -207,30 +277,51 @@ committed and shared across machines.
 
 ## Acceptance
 
-1. `docs/reference/scope-manifest.md` contains a **Path resolution**
+**Not all eight are the same kind of claim, and an earlier draft
+presented them as peers.** The instrument is markdown instructions, not
+code: nothing here resolves a manifest, so no assertion can execute a
+path lookup. Each criterion is tagged with what can actually verify it:
+
+- **A** — deterministic. A grep, a diff or a test asserts it, and CI
+  fails without it.
+- **B** — behavioural. Only an agent run can demonstrate it. Recorded as
+  a B-tier expectation in the fixture; a green suite is *not* evidence
+  that it holds.
+
+Tagging matters because a B criterion whose prose exists is easy to
+mistake for a B criterion that has been observed to work. Criterion 7 is
+the trap: that its paragraph is present is an A fact; that a real run
+stops as instructed is not.
+
+1. **(A)** `docs/reference/scope-manifest.md` contains a **Path resolution**
    section that defines the scope root as the directory containing
    `.habitat/`, and no field description in the repo says "relative to
    the manifest" without naming that directory.
-2. `grep -rn "manifest directory" commands/ skills/ docs/` returns
+2. **(A)** `grep -rn "manifest directory" commands/ skills/ docs/` returns
    nothing — the phrase is replaced by "scope root" everywhere.
-3. The rollup command and skill state the four-directory lookup rule and
+3. **(A)** The rollup command and skill state the four-directory lookup rule and
    that the scope root is the directory that produced the hit.
-4. Every example manifest across `docs/` uses paths consistent with the
+4. **(A)** Every example manifest across `docs/` uses paths consistent with the
    rule, and the how-to and the tutorial agree with each other.
-5. Command/skill parity holds: framework text is byte-identical across
+5. **(A)** Command/skill parity holds: framework text is byte-identical across
    `commands/ai-readiness-rollup.md` ≡ `skills/ai-readiness-rollup/SKILL.md`
    and `commands/ai-readiness-assess.md` ≡
    `skills/ai-readiness-assessment/SKILL.md` (constraint: *Dual-surface
    sync*).
-6. A roll-up over the documented `estate/` layout, run from **inside a
+6. **(B)** A roll-up over the documented `estate/` layout, run from **inside a
    subject directory**, resolves all subjects and writes to
    `estate/assessments/` — the case that is wrong under either uniform
-   reading of the current text.
-7. A run in which no subject path resolves stops with a message naming a
-   path-anchor mismatch as the likely cause, instead of emitting a
-   zero-coverage portfolio report.
-8. A `tests/fixtures/` case covers a two-subject scope manifest, so the
+   reading of the current text. No assertion can cover this; it needs a
+   session against the fixture, and it is the criterion most worth
+   exercising by hand before release.
+7. **(A for the prose · B for the behaviour)** A run in which no subject path
+   resolves stops with a message naming a path-anchor mismatch as the likely
+   cause, instead of emitting a zero-coverage portfolio report. That the
+   instruction is present is deterministically checkable; that an agent obeys
+   it is not.
+8. **(A)** A `tests/fixtures/` case covers a two-subject scope manifest, so the
    TDAB suite fails if the anchor regresses. `tests/run.py` asserts
    against committed sample assessments and currently has no scope-run
    fixture at all — without this, nothing in CI can catch a
-   reintroduction.
+   reintroduction. The fixture's `expected.md` carries the B-tier
+   expectations for 6 and 7 so they are recorded rather than lost.
